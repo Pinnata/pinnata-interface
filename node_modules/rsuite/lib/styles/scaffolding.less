@@ -1,0 +1,48 @@
+@import 'common';
+
+//
+// Scaffolding
+// --------------------------------------------------
+
+// Body reset
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: @font-family-base;
+}
+
+// Links
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:active {
+    color: @link-active-color;
+    text-decoration: @link-active-decoration;
+  }
+
+  &:focus {
+    .tab-focus();
+  }
+}
+
+// Images
+img {
+  vertical-align: middle;
+}
+
+// Horizontal rules
+hr {
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
