@@ -59,6 +59,7 @@ export const Supply: React.FC = () => {
             .send({
               from: kit.defaultAccount,
               gasPrice: DEFAULT_GAS_PRICE,
+              gas: 10000000,
             });
           toastTx(tx.transactionHash);
           refetchERC();
@@ -90,6 +91,7 @@ export const Supply: React.FC = () => {
             ).send({
               from: kit.defaultAccount,
               gasPrice: DEFAULT_GAS_PRICE,
+              gas: 10000000,
             });
           toastTx(tx.transactionHash);
           refetchERC();

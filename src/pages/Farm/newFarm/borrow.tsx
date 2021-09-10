@@ -115,12 +115,13 @@ export const Borrow: React.FC = () => {
           const price = await coreOracle.methods.getCELOPx(token!.address).call();
           prices.push(toBN(price));
         }
-        
-        const lp = await proxyOracle.methods.asETHCollateral(pool.wrapper, pool?.lp, supply.lpSupply!, zeroAdd).call();
+        const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call();
+        const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
 
         const weightedSuppliedCollateralValue = supply.tokenSupply!.map((x, i) => Number(fromWei(x))
           * (Number(fromWei(prices[i]!)) / Number(fromWei(scale))) * (Number(factors[i]?.collateralFactor) / 10000))
-          .reduce((sum, current) => sum + current, 0) + Number(fromWei(toBN(lp)));
+          .reduce((sum, current) => sum + current, 0) + Number(fromWei(supply.lpSupply!))
+          * (Number(fromWei(lpPrice)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000)
 
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
           ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(factors[i]?.collateralFactor)) / 10000)))
@@ -140,7 +141,7 @@ export const Borrow: React.FC = () => {
         console.log(error)
     }
     
-}, [bank.methods, kit.web3.eth.Contract, pool.wrapper, pool?.lp, pool.tokens, supply.lpSupply, supply.tokenSupply, init, scale])
+}, [bank.methods, kit.web3.eth.Contract, pool?.lp, pool.tokens, supply.lpSupply, supply.tokenSupply, init, scale])
 
 const [info] = useAsyncState(null, call);
 
@@ -228,7 +229,7 @@ const continueButton = (
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
-            max={humanFriendlyNumber(info!.maxAmounts[index]!)}
+            max={info!.maxAmounts[index]!}
              />
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>

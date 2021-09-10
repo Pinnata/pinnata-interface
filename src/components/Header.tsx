@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Container, Flex, Text, useColorMode } from "theme-ui";
+import { Box, Container, Flex, Text } from "theme-ui";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
 import { StyledLink } from "src/components/StyledLink";
@@ -37,7 +37,6 @@ const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
 };
 
 export const Header: React.FC = () => {
-  const [colorMode, setColorMode] = useColorMode();
   const location = useLocation();
   return (
     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }} mb={4}>
@@ -63,25 +62,6 @@ export const Header: React.FC = () => {
         </Flex>
         </Box>
         <Flex>
-          {/* <Flex
-            sx={{
-              alignItems: "center",
-              backgroundColor: "secondaryBackground",
-              mr: 4,
-              px: 2,
-              cursor: "pointer",
-              borderRadius: "6px",
-            }}
-            onClick={() => {
-              if (colorMode === "light") {
-                setColorMode("dark");
-              } else {
-                setColorMode("light");
-              }
-            }}
-          >
-            {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex> */}
         <ConnectWallet />
       </Flex>
   </Flex>

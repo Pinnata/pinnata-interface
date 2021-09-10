@@ -99,6 +99,19 @@ export const Confirm: React.FC = () => {
             UNI_SPELL.abi as AbiItem[],
             getAddress(pool.spell),
           ) as unknown) as UniswapV2SpellV1;
+          console.log( pool.tokens[0]!.address, 
+            pool.tokens[1]!.address, 
+            [
+              supply.tokenSupply![0]!.toString(),
+              supply.tokenSupply![1]!.toString(), 
+              supply.lpSupply!.toString(), 
+              borrow.tokenBorrow![0]!.toString(), 
+              borrow.tokenBorrow![1]!.toString(), 
+              0, 
+              0, 
+              0
+            ],
+            pool.wrapper,)
           const bytes = spell.methods.addLiquidityWStakingRewards(
             pool.tokens[0]!.address, 
             pool.tokens[1]!.address, 
@@ -142,9 +155,13 @@ export const Confirm: React.FC = () => {
     let b: any[] = []
     if (tokenStates) {
       for (let i = 0; i < tokenStates.length; i += 1) {
-        if (tokenStates[i] ){
+        if (tokenStates[i]!){
+          console.log(tokenStates[i]!.allowance.toString())
           const amountBN = supply.tokenSupply![i]!
+          console.log(amountBN.toString())
+          console.log(3)
           if (amountBN.gt(tokenStates[i]?.allowance!)) {
+            console.log('in')
             b.push(approveButton(pool.tokens![i]!));
             if (buttonLoading) setButtonLoading(false);
           }
@@ -164,7 +181,7 @@ export const Confirm: React.FC = () => {
       if (buttonLoading) setButtonLoading(false)
     }
     return b; 
-  }, [tokenStates, supply, pool.tokens, erc]);
+  }, [tokenStates, erc, supply.tokenSupply, supply.lpSupply, pool.tokens, buttonLoading, confirmButton, lpTok]);
 
   return (
     <Flex sx={{ alignItems: "center", flexDirection: "column" }}>

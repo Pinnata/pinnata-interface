@@ -1,6 +1,6 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { Token } from "src/utils/token";
-import { AbiItem, toBN } from "web3-utils";
+import { AbiItem, toBN, fromWei } from "web3-utils";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import { HomoraBank } from "src/generated/HomoraBank";
