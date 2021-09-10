@@ -8,8 +8,10 @@ import { SimpleTable } from 'src/components/SimpleTable';
 export const Farm = () => {
   return (
       <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
-      <Text>Farm</Text>
-      <Text>Unlock leverage up to 2.5x</Text>
+      <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
+        <Text variant="title">Farm</Text>
+        <Text variant="description">Unlock leverage up to 2.5x.</Text>
+      </Flex>
       <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
         <SimpleTable>
         <thead>
@@ -19,12 +21,13 @@ export const Farm = () => {
                 text-align: left !important;
               `}
             >
-              Pool
+              
+              <Text variant="bold">Pool</Text>
             </th>
-            <th>Projected APY</th>
-            <th>Pool APY</th>
-            <th>Borrow APY</th>
-            <th>Max Leverage</th>
+            <th><Text variant="bold">Projected APY</Text></th>
+            <th><Text variant="bold">Pool APY</Text></th>
+            <th><Text variant="bold">Borrow APY</Text></th>
+            <th><Text variant="bold">Max Leverage</Text></th>
             <th />
           </tr>
         </thead>

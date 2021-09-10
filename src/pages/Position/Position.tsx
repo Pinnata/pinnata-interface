@@ -59,8 +59,10 @@ export const Position = () => {
   const [info] = useAsyncState(null, call);
   return (
     <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
-    <Text>Positions</Text>
-    <Text>Manage your positions with ease.</Text>
+    <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
+        <Text variant="title">Positions</Text>
+        <Text variant="description">Manage your positions with ease.</Text>
+      </Flex>
     <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
     <SimpleTable>
           <thead>
@@ -70,12 +72,12 @@ export const Position = () => {
                   text-align: left !important;
                 `}
               >
-                Pool
+                <Text variant="bold">Pool</Text>
               </th>
-              <th>Borrow Value</th>
-              <th>Total Value</th>
-              <th>Debt Ratio </th>
-              <th>APY</th>
+              <th><Text variant="bold">Borrow Value</Text></th>
+              <th><Text variant="bold">Total Value</Text></th>
+              <th><Text variant="bold">Debt Ratio</Text></th>
+              <th><Text variant="bold">APY</Text></th>
               <th />
             </tr>
           </thead>

@@ -1,16 +1,10 @@
 export const preset = {
   breakpoints: ["1080px", "1080px"],
   colors: {
-    purple25: "#F5F2FF",
-    purple50: "#ECE6FE",
-    purple100: "#CCC3FC",
-    purple300: "#7C71FC",
-    purple400: "#5352FC",
-    black800: "#363945",
 
-    primaryText: "#5352FC",
+    primaryText: "#3c9279", //green
     secondaryBackground: "#F5F2FF",
-    primary: "#5352FC",
+    primary: "#3c9279", //green
 
     text: "#333333",
     primaryButtonText: "#FAFAFA",

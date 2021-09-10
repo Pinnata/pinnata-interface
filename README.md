@@ -1,6 +1,6 @@
-# nomspace-interface
+# dahlia-interfacev2
 
-Frontend for the Nomspace protocol.
+Frontend for the Dahlia protocol.
 
 ## Developing
 

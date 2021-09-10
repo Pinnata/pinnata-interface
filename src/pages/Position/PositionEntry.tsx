@@ -18,7 +18,7 @@ import { MaxUint256 } from "@ethersproject/constants";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import { Spinner } from "theme-ui"
+import { Spinner, Text } from "theme-ui"
 import { CoreOracle } from "src/generated/CoreOracle";
 import COREORACLE_ABI from "src/abis/dahlia_contracts/CoreOracle.json";
 import { useAsyncState } from "src/hooks/useAsyncState";
@@ -177,10 +177,10 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
       <td>
       <FarmInfo props={props.pool} />
       </td>
-      <td>{info ? humanFriendlyNumber(info.debtValue) : "--"}</td>
-      <td>{info ? humanFriendlyNumber(info.totalValue) : "--"}</td>
-      <td>{info ? humanFriendlyNumber(info.debtRatio* 100).concat("%") : "--"}</td>
-      <td>High</td>
+      <td><Text>{info ? humanFriendlyNumber(info.debtValue) : "--"}</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(info.totalValue) : "--"}</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(info.debtRatio* 100).concat("%") : "--"}</Text></td>
+      <td><Text>High</Text></td>
       <td
         css={css`
           text-align: right;

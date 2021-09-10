@@ -16,7 +16,7 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
 import { humanFriendlyWei } from "src/utils/eth";
 import { FarmInfo } from "src/components/FarmInfo";
-import { Flex } from "theme-ui";
+import { Flex, Text } from "theme-ui";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 
@@ -76,8 +76,8 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
       <td>
       <FarmInfo props={props} />
       </td>
-      <td>100%</td>
-      <td>10%</td>
+      <td><Text>100%</Text></td>
+      <td><Text>10%</Text></td>
       <td>
         <Flex sx={{ flexDirection: "column", alignItems: "center", gap: "6px"}}>
           {props.tokens.map((tok, index) => (
@@ -85,7 +85,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
           ))}
         </Flex>
       </td>
-      <td>{String(maxLever).concat("x")}</td>
+      <td><Text>{String(maxLever).concat("x")}</Text></td>
       <td
         css={css`
           text-align: right;

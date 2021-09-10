@@ -1,5 +1,5 @@
 import { PoolIcon } from "src/components/PoolIcon";
-import { Flex } from "theme-ui";
+import { Flex, Text } from "theme-ui";
 import { spellMap } from "src/config"
 import {poolProps} from "src/pages/Farm/newFarm/NewFarm";
 
@@ -15,10 +15,10 @@ export const FarmInfo: React.FC<Props> = (farm: Props) => {
         <PoolIcon tokens={tokens} />
         <Flex sx={{ flexDirection: "column", gap: "8px" }}>
             {wrapper ? 
-            <span>Yield Farming</span> :
-            <span>Liquidity Providing</span>
+            <Text>Yield Farming</Text> :
+            <Text>Liquidity Providing</Text>
             }
-            <span>{spellMap.get(spell)} {name}</span>
+            <Text>{spellMap.get(spell)} {name}</Text>
         </Flex>
     </Flex>
   );

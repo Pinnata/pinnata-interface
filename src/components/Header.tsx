@@ -56,14 +56,14 @@ export const Header: React.FC = () => {
               : "inherit",
           }}
         >
-        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"115px", gap: "20px"}}>
+        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"50px", gap: "20px"}}>
             <HeaderLink page={Page.EARN}>Earn</HeaderLink>
             <HeaderLink page={Page.FARM}>Farm</HeaderLink>
             <HeaderLink page={Page.POSITIONS}>Positions</HeaderLink>
         </Flex>
         </Box>
         <Flex>
-          <Flex
+          {/* <Flex
             sx={{
               alignItems: "center",
               backgroundColor: "secondaryBackground",
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
             }}
           >
             {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex>
+          </Flex> */}
         <ConnectWallet />
       </Flex>
   </Flex>
