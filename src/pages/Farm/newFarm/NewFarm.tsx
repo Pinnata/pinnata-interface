@@ -22,6 +22,7 @@ export interface poolProps {
     wrapper: string;
     spell: string;
     lp: string;
+    apy: string;
     tokens: Token[];
 }
 
@@ -30,6 +31,7 @@ const emptyPoolState : poolProps = {
     wrapper: "",
     spell: "",
     lp: "",
+    apy: "",
     tokens: [],
 }
 
@@ -39,13 +41,14 @@ export const poolState = atom({
 })
 
 export const NewFarm: React.FC = () => {
-  const { name, wrapper, spell, lp, tokens } = useParams<{ name: string, wrapper: string, spell: string, lp:string, tokens:string}>();
+  const { name, wrapper, spell, lp, apy, tokens } = useParams<{ name: string, wrapper: string, spell: string, lp: string, apy: string, tokens:string}>();
   const setPool = useSetRecoilState(poolState); 
   const set: poolProps  = {
       name: name,
       wrapper: wrapper,
       spell: spell,
       lp: lp,
+      apy: apy,
       tokens: (tokens.split(',').map((x) => getToken(x)!)),
   }
   setPool(set);  

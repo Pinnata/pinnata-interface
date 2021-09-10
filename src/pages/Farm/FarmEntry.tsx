@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { Button } from "theme-ui";
 import { useHistory } from "react-router-dom";
-import { AbiItem, toBN } from "web3-utils";
+import { AbiItem, toBN, fromWei } from "web3-utils";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
@@ -19,6 +19,7 @@ import { FarmInfo } from "src/components/FarmInfo";
 import { Flex, Text } from "theme-ui";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
+import { humanFriendlyNumber } from "src/utils/number";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
@@ -69,15 +70,15 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
   const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => lever({borrowFactor: x.borrowFactor, collateralFactor: x.collateralFactor})))!) : 0;
 
-  const urlext = props.name + "/" + props.wrapper + "/" + props.spell + "/" + props.lp + "/"
+  const urlext = props.name + "/" + props.wrapper + "/" + props.spell + "/" + props.lp + "/" + props.apy + "/"
     + props.tokens.map((tok) => tok.address)
   return (
     <Row>
       <td>
       <FarmInfo props={props} />
       </td>
-      <td><Text>100%</Text></td>
-      <td><Text>10%</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(Number(props.apy) * maxLever - Math.min(...info.borrowRate.map((x) => Number(fromWei(x.mul(toBN(100)) )) )) ): "--"}%</Text></td>
+      <td><Text>{props.apy}%</Text></td>
       <td>
         <Flex sx={{ flexDirection: "column", alignItems: "center", gap: "6px"}}>
           {props.tokens.map((tok, index) => (

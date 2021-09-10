@@ -37,14 +37,15 @@ export const addPositionState = atom({
 })
 
 export const Add: React.FC = () => {
-  const { positionId, collId, collateralSize, name, wrapper, spell, lp, tokens } = useParams<{ positionId: string, collId: string, collateralSize: string, name: string, wrapper: string, spell: string, lp:string, tokens:string}>();
+  const { positionId, collId, collateralSize, name, wrapper, spell, lp, apy, tokens } = useParams<{ positionId: string, collId: string, collateralSize: string, name: string, wrapper: string, spell: string, lp: string, apy: string, tokens:string}>();
   const setPool = useSetRecoilState(poolState); 
   const setPosition = useSetRecoilState(addPositionState); 
-  const set: poolProps  = {
+  const set: poolProps = {
       name: name,
       wrapper: wrapper,
       spell: spell,
       lp: lp,
+      apy: apy,
       tokens: (tokens.split(',').map((x) => getToken(x)!)),
   }
   setPool(set);

@@ -240,9 +240,7 @@ export const Confirm: React.FC = () => {
               <BlockText>{"Supply Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Borrow Value: ".concat(" ").concat(humanFriendlyNumber(borrow.borrowValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Position Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)).concat(" Celo")}</BlockText>
-              <BlockText>Farming APY: </BlockText>
-              <BlockText>Borrow APY: </BlockText>
-              <BlockText>Total APY: </BlockText>
+              <BlockText>Farming APY: {humanFriendlyNumber(borrow.lever! * Number(pool.apy))}%</BlockText>
           </Flex>
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>

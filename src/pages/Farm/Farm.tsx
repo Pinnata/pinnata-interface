@@ -10,7 +10,7 @@ export const Farm = () => {
       <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
       <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
         <Text variant="title">Farm</Text>
-        <Text variant="description">Unlock leverage up to 2.5x.</Text>
+        <Text variant="description">Unlock leverage up to 5.5x.</Text>
       </Flex>
       <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
         <SimpleTable>
@@ -33,7 +33,7 @@ export const Farm = () => {
         </thead>
         <tbody>
           {FARMS.map((farm) => (
-              <FarmEntry key={farm.name} name={farm.name} wrapper={farm.wrapper} spell={farm.spell} tokens={farm.tokens} lp={farm.lp} />
+              <FarmEntry key={farm.name} name={farm.name} apy={farm.apy} wrapper={farm.wrapper} spell={farm.spell} tokens={farm.tokens} lp={farm.lp} />
           ))}
         </tbody>
       </SimpleTable>

@@ -64,6 +64,7 @@ export const Position = () => {
         <Text variant="description">Manage your positions with ease.</Text>
       </Flex>
     <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
+      {info ? 
     <SimpleTable>
           <thead>
             <tr>
@@ -77,22 +78,18 @@ export const Position = () => {
               <th><Text variant="bold">Borrow Value</Text></th>
               <th><Text variant="bold">Total Value</Text></th>
               <th><Text variant="bold">Debt Ratio</Text></th>
-              <th><Text variant="bold">APY</Text></th>
               <th />
             </tr>
           </thead>
           <tbody>
-            { info ? 
-              info.map((x) => (
+            {  
+              info.map((x) => 
               <PositionEntry key={x.positionId} collId={x.collId} collateralSize={x.collateralSize} positionId={x.positionId} pool={x.farm!} />
-            )) : 
-            (<Flex sx={{ alignItems: "center", justifyContent: "center"}}>
-              <Spinner />
-            </Flex>)
-            }
-            
+            )}
           </tbody>
         </SimpleTable>
+      : 
+      <Flex sx={{justifyContent: "center", alignItems: "center"}}><Spinner /></Flex>}
     </Card>
   </Flex>
   );

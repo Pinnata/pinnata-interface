@@ -62,6 +62,7 @@ export const FARMS = [
     wrapper: getAddress("0x0BD1796523F9D1E660a4b7a0C5FE37666955eB73"),
     spell: getAddress("0x504b991450bE254395eD9bD80dc1D978B8E8483a"),
     lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
+    apy: "156", 
     tokens: [
       new Token({
         address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
@@ -84,6 +85,7 @@ export const FARMS = [
     wrapper: getAddress("0x522Ab191Bd97AA5919cA816ab247c11497fb384A"),
     spell: getAddress("0x504b991450bE254395eD9bD80dc1D978B8E8483a"),
     lp: getAddress("0xf5b1bc6c9c180b64f5711567b1d6a51a350f8422"),
+    apy: "113",
     tokens: [
       new Token({
         address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
@@ -106,6 +108,7 @@ export const FARMS = [
     wrapper: getAddress("0x32E2c5d549A76BEa1B64d74c98effb34CC9eEeA8"),
     spell: getAddress("0x504b991450bE254395eD9bD80dc1D978B8E8483a"),
     lp: getAddress("0x427c95a1379182121791cc415125acd73ea02e97"),
+    apy: "160", 
     tokens: [
       new Token({
         address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
@@ -128,6 +131,7 @@ export const FARMS = [
     wrapper: getAddress("0x0Ddd2B9CA16660f168DddDFb90d79dFd8118Fb79"),
     spell: getAddress("0x504b991450bE254395eD9bD80dc1D978B8E8483a"),
     lp: getAddress("0x27616d3dba43f55279726c422daf644bc60128a8"),
+    apy: "19",
     tokens: [
       new Token({
         address: getAddress("0x64defa3544c695db8c535d289d843a189aa26b98"),
@@ -150,6 +154,7 @@ export const FARMS = [
     wrapper: getAddress("0x2879d42d2407286b74AFEB3eF90fb37d14DE5D6C"),
     spell: getAddress("0x504b991450bE254395eD9bD80dc1D978B8E8483a"),
     lp: getAddress("0xa813bb1df70128d629f1a41830578fa616daeeec"),
+    apy: "29",
     tokens: [
       new Token({
         address: getAddress("0x2879BFD5e7c4EF331384E908aaA3Bd3014b703fA"),

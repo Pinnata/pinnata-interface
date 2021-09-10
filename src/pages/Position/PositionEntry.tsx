@@ -169,7 +169,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
 </Button>
 );
 
-  const urlext = props.positionId + "/" + props.collId + "/" + props.collateralSize + "/" + props.pool.name + "/" + props.pool.wrapper + "/" + props.pool.spell + "/" + props.pool.lp + "/"
+  const urlext = props.positionId + "/" + props.collId + "/" + props.collateralSize + "/" + props.pool.name + "/" + props.pool.wrapper + "/" + props.pool.spell + "/" + props.pool.lp + "/" + props.pool.apy + "/"
     + props.pool.tokens.map((tok) => tok.address)
 
   return (
@@ -177,10 +177,9 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
       <td>
       <FarmInfo props={props.pool} />
       </td>
-      <td><Text>{info ? humanFriendlyNumber(info.debtValue) : "--"}</Text></td>
-      <td><Text>{info ? humanFriendlyNumber(info.totalValue) : "--"}</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(info.debtValue) : "--"} Celo</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(info.totalValue) : "--"} Celo</Text></td>
       <td><Text>{info ? humanFriendlyNumber(info.debtRatio* 100).concat("%") : "--"}</Text></td>
-      <td><Text>High</Text></td>
       <td
         css={css`
           text-align: right;

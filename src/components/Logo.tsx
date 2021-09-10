@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Flex, Text } from "theme-ui";
-import { LogoIcon } from "src/icons/LogoIcon";
 import Log from "src/images/logo.png";
 
 
