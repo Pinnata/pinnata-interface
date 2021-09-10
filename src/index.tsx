@@ -10,24 +10,43 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "src/state";
+import theme from "src/theme";
+import { ThemeProvider } from "theme-ui";
 import { HashRouter as Router } from "react-router-dom";
-import { LogoIcon } from "src/icons/LogoIcon"
-import { RecoilRoot } from 'recoil';
-import { theme } from "src/theme";
-
+import { RecoilRoot } from "recoil";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { ThemeProvider } from "theme-ui";
+
+if (process.env.REACT_APP_SENTRY_DSN) {
+  const sentryCfg = {
+    environment: `${process.env.REACT_APP_VERCEL_ENV ?? "unknown"}`,
+    release: `${
+      process.env.REACT_APP_VERCEL_GIT_COMMIT_REF?.replace(/\//g, "--") ??
+      "unknown"
+    }-${process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA ?? "unknown"}`,
+  };
+  Sentry.init({
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    integrations: [new Integrations.BrowserTracing()],
+    tracesSampleRate: 0.2,
+    ...sentryCfg,
+  });
+  console.log(
+    `Initializing Sentry environment at release ${sentryCfg.release} in environment ${sentryCfg.environment}`
+  );
+} else {
+  console.warn(`REACT_APP_SENTRY_DSN not found. Sentry will not be loaded.`);
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <ContractKitProvider
       dapp={{
+        icon: "",
         name: "Dahlia",
-        description: "Leveraged yield farming protocol",
+        description: "Leverage yield farming protocol",
         url: "https://dahlia.finance",
-        icon: "http://www.w3.org/2000/svg"
       }}
     >
       <ThemeProvider theme={theme}>

@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 
 export const SimpleTable = styled.table`
   th {
-    color: #546e7a;
+    color: #000fff;
     font-weight: 600;
     font-size: 14px;
   }
   td {
-    color: #fff;
+    color: #000fff;
     font-size: 16px;
     line-height: 20px;
   }

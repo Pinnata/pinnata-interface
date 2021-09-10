@@ -24,7 +24,7 @@ import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
 import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
 
 
-const Position = () => {
+export const Position = () => {
   const { kit, address } = useContractKit();
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
@@ -105,5 +105,3 @@ const Position = () => {
     </Wrapper>
   );
 };
-
-export default Position;

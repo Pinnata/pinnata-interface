@@ -1,14 +1,47 @@
-export const theme = {
+export const preset = {
+  breakpoints: ["1080px", "1080px"],
   colors: {
-    dark: '#000000',
-    gray: '#72828a',
-    midDark: '#070a0e',
-    mid2Dark: '#1c2127',
-    rgbaShadow: 'rgba(128, 255, 219, 0.36)',
-    sky: '#80ffdb',
-    secondColor: '#3c9279',
-    thirdColor: '#070a0e',
-    fourthColor: '#72828a',
+    purple25: "#F5F2FF",
+    purple50: "#ECE6FE",
+    purple100: "#CCC3FC",
+    purple300: "#7C71FC",
+    purple400: "#5352FC",
+    black800: "#363945",
+
+    primaryText: "#5352FC",
+    secondaryBackground: "#F5F2FF",
+    primary: "#5352FC",
+
+    text: "#333333",
+    primaryButtonText: "#FAFAFA",
+    accent: "#7C71FD",
+    background: "#fff",
+    secondary: "#bababa",
+    muted: "#f6f6f9",
+    gray: "#bababa",
+    darkgray: "#8d8d8d",
+    highlight: "hsla(205, 100%, 40%, 0.125)",
+    box: "#F1F4F4",
+    disabled: "#BDBDBD",
+    modes: {
+      dark: {
+        primaryText: "#CCC3FC",
+        secondaryBackground: "#363945",
+        primary: "#7C71FC",
+
+        text: "#FAFAFA",
+        primaryButtonText: "#FAFAFA",
+        accent: "#5352FC",
+        background: "#212121",
+        secondary: "#bababa",
+        muted: "#757575",
+        gray: "#bababa",
+        darkgray: "#BDBDBD",
+        highlight: "hsla(205, 100%, 40%, 0.125)",
+        box: "#363945",
+        disabled: "#BDBDBD",
+      },
+    },
   },
   fonts: {
     body: "Roboto",
@@ -148,9 +181,57 @@ export const theme = {
     borderWidth: "1.5px",
   },
   buttons: {
-    major: {
-        color: 'sky',
-        bg: 'thirdColor',
+    primary: {
+      ":disabled": {
+        color: "muted",
+        cursor: "auto",
+        bg: "disabled",
+      },
+      fontFamily: "body",
+      fontSize: 16,
+      fontWeight: 500,
+      lineHeight: "20px",
+      cursor: "pointer",
+      borderRadius: "6px",
+      color: "primaryButtonText",
+      bg: "primary",
+      px: 4,
+      py: 2,
+    },
+    secondary: {
+      variant: "buttons.primary",
+      ":disabled": {
+        borderColor: "gray",
+        color: "gray",
+        bg: "transparent",
+      },
+      color: "primary",
+      bg: "transparent",
+      border: "1px solid",
+      borderColor: "primary",
+    },
+    done: {
+      variant: "buttons.secondary",
+      color: "accent",
+    },
+    switcher: {
+      bg: "transparent",
+      borderRadius: 0,
+      fontFamily: "body",
+      borderBottom: "2px solid transparent",
+      color: "text",
+      ":focus": {
+        outline: "none",
+      },
+      cursor: "pointer",
+      px: 0,
+      py: 1,
+      mr: 3,
+    },
+    switcherSelected: {
+      variant: "buttons.switcher",
+      borderBottom: "2px solid",
+      color: "primaryText",
     },
   },
   styles: {
@@ -188,7 +269,7 @@ export const theme = {
       borderColor: "muted",
     },
     warning: {
-      backgroundColor: "#070a0e",
+      backgroundColor: "secondaryBackground",
       borderRadius: 4,
       color: "primaryText",
       px: 3,
@@ -196,3 +277,5 @@ export const theme = {
     },
   },
 };
+
+export default preset;
