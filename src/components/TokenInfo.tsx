@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Token } from "src/utils/token";
+import { Text } from "theme-ui";
 
 interface Props {
   token: Token;
@@ -9,7 +10,7 @@ export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
     <Wrapper>
       <img src={token.logoURL} />
-      <span>{token.symbol}</span>
+      <Text>{token.symbol}</Text>
     </Wrapper>
   );
 };

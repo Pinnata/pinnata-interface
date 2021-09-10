@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Flex, Text } from "theme-ui";
 import { LogoIcon } from "src/icons/LogoIcon";
+import Log from "src/images/logo.png";
 
 
 export const Logo: React.FC = () => {
@@ -9,13 +10,13 @@ export const Logo: React.FC = () => {
 
   return (
     <Flex
-      sx={{ cursor: "pointer" }}
+      sx={{ cursor: "pointer", alignItems: "center", justifyContent: "center"}}
       onClick={() => {
         history.push("/");
       }}
     >
-      <Box sx={{ fill: "text" }} mr={2}>
-        <LogoIcon />
+      <Box sx={{ fill: "text" }}>
+        <img src={Log} alt='Logo Image'/>
       </Box>
         <Text variant="logo">Dahlia</Text>
     </Flex>

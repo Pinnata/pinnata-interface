@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Flex,
+  Text,
 } from "theme-ui";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { atom, useSetRecoilState, useRecoilState } from 'recoil';
@@ -17,6 +18,8 @@ import { Slider } from "rsuite";
 import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 import { removePage, removePageState, removePositionState } from "./remove";
+import { useHistory } from "react-router-dom"
+import { CaretLeft } from "phosphor-react";
 
 interface removeProps {
   existingBalance: BN[] | null; 
@@ -41,6 +44,7 @@ export const RemoveTokens: React.FC = () => {
   const [per, setPer] = React.useState(50); 
   const [position] = useRecoilState(removePositionState); 
   const setRemove = useSetRecoilState(removeRemoveState)
+  const history = useHistory();
 
   const { kit } = useContractKit();
 
@@ -89,6 +93,14 @@ const continueButton = (
   return (
     <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
       <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
+        <Flex
+          onClick={() => history.goBack()}
+          sx={{ alignItems: "center", cursor: "pointer" }}
+          mb={4}
+        >
+          <CaretLeft size={28} />
+          <Text>Back</Text>
+        </Flex>
         <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
           <BlockText variant="primary">Your Position Balance</BlockText>
           <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center"}}>

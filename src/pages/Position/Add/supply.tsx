@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Spinner,
+  Text,
 } from "theme-ui";
 import { useERC } from "src/hooks/useERC";
 import { useERCmulti } from "src/hooks/useERCmulti";
@@ -23,6 +24,8 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
 import { addPageState, addPage, addPositionState } from "src/pages/Position/Add/add";
 import { poolState } from "src/pages/Farm/newFarm/NewFarm";
+import { useHistory } from "react-router-dom"
+import { CaretLeft } from "phosphor-react";
 
 interface supplyProps {
   tokenSupply: BN[] | null;
@@ -46,7 +49,8 @@ export const Supply: React.FC = () => {
   const setPage = useSetRecoilState(addPageState)
   const [buttonLoading, setButtonLoading] = React.useState(true); 
   const setSupply = useSetRecoilState(addSupplyState);
-  const [position] = useRecoilState(addPositionState); 
+  const [position] = useRecoilState(addPositionState);
+  const history = useHistory(); 
 
   const { kit } = useContractKit();
 
@@ -143,6 +147,14 @@ export const Supply: React.FC = () => {
   return (
     <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
       <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
+        <Flex
+          onClick={() => history.goBack()}
+          sx={{ alignItems: "center", cursor: "pointer" }}
+          mb={4}
+        >
+          <CaretLeft size={28} />
+          <Text>Back</Text>
+        </Flex>
         <Flex mb={4}>
           <Heading as="h2" mr={2}>
             Farm

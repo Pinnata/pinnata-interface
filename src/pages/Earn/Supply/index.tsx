@@ -144,23 +144,6 @@ return (
              balance={erc ? erc.balance! : null}
             />
         </Flex>
-        {/* <Flex sx={{mt: "25px"}}>
-          <BlockText variant="primary">You will receive</BlockText>
-        </Flex>
-        <Flex sx={{ justifyContent: "center"}}>
-        <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding:2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
-          >
-              <TokenAmountInfo key={tok.address} token={tok} amount={fromWei(supply.tokenSupply![index]!)} />       
-            </Flex>
-        </Flex> */}
-
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
           {buttonLoading ? (
               <Spinner />

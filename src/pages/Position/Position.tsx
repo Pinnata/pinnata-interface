@@ -7,21 +7,14 @@ import { getAddress } from "ethers/lib/utils";
 import { Bank } from "src/config";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { FARMS } from "src/config";
-import { Spinner, Flex } from "theme-ui";
 import { PositionEntry } from "src/pages/Position/PositionEntry"
-import {
-    Container, 
-    Title, 
-    Description,
-    Wrapper,
-    Background,
-    CardContainer,
-} from "src/components/MainPages";
 import Image from 'src/images/background.png';
 import { SimpleTable } from "src/components/SimpleTable";
 import { css } from "@emotion/react";
 import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
 import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
+import { Flex, Text, Card, Spinner } from "theme-ui";
+
 
 
 export const Position = () => {
@@ -46,7 +39,7 @@ export const Position = () => {
         const underlying = await wrapper.methods.getUnderlyingToken(positionInfo.collId).call(); 
         console.log(underlying);
         for (let farm of FARMS) {
-          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!) && positionInfo.collateralSize !== "0") {
+          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!)) {
             info.push({
               collId: positionInfo.collId, 
               collateralSize: positionInfo.collateralSize,
@@ -65,13 +58,11 @@ export const Position = () => {
 
   const [info] = useAsyncState(null, call);
   return (
-    <Wrapper>
-      <Container>
-        <Title>Positions</Title>
-        <Description>Manage your positions with ease.</Description>
-      </Container>
-      <CardContainer>
-        <SimpleTable>
+    <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
+    <Text>Positions</Text>
+    <Text>Manage your positions with ease.</Text>
+    <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
+    <SimpleTable>
           <thead>
             <tr>
               <th
@@ -100,8 +91,7 @@ export const Position = () => {
             
           </tbody>
         </SimpleTable>
-      </CardContainer>
-      <Background src={Image} alt='Background Logo' />
-    </Wrapper>
+    </Card>
+  </Flex>
   );
 };

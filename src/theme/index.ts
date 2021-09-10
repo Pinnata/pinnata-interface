@@ -77,8 +77,14 @@ export const preset = {
     },
     title: {
       fontFamily: "body",
-      fontSize: [28],
+      fontSize: "48px",
+      fontWeight: "bold",
       lineHeight: "42px",
+    },
+    description: {
+      fontFamily: "body",
+      fontSize: "24px", 
+      fontWeight: "400",
     },
     logo: {
       fontFamily: "body",
@@ -111,10 +117,11 @@ export const preset = {
       color: "darkgray",
     },
     bold: {
-      fontFamily: "Bold",
-      fontSize: 18,
-      lineHeight: "20px",
       color: "text",
+      fontFamily: "body",
+      fontWeight: "bold",
+      fontSize: [18],
+      lineHeight: "20px",
     },
     form: {
       fontStyle: "body",

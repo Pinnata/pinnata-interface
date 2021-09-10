@@ -14,7 +14,7 @@ import { useSafeBox } from "src/hooks/useSafeBox"
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { TokenInfo } from "src/components/TokenInfo";
-import { Button, Flex } from "theme-ui";
+import { Button, Flex, Text } from "theme-ui";
 import { useHistory } from "react-router-dom"
 
 
@@ -63,11 +63,11 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
     <td>
       <TokenInfo token={token} />
     </td>
-    <td>{info ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%") : "--"}</td>
-    <td>{info ? humanFriendlyWei(info.totalSupply) : "--"}</td>
-    <td>{info ? humanFriendlyWei(info.totalBorrows) : "--"}</td>
-    <td>{info ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat("%") : "--"}</td>
-    <td>{safeBox ? humanFriendlyWei(safeBox.balance).concat(" d").concat(token.symbol) : "--"}</td>
+    <td><Text>{info ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%") : "--"}</Text></td>
+    <td><Text>{info ? humanFriendlyWei(info.totalSupply) : "--"}</Text></td>
+    <td><Text>{info ? humanFriendlyWei(info.totalBorrows) : "--"}</Text></td>
+    <td><Text>{info ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat("%") : "--"}</Text></td>
+    <td><Text>{safeBox ? humanFriendlyWei(safeBox.balance).concat(" d").concat(token.symbol) : "--"}</Text></td>
     <td
         css={css`
           text-align: right;
@@ -76,7 +76,6 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         <div
           css={css`
             display: flex;
-            gap: 8px;
             justify-content: flex-end;
           `}
         >

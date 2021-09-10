@@ -32,9 +32,6 @@ import { BoxTokenAmountInfo } from "src/components/BoxTokenAmountInfo";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import { BlockText } from "src/components/BlockText";
 
-
-
-
 export const Withdraw: React.FC = () => {
   // TODO: does the number of decimals factor in? 
   const { kit, getConnectedKit, network } = useContractKit();
@@ -133,17 +130,18 @@ export const Withdraw: React.FC = () => {
             Withdraw
           </Heading>
         </Flex>
-          <TokenInputForm key={token.address} token={token} amount={amount}
-             setAmount={setAmount} 
-             balance={safeBox ? safeBox.balance : null}
-            />
-        <Flex sx={{mt: "25px"}}>
+        <TokenInputForm key={token.address} token={token} amount={amount}
+            setAmount={setAmount} 
+            balance={safeBox ? safeBox.balance : null}
+          />
+        {/* <Flex sx={{mt: "25px"}}>
           <BlockText variant="primary">You will receive</BlockText>
-        </Flex>
-        <Flex sx={{ justifyContent: "center",  alignItems: "center"}}>
+        </Flex> */}
+        <Flex sx={{ justifyContent: "center", gap: "10px", mt: 6, alignItems: "center"}}>
+          <BlockText variant="primary">You will receive</BlockText>
           <BoxTokenAmountInfo token={token} amount={String(Number(amount) * exchangeRate)} />
         </Flex>
-        <Flex sx={{ justifyContent: "center", mt: 6 }}>
+        <Flex sx={{ justifyContent: "center", alignItems: "center",  mt: 6 }}>
             {loading ? (
               <Spinner />
             ) : (
@@ -152,47 +150,5 @@ export const Withdraw: React.FC = () => {
         </Flex>
       </Card>
     </Flex>
-  //   <Wrapper>
-  //   <Header>Withdraw</Header>
-  //   <InfoCard>
-  //     <InfoHeader>Withdraw tokens</InfoHeader>
-  //     <InputContainer>
-  //       <div className='flex'>
-  //         <Desc>I’d like to withdraw</Desc>
-  //         <Balance>Balance {safeBox ? humanFriendlyWei(safeBox.balance) : "0.000"}</Balance>
-  //       </div>
-  //       <Content>
-  //         <div className='flex'>
-  //           <Image src={token!.logoURL} alt='celo' />
-  //         </div>
-  //         <Num
-  //           value={amount}
-  //             onChange={(e: React.FormEvent<HTMLInputElement>) => setAmount((e.target as any).value)}
-  //         ></Num>
-  //         <Max onClick={() => {
-  //           if (safeBox) {
-  //             const cost = fromWei(safeBox.balance);
-  //             setAmount(cost);
-  //           }
-  //         }}
-  //         >MAX</Max>
-  //       </Content>
-  //       <Line />
-  //       <Description>
-  //         {"You will recieve ".concat(String(Number(amount) * exchangeRate)).concat(" ").concat(token!.symbol)}
-  //       </Description>
-  //       <FlexImage>
-  //         <img src={Background} alt='background' />
-  //       </FlexImage>
-  //       <FlexContainer>
-  //       {loading ? (
-  //         <Spinner />
-  //       ) : (
-  //         button
-  //       )}
-  //       </FlexContainer>
-  //     </InputContainer>
-  //   </InfoCard>
-  // </Wrapper>
   );
 };

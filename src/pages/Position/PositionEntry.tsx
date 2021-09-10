@@ -214,5 +214,5 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
 };
 
 const Row = styled.tr`
-  height: 72px;
+  height: 96px;
 `;

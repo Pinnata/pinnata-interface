@@ -7,8 +7,10 @@ import { SimpleTable } from 'src/components/SimpleTable';
 export const Earn = () => {
   return (
     <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
-      <Text>Earn</Text>
-      <Text>Lend assets for the highest yield.</Text>
+      <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
+        <Text variant="title">Earn</Text>
+        <Text variant="description">Lend assets for the highest yield.</Text>
+      </Flex>
       <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
         <SimpleTable>
         <thead>
@@ -18,13 +20,13 @@ export const Earn = () => {
                 text-align: left !important;
               `}
             >
-              Asset
+              <Text variant="bold">Asset</Text>
             </th>
-            <th>APY</th>
-            <th>Total Supply</th>
-            <th>Total Borrow</th>
-            <th>Utilization</th>
-            <th>Balance</th>
+            <th><Text variant="bold">APY</Text></th>
+            <th><Text variant="bold">Total Supply</Text></th>
+            <th><Text variant="bold">Total Borrow</Text></th>
+            <th><Text variant="bold">Utilization</Text></th>
+            <th><Text variant="bold">Balance</Text></th>
             <th />
           </tr>
         </thead>

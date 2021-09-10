@@ -5,6 +5,11 @@ export enum Page {
   EARN = "earn",
   FARM = "farm", 
   POSITIONS = "positions",
+  SUPPLY = "supply",
+  WITHDRAW = "withdraw",
+  ADD = "add",
+  NEW = "new",
+  REMOVE = "remove",
 }
 
 interface GlobalState {

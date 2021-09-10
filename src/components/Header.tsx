@@ -19,6 +19,13 @@ const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
             borderBottom: selected ? "2px solid" : "none",
             mx: 1,
             pb: 1,
+            textDecoration: "none",
+            ":hover": {
+              textDecoration: "none"
+            },
+            ":active": {
+              textDecoration: "none"
+            },
           }}
           variant="subtitle"
         >
@@ -31,18 +38,32 @@ const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
 
 export const Header: React.FC = () => {
   const [colorMode, setColorMode] = useColorMode();
+  const location = useLocation();
   return (
     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }} mb={4}>
         <Flex>
           <Logo />
         </Flex>
-        <Flex sx={{ justifyContent: "space-between", alignItems: "center" }} mb={4}>
+        <Box
+          sx={{
+            display:
+              location.pathname.includes(Page.SUPPLY) || 
+              location.pathname.includes(Page.WITHDRAW) || 
+              location.pathname.includes(Page.ADD) ||
+              location.pathname.includes(Page.NEW) ||
+              location.pathname.includes(Page.REMOVE)
+              ? "none"
+              : "inherit",
+          }}
+        >
+        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"115px", gap: "20px"}}>
             <HeaderLink page={Page.EARN}>Earn</HeaderLink>
             <HeaderLink page={Page.FARM}>Farm</HeaderLink>
             <HeaderLink page={Page.POSITIONS}>Positions</HeaderLink>
         </Flex>
+        </Box>
         <Flex>
-          {/* <Flex
+          <Flex
             sx={{
               alignItems: "center",
               backgroundColor: "secondaryBackground",
@@ -60,7 +81,7 @@ export const Header: React.FC = () => {
             }}
           >
             {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex> */}
+          </Flex>
         <ConnectWallet />
       </Flex>
   </Flex>

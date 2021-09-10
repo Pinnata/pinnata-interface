@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Spinner,
+  Text
 } from "theme-ui";
 import { useERC } from "src/hooks/useERC";
 import { useERCmulti } from "src/hooks/useERCmulti";
@@ -16,6 +17,8 @@ import { Token } from "src/utils/token";
 import { toWei, toBN } from "web3-utils";
 import { lpToken } from "src/config";
 import BN from 'bn.js';
+import { useHistory } from "react-router-dom";
+import { CaretLeft } from "phosphor-react";
 
 interface supplyProps {
   tokenSupply: BN[] | null;
@@ -37,6 +40,7 @@ export const Supply: React.FC = () => {
   const setSupply = useSetRecoilState(newSupplyState); 
   const setPage = useSetRecoilState(farmPageState)
   const [buttonLoading, setButtonLoading] = React.useState(true); 
+  const history = useHistory();
 
   const lpTok: Token = new Token({
     ...lpToken,
@@ -99,6 +103,14 @@ export const Supply: React.FC = () => {
   return (
     <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
       <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
+      <Flex
+          onClick={() => history.goBack()}
+          sx={{ alignItems: "center", cursor: "pointer" }}
+          mb={4}
+        >
+          <CaretLeft size={28} />
+          <Text>Back</Text>
+        </Flex>
         <Flex mb={4}>
           <Heading as="h2" mr={2}>
             Farm

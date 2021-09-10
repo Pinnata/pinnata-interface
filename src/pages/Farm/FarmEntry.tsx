@@ -79,12 +79,6 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
       <td>100%</td>
       <td>10%</td>
       <td>
-        <Flex sx={{ flexDirection: "column", gap: "6px"}}>
-          <span>Trading Fees: 10%</span>
-          <span>Yield Farming: 0%</span>
-        </Flex>
-      </td>
-      <td>
         <Flex sx={{ flexDirection: "column", alignItems: "center", gap: "6px"}}>
           {props.tokens.map((tok, index) => (
             <TokenBorrowInfo key={tok.address} token={tok} apy={info && info.borrowRate.length > 0 ? humanFriendlyWei(info.borrowRate[index]!.mul(toBN(100))): "--"} />
