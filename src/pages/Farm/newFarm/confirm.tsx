@@ -99,19 +99,6 @@ export const Confirm: React.FC = () => {
             UNI_SPELL.abi as AbiItem[],
             getAddress(pool.spell),
           ) as unknown) as UniswapV2SpellV1;
-          console.log( pool.tokens[0]!.address, 
-            pool.tokens[1]!.address, 
-            [
-              supply.tokenSupply![0]!.toString(),
-              supply.tokenSupply![1]!.toString(), 
-              supply.lpSupply!.toString(), 
-              borrow.tokenBorrow![0]!.toString(), 
-              borrow.tokenBorrow![1]!.toString(), 
-              0, 
-              0, 
-              0
-            ],
-            pool.wrapper,)
           const bytes = spell.methods.addLiquidityWStakingRewards(
             pool.tokens[0]!.address, 
             pool.tokens[1]!.address, 

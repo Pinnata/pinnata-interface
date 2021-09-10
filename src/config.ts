@@ -59,7 +59,7 @@ export const COLLATERAL_TOKENS = [
 export const FARMS = [
   {
     name: "UBE-CELO",
-    wrapper: getAddress("0x0BD1796523F9D1E660a4b7a0C5FE37666955eB73"),
+    wrapper: getAddress("0x5eCd97bF7fd1cc7793632CDb66E51256e56e0150"),
     spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
     lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
     apy: "156", 
@@ -82,7 +82,7 @@ export const FARMS = [
   },
   {
     name: "CELO-mcUSD",
-    wrapper: getAddress("0x522Ab191Bd97AA5919cA816ab247c11497fb384A"),
+    wrapper: getAddress("0x81651b4F9F7c46C652D948405909Eab10ec8B56D"),
     spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
     lp: getAddress("0xf5b1bc6c9c180b64f5711567b1d6a51a350f8422"),
     apy: "113",
@@ -105,7 +105,7 @@ export const FARMS = [
   },
   {
     name: "CELO-mcEUR",
-    wrapper: getAddress("0x32E2c5d549A76BEa1B64d74c98effb34CC9eEeA8"),
+    wrapper: getAddress("0xcf0Ab8a4afD82B244f5548B1d1Ad6aee06BdD76e"),
     spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
     lp: getAddress("0x427c95a1379182121791cc415125acd73ea02e97"),
     apy: "160", 
@@ -128,7 +128,7 @@ export const FARMS = [
   },
   {
     name: "mcUSD-mcEUR",
-    wrapper: getAddress("0x0Ddd2B9CA16660f168DddDFb90d79dFd8118Fb79"),
+    wrapper: getAddress("0x7AD3239b22E8F4E850c30B1ac947Ddb3C66A66a8"),
     spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
     lp: getAddress("0x27616d3dba43f55279726c422daf644bc60128a8"),
     apy: "19",
@@ -151,7 +151,7 @@ export const FARMS = [
   },
   {
     name: "CELO-sCELO",
-    wrapper: getAddress("0x2879d42d2407286b74AFEB3eF90fb37d14DE5D6C"),
+    wrapper: getAddress("0xeea8c936B789d0ddC0bFf2f7F4094270d8dc6Fe1"),
     spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
     lp: getAddress("0xa813bb1df70128d629f1a41830578fa616daeeec"),
     apy: "29",
