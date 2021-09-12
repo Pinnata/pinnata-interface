@@ -1,36 +1,41 @@
 {
-  "name": "dahliawebsite",
-  "version": "0.1.0",
+  "name": "@nomspace/interface",
+  "description": "Nomspace Interface",
+  "homepage": ".",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.23",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^17.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.1",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.1",
-    "theme-ui": "^0.11.1",
-    "typescript": "^4.4.2",
-    "web-vitals": "^1.1.2"
+  "devDependencies": {
+    "@sentry/webpack-plugin": "^1.15.1",
+    "@typechain/web3-v1": "^3.0.0",
+    "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.6",
+    "@types/react-router-dom": "^5.1.8",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "@ubeswap/injected-connector": "^6.1.0",
+    "@uniswap/token-lists": "^1.0.0-beta.24",
+    "@web3-react/core": "^6.1.9",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^1.1.1",
+    "husky": ">=6",
+    "lint-staged": ">=11",
+    "prettier": "2.3.2",
+    "typechain": "^5.0.0",
+    "typescript": "^4.3.2"
   },
   "scripts": {
+    "typechain": "typechain --target=web3-v1 ./src/abis/**/*.json --out-dir src/generated",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "postinstall": "yarn typechain"
   },
   "browserslist": {
     "production": [
@@ -44,8 +49,46 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.1.8",
-    "@types/styled-components": "^5.1.14"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@celo-tools/use-contractkit": "^1.0.6",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    
+    "@reduxjs/toolkit": "^1.6.0",
+    "@sentry/react": "^6.7.2",
+    "@sentry/tracing": "^6.7.2",
+    "@ubeswap/default-token-list": "^3.3.6",
+    "@ubeswap/token-math": "^4.1.0",
+    "@web3-react/injected-connector": "^6.0.7",
+    "ethers": "^5.4.1",
+    "phosphor-react": "^1.3.1",
+    "qrcode.react": "^1.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-fa": "^5.0.0",
+    "react-icons": "^4.2.0",
+    "react-modal": "^3.14.3",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-toastify": "^7.0.4",
+    "recoil": "^0.4.1",
+    "rsuite": "^4.10.2",
+    "theme-ui": "^0.10.0",
+    "web3": "^1.3.5",
+    "web3-utils": "^1.5.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --cache --fix",
+    "*.{html,md,graphql,json,yaml,yml}": "prettier --write"
+  },
+  "resolutions": {
+    "@celo/utils": "1.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
   }
 }

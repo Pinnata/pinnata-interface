@@ -1,70 +1,108 @@
-/** @jsxImportSource theme-ui */
 import React from 'react';
-import { InvestimentHistory, PositionData } from '../../Data/PositionData';
-import BackgroundImage from '../../images/background.png';
+import { useContractKit } from "@celo-tools/use-contractkit";
+import { AbiItem, toBN } from "web3-utils";
+import { HomoraBank } from "src/generated/HomoraBank";
+import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
+import { getAddress } from "ethers/lib/utils";
+import { Bank } from "src/config";
+import { useAsyncState } from "src/hooks/useAsyncState";
+import { FARMS } from "src/config";
+import { Spinner, Flex } from "theme-ui";
+import { PositionEntry } from "src/pages/Position/PositionEntry"
+import {
+    Container, 
+    Title, 
+    Description,
+    Wrapper,
+    Background,
+    CardContainer,
+} from "src/components/MainPages";
+import Image from 'src/images/background.png';
+import { SimpleTable } from "src/components/SimpleTable";
+import { css } from "@emotion/react";
+import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
+import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
+
 
 const Position = () => {
+  const { kit, address } = useContractKit();
+
+  const bank = React.useMemo(() => (new kit.web3.eth.Contract(
+    BANK_ABI.abi as AbiItem[],
+    getAddress(Bank[42220])
+  ) as unknown) as HomoraBank, [kit]); 
+
+  const call = React.useCallback(async () => {
+    try {
+      const info = [];
+      const nextPositionId = await bank.methods.nextPositionId().call(); 
+      for (let i = 1; i < Number(nextPositionId); i += 1) {
+        const positionInfo = await bank.methods.getPositionInfo(i).call();
+        console.log(positionInfo, i); 
+        const wrapper = (new kit.web3.eth.Contract(
+          IERC20W_ABI.abi as AbiItem[],
+          positionInfo.collToken,
+          ) as unknown) as IERC20Wrapper;
+        const underlying = await wrapper.methods.getUnderlyingToken(positionInfo.collId).call(); 
+        console.log(underlying);
+        for (let farm of FARMS) {
+          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!) && positionInfo.collateralSize !== "0") {
+            info.push({
+              collId: positionInfo.collId, 
+              collateralSize: positionInfo.collateralSize,
+              positionId: i,
+              farm: farm,
+            })
+            break;
+          }
+        }
+      }
+      return info;  
+    } catch (error) {
+        console.log(error)
+    }  
+}, [bank.methods, kit.web3.eth.Contract, address])
+
+  const [info] = useAsyncState(null, call);
   return (
-    <section sx={{ variant: 'cards.position.Wrapper' }} >
-      <img sx={{ variant: 'cards.position.Background' }}  src={BackgroundImage} alt='background' />
-      <h1 sx={{ variant: 'cards.position.Header' }} >POSITIONS</h1>
-      <p sx={{ variant: 'cards.position.Desc' }} >Manage your position with ease.</p>
-      <button sx={{ variant: 'cards.position.Button' }} >
-        <h3>Portfolio Value</h3>
-        <p>$1,320,282</p>
-      </button>
-      <div sx={{ variant: 'cards.position.InfoContainer' }} >
-        <div sx={{ variant: 'cards.position.HeaderContainer' }} >
-          <h2>Pool</h2>
-          <h2 className='center'>Borrow</h2>
-          <h2 className='center'>Current Value</h2>
-          <h2 className='center'>Debt Ratio</h2>
-          <h2 className='center'>Apy</h2>
-          <div></div>
-        </div>
-        {PositionData.map((item, index) => {
-          return (
-            <div sx={{ variant: 'cards.position.Item' }}  key={index}>
-              <div className='flexFirst'>
-                <img src={item.img} alt={item.title} className='image' />
-                <h2>{item.title}</h2>
-              </div>
-              <div className='centerMiddle thin'>{item.borrow}</div>
-              <div className='centerMiddle thin'>{item.value}</div>
-              <div className='centerMiddle thin'>{item.debt}</div>
-              <div className='centerMiddle thin'>{item.apy}</div>
-              <div className='end'>
-                <button className='small'>ADD</button>
-                <button className='large'>REMOVE</button>
-                <button className='small'>CLOSE</button>
-                <button className='large special'>HARVEST</button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <h2 sx={{ variant: 'cards.position.SecondHeader' }} >Investment History</h2>
-      <div sx={{ variant: 'cards.position.InfoContainerSecond' }} >
-        <div sx={{ variant: 'cards.position.HeaderInvestment' }} >
-          <h2 sx={{ variant: 'cards.position.HeaderInvestment.text' }} >Caller Address</h2>
-          <h2 sx={{ variant: 'cards.position.HeaderInvestment.center' }} className='center'>Tokens Invested</h2>
-          <h2 sx={{ variant: 'cards.position.HeaderInvestment.center' }} className='center'>Timestamp</h2>
-          <div></div>
-        </div>
-        {InvestimentHistory.map((item, index) => {
-          return (
-            <div sx={{ variant: 'cards.position.ItemInvestment' }} key={index}>
-              <div sx={{ variant: 'cards.position.ItemInvestment.flexFirst' }} className='flexFirst'>
-                <img src={item.img} sx={{ variant: 'cards.position.ItemInvestment.image' }}  alt='address' className='image' />
-                <h2 sx={{ variant: 'cards.position.ItemInvestment.flexFirst.h2' }} >{item.address}</h2>
-              </div>
-              <div sx={{ variant: 'cards.position.ItemInvestment.centerMiddle' }} className='centerMiddle thin'>{item.token}</div>
-              <div sx={{ variant: 'cards.position.ItemInvestment.centerMiddle' }} className='centerMiddle thin'>{item.time}</div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+    <Wrapper>
+      <Container>
+        <Title>Positions</Title>
+        <Description>Manage your positions with ease.</Description>
+      </Container>
+      <CardContainer>
+        <SimpleTable>
+          <thead>
+            <tr>
+              <th
+                css={css`
+                  text-align: left !important;
+                `}
+              >
+                Pool
+              </th>
+              <th>Borrow Value</th>
+              <th>Total Value</th>
+              <th>Debt Ratio </th>
+              <th>APY</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            { info ? 
+              info.map((x) => (
+              <PositionEntry key={x.positionId} collId={x.collId} collateralSize={x.collateralSize} positionId={x.positionId} pool={x.farm!} />
+            )) : 
+            (<Flex sx={{ alignItems: "center", justifyContent: "center"}}>
+              <Spinner />
+            </Flex>)
+            }
+            
+          </tbody>
+        </SimpleTable>
+      </CardContainer>
+      <Background src={Image} alt='Background Logo' />
+    </Wrapper>
   );
 };
 
