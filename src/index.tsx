@@ -1,7 +1,7 @@
 import "react-app-polyfill/stable";
 import "@celo-tools/use-contractkit/lib/styles.css";
 import "react-toastify/dist/ReactToastify.min.css";
-import "src/index.css";
+import "./index.css";
 
 import { ContractKitProvider } from "@celo-tools/use-contractkit";
 import * as Sentry from "@sentry/react";
@@ -9,11 +9,11 @@ import { Integrations } from "@sentry/tracing";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import store from "src/state";
+import store from "./state";
 import { HashRouter as Router } from "react-router-dom";
-import { LogoIcon } from "src/icons/LogoIcon"
+import { LogoIcon } from "./icons/LogoIcon"
 import { RecoilRoot } from 'recoil';
-import { theme } from "src/theme";
+import { theme } from "./theme";
 
 
 import App from "./App";

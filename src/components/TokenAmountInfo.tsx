@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Token } from "src/utils/token";
-import { humanFriendlyNumber } from "src/utils/number"
-import { BlockText } from "src/components/BlockText"
+import { Token } from "../utils/token";
+import { humanFriendlyNumber } from "../utils/number"
+import { BlockText } from "../components/BlockText"
 
 interface Props {
   token: Token;

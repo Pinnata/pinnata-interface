@@ -7,23 +7,23 @@ import {
   Text,
   Spinner,
 } from "theme-ui";
-import { DEFAULT_GAS_PRICE } from "src/config";
+import { DEFAULT_GAS_PRICE } from "../../../config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import {  useSetRecoilState, useRecoilState } from 'recoil';
-import { BlockText } from "src/components/BlockText";
-import { Bank } from "src/config";
-import { TokenAmountInfo } from "src/components/TokenAmountInfo";
+import { BlockText } from "../../../components/BlockText";
+import { Bank } from "../../../config";
+import { TokenAmountInfo } from "../../../components/TokenAmountInfo";
 import { fromWei, AbiItem } from "web3-utils";
-import { toastTx } from "src/utils/toastTx";
+import { toastTx } from "../../../utils/toastTx";
 import { toast } from "react-toastify";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
-import { HomoraBank } from "src/generated/HomoraBank";
-import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
+import BANK_ABI from "../../../abis/dahlia_contracts/HomoraBank.json";
+import UNI_SPELL from "../../../abis/dahlia_contracts/UniswapV2SpellV1.json";
+import { HomoraBank } from "../../../generated/HomoraBank";
+import { UniswapV2SpellV1 } from "../../../generated/UniswapV2SpellV1";
 import { getAddress } from "ethers/lib/utils";
-import { humanFriendlyNumber } from "src/utils/number";
-import { poolState } from "src/pages/Farm/newFarm/NewFarm";
+import { humanFriendlyNumber } from "../../../utils/number";
+import { poolState } from "../../../pages/Farm/newFarm/NewFarm";
 import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens";
 import { removePaybackState } from "./payback";

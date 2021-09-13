@@ -3,21 +3,21 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
 import styled from '@emotion/styled';
 import { Spinner } from "@theme-ui/components";
-import { DEFAULT_GAS_PRICE, safeBoxMap } from "src/config";
+import { DEFAULT_GAS_PRICE, safeBoxMap } from "../../../config";
 import { AbiItem, toBN, toWei } from "web3-utils";
-import { toastTx } from "src/utils/toastTx";
+import { toastTx } from "../../../utils/toastTx";
 import { toast } from "react-toastify";
 import { MaxUint256 } from "@ethersproject/constants";
-import ERC20_ABI from "src/abis/fountain_of_youth/ERC20.json";
-import SAFEBOX_ABI from "src/abis/dahlia_contracts/SafeBox.json";
-import { ERC20 } from "src/generated/ERC20";
-import { SafeBox } from "src/generated/SafeBox";
-import { useERC } from "src/hooks/useERC";
+import ERC20_ABI from "../../../abis/fountain_of_youth/ERC20.json";
+import SAFEBOX_ABI from "../../../abis/dahlia_contracts/SafeBox.json";
+import { ERC20 } from "../../../generated/ERC20";
+import { SafeBox } from "../../../generated/SafeBox";
+import { useERC } from "../../../hooks/useERC";
 import { getAddress } from "ethers/lib/utils";
-import Background from 'src/images/logo.png';
-import { humanFriendlyWei } from "src/utils/eth";
+import Background from '../../../images/logo.png';
+import { humanFriendlyWei } from "../../../utils/eth";
 import { fromWei } from "web3-utils";
-import { getToken } from "src/utils/token";
+import { getToken } from "../../../utils/token";
 
 
 export const Supply: React.FC = () => {

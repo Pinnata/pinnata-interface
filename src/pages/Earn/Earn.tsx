@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'src/images/background.png';
-import { COLLATERAL_TOKENS } from "src/config"
-import { EarnEntry } from "src/pages/Earn/EarnEntry"; 
+import Image from '../../images/background.png';
+import { COLLATERAL_TOKENS } from "../../config"
+import { EarnEntry } from "../../pages/Earn/EarnEntry"; 
 import { css } from '@emotion/react';
 import {
   Container, 
@@ -10,8 +10,8 @@ import {
   Wrapper, 
   Background,
   CardContainer,
-} from "src/components/MainPages";
-import { SimpleTable } from 'src/components/SimpleTable';
+} from "../../components/MainPages";
+import { SimpleTable } from '../../components/SimpleTable';
 
 const Earn = () => {
   return (

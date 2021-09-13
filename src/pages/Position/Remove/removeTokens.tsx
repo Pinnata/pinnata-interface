@@ -6,16 +6,16 @@ import {
 } from "theme-ui";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { atom, useSetRecoilState, useRecoilState } from 'recoil';
-import { poolState } from "src/pages/Farm/newFarm/NewFarm";
-import { BlockText } from "src/components/BlockText";
-import { TokenAmountInfo } from "src/components/TokenAmountInfo";
+import { poolState } from "../../../pages/Farm/newFarm/NewFarm";
+import { BlockText } from "../../../components/BlockText";
+import { TokenAmountInfo } from "../../../components/TokenAmountInfo";
 import { fromWei, toWei, toBN, AbiItem } from "web3-utils";
 import { getAddress } from "ethers/lib/utils";
-import { useAsyncState } from "src/hooks/useAsyncState";
+import { useAsyncState } from "../../../hooks/useAsyncState";
 import BN from 'bn.js';
 import { Slider } from "rsuite";
-import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
-import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
+import UNI_PAIR from "../../../abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
+import { IUniswapV2Pair } from "../../../generated/IUniswapV2Pair";
 import { removePage, removePageState, removePositionState } from "./remove";
 
 interface removeProps {

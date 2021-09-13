@@ -7,7 +7,7 @@ import {
   LogoLink,
   MenuBars,
 } from './NavBarStyles';
-import { ConnectWallet } from "src/components/ConnectWallet"
+import { ConnectWallet } from "../../components/ConnectWallet"
 
 
 const NavBarSecondary = () => {

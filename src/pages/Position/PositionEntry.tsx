@@ -2,27 +2,27 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { AbiItem, toBN, fromWei } from "web3-utils";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
-import { HomoraBank } from "src/generated/HomoraBank";
-import { ProxyOracle } from "src/generated/ProxyOracle";
-import { Bank, DEFAULT_GAS_PRICE} from "src/config";
+import BANK_ABI from "../../abis/dahlia_contracts/HomoraBank.json";
+import PROXYORACLE_ABI from "../../abis/dahlia_contracts/ProxyOracle.json";
+import { HomoraBank } from "../../generated/HomoraBank";
+import { ProxyOracle } from "../../generated/ProxyOracle";
+import { Bank, DEFAULT_GAS_PRICE} from "../../config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
-import { FarmInfo } from "src/components/FarmInfo";
+import { FarmInfo } from "../../components/FarmInfo";
 import { Flex, Button } from "theme-ui";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
-import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
-import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
+import { poolProps } from "../../pages/Farm/newFarm/NewFarm";
+import UNI_SPELL from "../../abis/dahlia_contracts/UniswapV2SpellV1.json";
+import { UniswapV2SpellV1 } from "../../generated/UniswapV2SpellV1";
 import { MaxUint256 } from "@ethersproject/constants";
-import { toastTx } from "src/utils/toastTx";
+import { toastTx } from "../../utils/toastTx";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import { Spinner } from "theme-ui"
-import { CoreOracle } from "src/generated/CoreOracle";
-import COREORACLE_ABI from "src/abis/dahlia_contracts/CoreOracle.json";
-import { useAsyncState } from "src/hooks/useAsyncState";
-import { humanFriendlyNumber } from "src/utils/number";
+import { CoreOracle } from "../../generated/CoreOracle";
+import COREORACLE_ABI from "../../abis/dahlia_contracts/CoreOracle.json";
+import { useAsyncState } from "../../hooks/useAsyncState";
+import { humanFriendlyNumber } from "../../utils/number";
 
 
 interface Props {

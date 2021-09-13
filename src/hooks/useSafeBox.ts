@@ -1,8 +1,8 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import SAFEBOX_ABI from "src/abis/dahlia_contracts/SafeBox.json"
-import { SafeBox } from "src/generated/SafeBox";
-import { useAsyncState } from "src/hooks/useAsyncState";
+import SAFEBOX_ABI from "../abis/dahlia_contracts/SafeBox.json"
+import { SafeBox } from "../generated/SafeBox";
+import { useAsyncState } from "../hooks/useAsyncState";
 import { isAddress, toBN, AbiItem } from "web3-utils";
 
 export const useSafeBox = (tokenAddress: string) => {

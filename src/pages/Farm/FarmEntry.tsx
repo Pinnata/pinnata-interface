@@ -4,21 +4,21 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import { Button } from "theme-ui";
 import { useHistory } from "react-router-dom";
 import { AbiItem, toBN } from "web3-utils";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
-import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
-import { HomoraBank } from "src/generated/HomoraBank";
-import { ProxyOracle } from "src/generated/ProxyOracle";
-import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank } from "src/config";
+import BANK_ABI from "../../abis/dahlia_contracts/HomoraBank.json";
+import CERC20_ABI from "../../abis/fountain_of_youth/CErc20Immutable.json";
+import PROXYORACLE_ABI from "../../abis/dahlia_contracts/ProxyOracle.json";
+import { HomoraBank } from "../../generated/HomoraBank";
+import { ProxyOracle } from "../../generated/ProxyOracle";
+import { CErc20Immutable } from "../../generated/CErc20Immutable";
+import { Bank } from "../../config";
 import React from "react";
-import { useAsyncState } from "src/hooks/useAsyncState";
+import { useAsyncState } from "../../hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
-import { humanFriendlyWei } from "src/utils/eth";
-import { FarmInfo } from "src/components/FarmInfo";
+import { humanFriendlyWei } from "../../utils/eth";
+import { FarmInfo } from "../../components/FarmInfo";
 import { Flex } from "theme-ui";
-import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
+import { TokenBorrowInfo } from "../../components/TokenBorrowInfo";
+import { poolProps } from "../../pages/Farm/newFarm/NewFarm";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 

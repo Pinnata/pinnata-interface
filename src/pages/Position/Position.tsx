@@ -1,14 +1,14 @@
 import React from 'react';
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { AbiItem, toBN } from "web3-utils";
-import { HomoraBank } from "src/generated/HomoraBank";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
+import { HomoraBank } from "../../generated/HomoraBank";
+import BANK_ABI from "../../abis/dahlia_contracts/HomoraBank.json";
 import { getAddress } from "ethers/lib/utils";
-import { Bank } from "src/config";
-import { useAsyncState } from "src/hooks/useAsyncState";
-import { FARMS } from "src/config";
+import { Bank } from "../../config";
+import { useAsyncState } from "../../hooks/useAsyncState";
+import { FARMS } from "../../config";
 import { Spinner, Flex } from "theme-ui";
-import { PositionEntry } from "src/pages/Position/PositionEntry"
+import { PositionEntry } from "../../pages/Position/PositionEntry"
 import {
     Container, 
     Title, 
@@ -16,12 +16,12 @@ import {
     Wrapper,
     Background,
     CardContainer,
-} from "src/components/MainPages";
-import Image from 'src/images/background.png';
-import { SimpleTable } from "src/components/SimpleTable";
+} from "../../components/MainPages";
+import Image from '../../images/background.png';
+import { SimpleTable } from "../../components/SimpleTable";
 import { css } from "@emotion/react";
-import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
-import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
+import { IERC20Wrapper } from '../../generated/IERC20Wrapper';
+import IERC20W_ABI from "../../abis/dahlia_contracts/IERC20Wrapper.json";
 
 
 const Position = () => {

@@ -1,7 +1,7 @@
-import { PoolIcon } from "src/components/PoolIcon";
+import { PoolIcon } from "../components/PoolIcon";
 import { Flex } from "theme-ui";
-import { spellMap } from "src/config"
-import {poolProps} from "src/pages/Farm/newFarm/NewFarm";
+import { spellMap } from "../config"
+import {poolProps} from "../pages/Farm/newFarm/NewFarm";
 
 
 interface Props {

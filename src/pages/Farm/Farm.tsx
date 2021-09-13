@@ -5,12 +5,12 @@ import {
   Wrapper,
   Background,
   CardContainer,
-} from "src/components/MainPages";
-import Image from 'src/images/background.png';
-import { FARMS } from "src/config";
-import { SimpleTable } from "src/components/SimpleTable";
+} from "../../components/MainPages";
+import Image from '../../images/background.png';
+import { FARMS } from "../../config";
+import { SimpleTable } from "../../components/SimpleTable";
 import { css } from "@emotion/react";
-import { FarmEntry } from "src/pages/Farm/FarmEntry";
+import { FarmEntry } from "../../pages/Farm/FarmEntry";
 
 export const Farm = () => {
   return (

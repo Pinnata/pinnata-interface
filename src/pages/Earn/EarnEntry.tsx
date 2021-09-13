@@ -1,19 +1,19 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
-import { Token } from "src/utils/token";
+import { Token } from "../../utils/token";
 import { AbiItem, toBN } from "web3-utils";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
-import { HomoraBank } from "src/generated/HomoraBank";
-import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank, safeBoxMap } from "src/config";
+import BANK_ABI from "../../abis/dahlia_contracts/HomoraBank.json";
+import CERC20_ABI from "../../abis/fountain_of_youth/CErc20Immutable.json";
+import { HomoraBank } from "../../generated/HomoraBank";
+import { CErc20Immutable } from "../../generated/CErc20Immutable";
+import { Bank, safeBoxMap } from "../../config";
 import React from "react";
-import { useAsyncState } from "src/hooks/useAsyncState";
+import { useAsyncState } from "../../hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
-import { humanFriendlyWei } from "src/utils/eth";
-import { useSafeBox } from "src/hooks/useSafeBox"
+import { humanFriendlyWei } from "../../utils/eth";
+import { useSafeBox } from "../../hooks/useSafeBox"
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { TokenInfo } from "src/components/TokenInfo";
+import { TokenInfo } from "../../components/TokenInfo";
 import { Button, Flex } from "theme-ui";
 import { useHistory } from "react-router-dom"
 

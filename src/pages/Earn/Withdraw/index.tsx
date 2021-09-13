@@ -2,23 +2,23 @@ import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled"
-import { DEFAULT_GAS_PRICE, safeBoxMap, Bank } from "src/config";
+import { DEFAULT_GAS_PRICE, safeBoxMap, Bank } from "../../../config";
 import { AbiItem, toBN, toWei, fromWei } from "web3-utils";
-import { toastTx } from "src/utils/toastTx";
+import { toastTx } from "../../../utils/toastTx";
 import { toast } from "react-toastify";
-import SAFEBOX_ABI from "src/abis/dahlia_contracts/SafeBox.json";
-import { SafeBox } from "src/generated/SafeBox";
+import SAFEBOX_ABI from "../../../abis/dahlia_contracts/SafeBox.json";
+import { SafeBox } from "../../../generated/SafeBox";
 import { getAddress } from "ethers/lib/utils";
-import { useSafeBox } from "src/hooks/useSafeBox";
-import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import { HomoraBank } from "src/generated/HomoraBank";
-import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
-import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { useAsyncState } from "src/hooks/useAsyncState";
-import Background from 'src/images/logo.png';
-import { humanFriendlyWei } from "src/utils/eth";
+import { useSafeBox } from "../../../hooks/useSafeBox";
+import BANK_ABI from "../../../abis/dahlia_contracts/HomoraBank.json";
+import { HomoraBank } from "../../../generated/HomoraBank";
+import CERC20_ABI from "../../../abis/fountain_of_youth/CErc20Immutable.json";
+import { CErc20Immutable } from "../../../generated/CErc20Immutable";
+import { useAsyncState } from "../../../hooks/useAsyncState";
+import Background from '../../../images/logo.png';
+import { humanFriendlyWei } from "../../../utils/eth";
 import { Spinner } from "@theme-ui/components";
-import { getToken } from "src/utils/token";
+import { getToken } from "../../../utils/token";
 
 
 export const Withdraw: React.FC = () => {

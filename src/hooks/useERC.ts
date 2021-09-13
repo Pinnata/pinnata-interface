@@ -1,8 +1,8 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import IERC20_ABI from "src/abis/dahlia_contracts/IERC20.json"
-import { IERC20 } from "src/generated/IERC20";
-import { useAsyncState } from "src/hooks/useAsyncState";
+import IERC20_ABI from "../abis/dahlia_contracts/IERC20.json"
+import { IERC20 } from "../generated/IERC20";
+import { useAsyncState } from "../hooks/useAsyncState";
 import { isAddress, toBN, AbiItem } from "web3-utils";
 import { getAddress } from "ethers/lib/utils";
 
