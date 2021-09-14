@@ -41,7 +41,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         ) as unknown) as CErc20Immutable;
         const totalSupply = toBN(await cToken.methods.totalSupply().call());
         const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
-        const blocksPerYear = toBN(6311390); 
+        const blocksPerYear = toBN(6311520); 
         const supplyRate = toBN(await cToken.methods.supplyRatePerBlock().call()).mul(blocksPerYear);
         const utilRate = totalSupply.eq(toBN(0)) ? toBN(0) : totalBorrows.mul(toBN(10).pow(toBN(18))).div(totalSupply)
         return {

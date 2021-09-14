@@ -48,7 +48,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
             CERC20_ABI as AbiItem[],
             bankInfo.cToken,
           ) as unknown) as CErc20Immutable;
-          const blocksPerYear = toBN(6311390); 
+          const blocksPerYear = toBN(6311520); 
           const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
           borrows.push(borrowRate);
           }
