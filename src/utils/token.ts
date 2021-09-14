@@ -1,7 +1,7 @@
 import DEFAULT_TOKEN_LIST from "@ubeswap/default-token-list";
 import { Token as UToken } from "@ubeswap/token-math";
 import { TokenInfo } from "@uniswap/token-lists";
-import { COLLATERAL_TOKENS } from "src/config";
+import { COLLATERAL_TOKENS } from "../config";
 import { getAddress } from "ethers/lib/utils";
 
 

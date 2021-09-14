@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import { cardInfoData } from 'src/data/HomeData';
+import { cardInfoData } from '../../data/HomeData';
 import {
   Wrapper,
   Container,

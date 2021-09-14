@@ -13,7 +13,7 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import {  useSetRecoilState, useRecoilState } from 'recoil';
 import { BlockText } from "../../../components/BlockText";
 import { Bank } from "../../../config";
-import { TokenAmountInfo } from "../../../components/TokenAmountInfo";
+import { TokenAmountInfo } from "../../..//components/TokenAmountInfo";
 import { fromWei, AbiItem } from "web3-utils";
 import { toastTx } from "../../../utils/toastTx";
 import { toast } from "react-toastify";

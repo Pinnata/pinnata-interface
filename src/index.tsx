@@ -9,8 +9,10 @@ import { Integrations } from "@sentry/tracing";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+// import store from "src/state";
 import store from "./state";
 import { HashRouter as Router } from "react-router-dom";
+// import { LogoIcon } from "src/icons/LogoIcon"
 import { LogoIcon } from "./icons/LogoIcon"
 import { RecoilRoot } from 'recoil';
 import { theme } from "./theme";

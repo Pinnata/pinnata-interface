@@ -1,4 +1,4 @@
-import { Token } from "src/utils/token";
+import { Token } from "../utils/token";
 import React from "react";
 import {
     Box,
@@ -6,10 +6,10 @@ import {
     Input,
     Text,
   } from "theme-ui";
-import { humanFriendlyWei } from "src/utils/eth";
+import { humanFriendlyWei } from "../utils/eth";
 import { fromWei } from "web3-utils";
-import { TokenInfo } from "src/components/TokenInfo";
-import { TokenAmountInfo } from "src/components/TokenAmountInfo";
+import { TokenInfo } from "../components/TokenInfo";
+import { TokenAmountInfo } from "../components/TokenAmountInfo";
 import BN from 'bn.js';
 import { Slider } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.min.css";

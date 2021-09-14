@@ -1,4 +1,4 @@
-import { DECIMAL_PRECISION } from "src/config";
+import { DECIMAL_PRECISION } from "../config";
 
 export const humanFriendlyNumber = (v: number | string) => {
   const num = Number(v);

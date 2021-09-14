@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import global from "src/state/global";
+// import global from "./state/global";
+import global from './global'
 
 const store = configureStore({
   reducer: {

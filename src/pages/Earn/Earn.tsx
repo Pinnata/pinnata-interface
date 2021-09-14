@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from '../../images/background.png';
 import { COLLATERAL_TOKENS } from "../../config"
-import { EarnEntry } from "../../pages/Earn/EarnEntry"; 
+import { EarnEntry } from "./EarnEntry"; 
 import { css } from '@emotion/react';
 import {
   Container, 

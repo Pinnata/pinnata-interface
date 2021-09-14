@@ -1,4 +1,4 @@
-import Image from 'src/images/logo.png';
+import Image from '../../images/logo.png';
 import {
   NavWrapper,
   Wrapper,
