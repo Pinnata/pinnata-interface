@@ -147,7 +147,7 @@ return (
             />
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {buttonLoading ? (
+          {loading ? (
               <Spinner />
             ) : (
               button

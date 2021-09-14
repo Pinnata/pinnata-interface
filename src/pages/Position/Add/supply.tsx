@@ -74,13 +74,10 @@ export const Supply: React.FC = () => {
 
   const call = React.useCallback(async () => {
     try {
-        console.log('in call')
         const totalSupply = toBN(await lp.methods.totalSupply().call());
-        console.log('got total supply')
         let reserve0: BN;
         let reserve1: BN ; 
         const getReserves = await lp.methods.getReserves().call();
-        console.log('got reserves')
         const balance = toBN(position.collateralSize!); 
         if (getAddress(await lp.methods.token0().call()) === getAddress(pool.tokens[0]!.address)) {
           reserve0 = toBN(getReserves.reserve0);
@@ -89,7 +86,6 @@ export const Supply: React.FC = () => {
           reserve0 = toBN(getReserves.reserve1);
           reserve1 = toBN(getReserves.reserve0);
         }
-        console.log('returning')
         return [reserve0, reserve1].map((reserve) => reserve.mul(balance).div(totalSupply))
     } catch (error) {
         console.log(error)

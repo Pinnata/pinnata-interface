@@ -31,15 +31,13 @@ export const Position = () => {
       const nextPositionId = await bank.methods.nextPositionId().call(); 
       for (let i = 1; i < Number(nextPositionId); i += 1) {
         const positionInfo = await bank.methods.getPositionInfo(i).call();
-        console.log(positionInfo, i); 
         const wrapper = (new kit.web3.eth.Contract(
           IERC20W_ABI.abi as AbiItem[],
           positionInfo.collToken,
           ) as unknown) as IERC20Wrapper;
         const underlying = await wrapper.methods.getUnderlyingToken(positionInfo.collId).call(); 
-        console.log(underlying);
         for (let farm of FARMS) {
-          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!)) {
+          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!) && positionInfo.collateralSize !== "0") {
             info.push({
               collId: positionInfo.collId, 
               collateralSize: positionInfo.collateralSize,

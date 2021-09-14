@@ -62,8 +62,10 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         let debtValue: number = 0;
         for (let i = 0; i < ret.tokens.length; i += 1) {
           const price = await coreOracle.methods.getCELOPx(ret.tokens[i]!).call();
+          console.log(ret.debts[i], ret.tokens[i])
           debtValue += Number(fromWei(ret.debts[i]!)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         }
+        console.log(props.collateralSize)
         const numer = await bank.methods.getBorrowETHValue(props.positionId).call(); 
         const denom = await bank.methods.getCollateralETHValue(props.positionId).call();; 
         const debtRatio = Number(fromWei(numer)) / Number(fromWei(denom))
@@ -83,7 +85,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     <Button
       onClick={async () => {
         const kit = await getConnectedKit();
-        // kit is connected to a wallet
         try {
           setConfirmLoading(true);
           const bank = (new kit.web3.eth.Contract(
@@ -94,6 +95,18 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             UNI_SPELL.abi as AbiItem[],
             getAddress(props.pool.spell),
           ) as unknown) as UniswapV2SpellV1;
+          console.log( props.pool.tokens[0]!.address, 
+            props.pool.tokens[1]!.address, 
+            [
+              MaxUint256.toString(),
+              0, 
+              MaxUint256.toString(), 
+              MaxUint256.toString(), 
+              0, 
+              0, 
+              0
+            ],
+            props.pool.wrapper,)
           const bytes = spell.methods.removeLiquidityWStakingRewards(
             props.pool.tokens[0]!.address, 
             props.pool.tokens[1]!.address, 
@@ -108,6 +121,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             ],
             props.pool.wrapper,
           ).encodeABI()
+          console.log(props.positionId)
           const tx = await bank.methods
             .execute(
                 props.positionId,

@@ -122,7 +122,8 @@ export const Payback: React.FC = () => {
   * (Number(info.factors[i]?.borrowFactor) / 10000)))
   .reduce((sum, current) => sum + current, 0) : 0; 
   const denom = info ? Number(fromWei(info.weightedCollateralValue)) : 1; 
-  const debtRatio =  (numer/denom) * 100; 
+  console.log(numer, denom)
+  const debtRatio =  denom === 0 && numer === 0 ? 0 : (numer/denom) * 100; 
 
   const continueButton = (
     <Button
@@ -196,27 +197,9 @@ export const Payback: React.FC = () => {
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
-            max={humanFriendlyNumber(info!.maxAmounts[index]!)}
+            max={info!.maxAmounts[index]!}
              />
           )}
-        {/* <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
-          <BlockText variant="primary">You receive</BlockText>
-          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center"}}>
-            {info && pool.tokens.map((tok, index) => 
-            <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding:2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
-          >
-              <TokenAmountInfo key={tok.address} token={tok} amount={String(Number(fromWei(info![index]!)) * (per/100))} />       
-            </Flex>
-          )}
-          </Flex>
-        </Flex> */}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
         {
           (debtRatio > 100) ? (

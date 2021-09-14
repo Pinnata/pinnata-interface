@@ -93,13 +93,11 @@ export const Borrow: React.FC = () => {
           PROXYORACLE_ABI.abi as AbiItem[],
           oracle,
         ) as unknown) as ProxyOracle;
-
         const source = await proxyOracle.methods.source().call();
         const coreOracle = (new kit.web3.eth.Contract(
           COREORACLE_ABI.abi as AbiItem[],
           source,
         ) as unknown) as CoreOracle;
-
         for (let token of pool.tokens) {
           const bankInfo =  await bank.methods.getBankInfo(token.address).call();
           const cToken = (new kit.web3.eth.Contract(
@@ -110,17 +108,14 @@ export const Borrow: React.FC = () => {
           const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
           const totalReserves = toBN(await cToken.methods.totalReserves().call());
           availableBorrows.push(totalSupply.sub(totalBorrows).sub(totalReserves)); 
-
           const factor = await proxyOracle.methods.tokenFactors(token.address).call();
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token.address).call();
           prices.push(toBN(price));
         }
-
         const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call(); 
 
         const lp = await proxyOracle.methods.asETHCollateral(pool.wrapper, position.collId!, supply.lpSupply!, zeroAdd).call();
-        
         const existingCollateral = toBN(await bank.methods.getCollateralETHValue(position.positionId!).call()); 
         const existingBorrow = toBN(await bank.methods.getBorrowETHValue(position.positionId!).call()); 
 
@@ -131,7 +126,7 @@ export const Borrow: React.FC = () => {
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
           ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(factors[i]?.collateralFactor)) / 10000)));
 
-        const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!))))); 
+        const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!)))));
 
         if (!init) {
           setInit(true)
@@ -258,7 +253,7 @@ const continueButton = (
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
-            max={humanFriendlyNumber(info!.maxAmounts[index]!)}
+            max={info!.maxAmounts[index]!}
              />
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
