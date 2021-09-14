@@ -8,7 +8,7 @@ interface Props {
 export const DahliaTokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
     <Wrapper>
-      <img src={token.logoURL} />
+      <img src={token.logoURL} alt='token_logo' />
       <span>d{token.symbol}</span>
     </Wrapper>
   );

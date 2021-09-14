@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContractKit } from "@celo-tools/use-contractkit";
-import { AbiItem, toBN } from "web3-utils";
+import { AbiItem } from "web3-utils";
 import { HomoraBank } from "src/generated/HomoraBank";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import { getAddress } from "ethers/lib/utils";
@@ -8,7 +8,6 @@ import { Bank } from "src/config";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { FARMS } from "src/config";
 import { PositionEntry } from "src/pages/Position/PositionEntry"
-import Image from 'src/images/background.png';
 import { SimpleTable } from "src/components/SimpleTable";
 import { css } from "@emotion/react";
 import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';

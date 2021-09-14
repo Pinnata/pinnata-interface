@@ -1,11 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Container, Flex, Text } from "theme-ui";
+import { Box, Flex, Text } from "theme-ui";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
 import { StyledLink } from "src/components/StyledLink";
 import { ConnectWallet } from "src/components/ConnectWallet"
-import { Moon, Sun } from "phosphor-react";
 
 const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
   const location = useLocation();

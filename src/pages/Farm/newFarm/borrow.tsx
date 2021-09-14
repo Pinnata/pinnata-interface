@@ -59,7 +59,6 @@ export const Borrow: React.FC = () => {
   const setPage = useSetRecoilState(farmPageState)
   const [supply] = useRecoilState(newSupplyState); 
   const setBorrow = useSetRecoilState(newBorrowState); 
-  const zeroAdd = "0x0000000000000000000000000000000000000000"
   const [init, setInit] = React.useState(false)
 
   const lpTok: Token = new Token({

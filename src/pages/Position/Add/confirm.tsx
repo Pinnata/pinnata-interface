@@ -17,7 +17,7 @@ import { BlockText } from "src/components/BlockText";
 import { Token } from "src/utils/token";
 import { lpToken, Bank } from "src/config";
 import { TokenAmountInfo } from "src/components/TokenAmountInfo";
-import { fromWei, toBN, AbiItem } from "web3-utils";
+import { fromWei, AbiItem } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";

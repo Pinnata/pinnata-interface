@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "theme-ui";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Earn}  from "src/pages/Earn/Earn";
 import { Position } from "src/pages/Position/Position"
 import { Farm } from "src/pages/Farm/Farm";

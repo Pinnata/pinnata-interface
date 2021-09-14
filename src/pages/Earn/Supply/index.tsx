@@ -1,7 +1,6 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
-import styled from '@emotion/styled';
 import { DEFAULT_GAS_PRICE, safeBoxMap } from "src/config";
 import { AbiItem, toBN, toWei } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
@@ -13,9 +12,6 @@ import { ERC20 } from "src/generated/ERC20";
 import { SafeBox } from "src/generated/SafeBox";
 import { useERC } from "src/hooks/useERC";
 import { getAddress } from "ethers/lib/utils";
-import Background from 'src/images/logo.png';
-import { humanFriendlyWei } from "src/utils/eth";
-import { fromWei } from "web3-utils";
 import { getToken } from "src/utils/token";
 import {
   Button,
@@ -25,7 +21,6 @@ import {
   Spinner,
   Text
 } from "theme-ui";
-import { BlockText } from "src/components/BlockText";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import  { useHistory } from "react-router-dom"
 import { CaretLeft } from "phosphor-react";

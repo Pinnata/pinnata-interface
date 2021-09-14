@@ -4,7 +4,6 @@ import IERC20_ABI from "src/abis/dahlia_contracts/IERC20.json"
 import { IERC20 } from "src/generated/IERC20";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { isAddress, toBN, AbiItem } from "web3-utils";
-import { getAddress } from "ethers/lib/utils";
 import { Bank } from "src/config";
 import { Token } from "src/utils/token";
 

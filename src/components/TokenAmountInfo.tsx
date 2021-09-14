@@ -11,7 +11,7 @@ interface Props {
 export const TokenAmountInfo: React.FC<Props> = ({ token, amount }: Props) => {
   return (
     <Wrapper>
-      <img src={token.logoURL} />
+      <img src={token.logoURL} alt='token_logo'/>
       <BlockText>{humanFriendlyNumber(amount).concat(" ").concat(token.symbol)}</BlockText>
     </Wrapper>
   );

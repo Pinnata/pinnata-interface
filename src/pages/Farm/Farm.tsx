@@ -1,4 +1,3 @@
-import Image from 'src/images/background.png';
 import { FARMS } from "src/config";
 import { FarmEntry } from "src/pages/Farm/FarmEntry";
 import { css } from '@emotion/react';

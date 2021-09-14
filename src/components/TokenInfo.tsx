@@ -9,7 +9,7 @@ interface Props {
 export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
     <Wrapper>
-      <img src={token.logoURL} />
+      <img src={token.logoURL} alt='token_logo'/>
       <Text>{token.symbol}</Text>
     </Wrapper>
   );

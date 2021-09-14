@@ -3,14 +3,8 @@ import React from "react";
 import {
     Box,
     Flex,
-    Input,
-    Text,
   } from "theme-ui";
-import { humanFriendlyWei } from "src/utils/eth";
-import { fromWei } from "web3-utils";
-import { TokenInfo } from "src/components/TokenInfo";
 import { TokenAmountInfo } from "src/components/TokenAmountInfo";
-import BN from 'bn.js';
 import { Slider } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.min.css";
 
