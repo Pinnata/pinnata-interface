@@ -127,6 +127,8 @@ export const Borrow: React.FC = () => {
 
         const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!)))));
 
+        console.log('her', borrowMax, maxAmounts)
+
         if (!init) {
           setInit(true);
           setAmounts(maxAmounts.map((x) => Number(x) === 0 ? "0" : String((Number(x) / 3).toFixed(3))));
