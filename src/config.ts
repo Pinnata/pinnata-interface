@@ -15,7 +15,7 @@ export const lpToken = {
   symbol: "ULP",
   decimals: 18,
   chainId: ChainId.Mainnet,
-  logoURI: "public/favicon.ico"
+  logoURI: "lp"
 };
 
 export const COLLATERAL_TOKENS = [

@@ -128,7 +128,7 @@ export const Withdraw: React.FC = () => {
             Withdraw
           </Heading>
         </Flex>
-        <TokenInputForm key={token.address} token={token} amount={amount}
+        <TokenInputForm key={token.address} dahlia token={token} amount={amount}
             setAmount={setAmount} 
             balance={safeBox ? safeBox.balance : null}
           />

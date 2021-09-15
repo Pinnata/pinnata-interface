@@ -33,6 +33,8 @@ import { addPageState, addPage, addPositionState } from "src/pages/Position/Add/
 import { addSupplyState } from "./supply";
 import { addBorrowState } from "./borrow";
 import { poolState } from "src/pages/Farm/newFarm/NewFarm";
+import { useHistory } from "react-router";
+
 
 
 export const Confirm: React.FC = () => {
@@ -40,11 +42,13 @@ export const Confirm: React.FC = () => {
   const [approveLoading, setApproveLoading] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [buttonLoading, setButtonLoading] = React.useState(true); 
+  const [done, setDone] = React.useState(false); 
   const [pool] = useRecoilState(poolState);
   const setPage = useSetRecoilState(addPageState)
   const [supply] = useRecoilState(addSupplyState);
   const [position] = useRecoilState(addPositionState); 
   const [borrow] = useRecoilState(addBorrowState); 
+  const history = useHistory(); 
 
   const lpTok: Token = new Token({
     ...lpToken,
@@ -132,6 +136,7 @@ export const Confirm: React.FC = () => {
           toast(e.message);
         } finally {
           setConfirmLoading(false);
+          setDone(true); 
         }
       }}
     >
@@ -142,28 +147,35 @@ export const Confirm: React.FC = () => {
   const loading = approveLoading || confirmLoading || buttonLoading;
   const button = React.useMemo(() => {
     let b: any[] = []
-    if (tokenStates) {
-      for (let i = 0; i < tokenStates.length; i += 1) {
-        if (tokenStates[i] ){
-          const amountBN = supply.tokenSupply![i]!
-          if (amountBN.gt(tokenStates[i]?.allowance!)) {
-            b.push(approveButton(pool.tokens![i]!));
-            if (buttonLoading) setButtonLoading(false);
+    if (done) { 
+      b = [(<Button onClick={() => {
+      history.push('/positions');
+      setPage(addPage.Supply); 
+    }}>Return</Button>)]
+    } else {
+      if (tokenStates) {
+        for (let i = 0; i < tokenStates.length; i += 1) {
+          if (tokenStates[i] ){
+            const amountBN = supply.tokenSupply![i]!
+            if (amountBN.gt(tokenStates[i]?.allowance!)) {
+              b.push(approveButton(pool.tokens![i]!));
+              if (buttonLoading) setButtonLoading(false);
+            }
           }
         }
+        if (b.length === 0) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          b = [confirmButton]; 
+          if (buttonLoading) setButtonLoading(false);
+        }
       }
-      if (b.length === 0) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        b = [confirmButton]; 
-        if (buttonLoading) setButtonLoading(false);
+      if (erc) {
+        const amountBN = supply.lpSupply!;
+        if (amountBN.gt(erc.allowance)) {
+          b.push(approveButton(lpTok))
+        }
+        if (buttonLoading) setButtonLoading(false)
       }
-    }
-    if (erc) {
-      const amountBN = supply.lpSupply!;
-      if (amountBN.gt(erc.allowance)) {
-        b.push(approveButton(lpTok))
-      }
-      if (buttonLoading) setButtonLoading(false)
     }
     return b; 
   }, [tokenStates, supply.tokenSupply, pool.tokens, erc, supply.lpSupply])

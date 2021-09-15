@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { Token } from "src/utils/token";
 import { humanFriendlyNumber } from "src/utils/number"
 import { BlockText } from "src/components/BlockText"
+import Lp from "src/images/LP.png";
+
 
 interface Props {
   token: Token;
@@ -11,7 +13,7 @@ interface Props {
 export const TokenAmountInfo: React.FC<Props> = ({ token, amount }: Props) => {
   return (
     <Wrapper>
-      <img src={token.logoURL} alt='token_logo'/>
+      <img src={token.logoURL === 'lp' ? Lp : token.logoURL} alt='token_logo'/>
       <BlockText>{humanFriendlyNumber(amount).concat(" ").concat(token.symbol)}</BlockText>
     </Wrapper>
   );

@@ -194,6 +194,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
       <td><Text>{info ? humanFriendlyNumber(info.debtValue) : "--"} Celo</Text></td>
       <td><Text>{info ? humanFriendlyNumber(info.totalValue) : "--"} Celo</Text></td>
       <td><Text>{info ? humanFriendlyNumber(info.debtRatio* 100).concat("%") : "--"}</Text></td>
+      {/* <td><Text>--</Text></td> */}
       <td
         css={css`
           text-align: right;
