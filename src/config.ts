@@ -4,9 +4,9 @@ import { Token } from "src/utils/token";
 import { getAddress } from "ethers/lib/utils";
 
 export const Bank = {
-  [ChainId.Mainnet]: getAddress("0x0C30Cf952dF41F1B287D3a6d46840F0874B891cE"),
-  [ChainId.Alfajores]: getAddress("0x0C30Cf952dF41F1B287D3a6d46840F0874B891cE"),
-  [ChainId.Baklava]: getAddress("0x0C30Cf952dF41F1B287D3a6d46840F0874B891cE"),
+  [ChainId.Mainnet]: getAddress("0xb0b2d27b5384B4a53B6960709785Ad32713e4645"),
+  [ChainId.Alfajores]: getAddress("0xb0b2d27b5384B4a53B6960709785Ad32713e4645"),
+  [ChainId.Baklava]: getAddress("0xb0b2d27b5384B4a53B6960709785Ad32713e4645"),
 };
 
 export const lpToken = {
@@ -59,18 +59,11 @@ export const COLLATERAL_TOKENS = [
 export const FARMS = [
   {
     name: "UBE-CELO",
-    wrapper: getAddress("0x5eCd97bF7fd1cc7793632CDb66E51256e56e0150"),
-    spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
+    wrapper: getAddress("0xfAC9861420e79aDC03c8114484c863ae9C516F5D"),
+    spell: getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"),
     lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
     apy: "156", 
     tokens: [
-      new Token({
-        address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
-        name: "Celo",
-        symbol: "CELO",
-        decimals: 18,
-        chainId: ChainId.Mainnet,
-      }),
       new Token({
         address: getAddress("0x00be915b9dcf56a3cbe739d9b9c202ca692409ec"),
         name: "Ubeswap",
@@ -78,12 +71,19 @@ export const FARMS = [
         decimals: 18,
         chainId: ChainId.Mainnet,
       }),
+      new Token({
+        address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
+        name: "Celo",
+        symbol: "CELO",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+      }),
     ],
   },
   {
     name: "CELO-mcUSD",
-    wrapper: getAddress("0x81651b4F9F7c46C652D948405909Eab10ec8B56D"),
-    spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
+    wrapper: getAddress("0xa2cb40E3D269D48937Ca53BEEaF81F7Ea78AB16C"),
+    spell: getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"),
     lp: getAddress("0xf5b1bc6c9c180b64f5711567b1d6a51a350f8422"),
     apy: "113",
     tokens: [
@@ -105,8 +105,8 @@ export const FARMS = [
   },
   {
     name: "CELO-mcEUR",
-    wrapper: getAddress("0xcf0Ab8a4afD82B244f5548B1d1Ad6aee06BdD76e"),
-    spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
+    wrapper: getAddress("0xa8F850e6F794F994785154aC3335256E8165507a"),
+    spell: getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"),
     lp: getAddress("0x427c95a1379182121791cc415125acd73ea02e97"),
     apy: "160", 
     tokens: [
@@ -128,8 +128,8 @@ export const FARMS = [
   },
   {
     name: "mcUSD-mcEUR",
-    wrapper: getAddress("0x7AD3239b22E8F4E850c30B1ac947Ddb3C66A66a8"),
-    spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
+    wrapper: getAddress("0x4D9871CD7A4b50407000f412C1aF226a816978B9"),
+    spell: getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"),
     lp: getAddress("0x27616d3dba43f55279726c422daf644bc60128a8"),
     apy: "19",
     tokens: [
@@ -151,8 +151,8 @@ export const FARMS = [
   },
   {
     name: "CELO-sCELO",
-    wrapper: getAddress("0xeea8c936B789d0ddC0bFf2f7F4094270d8dc6Fe1"),
-    spell: getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"),
+    wrapper: getAddress("0x81341B3bd0B080624Dd6b89930787e1cb9b94198"),
+    spell: getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"),
     lp: getAddress("0xa813bb1df70128d629f1a41830578fa616daeeec"),
     apy: "29",
     tokens: [
@@ -178,17 +178,15 @@ export const DECIMAL_PRECISION = 3; // Number of decimals to show
 
 //collateral type to safebox
 export const safeBoxMap = new Map<string, string>([
-  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0xC1E55C097B8220742752d3d26cF4F1fE749A4cFf")], // celo
-  [getAddress("0x00be915b9dcf56a3cbe739d9b9c202ca692409ec"), getAddress("0xC80258F7bC3d9310E1850de350934D79BDB1f36f")], // ube
-  [getAddress("0x64defa3544c695db8c535d289d843a189aa26b98"), getAddress("0x679eEf7737895Ed6E6Ac35376505842c4cB53dA9")], // mcusd
-  [getAddress("0xa8d0e6799ff3fd19c6459bf02689ae09c4d78ba7"), getAddress("0x2DbfCEf666d04c69B89E4DF68919073402a33Fc6")], // mceur
-  [getAddress("0x2879bfd5e7c4ef331384e908aaa3bd3014b703fa"), getAddress("0x0585D6073d0C7E56df03779ac864156ed9d6e8e0")], // scelo
+  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0x7AF48dEB6d3FB4D71895C1E74E2136C1C7C3C0e1")], // celo
+  [getAddress("0x00be915b9dcf56a3cbe739d9b9c202ca692409ec"), getAddress("0x4aA2c7323AC3A04eF686052B2B41A9DBc403e831")], // ube
+  [getAddress("0x64defa3544c695db8c535d289d843a189aa26b98"), getAddress("0x5821bBCfFEd8F24b376331EACd537539F2724134")], // mcusd
+  [getAddress("0xa8d0e6799ff3fd19c6459bf02689ae09c4d78ba7"), getAddress("0x9a1Ac0eC0F283bCEA5C16a70a09bac4488d7EcB1")], // mceur
+  [getAddress("0x2879bfd5e7c4ef331384e908aaa3bd3014b703fa"), getAddress("0xdA3aFCa2f1e2d9A7A24cCC907239E7E29E57A07B")], // scelo
 ]);
 
 export const spellMap = new Map<string, string>([
-  [getAddress("0xbfD26c85A3Da32C095dafccB418F0309f7e1EB81"), "Ubeswap"]
+  [getAddress("0x7c18e9640AC6Fbd4f6BAD045c5D1cdF1C26cFBf7"), "Ubeswap"]
 ]);
-
-export const FEE_MODULE_V1 = "0x07DDCB69Bc2637A6c03d5523696E21B688b42d65";
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");

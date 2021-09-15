@@ -215,7 +215,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             </Button>
           </Flex>
           <Flex sx={{justifyContent: "center", alighnItems: "center", gap: "6px"}}>
-            {closeButton}
+            {/* {closeButton} */}
             {harvestButton}
           </Flex>
           </Flex>
