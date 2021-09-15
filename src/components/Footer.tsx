@@ -13,9 +13,10 @@ export const Footer: React.FC = () => {
   return (
     <Box
       sx={{
-        position: "absolute",
+        position: "relative",
         width: "100%",
         bottom: 0,
+        mt: 150,
         pb: 4,
       }}
     >
