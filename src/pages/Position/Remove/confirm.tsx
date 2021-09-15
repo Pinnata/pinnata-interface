@@ -27,16 +27,19 @@ import { poolState } from "src/pages/Farm/newFarm/NewFarm";
 import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens";
 import { removePaybackState } from "./payback";
+import { useHistory } from "react-router-dom";
 
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const [done, setDone] = React.useState(false); 
   const [pool] = useRecoilState(poolState);
   const setPage = useSetRecoilState(removePageState);
   const [position] = useRecoilState(removePositionState); 
   const [remove] = useRecoilState(removeRemoveState);
   const [payback] = useRecoilState(removePaybackState);
+  const history = useHistory(); 
 
   const confirmButton = (
     <Button
@@ -80,6 +83,7 @@ export const Confirm: React.FC = () => {
           toast(e.message);
         } finally {
           setConfirmLoading(false);
+          setDone(true); 
         }
       }}
     >
@@ -170,7 +174,10 @@ export const Confirm: React.FC = () => {
               <Spinner />
             ) : (
               <Flex sx={{ justifyContent: "center", gap: "6px"}} >
-                {confirmButton}
+                {done ? <Button onClick={() => {
+                  history.push('/positions');
+                  setPage(removePage.Remove); 
+                }}>Return</Button> : confirmButton}
               </Flex>                
             )}
         </Flex>
