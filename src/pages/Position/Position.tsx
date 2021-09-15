@@ -60,7 +60,7 @@ export const Position = () => {
         <Text variant="title">Positions</Text>
         <Text variant="description">Manage your positions with ease.</Text>
       </Flex>
-    <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
+    <Card sx={{ width: "100%", maxWidth: "1200px", mt: "16px" }} py={4} px={3}>
       {info ? 
     <SimpleTable>
           <thead>
@@ -75,6 +75,7 @@ export const Position = () => {
               <th><Text variant="bold">Borrow Value</Text></th>
               <th><Text variant="bold">Total Value</Text></th>
               <th><Text variant="bold">Debt Ratio</Text></th>
+              {/* <th><Text variant="bold">Accumulated Rewards</Text></th> */}
               <th />
             </tr>
           </thead>
