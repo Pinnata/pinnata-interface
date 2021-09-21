@@ -1,10 +1,11 @@
 export const preset = {
   breakpoints: ["1080px", "1080px"],
   colors: {
-
     primaryText: "#3c9279", //green
     secondaryBackground: "#F5F2FF",
     primary: "#3c9279", //green
+    dahliaGreen: "#46c0b5",
+    dahliaGreenLigher: "#46c0b55c",
 
     text: "#333333",
     primaryButtonText: "#FAFAFA",
@@ -77,7 +78,7 @@ export const preset = {
     },
     description: {
       fontFamily: "body",
-      fontSize: "24px", 
+      fontSize: "24px",
       fontWeight: "400",
     },
     logo: {

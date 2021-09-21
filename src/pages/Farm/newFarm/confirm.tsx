@@ -32,21 +32,17 @@ import { MaxUint256 } from "@ethersproject/constants";
 import ERC20_ABI from "src/abis/fountain_of_youth/ERC20.json";
 import { ERC20 } from "src/generated/ERC20";
 import { humanFriendlyNumber } from "src/utils/number";
-import { useHistory } from "react-router";
 
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
   const [approveLoading, setApproveLoading] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [buttonLoading, setButtonLoading] = React.useState(true);
-  const [done, setDone] = React.useState(false);  
+  const [buttonLoading, setButtonLoading] = React.useState(true); 
   const [pool] = useRecoilState(poolState);
   const setPage = useSetRecoilState(farmPageState)
   const [supply] = useRecoilState(newSupplyState); 
   const [borrow] = useRecoilState(newBorrowState);
-  const history = useHistory();
-
 
   const lpTok: Token = new Token({
     ...lpToken,
@@ -134,7 +130,6 @@ export const Confirm: React.FC = () => {
           toast(e.message);
         } finally {
           setConfirmLoading(false);
-          setDone(true); 
         }
       }}
     >
@@ -145,38 +140,32 @@ export const Confirm: React.FC = () => {
   const loading = approveLoading || confirmLoading || buttonLoading;
   const button = React.useMemo(() => {
     let b: any[] = []
-    if (done) { 
-      b = [(<Button onClick={() => {
-      history.push('/positions');
-      setPage(farmPage.Supply); 
-    }}>Return</Button>)]
-    } else {
-        if (tokenStates) {
-        for (let i = 0; i < tokenStates.length; i += 1) {
-          if (tokenStates[i]!){
-            console.log(tokenStates[i]!.allowance.toString())
-            const amountBN = supply.tokenSupply![i]!
-            console.log(amountBN.toString())
-            console.log(3)
-            if (amountBN.gt(tokenStates[i]?.allowance!)) {
-              b.push(approveButton(pool.tokens![i]!));
-              if (buttonLoading) setButtonLoading(false);
-            }
+    if (tokenStates) {
+      for (let i = 0; i < tokenStates.length; i += 1) {
+        if (tokenStates[i]!){
+          console.log(tokenStates[i]!.allowance.toString())
+          const amountBN = supply.tokenSupply![i]!
+          console.log(amountBN.toString())
+          console.log(3)
+          if (amountBN.gt(tokenStates[i]?.allowance!)) {
+            console.log('in')
+            b.push(approveButton(pool.tokens![i]!));
+            if (buttonLoading) setButtonLoading(false);
           }
         }
-        if (b.length === 0) {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          b = [confirmButton]; 
-          if (buttonLoading) setButtonLoading(false);
-        }
       }
-      if (erc) {
-        const amountBN = supply.lpSupply!;
-        if (amountBN.gt(erc.allowance)) {
-          b.push(approveButton(lpTok))
-        }
-        if (buttonLoading) setButtonLoading(false)
+      if (b.length === 0) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        b = [confirmButton]; 
+        if (buttonLoading) setButtonLoading(false);
       }
+    }
+    if (erc) {
+      const amountBN = supply.lpSupply!;
+      if (amountBN.gt(erc.allowance)) {
+        b.push(approveButton(lpTok))
+      }
+      if (buttonLoading) setButtonLoading(false)
     }
     return b; 
   }, [tokenStates, erc, supply.tokenSupply, supply.lpSupply, pool.tokens, buttonLoading, confirmButton, lpTok]);

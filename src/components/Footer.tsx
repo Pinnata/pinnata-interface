@@ -6,18 +6,22 @@ import { useLocation } from "react-router-dom";
 export const Footer: React.FC = () => {
   const location = useLocation();
 
-  if (location.pathname !== "/earn" && location.pathname !== "/farm" && location.pathname !== "/positions") {
+  if (
+    location.pathname !== "/earn" &&
+    location.pathname !== "/farm" &&
+    location.pathname !== "/positions"
+  ) {
     return null;
   }
 
   return (
     <Box
       sx={{
-        position: "relative",
+        position: "static",
         width: "100%",
         bottom: 0,
-        mt: 150,
         pb: 4,
+        marginBottom: "1rem",
       }}
     >
       <Flex sx={{ justifyContent: "center" }}>
