@@ -60,13 +60,13 @@ export interface ProxyOracle extends BaseContract {
   methods: {
     acceptGovernor(): NonPayableTransactionObject<void>;
 
-    asETHBorrow(
+    asCELOBorrow(
       token: string,
       amount: number | string | BN,
       owner: string
     ): NonPayableTransactionObject<string>;
 
-    asETHCollateral(
+    asCELOCollateral(
       token: string,
       id: number | string | BN,
       amount: number | string | BN,

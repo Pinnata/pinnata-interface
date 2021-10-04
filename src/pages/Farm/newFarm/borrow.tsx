@@ -118,16 +118,14 @@ export const Borrow: React.FC = () => {
         const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
 
         const weightedSuppliedCollateralValue = supply.tokenSupply!.map((x, i) => Number(fromWei(x))
-          * (Number(fromWei(prices[i]!)) / Number(fromWei(scale))) * (Number(factors[i]?.collateralFactor) / 10000))
+          * (Number(fromWei(prices[i]!)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000))
           .reduce((sum, current) => sum + current, 0) + Number(fromWei(supply.lpSupply!))
           * (Number(fromWei(lpPrice)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000)
 
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
-          ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(factors[i]?.collateralFactor)) / 10000)))
+          ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(lpFactor.collateralFactor)) / 10000)))
 
         const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!)))));
-
-        console.log('her', borrowMax, maxAmounts)
 
         if (!init) {
           setInit(true);
@@ -136,6 +134,7 @@ export const Borrow: React.FC = () => {
         return {
           tokenFactor: factors,
           celoPrices: prices,
+          lpFactor,
           maxAmounts,
         };
     } catch (error) {
@@ -152,9 +151,10 @@ const borrowValue = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(in
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x)) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
 
+//TODO: add lp values
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.tokenFactor[i]?.borrowFactor) / 10000)).reduce((sum, current) => sum + current, 0) : 0; 
 const denom = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
-  * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.tokenFactor[i]?.collateralFactor) / 10000))
+  * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
   .reduce((sum, current) => sum + current, 0) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
@@ -235,7 +235,7 @@ const continueButton = (
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
           {
-          (debtRatio > 100) ? (
+          (debtRatio > 99) ? (
             <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton

@@ -29,11 +29,23 @@ export interface IStakingRewards extends BaseContract {
   ): IStakingRewards;
   clone(): IStakingRewards;
   methods: {
+    balanceOf(account: string): NonPayableTransactionObject<string>;
+
+    earned(account: string): NonPayableTransactionObject<string>;
+
+    exit(): NonPayableTransactionObject<void>;
+
     getReward(): NonPayableTransactionObject<void>;
+
+    getRewardForDuration(): NonPayableTransactionObject<string>;
+
+    lastTimeRewardApplicable(): NonPayableTransactionObject<string>;
 
     rewardPerToken(): NonPayableTransactionObject<string>;
 
     stake(amount: number | string | BN): NonPayableTransactionObject<void>;
+
+    totalSupply(): NonPayableTransactionObject<string>;
 
     withdraw(amount: number | string | BN): NonPayableTransactionObject<void>;
   };

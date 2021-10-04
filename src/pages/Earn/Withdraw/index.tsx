@@ -1,7 +1,7 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
-import { DEFAULT_GAS_PRICE, safeBoxMap, Bank } from "src/config";
+import { DEFAULT_GAS_PRICE, safeBoxMap, Bank, Alfajores } from "src/config";
 import { AbiItem, toBN, toWei, fromWei } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
@@ -31,7 +31,8 @@ import { BlockText } from "src/components/BlockText";
 
 export const Withdraw: React.FC = () => {
   // TODO: does the number of decimals factor in? 
-  const { kit, getConnectedKit, network } = useContractKit();
+  const { kit, network, updateNetwork, getConnectedKit } = useContractKit();
+  updateNetwork(Alfajores)
   const [amount, setAmount] = React.useState("1");
   const [withdrawLoading, setWithdrawLoading] = React.useState(false);
   const [buttonLoading, setButtonLoading] = React.useState(true); 

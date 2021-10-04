@@ -10,7 +10,7 @@ import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank } from "src/config";
+import { Bank, Alfajores } from "src/config";
 import React from "react";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
@@ -23,7 +23,8 @@ import { humanFriendlyNumber } from "src/utils/number";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
-  const { kit, network } = useContractKit();
+  const { kit, network, updateNetwork } = useContractKit();
+  updateNetwork(Alfajores)
   const history = useHistory();
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
@@ -52,23 +53,25 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
           const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
           borrows.push(borrowRate);
           }
+          const lpFactor = await proxyOracle.methods.tokenFactors(props.lp).call();
         return {
           borrowRate: borrows,
           tokenFactor: factors,
+          lpFactor,
         };
     } catch (error) {
         console.log(error)
     }
     
-}, [bank.methods, kit.web3.eth.Contract, props.tokens])
+}, [bank.methods, kit.web3.eth.Contract, props.lp, props.tokens])
 
   const [info] = useAsyncState(null, call);
 
   const lever = (factor: {borrowFactor: string, collateralFactor: string}) => {
-    return 1 + (Number(factor.collateralFactor) / (Number(factor.borrowFactor) - Number(factor.collateralFactor)))
+    return (Number(factor.collateralFactor) / (Number(factor.borrowFactor) - Number(factor.collateralFactor)))
   }
 
-  const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => lever({borrowFactor: x.borrowFactor, collateralFactor: x.collateralFactor})))!) : 0;
+  const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => lever({borrowFactor: x.borrowFactor, collateralFactor: info.lpFactor.collateralFactor})))!) : 0;
 
   const urlext = props.name + "/" + props.wrapper + "/" + props.spell + "/" + props.lp + "/" + props.apy + "/"
     + props.tokens.map((tok) => tok.address)

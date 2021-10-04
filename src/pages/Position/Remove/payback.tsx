@@ -96,8 +96,8 @@ export const Payback: React.FC = () => {
             if (i === ret.tokens.length - 1) debts.push(toBN(0));
           }
         }
-        const existingWeightBorrowValue = await bank.methods.getBorrowETHValue(position.positionId!).call();
-        const weightedCollateralValue = await proxyOracle.methods.asETHCollateral(pool.wrapper, position.collId!, toBN(position.collateralSize!).sub(remove.removeLp!).toString(), zeroAdd).call();
+        const existingWeightBorrowValue = await bank.methods.getBorrowCELOValue(position.positionId!).call();
+        const weightedCollateralValue = await proxyOracle.methods.asCELOCollateral(pool.wrapper, position.collId!, toBN(position.collateralSize!).sub(remove.removeLp!).toString(), zeroAdd).call();
 
         const maxAmounts = debts.map((x, index) => x.lt(remove.remove![index]!) ? fromWei(x) : fromWei(remove.remove![index]!)); 
         if (!init) {
@@ -118,6 +118,7 @@ export const Payback: React.FC = () => {
 }, [bank.methods, init, kit.web3.eth.Contract, pool.tokens, pool.wrapper, position.collId, position.collateralSize, position.positionId, remove.remove, remove.removeLp])
   const [info] = useAsyncState(null, call);
 
+  //TODO: account for removed coins
   const numer = info ? Number(fromWei(info.existingWeightBorrowValue)) - amounts!.map((x, i) => (Number(x) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))
   * (Number(info.factors[i]?.borrowFactor) / 10000)))
   .reduce((sum, current) => sum + current, 0) : 0; 

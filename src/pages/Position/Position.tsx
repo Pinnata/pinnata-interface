@@ -6,7 +6,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import { getAddress } from "ethers/lib/utils";
 import { Bank } from "src/config";
 import { useAsyncState } from "src/hooks/useAsyncState";
-import { FARMS } from "src/config";
+import { FARMS, Alfajores } from "src/config";
 import { PositionEntry } from "src/pages/Position/PositionEntry"
 import { SimpleTable } from "src/components/SimpleTable";
 import { css } from "@emotion/react";
@@ -17,7 +17,8 @@ import { Flex, Text, Card, Spinner } from "theme-ui";
 
 
 export const Position = () => {
-  const { kit, address } = useContractKit();
+  const { kit, updateNetwork, address } = useContractKit();
+  updateNetwork(Alfajores)
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],

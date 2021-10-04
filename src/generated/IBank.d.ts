@@ -150,7 +150,7 @@ export interface IBank extends BaseContract {
       4: string;
     }>;
 
-    getBorrowETHValue(
+    getBorrowCELOValue(
       positionId: number | string | BN
     ): NonPayableTransactionObject<string>;
 

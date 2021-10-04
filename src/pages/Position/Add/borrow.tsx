@@ -114,17 +114,18 @@ export const Borrow: React.FC = () => {
           prices.push(toBN(price));
         }
         const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call(); 
+        const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
 
-        const lp = await proxyOracle.methods.asETHCollateral(pool.wrapper, position.collId!, supply.lpSupply!, zeroAdd).call();
-        const existingCollateral = toBN(await bank.methods.getCollateralETHValue(position.positionId!).call()); 
-        const existingBorrow = toBN(await bank.methods.getBorrowETHValue(position.positionId!).call()); 
+        const existingCollateral = toBN(await bank.methods.getCollateralCELOValue(position.positionId!).call()); 
+        const existingBorrow = toBN(await bank.methods.getBorrowCELOValue(position.positionId!).call()); 
 
         const weightedSuppliedCollateralValue = supply.tokenSupply!.map((x, i) => Number(fromWei(x))
-          * (Number(fromWei(prices[i]!)) / Number(fromWei(scale))) * (Number(factors[i]?.collateralFactor) / 10000))
-          .reduce((sum, current) => sum + current, 0) + Number(fromWei(toBN(lp))) + Number(fromWei(existingCollateral)) - Number(fromWei(existingBorrow));
+          * (Number(fromWei(prices[i]!)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000))
+          .reduce((sum, current) => sum + current, 0) + Number(fromWei(supply.lpSupply!))
+          * (Number(fromWei(lpPrice)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000) + Number(fromWei(existingCollateral)) - Number(fromWei(existingBorrow));
 
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
-          ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(factors[i]?.collateralFactor)) / 10000)));
+          ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(lpFactor.collateralFactor)) / 10000)))
 
         const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!)))));
 
@@ -136,7 +137,8 @@ export const Borrow: React.FC = () => {
         return {
           tokenFactor: factors,
           celoPrices: prices,
-          lpPrice, 
+          lpPrice,
+          lpFactor,
           maxAmounts,
           existingCollateral, 
           existingBorrow,
@@ -145,7 +147,7 @@ export const Borrow: React.FC = () => {
         console.log(error)
     }
     
-}, [bank.methods, kit.web3.eth.Contract, pool.wrapper, pool?.lp, pool.tokens, init, scale, supply, position])
+}, [bank.methods, kit.web3.eth.Contract, pool.lp, pool.tokens, init, scale, supply, position])
 
 const [info] = useAsyncState(null, call);
 
@@ -155,11 +157,12 @@ const borrowValue = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(in
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x)) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
 
+//TODO: add lp values
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
   * (Number(info.tokenFactor[i]?.borrowFactor) / 10000))
   .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingBorrow)) : 0; 
 const denom = info && supply ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
-  * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.tokenFactor[i]?.collateralFactor) / 10000))
+  * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
   .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingCollateral)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
@@ -258,7 +261,7 @@ const continueButton = (
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
           {
-          (debtRatio > 100) ? (
+          (debtRatio > 99) ? (
             <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton

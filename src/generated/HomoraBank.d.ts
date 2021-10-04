@@ -209,11 +209,11 @@ export interface HomoraBank extends BaseContract {
       4: string;
     }>;
 
-    getBorrowETHValue(
+    getBorrowCELOValue(
       positionId: number | string | BN
     ): NonPayableTransactionObject<string>;
 
-    getCollateralETHValue(
+    getCollateralCELOValue(
       positionId: number | string | BN
     ): NonPayableTransactionObject<string>;
 

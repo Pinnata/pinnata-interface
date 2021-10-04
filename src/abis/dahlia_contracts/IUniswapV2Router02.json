@@ -455,16 +455,18 @@
   "ast": {
     "absolutePath": "interfaces/IUniswapV2Router02.sol",
     "exportedSymbols": {
+      "IUniswapV2Router01": [
+        490
+      ],
       "IUniswapV2Router02": [
-        1964
+        510
       ]
     },
-    "id": 1965,
-    "license": null,
+    "id": 511,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1946,
+        "id": 492,
         "literals": [
           "solidity",
           ">=",
@@ -472,16 +474,17 @@
           ".2"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:29"
+        "src": "0:24:4"
       },
       {
         "absolutePath": "interfaces/IUniswapV2Router01.sol",
         "file": "./IUniswapV2Router01.sol",
-        "id": 1947,
+        "id": 493,
+        "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1965,
-        "sourceUnit": 1945,
-        "src": "134:34:29",
+        "scope": 511,
+        "sourceUnit": 491,
+        "src": "134:34:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -489,62 +492,52 @@
         "abstract": false,
         "baseContracts": [
           {
-            "arguments": null,
             "baseName": {
-              "contractScope": null,
-              "id": 1948,
+              "id": 494,
               "name": "IUniswapV2Router01",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1944,
-              "src": "202:18:29",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IUniswapV2Router01_$1944",
-                "typeString": "contract IUniswapV2Router01"
-              }
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 490,
+              "src": "202:18:4"
             },
-            "id": 1949,
+            "id": 495,
             "nodeType": "InheritanceSpecifier",
-            "src": "202:18:29"
+            "src": "202:18:4"
           }
         ],
-        "contractDependencies": [
-          1944
-        ],
+        "contractDependencies": [],
         "contractKind": "interface",
-        "documentation": null,
         "fullyImplemented": false,
-        "id": 1964,
+        "id": 510,
         "linearizedBaseContracts": [
-          1964,
-          1944
+          510,
+          490
         ],
         "name": "IUniswapV2Router02",
+        "nameLocation": "180:18:4",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "body": null,
-            "documentation": null,
             "functionSelector": "5c11d795",
-            "id": 1963,
+            "id": 509,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
+            "nameLocation": "234:53:4",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 1961,
+              "id": 507,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1951,
+                  "id": 497,
                   "mutability": "mutable",
                   "name": "amountIn",
+                  "nameLocation": "298:8:4",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1963,
-                  "src": "293:13:29",
+                  "scope": 509,
+                  "src": "293:13:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -552,27 +545,26 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1950,
+                    "id": 496,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "293:4:29",
+                    "src": "293:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 1953,
+                  "id": 499,
                   "mutability": "mutable",
                   "name": "amountOutMin",
+                  "nameLocation": "317:12:4",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1963,
-                  "src": "312:17:29",
+                  "scope": 509,
+                  "src": "312:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -580,27 +572,26 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1952,
+                    "id": 498,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "312:4:29",
+                    "src": "312:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 1956,
+                  "id": 502,
                   "mutability": "mutable",
                   "name": "path",
+                  "nameLocation": "354:4:4",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1963,
-                  "src": "335:23:29",
+                  "scope": 509,
+                  "src": "335:23:4",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -609,37 +600,35 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1954,
+                      "id": 500,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "335:7:29",
+                      "src": "335:7:4",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1955,
-                    "length": null,
+                    "id": 501,
                     "nodeType": "ArrayTypeName",
-                    "src": "335:9:29",
+                    "src": "335:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 1958,
+                  "id": 504,
                   "mutability": "mutable",
                   "name": "to",
+                  "nameLocation": "372:2:4",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1963,
-                  "src": "364:10:29",
+                  "scope": 509,
+                  "src": "364:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -647,28 +636,27 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1957,
+                    "id": 503,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "364:7:29",
+                    "src": "364:7:4",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 1960,
+                  "id": 506,
                   "mutability": "mutable",
                   "name": "deadline",
+                  "nameLocation": "385:8:4",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1963,
-                  "src": "380:13:29",
+                  "scope": 509,
+                  "src": "380:13:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -676,39 +664,39 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1959,
+                    "id": 505,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "380:4:29",
+                    "src": "380:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "287:110:29"
+              "src": "287:110:4"
             },
             "returnParameters": {
-              "id": 1962,
+              "id": 508,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "406:0:29"
+              "src": "406:0:4"
             },
-            "scope": 1964,
-            "src": "225:182:29",
+            "scope": 510,
+            "src": "225:182:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1965,
-        "src": "170:239:29"
+        "scope": 511,
+        "src": "170:239:4",
+        "usedErrors": []
       }
     ],
-    "src": "0:410:29"
+    "src": "0:410:4"
   },
   "contractName": "IUniswapV2Router02",
   "dependencies": [

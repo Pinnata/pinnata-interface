@@ -6,7 +6,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
-import { Bank, DEFAULT_GAS_PRICE} from "src/config";
+import { Bank, DEFAULT_GAS_PRICE, Alfajores} from "src/config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
@@ -33,7 +33,8 @@ interface Props {
 }
 
 export const PositionEntry: React.FC<Props> = (props: Props) => {
-  const { kit, network, getConnectedKit } = useContractKit();
+  const { kit, network, updateNetwork, getConnectedKit } = useContractKit();
+  updateNetwork(Alfajores)
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const history = useHistory();
   const scale = toBN(2).pow(toBN(112)); 
@@ -66,8 +67,8 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           debtValue += Number(fromWei(ret.debts[i]!)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         }
         console.log(props.collateralSize)
-        const numer = await bank.methods.getBorrowETHValue(props.positionId).call(); 
-        const denom = await bank.methods.getCollateralETHValue(props.positionId).call();; 
+        const numer = await bank.methods.getBorrowCELOValue(props.positionId).call(); 
+        const denom = await bank.methods.getCollateralCELOValue(props.positionId).call();; 
         const debtRatio = Number(fromWei(numer)) / Number(fromWei(denom))
         return {
           debtValue,
@@ -216,7 +217,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             </Button>
           </Flex>
           <Flex sx={{justifyContent: "center", alighnItems: "center", gap: "6px"}}>
-            {/* {closeButton} */}
+            {closeButton}
             {harvestButton}
           </Flex>
           </Flex>

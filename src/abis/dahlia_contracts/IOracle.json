@@ -18,7 +18,7 @@
           "type": "address"
         }
       ],
-      "name": "asETHBorrow",
+      "name": "asCELOBorrow",
       "outputs": [
         {
           "internalType": "uint256",
@@ -52,7 +52,7 @@
           "type": "address"
         }
       ],
-      "name": "asETHCollateral",
+      "name": "asCELOCollateral",
       "outputs": [
         {
           "internalType": "uint256",
@@ -480,15 +480,15 @@
             "documentation": {
               "id": 1261,
               "nodeType": "StructuredDocumentation",
-              "src": "857:324:21",
-              "text": "@dev Return the value of the given input as ETH for collateral purpose.\n @param token The ERC-1155 token to check the value.\n @param id The id of the token to check the value.\n @param amount The amount of tokens to check the value.\n @param owner The owner of the token to check for collateral credit."
+              "src": "857:325:21",
+              "text": "@dev Return the value of the given input as CELO for collateral purpose.\n @param token The ERC-1155 token to check the value.\n @param id The id of the token to check the value.\n @param amount The amount of tokens to check the value.\n @param owner The owner of the token to check for collateral credit."
             },
-            "functionSelector": "83454832",
+            "functionSelector": "55ab98ee",
             "id": 1274,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "asETHCollateral",
+            "name": "asCELOCollateral",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
@@ -503,7 +503,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1274,
-                  "src": "1214:13:21",
+                  "src": "1216:13:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -514,7 +514,7 @@
                     "id": 1262,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1214:7:21",
+                    "src": "1216:7:21",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -532,7 +532,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1274,
-                  "src": "1233:7:21",
+                  "src": "1235:7:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -543,7 +543,7 @@
                     "id": 1264,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1233:4:21",
+                    "src": "1235:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -560,7 +560,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1274,
-                  "src": "1246:11:21",
+                  "src": "1248:11:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -571,7 +571,7 @@
                     "id": 1266,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1246:4:21",
+                    "src": "1248:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -588,7 +588,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1274,
-                  "src": "1263:13:21",
+                  "src": "1265:13:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -599,7 +599,7 @@
                     "id": 1268,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1263:7:21",
+                    "src": "1265:7:21",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -610,7 +610,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1208:72:21"
+              "src": "1210:72:21"
             },
             "returnParameters": {
               "id": 1273,
@@ -624,7 +624,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1274,
-                  "src": "1304:4:21",
+                  "src": "1306:4:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -635,7 +635,7 @@
                     "id": 1271,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1304:4:21",
+                    "src": "1306:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -645,10 +645,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1303:6:21"
+              "src": "1305:6:21"
             },
             "scope": 1295,
-            "src": "1184:126:21",
+            "src": "1185:127:21",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -658,15 +658,15 @@
             "documentation": {
               "id": 1275,
               "nodeType": "StructuredDocumentation",
-              "src": "1314:258:21",
-              "text": "@dev Return the value of the given input as ETH for borrow purpose.\n @param token The ERC-20 token to check the value.\n @param amount The amount of tokens to check the value.\n @param owner The owner of the token to check for borrow credit."
+              "src": "1316:259:21",
+              "text": "@dev Return the value of the given input as CELO for borrow purpose.\n @param token The ERC-20 token to check the value.\n @param amount The amount of tokens to check the value.\n @param owner The owner of the token to check for borrow credit."
             },
-            "functionSelector": "d596bc03",
+            "functionSelector": "1e3e3518",
             "id": 1286,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "asETHBorrow",
+            "name": "asCELOBorrow",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
@@ -681,7 +681,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1286,
-                  "src": "1601:13:21",
+                  "src": "1605:13:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -692,7 +692,7 @@
                     "id": 1276,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1601:7:21",
+                    "src": "1605:7:21",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -710,7 +710,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1286,
-                  "src": "1620:11:21",
+                  "src": "1624:11:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -721,7 +721,7 @@
                     "id": 1278,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1620:4:21",
+                    "src": "1624:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -738,7 +738,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1286,
-                  "src": "1637:13:21",
+                  "src": "1641:13:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -749,7 +749,7 @@
                     "id": 1280,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1637:7:21",
+                    "src": "1641:7:21",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -760,7 +760,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1595:59:21"
+              "src": "1599:59:21"
             },
             "returnParameters": {
               "id": 1285,
@@ -774,7 +774,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1286,
-                  "src": "1678:4:21",
+                  "src": "1682:4:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -785,7 +785,7 @@
                     "id": 1283,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1678:4:21",
+                    "src": "1682:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -795,10 +795,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1677:6:21"
+              "src": "1681:6:21"
             },
             "scope": 1295,
-            "src": "1575:109:21",
+            "src": "1578:110:21",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -808,7 +808,7 @@
             "documentation": {
               "id": 1287,
               "nodeType": "StructuredDocumentation",
-              "src": "1688:110:21",
+              "src": "1692:110:21",
               "text": "@dev Return whether the ERC-20 token is supported\n @param token The ERC-20 token to check for support"
             },
             "functionSelector": "e660cc08",
@@ -831,7 +831,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1294,
-                  "src": "1818:13:21",
+                  "src": "1822:13:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -842,7 +842,7 @@
                     "id": 1288,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1818:7:21",
+                    "src": "1822:7:21",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -853,7 +853,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1817:15:21"
+              "src": "1821:15:21"
             },
             "returnParameters": {
               "id": 1293,
@@ -867,7 +867,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1294,
-                  "src": "1856:4:21",
+                  "src": "1860:4:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -878,7 +878,7 @@
                     "id": 1291,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1856:4:21",
+                    "src": "1860:4:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -888,28 +888,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1855:6:21"
+              "src": "1859:6:21"
             },
             "scope": 1295,
-            "src": "1801:61:21",
+            "src": "1805:61:21",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 1296,
-        "src": "58:1806:21"
+        "src": "58:1810:21"
       }
     ],
-    "src": "33:1832:21"
+    "src": "33:1836:21"
   },
   "contractName": "IOracle",
   "dependencies": [],
   "offset": [
     58,
-    1864
+    1868
   ],
-  "sha1": "ebe61fac9570666312a7756eea5a746239a0174d",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IOracle {\n  /// @dev Return whether the oracle supports evaluating collateral value of the given address.\n  /// @param token The ERC-1155 token to check the acceptence.\n  /// @param id The token id to check the acceptance.\n  function supportWrappedToken(address token, uint id) external view returns (bool);\n\n  /// @dev Return the amount of token out as liquidation reward for liquidating token in.\n  /// @param tokenIn The ERC-20 token that gets liquidated.\n  /// @param tokenOut The ERC-1155 token to pay as reward.\n  /// @param tokenOutId The id of the token to pay as reward.\n  /// @param amountIn The amount of liquidating tokens.\n  function convertForLiquidation(\n    address tokenIn,\n    address tokenOut,\n    uint tokenOutId,\n    uint amountIn\n  ) external view returns (uint);\n\n  /// @dev Return the value of the given input as ETH for collateral purpose.\n  /// @param token The ERC-1155 token to check the value.\n  /// @param id The id of the token to check the value.\n  /// @param amount The amount of tokens to check the value.\n  /// @param owner The owner of the token to check for collateral credit.\n  function asETHCollateral(\n    address token,\n    uint id,\n    uint amount,\n    address owner\n  ) external view returns (uint);\n\n  /// @dev Return the value of the given input as ETH for borrow purpose.\n  /// @param token The ERC-20 token to check the value.\n  /// @param amount The amount of tokens to check the value.\n  /// @param owner The owner of the token to check for borrow credit.\n  function asETHBorrow(\n    address token,\n    uint amount,\n    address owner\n  ) external view returns (uint);\n\n  /// @dev Return whether the ERC-20 token is supported\n  /// @param token The ERC-20 token to check for support\n  function support(address token) external view returns (bool);\n}\n",
+  "sha1": "afe9fc8c93634f506f24581d9d3cfba22d01be68",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IOracle {\n  /// @dev Return whether the oracle supports evaluating collateral value of the given address.\n  /// @param token The ERC-1155 token to check the acceptence.\n  /// @param id The token id to check the acceptance.\n  function supportWrappedToken(address token, uint id) external view returns (bool);\n\n  /// @dev Return the amount of token out as liquidation reward for liquidating token in.\n  /// @param tokenIn The ERC-20 token that gets liquidated.\n  /// @param tokenOut The ERC-1155 token to pay as reward.\n  /// @param tokenOutId The id of the token to pay as reward.\n  /// @param amountIn The amount of liquidating tokens.\n  function convertForLiquidation(\n    address tokenIn,\n    address tokenOut,\n    uint tokenOutId,\n    uint amountIn\n  ) external view returns (uint);\n\n  /// @dev Return the value of the given input as CELO for collateral purpose.\n  /// @param token The ERC-1155 token to check the value.\n  /// @param id The id of the token to check the value.\n  /// @param amount The amount of tokens to check the value.\n  /// @param owner The owner of the token to check for collateral credit.\n  function asCELOCollateral(\n    address token,\n    uint id,\n    uint amount,\n    address owner\n  ) external view returns (uint);\n\n  /// @dev Return the value of the given input as CELO for borrow purpose.\n  /// @param token The ERC-20 token to check the value.\n  /// @param amount The amount of tokens to check the value.\n  /// @param owner The owner of the token to check for borrow credit.\n  function asCELOBorrow(\n    address token,\n    uint amount,\n    address owner\n  ) external view returns (uint);\n\n  /// @dev Return whether the ERC-20 token is supported\n  /// @param token The ERC-20 token to check for support\n  function support(address token) external view returns (bool);\n}\n",
   "type": "interface"
 }

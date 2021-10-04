@@ -29,13 +29,13 @@ export interface IOracle extends BaseContract {
   ): IOracle;
   clone(): IOracle;
   methods: {
-    asETHBorrow(
+    asCELOBorrow(
       token: string,
       amount: number | string | BN,
       owner: string
     ): NonPayableTransactionObject<string>;
 
-    asETHCollateral(
+    asCELOCollateral(
       token: string,
       id: number | string | BN,
       amount: number | string | BN,
