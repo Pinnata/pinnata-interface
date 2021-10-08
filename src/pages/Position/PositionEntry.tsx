@@ -63,10 +63,8 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         let debtValue: number = 0;
         for (let i = 0; i < ret.tokens.length; i += 1) {
           const price = await coreOracle.methods.getCELOPx(ret.tokens[i]!).call();
-          console.log(ret.debts[i], ret.tokens[i])
           debtValue += Number(fromWei(ret.debts[i]!)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         }
-        console.log(props.collateralSize)
         const numer = await bank.methods.getBorrowCELOValue(props.positionId).call(); 
         const denom = await bank.methods.getCollateralCELOValue(props.positionId).call();; 
         const debtRatio = Number(fromWei(numer)) / Number(fromWei(denom))
@@ -130,7 +128,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                 bytes,
             ).send({
               from: kit.defaultAccount,
-              gasPrice: DEFAULT_GAS_PRICE,
               gas: 10000000,
             });
           toastTx(tx.transactionHash);

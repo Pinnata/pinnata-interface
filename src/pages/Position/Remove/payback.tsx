@@ -128,7 +128,7 @@ export const Payback: React.FC = () => {
 
   const continueButton = (
     <Button
-      disabled={debtRatio >= 100}
+      // disabled={debtRatio >= 100}
       onClick={() => {
         setPayback({
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -203,8 +203,9 @@ export const Payback: React.FC = () => {
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
         {
-          (debtRatio > 100) ? (
-            <Button disabled={true}>Debt ratio too high</Button>
+          (debtRatio < 100) ? (
+            // <Button disabled={true}>Debt ratio too high</Button>
+            continueButton
           ) : (
             continueButton
           )}
