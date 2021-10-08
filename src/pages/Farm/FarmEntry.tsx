@@ -68,7 +68,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
   const [info] = useAsyncState(null, call);
 
   const lever = (factor: {borrowFactor: string, collateralFactor: string}) => {
-    return (Number(factor.collateralFactor) / (Number(factor.borrowFactor) - Number(factor.collateralFactor)))
+    return 1 + (Number(factor.collateralFactor) / (Number(factor.borrowFactor) - Number(factor.collateralFactor)))
   }
 
   const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => lever({borrowFactor: x.borrowFactor, collateralFactor: info.lpFactor.collateralFactor})))!) : 0;

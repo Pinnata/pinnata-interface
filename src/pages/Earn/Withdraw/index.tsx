@@ -82,7 +82,6 @@ export const Withdraw: React.FC = () => {
             ).send({
               from: kit.defaultAccount,
               gasPrice: DEFAULT_GAS_PRICE,
-              gas: 10000000,
             });
           toastTx(tx.transactionHash);
           refetchSafeBox();
