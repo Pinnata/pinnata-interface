@@ -129,7 +129,7 @@ export const Supply: React.FC = () => {
     }
     if (erc) {
       const fmtCost = lpAmount === "" ? "0" : lpAmount;
-      const amountBN = toBN(toWei(lpAmount))
+      const amountBN = toBN(toWei(fmtCost))
       if (Number(fmtCost) < 0 || lpAmount === "") {
         button = invalid;
       } else if (erc.balance.lt(amountBN)) {
