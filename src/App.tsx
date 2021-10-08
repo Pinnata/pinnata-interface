@@ -12,6 +12,8 @@ import { Add } from "src/pages/Position/Add/add";
 import { Remove } from "src/pages/Position/Remove/remove";
 import { Header } from "src/components/Header";
 import { Footer } from "src/components/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: React.FC = () => {
   React.useEffect(() => {
@@ -51,6 +53,7 @@ const App: React.FC = () => {
             <Position />
           </Route>
         </Switch>
+        <ToastContainer />
       </Container>
       <Footer />
     </Container>

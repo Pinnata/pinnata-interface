@@ -3,7 +3,7 @@ import "@celo-tools/use-contractkit/lib/styles.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "src/index.css";
 
-import { ContractKitProvider, Alfajores } from "@celo-tools/use-contractkit";
+import { ContractKitProvider } from "@celo-tools/use-contractkit";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import React from "react";
