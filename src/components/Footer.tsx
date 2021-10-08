@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Flex, Link } from "theme-ui";
-import { GithubLogo, TwitterLogo, DiscordLogo } from "phosphor-react";
+import { GithubLogo, TwitterLogo, DiscordLogo, BookOpen } from "phosphor-react";
 import { useLocation } from "react-router-dom";
 
 export const Footer: React.FC = () => {
@@ -13,10 +13,9 @@ export const Footer: React.FC = () => {
   return (
     <Box
       sx={{
-        position: "relative",
+        position: "absolute",
         width: "100%",
         bottom: 0,
-        mt: 150,
         pb: 4,
       }}
     >
@@ -44,8 +43,17 @@ export const Footer: React.FC = () => {
           rel="noopener noreferrer"
           href="https://discord.gg/C98ehssB"
           style={{ textDecoration: "none" }}
+          mr={2}
         >
           <DiscordLogo size={32} />
+        </Link>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://dahlia-finance.gitbook.io/dahlia-finance/"
+          style={{ textDecoration: "none" }}
+        >
+          <BookOpen size={32} />
         </Link>
       </Flex>
     </Box>
