@@ -137,8 +137,8 @@ export const Payback: React.FC = () => {
   const denom = info ? (Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor.collateralFactor) / 10000) : 1; 
   const debtRatio =  denom === 0 && numer === 0 ? 0 : (numer/denom) * 100; 
 
-  const borrowValue = info ? amounts!.map((x, i) => (Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
-  const supplyValue = info ? (Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) : 0; 
+  const borrowValue = info ? amounts!.map((x, i) => ((Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+  const supplyValue = info ? ((Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) : 0; 
   const lever =  1 + (borrowValue / supplyValue)
 
   const continueButton = (
