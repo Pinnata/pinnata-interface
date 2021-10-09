@@ -30,11 +30,13 @@ import { removeRemoveState } from "./removeTokens"
 interface paybackProps {
   payback: BN[] | null;
   debtRatio: number | null; 
+  lever: number | null;
 }
 
 const emptyPaybackState : paybackProps = {
   payback: null,
   debtRatio: null,
+  lever: null,
 }
 
 export const removePaybackState = atom({
@@ -82,7 +84,7 @@ export const Payback: React.FC = () => {
         source,
       ) as unknown) as CoreOracle;
         const ret = await bank.methods.getPositionDebts(position.positionId!).call();
-        const debts = [];
+        const debts: BN[] = [];
         for (let token of pool.tokens) {
           const factor = await proxyOracle.methods.tokenFactors(token.address).call();
           factors.push(factor);
@@ -100,6 +102,9 @@ export const Payback: React.FC = () => {
         const weightedCollateralValue = await proxyOracle.methods.asCELOCollateral(pool.wrapper, position.collId!, toBN(position.collateralSize!).sub(remove.removeLp!).toString(), zeroAdd).call();
 
         const maxAmounts = debts.map((x, index) => x.lt(remove.remove![index]!) ? fromWei(x) : fromWei(remove.remove![index]!)); 
+
+        const prevCollateral = remove.prevPosition?.map((x, i) => x.sub(debts[i]!))
+
         if (!init) {
           setInit(true); 
           setAmounts(maxAmounts.map((x) => String((Number(x) / 3).toFixed(3))));
@@ -111,11 +116,13 @@ export const Payback: React.FC = () => {
           existingWeightBorrowValue,
           factors,
           prices,
+          prevBorrow: debts,
+          prevCollateral,
         };
     } catch (error) {
         console.log(error)
     }
-}, [bank.methods, init, kit.web3.eth.Contract, pool.tokens, pool.wrapper, position.collId, position.collateralSize, position.positionId, remove.remove, remove.removeLp])
+}, [bank.methods, init, kit.web3.eth.Contract, pool.tokens, pool.wrapper, position.collId, position.collateralSize, position.positionId, remove.prevPosition, remove.remove, remove.removeLp])
   const [info] = useAsyncState(null, call);
 
   //TODO: account for removed coins
@@ -123,8 +130,11 @@ export const Payback: React.FC = () => {
   * (Number(info.factors[i]?.borrowFactor) / 10000)))
   .reduce((sum, current) => sum + current, 0) : 0; 
   const denom = info ? Number(fromWei(info.weightedCollateralValue)) : 1; 
-  console.log(numer, denom)
   const debtRatio =  denom === 0 && numer === 0 ? 0 : (numer/denom) * 100; 
+
+  const borrowValue = info ? amounts!.map((x, i) => (Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+  const supplyValue = info ? remove.remove!.map((x, i) => Number(fromWei((info.prevCollateral![i]!).sub(x))) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+  const lever =  1 + (borrowValue / supplyValue)
 
   const continueButton = (
     <Button
@@ -133,6 +143,7 @@ export const Payback: React.FC = () => {
         setPayback({
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
           debtRatio,
+          lever,
         })
         setPage(removePage.Confirm); 
       }}
@@ -194,7 +205,8 @@ export const Payback: React.FC = () => {
         <Flex sx={{mb: 2, mt: "25px"}}>
           <BlockText variant="primary">I'd like to repay</BlockText>
         </Flex>
-        <BlockText mb={2}>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
+        <BlockText mb={2}>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
+        <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
@@ -203,9 +215,8 @@ export const Payback: React.FC = () => {
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
         {
-          (debtRatio < 100) ? (
-            // <Button disabled={true}>Debt ratio too high</Button>
-            continueButton
+          (debtRatio < 99) ? (
+            <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton
           )}

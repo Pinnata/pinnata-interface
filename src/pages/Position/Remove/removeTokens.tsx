@@ -24,12 +24,14 @@ import { CaretLeft } from "phosphor-react";
 interface removeProps {
   existingBalance: BN[] | null; 
   remove: BN[] | null;
+  prevPosition: BN[] | null;
   removeLp: BN | null;
 }
 
 const emptyRemoveState : removeProps = {
   existingBalance: null,
   remove: null,
+  prevPosition: null,
   removeLp: null,
 }
 
@@ -81,6 +83,7 @@ const continueButton = (
       setRemove({
         existingBalance: info!,
         remove: (info!.map((x) => x.mul(toBN(toWei((per/100).toString()))).div(toBN(10).pow(toBN(18))))),
+        prevPosition: info!,
         removeLp: (toBN(position.collateralSize!).mul(toBN(toWei((per/100).toString()))).div(toBN(10).pow(toBN(18)))),
       })
       setPage(removePage.Payback); 

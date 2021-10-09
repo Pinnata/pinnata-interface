@@ -165,7 +165,8 @@ export const Confirm: React.FC = () => {
         <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
           <BlockText variant="primary">Position Statistics</BlockText>
           <Flex sx={{ justifyContent: "left", gap: "8px", flexDirection: "column"}}>
-            <BlockText>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(payback.debtRatio!)).concat("/100")}</BlockText>
+            <BlockText>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(payback.debtRatio!)).concat("/100")}</BlockText>
+            <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(payback.lever!)).concat("x")}</BlockText>
           </Flex>
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
