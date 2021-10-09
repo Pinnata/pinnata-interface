@@ -8,8 +8,8 @@ export const Farm = () => {
   return (
       <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
       <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
-        <Text variant="title">Farm</Text>
-        <Text variant="description">Unlock leverage up to 5.5x.</Text>
+        <Text variant="title">FARM</Text>
+        <Text variant="description">Unlock the highest leverage on Celo.</Text>
       </Flex>
       <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
         <SimpleTable>
