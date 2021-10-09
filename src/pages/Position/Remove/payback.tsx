@@ -105,6 +105,9 @@ export const Payback: React.FC = () => {
 
         const prevCollateral = remove.prevPosition?.map((x, i) => x.sub(debts[i]!))
 
+        const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call();
+        const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
+
         if (!init) {
           setInit(true); 
           setAmounts(maxAmounts.map((x) => String((Number(x) / 3).toFixed(3))));
@@ -116,6 +119,8 @@ export const Payback: React.FC = () => {
           existingWeightBorrowValue,
           factors,
           prices,
+          lpPrice,
+          lpFactor,
           prevBorrow: debts,
           prevCollateral,
         };
@@ -129,16 +134,16 @@ export const Payback: React.FC = () => {
   const numer = info ? Number(fromWei(info.existingWeightBorrowValue)) - amounts!.map((x, i) => (Number(x) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))
   * (Number(info.factors[i]?.borrowFactor) / 10000)))
   .reduce((sum, current) => sum + current, 0) : 0; 
-  const denom = info ? Number(fromWei(info.weightedCollateralValue)) : 1; 
+  const denom = info ? (Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor.collateralFactor) / 10000) : 1; 
   const debtRatio =  denom === 0 && numer === 0 ? 0 : (numer/denom) * 100; 
 
   const borrowValue = info ? amounts!.map((x, i) => (Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
-  const supplyValue = info ? remove.remove!.map((x, i) => Number(fromWei((info.prevCollateral![i]!).sub(x))) * (Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+  const supplyValue = info ? (Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) : 0; 
   const lever =  1 + (borrowValue / supplyValue)
 
   const continueButton = (
     <Button
-      // disabled={debtRatio >= 100}
+      disabled={debtRatio > 99}
       onClick={() => {
         setPayback({
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -215,7 +220,7 @@ export const Payback: React.FC = () => {
           )}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
         {
-          (debtRatio < 99) ? (
+          (debtRatio > 99) ? (
             <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton

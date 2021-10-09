@@ -202,7 +202,8 @@ const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.ce
   .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingBorrow)) : 0; 
 const denom = info && supply ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
   * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
-  .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingCollateral)) : 1; 
+  .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply!))
+  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000)) + Number(fromWei(info.existingCollateral)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
 const continueButton = (

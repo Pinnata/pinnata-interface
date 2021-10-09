@@ -135,6 +135,7 @@ export const Borrow: React.FC = () => {
           tokenFactor: factors,
           celoPrices: prices,
           lpFactor,
+          lpPrice,
           maxAmounts,
         };
     } catch (error) {
@@ -151,11 +152,11 @@ const borrowValue = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(in
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x)) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
 
-//TODO: add lp values
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.tokenFactor[i]?.borrowFactor) / 10000)).reduce((sum, current) => sum + current, 0) : 0; 
 const denom = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
   * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
-  .reduce((sum, current) => sum + current, 0) : 1; 
+  .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply!))
+  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
 const continueButton = (
