@@ -17,7 +17,7 @@ export const Logo: React.FC = () => {
       <Box sx={{ fill: "text" }}>
         <img src={Log} alt='Logo'/>
       </Box>
-        <Text variant="logo">Dahlia</Text>
+        {/* <Text variant="logo">Dahlia</Text> */}
     </Flex>
   );
 };
