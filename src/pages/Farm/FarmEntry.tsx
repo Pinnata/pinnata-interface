@@ -23,14 +23,13 @@ import { humanFriendlyNumber } from "src/utils/number";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
-  const { kit, network, updateNetwork } = useContractKit();
-  updateNetwork(Alfajores)
+  const { kit } = useContractKit();
   const history = useHistory();
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],
-    getAddress(Bank[network.chainId])
-  ) as unknown) as HomoraBank, [kit, network]); 
+    getAddress(Bank[44787])
+  ) as unknown) as HomoraBank, [kit]); 
 
   const call = React.useCallback(async () => {
     try {

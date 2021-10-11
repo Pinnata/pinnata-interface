@@ -31,7 +31,7 @@ import { useHistory } from "react-router-dom";
 
 
 export const Confirm: React.FC = () => {
-  const { getConnectedKit, network } = useContractKit();
+  const { getConnectedKit } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [done, setDone] = React.useState(false); 
   const [pool] = useRecoilState(poolState);
@@ -50,7 +50,7 @@ export const Confirm: React.FC = () => {
           setConfirmLoading(true);
           const bank = (new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
-            getAddress(Bank[network.chainId])
+            getAddress(Bank[44787])
             ) as unknown) as HomoraBank;
           const spell = (new kit.web3.eth.Contract(
             UNI_SPELL.abi as AbiItem[],

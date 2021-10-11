@@ -17,8 +17,7 @@ import { Flex, Text, Card, Spinner } from "theme-ui";
 
 
 export const Position = () => {
-  const { kit, updateNetwork, address } = useContractKit();
-  updateNetwork(Alfajores)
+  const { kit, address } = useContractKit();
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],

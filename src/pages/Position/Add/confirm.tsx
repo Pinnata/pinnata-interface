@@ -38,7 +38,7 @@ import { useHistory } from "react-router";
 
 
 export const Confirm: React.FC = () => {
-  const { getConnectedKit, network } = useContractKit();
+  const { getConnectedKit } = useContractKit();
   const [approveLoading, setApproveLoading] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [buttonLoading, setButtonLoading] = React.useState(true); 
@@ -56,7 +56,7 @@ export const Confirm: React.FC = () => {
   });
   
   const [tokenStates, refetchTokenStates] = useERCmulti(pool.tokens)
-  const [erc, refetchERC] = useERC(lpTok.address, Bank[network.chainId]);
+  const [erc, refetchERC] = useERC(lpTok.address, Bank[44787]);
 
   const approveButton = (token: Token): any => {
     return (
@@ -71,7 +71,7 @@ export const Confirm: React.FC = () => {
             token.address!,
           ) as unknown) as ERC20; 
           const tx = await ERCToken.methods
-            .approve(Bank[network.chainId], MaxUint256.toString())
+            .approve(Bank[44787], MaxUint256.toString())
             .send({
               from: kit.defaultAccount,
               gasPrice: DEFAULT_GAS_PRICE,
@@ -99,7 +99,7 @@ export const Confirm: React.FC = () => {
           setConfirmLoading(true);
           const bank = (new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
-            getAddress(Bank[network.chainId])
+            getAddress(Bank[44787])
             ) as unknown) as HomoraBank;
           const spell = (new kit.web3.eth.Contract(
             UNI_SPELL.abi as AbiItem[],

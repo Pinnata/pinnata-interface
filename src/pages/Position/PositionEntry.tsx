@@ -33,8 +33,7 @@ interface Props {
 }
 
 export const PositionEntry: React.FC<Props> = (props: Props) => {
-  const { kit, network, updateNetwork, getConnectedKit } = useContractKit();
-  updateNetwork(Alfajores)
+  const { kit, getConnectedKit } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const history = useHistory();
   const scale = toBN(2).pow(toBN(112)); 
@@ -42,8 +41,8 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],
-    getAddress(Bank[network.chainId])
-    ) as unknown) as HomoraBank, [kit, network]); 
+    getAddress(Bank[44787])
+    ) as unknown) as HomoraBank, [kit]); 
     
     const call = React.useCallback(async () => {
       try {
@@ -88,7 +87,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           setConfirmLoading(true);
           const bank = (new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
-            getAddress(Bank[network.chainId])
+            getAddress(Bank[44787])
             ) as unknown) as HomoraBank;
           const spell = (new kit.web3.eth.Contract(
             UNI_SPELL.abi as AbiItem[],
@@ -149,7 +148,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         setConfirmLoading(true);
         const bank = (new kit.web3.eth.Contract(
           BANK_ABI.abi as AbiItem[],
-          getAddress(Bank[network.chainId])
+          getAddress(Bank[44787])
           ) as unknown) as HomoraBank;
         const spell = (new kit.web3.eth.Contract(
           UNI_SPELL.abi as AbiItem[],

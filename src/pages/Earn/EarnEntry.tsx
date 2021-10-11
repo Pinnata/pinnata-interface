@@ -5,7 +5,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank, safeBoxMap, Alfajores } from "src/config";
+import { Bank, safeBoxMap } from "src/config";
 import React from "react";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
@@ -23,17 +23,14 @@ interface Props {
 }
 
 export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
-  const { kit, network, updateNetwork } = useContractKit();
-  updateNetwork(Alfajores)
-  console.log(network)
-  console.log(network.name)
+  const { kit } = useContractKit();
   const [safeBox] = useSafeBox(safeBoxMap.get(token.address)!);
   const history = useHistory(); 
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],
-    getAddress(Bank[network.chainId])
-  ) as unknown) as HomoraBank, [kit, network]); 
+    getAddress(Bank[44787])
+  ) as unknown) as HomoraBank, [kit]); 
 
   const call = React.useCallback(async () => {
     try {

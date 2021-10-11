@@ -70,13 +70,13 @@ export const Borrow: React.FC = () => {
     address: pool.lp,
   });
 
-  const { kit, network } = useContractKit();
+  const { kit } = useContractKit();
   const [amounts, setAmounts] = React.useState<(String[] | null)>(null)
 
   const bank = React.useMemo(() => (new kit.web3.eth.Contract(
     BANK_ABI.abi as AbiItem[],
-    getAddress(Bank[network.chainId])
-  ) as unknown) as HomoraBank, [kit, network]); 
+    getAddress(Bank[44787])
+  ) as unknown) as HomoraBank, [kit]); 
 
   const lp = React.useMemo(() => (new kit.web3.eth.Contract(
     UNI_PAIR.abi as AbiItem[],
