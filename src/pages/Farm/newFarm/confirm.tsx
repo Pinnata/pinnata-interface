@@ -153,10 +153,7 @@ export const Confirm: React.FC = () => {
         if (tokenStates) {
         for (let i = 0; i < tokenStates.length; i += 1) {
           if (tokenStates[i]!){
-            console.log(tokenStates[i]!.allowance.toString())
             const amountBN = supply.tokenSupply![i]!
-            console.log(amountBN.toString())
-            console.log(3)
             if (amountBN.gt(tokenStates[i]?.allowance!)) {
               b.push(approveButton(pool.tokens![i]!));
               if (buttonLoading) setButtonLoading(false);

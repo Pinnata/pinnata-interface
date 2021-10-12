@@ -93,18 +93,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             UNI_SPELL.abi as AbiItem[],
             getAddress(props.pool.spell),
           ) as unknown) as UniswapV2SpellV1;
-          console.log( props.pool.tokens[0]!.address, 
-            props.pool.tokens[1]!.address, 
-            [
-              MaxUint256.toString(),
-              0, 
-              MaxUint256.toString(), 
-              MaxUint256.toString(), 
-              0, 
-              0, 
-              0
-            ],
-            props.pool.wrapper,)
           const bytes = spell.methods.removeLiquidityWStakingRewards(
             props.pool.tokens[0]!.address, 
             props.pool.tokens[1]!.address, 
@@ -119,7 +107,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             ],
             props.pool.wrapper,
           ).encodeABI()
-          console.log(props.positionId)
           const tx = await bank.methods
             .execute(
                 props.positionId,

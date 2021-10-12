@@ -122,6 +122,8 @@ export const Borrow: React.FC = () => {
           .reduce((sum, current) => sum + current, 0) + Number(fromWei(supply.lpSupply!))
           * (Number(fromWei(lpPrice)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000)
 
+        console.log("weighted", weightedSuppliedCollateralValue)
+
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
           ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(lpFactor.collateralFactor)) / 10000)))
 

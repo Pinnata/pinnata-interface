@@ -59,7 +59,6 @@ export const Borrow: React.FC = () => {
   const scale = toBN(2).pow(toBN(112)); 
   const [pool] = useRecoilState(poolState);
   const setPage = useSetRecoilState(addPageState)
-  const zeroAdd = "0x0000000000000000000000000000000000000000"
   const [init, setInit] = React.useState(false)
   const [supply] = useRecoilState(addSupplyState);
   const [position] = useRecoilState(addPositionState); 
@@ -196,7 +195,6 @@ const borrowValue = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(in
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x.add(info.prevCollateral[i]!))) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
 
-//TODO: add lp values
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
   * (Number(info.tokenFactor[i]?.borrowFactor) / 10000))
   .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingBorrow)) : 0; 
