@@ -3,7 +3,7 @@ import "@celo-tools/use-contractkit/lib/styles.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "src/index.css";
 
-import { ContractKitProvider } from "@celo-tools/use-contractkit";
+import { ChainId, ContractKitProvider, NetworkNames } from "@celo-tools/use-contractkit";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import React from "react";
@@ -47,6 +47,12 @@ ReactDOM.render(
         name: "Dahlia",
         description: "Leverage yield farming protocol",
         url: "https://dahlia.finance",
+      }}
+      network={{
+        name: NetworkNames.Alfajores,
+        rpcUrl: 'https://alfajores-forno.celo-testnet.org',
+        explorer: 'https://alfajores-blockscout.celo-testnet.org',
+        chainId: ChainId.Alfajores,
       }}
     >
       <ThemeProvider theme={theme}>

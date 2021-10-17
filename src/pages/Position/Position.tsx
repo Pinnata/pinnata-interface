@@ -19,31 +19,45 @@ import { Flex, Text, Card, Spinner } from "theme-ui";
 export const Position = () => {
   const { kit, address } = useContractKit();
 
-  const bank = React.useMemo(() => (new kit.web3.eth.Contract(
-    BANK_ABI.abi as AbiItem[],
-    getAddress(Bank[42220])
-  ) as unknown) as HomoraBank, [kit]); 
+  // const bank = React.useMemo(() => (new kit.web3.eth.Contract(
+  //   BANK_ABI.abi as AbiItem[],
+  //   getAddress(Bank[44787])
+  // ) as unknown) as HomoraBank, [kit]);
 
   const call = React.useCallback(async () => {
     try {
+      const bank = (new kit.web3.eth.Contract(
+        BANK_ABI.abi as AbiItem[],
+        getAddress(Bank[44787])
+      ) as unknown) as HomoraBank;
       const info = [];
+      console.log('first call')
+      console.log(bank)
       const nextPositionId = await bank.methods.nextPositionId().call(); 
+      console.log('returned')
+      let batch = [];
+      for (let i = 1; i <= Number(nextPositionId); i += 1) {
+        batch.push(bank.methods.getPositionInfo(i).call());
+      }
+      const results = await Promise.all(batch);
       for (let i = 1; i < Number(nextPositionId); i += 1) {
-        const positionInfo = await bank.methods.getPositionInfo(i).call();
-        const wrapper = (new kit.web3.eth.Contract(
-          IERC20W_ABI.abi as AbiItem[],
-          positionInfo.collToken,
-          ) as unknown) as IERC20Wrapper;
-        const underlying = await wrapper.methods.getUnderlyingToken(positionInfo.collId).call(); 
-        for (let farm of FARMS) {
-          if (getAddress(underlying) === farm.lp && getAddress(positionInfo.owner) === getAddress(address!) && positionInfo.collateralSize !== "0") {
-            info.push({
-              collId: positionInfo.collId, 
-              collateralSize: positionInfo.collateralSize,
-              positionId: i,
-              farm: farm,
-            })
-            break;
+        const positionInfo = results[i];
+        if (positionInfo && positionInfo!.owner.toLowerCase() === address!.toLowerCase()) {
+          const wrapper = (new kit.web3.eth.Contract(
+            IERC20W_ABI.abi as AbiItem[],
+            positionInfo!.collToken,
+            ) as unknown) as IERC20Wrapper;
+          const underlying = await wrapper.methods.getUnderlyingToken(positionInfo!.collId).call(); 
+          for (let farm of FARMS) {
+            if (getAddress(underlying) === farm.lp && positionInfo!.collateralSize !== "0") {
+              info.push({
+                collId: positionInfo!.collId, 
+                collateralSize: positionInfo!.collateralSize,
+                positionId: i,
+                farm: farm,
+              })
+              break;
+            }
           }
         }
       }
@@ -51,7 +65,7 @@ export const Position = () => {
     } catch (error) {
         console.log(error)
     }  
-}, [bank.methods, kit.web3.eth.Contract, address])
+}, [kit.web3.eth.Contract, address])
 
   const [info] = useAsyncState(null, call);
   return (

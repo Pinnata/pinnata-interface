@@ -114,6 +114,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                 bytes,
             ).send({
               from: kit.defaultAccount,
+              gasPrice: DEFAULT_GAS_PRICE,
             });
           toastTx(tx.transactionHash);
         } catch (e) {
@@ -131,16 +132,16 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   <Button
     onClick={async () => {
       const kit = await getConnectedKit();
+      const bank = (new kit.web3.eth.Contract(
+        BANK_ABI.abi as AbiItem[],
+        getAddress(Bank[44787])
+        ) as unknown) as HomoraBank;
+      const spell = (new kit.web3.eth.Contract(
+        UNI_SPELL.abi as AbiItem[],
+        getAddress(props.pool.spell),
+      ) as unknown) as UniswapV2SpellV1;
       try {
         setConfirmLoading(true);
-        const bank = (new kit.web3.eth.Contract(
-          BANK_ABI.abi as AbiItem[],
-          getAddress(Bank[44787])
-          ) as unknown) as HomoraBank;
-        const spell = (new kit.web3.eth.Contract(
-          UNI_SPELL.abi as AbiItem[],
-          getAddress(props.pool.spell),
-        ) as unknown) as UniswapV2SpellV1;
         const bytes = spell.methods.harvestWStakingRewards(
           props.pool.wrapper,
         ).encodeABI()
@@ -152,6 +153,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           ).send({
             from: kit.defaultAccount,
             gasPrice: DEFAULT_GAS_PRICE,
+            gas: 4000000,
           });
         toastTx(tx.transactionHash);
       } catch (e) {

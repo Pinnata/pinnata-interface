@@ -1206,10 +1206,10 @@
   resolved "https://registry.yarnpkg.com/@celo-tools/celo-ethers-wrapper/-/celo-ethers-wrapper-0.0.5.tgz#a0bd4553e59c0fc4e97dcec97f719fd27dc4498b"
   integrity sha512-an5TaLv/esjQLEYtF79f8isBUtHEN+ZiHci2H4gVTEAgRgS+nSp5QCq8/LV/biAh9kJJEpojEzlxJALSKu8Klg==
 
-"@celo-tools/use-contractkit@npm:@poofcash/use-contractkit@^1.0.1":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@poofcash/use-contractkit/-/use-contractkit-1.0.6.tgz#55545bc95d6e701d36e98ba9009b9c73863aefbe"
-  integrity sha512-Kmrr8OlLgN1mcB1g2Cka7eUgdgcOcS/QzzRVdOPAvXVO6bunlioP1FPamJ3KZ0goDkImxOsxYLFPyXcBAiKn3w==
+"@celo-tools/use-contractkit@npm:@poofcash/use-contractkit@^1.0.7-beta":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@poofcash/use-contractkit/-/use-contractkit-1.0.8.tgz#122bf67917ff630b1f233f0803e47c45b531c208"
+  integrity sha512-QwYYpS81xzAlpV2iVwax/NQRmpB//nb3106ipzczUArKuEOsCANOnCUymYdQpAgHS71pmlSRB9TR5hqQJxRSxg==
   dependencies:
     "@celo-tools/celo-ethers-wrapper" "^0.0.5"
     "@celo/contractkit" "1.2.4"
@@ -1241,12 +1241,29 @@
   resolved "https://registry.yarnpkg.com/@celo/base/-/base-1.2.4.tgz#4d3f1d6cf395e5c9e4c725ea392a049551c00edb"
   integrity sha512-El1OZzs36ZPf/cdIZ/Tytk450s6Q6HWWkHPXGbze5Mb6qDpd8azud7PhXT92d/Jp3x1syPxij8kVIIpqo959uw==
 
+"@celo/base@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/base/-/base-1.3.0.tgz#5e15e3fd6cdaa8e4d50c71aaeaf52092dc9d3663"
+  integrity sha512-P3NQ1qSJbIr+tS+fhB39d0VGLx9oqjJSmOwkEgKdyNQ+Qdf/3PeTDma6rHBnHjlah4kw3BAkDkUkfc7vmAhcpw==
+
 "@celo/connect@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@celo/connect/-/connect-1.2.4.tgz"
   integrity sha512-the4Uv/d3rbvYW6EaKwj3OfvrhrbZgZefLH27QsT8FhwDLbNVV9ARVDKVigcW77ZDbwAyMDhwCYWxm47zftJpA==
   dependencies:
     "@celo/utils" "1.2.4"
+    "@types/debug" "^4.1.5"
+    "@types/utf8" "^2.1.6"
+    bignumber.js "^9.0.0"
+    debug "^4.1.1"
+    utf8 "3.0.0"
+
+"@celo/connect@1.3.0", "@celo/connect@^1.2.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/connect/-/connect-1.3.0.tgz#d7a9deb75f0f40b2db8f515c48e508949566652d"
+  integrity sha512-yBas06qOufqRMFVIiGvCXcH9EqOxc2st2gX8a0cuGbe7hLBYcyvOz4klQvOCfAX4V/+JptBWueYc86/NBEsaBg==
+  dependencies:
+    "@celo/utils" "1.3.0"
     "@types/debug" "^4.1.5"
     "@types/utf8" "^2.1.6"
     bignumber.js "^9.0.0"
@@ -1271,7 +1288,25 @@
     moment "^2.29.0"
     web3 "1.3.6"
 
-"@celo/utils@1.2.1", "@celo/utils@1.2.4":
+"@celo/contractkit@^1.2.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/contractkit/-/contractkit-1.3.0.tgz#6d590cdeb85d14466d0020267f7f16c144beb45c"
+  integrity sha512-/huWzGg/euLga1cMAe2fD984zGEi6FvNEcV0vAhuw3nGFB5C4HjedwPta3kz+RQ+buagn1slbOqV0Ja5qU5+3A==
+  dependencies:
+    "@celo/base" "1.3.0"
+    "@celo/connect" "1.3.0"
+    "@celo/utils" "1.3.0"
+    "@celo/wallet-local" "1.3.0"
+    "@types/debug" "^4.1.5"
+    bignumber.js "^9.0.0"
+    cross-fetch "^3.0.6"
+    debug "^4.1.1"
+    fp-ts "2.1.1"
+    io-ts "2.0.1"
+    semver "^7.3.5"
+    web3 "1.3.6"
+
+"@celo/utils@1.2.1", "@celo/utils@1.2.4", "@celo/utils@1.3.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@celo/utils/-/utils-1.2.1.tgz#5325c009f2b286b4a9e50eeff48d50a88d468ca4"
   integrity sha512-eqqY4LONEZigIFA9JCxFPPy+N8ATwUjP154an8lrPXwNQo4RLVCGSbOGBlmJurUnK29dyB6i6C7sDLE/DrPWCA==
@@ -1305,6 +1340,39 @@
     web3-eth-abi "1.3.5"
     web3-utils "1.3.5"
 
+"@celo/utils@^1.2.1":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/utils/-/utils-1.3.0.tgz#e0f6c7a327394efc48574b658117f4ee5df7da46"
+  integrity sha512-6/AtY/rMyx8EsGcGpVgyaY+/aMEIuesnSC0UDczcjJ/FwZByKoYrPBSpa5tho0ZpKKj0y1ayxxJaUX5RlzaGtw==
+  dependencies:
+    "@celo/base" "1.3.0"
+    "@types/country-data" "^0.0.0"
+    "@types/elliptic" "^6.4.9"
+    "@types/ethereumjs-util" "^5.2.0"
+    "@types/google-libphonenumber" "^7.4.17"
+    "@types/lodash" "^4.14.170"
+    "@types/node" "^10.12.18"
+    "@types/randombytes" "^2.0.0"
+    bigi "^1.1.0"
+    bignumber.js "^9.0.0"
+    bip32 "2.0.5"
+    bip39 "https://github.com/bitcoinjs/bip39#d8ea080a18b40f301d4e2219a2991cd2417e83c2"
+    bls12377js "https://github.com/celo-org/bls12377js#cb38a4cfb643c778619d79b20ca3e5283a2122a6"
+    bn.js "4.11.8"
+    buffer-reverse "^1.0.1"
+    country-data "^0.0.31"
+    crypto-js "^3.1.9-1"
+    elliptic "^6.5.4"
+    ethereumjs-util "^5.2.0"
+    fp-ts "2.1.1"
+    google-libphonenumber "^3.2.15"
+    io-ts "2.0.1"
+    keccak256 "^1.0.0"
+    lodash "^4.17.21"
+    numeral "^2.0.6"
+    web3-eth-abi "1.3.6"
+    web3-utils "1.3.6"
+
 "@celo/wallet-base@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@celo/wallet-base/-/wallet-base-1.2.4.tgz"
@@ -1313,6 +1381,21 @@
     "@celo/base" "1.2.4"
     "@celo/connect" "1.2.4"
     "@celo/utils" "1.2.4"
+    "@types/debug" "^4.1.5"
+    "@types/ethereumjs-util" "^5.2.0"
+    bignumber.js "^9.0.0"
+    debug "^4.1.1"
+    eth-lib "^0.2.8"
+    ethereumjs-util "^5.2.0"
+
+"@celo/wallet-base@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/wallet-base/-/wallet-base-1.3.0.tgz#9a255fddb4e64922f4d91c02285e27acd072acc2"
+  integrity sha512-VVBo3aP5JY5H3iZw/14ZlJPMT97Odrzn/jfKTwB/JiqxFWhETq7QrI2WOK57D8McU6jYN5PgMNmv0IyAhvnLQQ==
+  dependencies:
+    "@celo/base" "1.3.0"
+    "@celo/connect" "1.3.0"
+    "@celo/utils" "1.3.0"
     "@types/debug" "^4.1.5"
     "@types/ethereumjs-util" "^5.2.0"
     bignumber.js "^9.0.0"
@@ -1336,6 +1419,22 @@
     eth-lib "^0.2.8"
     ethereumjs-util "^5.2.0"
 
+"@celo/wallet-ledger@^1.2.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/wallet-ledger/-/wallet-ledger-1.3.0.tgz#b399df2b95a35a3426e902b576e2db83aa6908df"
+  integrity sha512-+cDI5iS4HAyfZCvVuGONHhhZaM7ksyuXL4ltEDzW2U8z4ua0lqhoAoyTAdeakCwIcCuI8wE0GoKDyTe6vNVUxA==
+  dependencies:
+    "@celo/connect" "1.3.0"
+    "@celo/utils" "1.3.0"
+    "@celo/wallet-base" "1.3.0"
+    "@celo/wallet-remote" "1.3.0"
+    "@ledgerhq/hw-app-eth" "~5.11.0"
+    "@ledgerhq/hw-transport" "~5.11.0"
+    "@types/ethereumjs-util" "^5.2.0"
+    debug "^4.1.1"
+    eth-lib "^0.2.8"
+    ethereumjs-util "^5.2.0"
+
 "@celo/wallet-local@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@celo/wallet-local/-/wallet-local-1.2.4.tgz"
@@ -1348,6 +1447,18 @@
     eth-lib "^0.2.8"
     ethereumjs-util "^5.2.0"
 
+"@celo/wallet-local@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/wallet-local/-/wallet-local-1.3.0.tgz#dba2c247d4d971e8a27de67adc5218d6c90a9546"
+  integrity sha512-rXQHJ7EcDiH/hnrJ5csAMMHB7cNMrUfw92E5PGTRPAvPezq7wj5AbPqjDkChgZ5mfTRwjDL4lxad+h7dqWXTnQ==
+  dependencies:
+    "@celo/connect" "1.3.0"
+    "@celo/utils" "1.3.0"
+    "@celo/wallet-base" "1.3.0"
+    "@types/ethereumjs-util" "^5.2.0"
+    eth-lib "^0.2.8"
+    ethereumjs-util "^5.2.0"
+
 "@celo/wallet-remote@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@celo/wallet-remote/-/wallet-remote-1.2.4.tgz"
@@ -1356,6 +1467,19 @@
     "@celo/connect" "1.2.4"
     "@celo/utils" "1.2.4"
     "@celo/wallet-base" "1.2.4"
+    "@types/debug" "^4.1.5"
+    "@types/ethereumjs-util" "^5.2.0"
+    eth-lib "^0.2.8"
+    ethereumjs-util "^5.2.0"
+
+"@celo/wallet-remote@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@celo/wallet-remote/-/wallet-remote-1.3.0.tgz#472bc28cd780c947140579b0192c89336f0dc248"
+  integrity sha512-9BM4lypjRCw1LNbkSKP61PsZSIBK5ezqTtHbrWb6Uc3jWxV/XSwEFloVFspd4Sb7BO2Q9nDSEzGBNCba9e9gTQ==
+  dependencies:
+    "@celo/connect" "1.3.0"
+    "@celo/utils" "1.3.0"
+    "@celo/wallet-base" "1.3.0"
     "@types/debug" "^4.1.5"
     "@types/ethereumjs-util" "^5.2.0"
     eth-lib "^0.2.8"
@@ -3143,6 +3267,11 @@
   version "4.14.172"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.172.tgz#aad774c28e7bfd7a67de25408e03ee5a8c3d028a"
   integrity sha512-/BHF5HAx3em7/KkzVKm3LrsD6HZAXuXO1AJZQ3cRRBZj4oHZDviWPYu0aEplAqDFNHZPW6d3G7KN+ONcCCC7pw==
+
+"@types/lodash@^4.14.170":
+  version "4.14.175"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.175.tgz#b78dfa959192b01fae0ad90e166478769b215f45"
+  integrity sha512-XmdEOrKQ8a1Y/yxQFOMbC47G/V2VDO1GvMRnl4O75M4GW/abC5tnfzadQYkqEveqRM1dEJGFFegfPNA2vvx2iw==
 
 "@types/minimatch@*":
   version "3.0.5"
@@ -5746,6 +5875,13 @@ cross-fetch@3.0.4:
   dependencies:
     node-fetch "2.6.0"
     whatwg-fetch "3.0.0"
+
+cross-fetch@^3.0.6:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
+  integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
+  dependencies:
+    node-fetch "2.6.1"
 
 cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -10759,6 +10895,11 @@ node-fetch@2.6.0:
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.0.tgz"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
+node-fetch@2.6.1, node-fetch@^2.6.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
 node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz"
@@ -10766,11 +10907,6 @@ node-fetch@^1.0.1:
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
-
-node-fetch@^2.6.0:
-  version "2.6.1"
-  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.1.tgz"
-  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-forge@^0.10.0:
   version "0.10.0"
