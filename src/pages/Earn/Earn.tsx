@@ -8,8 +8,8 @@ export const Earn = () => {
   return (
     <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
       <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
-        <Text variant="title">EARN</Text>
-        <Text variant="description">Lend assets for the highest yield.</Text>
+        <Text color="text" variant="title">EARN</Text>
+        <Text color="text" variant="description">Lend assets for the highest yield.</Text>
       </Flex>
       <Card sx={{ width: "100%", maxWidth: "1000px", mt: "16px" }} py={4} px={3}>
         <SimpleTable>

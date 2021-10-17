@@ -17,7 +17,7 @@ export const Logo: React.FC = () => {
       <Box sx={{ fill: "text" }}>
         <img src={"https://raw.githubusercontent.com/Dahlia-Finance/dahlia-interface/54767e90c58389912d8b0df55882a0b4138a13ee/src/images/logo.png"} alt='Logo'/>
       </Box>
-        <Text variant="logo">Dahlia</Text>
+        <Text color="text" variant="logo">Dahlia</Text>
     </Flex>
   );
 };
