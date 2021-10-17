@@ -6,7 +6,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import { getAddress } from "ethers/lib/utils";
 import { Bank } from "src/config";
 import { useAsyncState } from "src/hooks/useAsyncState";
-import { FARMS, Alfajores } from "src/config";
+import { FARMS } from "src/config";
 import { PositionEntry } from "src/pages/Position/PositionEntry"
 import { SimpleTable } from "src/components/SimpleTable";
 import { css } from "@emotion/react";
@@ -19,20 +19,14 @@ import { Flex, Text, Card, Spinner } from "theme-ui";
 export const Position = () => {
   const { kit, address } = useContractKit();
 
-  // const bank = React.useMemo(() => (new kit.web3.eth.Contract(
-  //   BANK_ABI.abi as AbiItem[],
-  //   getAddress(Bank[44787])
-  // ) as unknown) as HomoraBank, [kit]);
+  const bank = React.useMemo(() => (new kit.web3.eth.Contract(
+    BANK_ABI.abi as AbiItem[],
+    getAddress(Bank[44787])
+  ) as unknown) as HomoraBank, [kit]);
 
   const call = React.useCallback(async () => {
     try {
-      const bank = (new kit.web3.eth.Contract(
-        BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
-      ) as unknown) as HomoraBank;
       const info = [];
-      console.log('first call')
-      console.log(bank)
       const nextPositionId = await bank.methods.nextPositionId().call(); 
       console.log('returned')
       let batch = [];
@@ -53,6 +47,7 @@ export const Position = () => {
               info.push({
                 collId: positionInfo!.collId, 
                 collateralSize: positionInfo!.collateralSize,
+                collToken: positionInfo!.collToken,
                 positionId: i,
                 farm: farm,
               })
@@ -71,8 +66,8 @@ export const Position = () => {
   return (
     <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
     <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
-        <Text variant="title">Positions</Text>
-        <Text variant="description">Manage your positions with ease.</Text>
+        <Text color="text" variant="title">Positions</Text>
+        <Text color="text" variant="description">Manage your positions with ease.</Text>
       </Flex>
     <Card sx={{ width: "100%", maxWidth: "1200px", mt: "16px" }} py={4} px={3}>
       {info ? 
@@ -96,7 +91,14 @@ export const Position = () => {
           <tbody>
             {  
               info.map((x) => 
-              <PositionEntry key={x.positionId} collId={x.collId} collateralSize={x.collateralSize} positionId={x.positionId} pool={x.farm!} />
+              <PositionEntry 
+                key={x.positionId} 
+                collId={x.collId} 
+                collateralSize={x.collateralSize} 
+                positionId={x.positionId} 
+                pool={x.farm!} 
+                collToken={x.collToken}
+              />
             )}
           </tbody>
         </SimpleTable>

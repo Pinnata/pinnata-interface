@@ -6,7 +6,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
-import { Bank, DEFAULT_GAS_PRICE, Alfajores} from "src/config";
+import { Bank, DEFAULT_GAS_PRICE } from "src/config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
@@ -23,6 +23,8 @@ import { CoreOracle } from "src/generated/CoreOracle";
 import COREORACLE_ABI from "src/abis/dahlia_contracts/CoreOracle.json";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
+import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
+import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
 
 
 interface Props {
@@ -30,6 +32,7 @@ interface Props {
   positionId: number,
   collateralSize: string, 
   collId: string,
+  collToken: string,
 }
 
 export const PositionEntry: React.FC<Props> = (props: Props) => {
@@ -59,7 +62,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         const price = await coreOracle.methods.getCELOPx(props.pool.lp).call();
         const totalValue = Number(fromWei(props.collateralSize)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         const ret = await bank.methods.getPositionDebts(props.positionId!).call();
-        console.log(ret, props.positionId!)
         let debtValue: number = 0;
         for (let i = 0; i < ret.tokens.length; i += 1) {
           const price = await coreOracle.methods.getCELOPx(ret.tokens[i]!).call();
