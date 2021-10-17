@@ -11,7 +11,7 @@ import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
 import { Flex, Button } from "theme-ui";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
+import { poolProps, poolState } from "src/pages/Farm/newFarm/NewFarm";
 import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
 import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
 import { MaxUint256 } from "@ethersproject/constants";
@@ -25,6 +25,9 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
 import { IERC20Wrapper } from 'src/generated/IERC20Wrapper';
 import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
+import { CErc20Immutable } from "src/generated/CErc20Immutable";
+import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
+import BN from 'bn.js';
 
 
 interface Props {
@@ -63,9 +66,19 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         const totalValue = Number(fromWei(props.collateralSize)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         const ret = await bank.methods.getPositionDebts(props.positionId!).call();
         let debtValue: number = 0;
+        let debtInterest: number = 0; 
         for (let i = 0; i < ret.tokens.length; i += 1) {
-          const price = await coreOracle.methods.getCELOPx(ret.tokens[i]!).call();
+          const token = ret.tokens[i]!;
+          const price = await coreOracle.methods.getCELOPx(token).call();
           debtValue += Number(fromWei(ret.debts[i]!)) * (Number(fromWei(price)) / Number(fromWei(scale)))
+          const bankInfo =  await bank.methods.getBankInfo(token).call();
+          const cToken = (new kit.web3.eth.Contract(
+            CERC20_ABI as AbiItem[],
+            bankInfo.cToken,
+          ) as unknown) as CErc20Immutable;
+          const blocksPerYear = toBN(6311520); 
+          const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
+          debtInterest += debtValue * Number(fromWei(borrowRate))
         }
         const numer = await bank.methods.getBorrowCELOValue(props.positionId).call(); 
         const denom = await bank.methods.getCollateralCELOValue(props.positionId).call();; 
@@ -74,6 +87,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           debtValue,
           totalValue,
           debtRatio,
+          debtInterest,
         };
     } catch (error) {
         console.log(error)
@@ -173,6 +187,8 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   const urlext = props.positionId + "/" + props.collId + "/" + props.collateralSize + "/" + props.pool.name + "/" + props.pool.wrapper + "/" + props.pool.spell + "/" + props.pool.lp + "/" + props.pool.apy + "/"
     + props.pool.tokens.map((tok) => tok.address)
 
+  const apy = info ? (info.totalValue * (Number(props.pool.apy) / 100) - info.debtInterest) / (info.totalValue - info.debtValue) : 0; 
+
   return (
     <Row>
       <td>
@@ -181,7 +197,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
       <td><Text>{info ? humanFriendlyNumber(info.debtValue) : "--"} Celo</Text></td>
       <td><Text>{info ? humanFriendlyNumber(info.totalValue) : "--"} Celo</Text></td>
       <td><Text>{info ? humanFriendlyNumber(info.debtRatio* 100).concat("%") : "--"}</Text></td>
-      {/* <td><Text>--</Text></td> */}
+      <td><Text>{info ? humanFriendlyNumber(apy * 100).concat("%") : "--"}</Text></td>
       <td
         css={css`
           text-align: right;

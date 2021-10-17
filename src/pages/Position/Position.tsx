@@ -84,7 +84,7 @@ export const Position = () => {
               <th><Text variant="bold">Borrow Value</Text></th>
               <th><Text variant="bold">Total Value</Text></th>
               <th><Text variant="bold">Debt Ratio</Text></th>
-              {/* <th><Text variant="bold">Accumulated Rewards</Text></th> */}
+              <th><Text variant="bold">Position APY</Text></th>
               <th />
             </tr>
           </thead>

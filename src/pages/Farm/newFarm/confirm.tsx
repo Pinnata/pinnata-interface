@@ -251,7 +251,8 @@ export const Confirm: React.FC = () => {
               <BlockText>{"Supply Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Borrow Value: ".concat(" ").concat(humanFriendlyNumber(borrow.borrowValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Position Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)).concat(" Celo")}</BlockText>
-              <BlockText>{"Farming APY: ".concat(humanFriendlyNumber(borrow.lever! * Number(pool.apy))).concat("%")}</BlockText>
+              <BlockText>{"Farming Apy: ".concat(humanFriendlyNumber(borrow.apy!*100)).concat("%")}</BlockText>
+
           </Flex>
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>

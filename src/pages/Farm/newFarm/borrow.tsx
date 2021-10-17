@@ -42,6 +42,7 @@ interface newBorrowProps {
   debtRatio: number | null;
   lever: number | null;
   impact: number | null; 
+  apy: number | null;
 }
 
 const emptyNewBorrowState : newBorrowProps = {
@@ -51,6 +52,7 @@ const emptyNewBorrowState : newBorrowProps = {
   debtRatio: null,
   lever: null,
   impact: null,
+  apy: null,
 }
 
 export const newBorrowState = atom({
@@ -96,6 +98,7 @@ export const Borrow: React.FC = () => {
         }[] = [];
         const prices: BN[] = [];
         const availableBorrows: BN[] = []
+        const borrows: BN[] = [];
         const oracle = await bank.methods.oracle().call();
         const proxyOracle = (new kit.web3.eth.Contract(
           PROXYORACLE_ABI.abi as AbiItem[],
@@ -118,7 +121,9 @@ export const Borrow: React.FC = () => {
           const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
           const totalReserves = toBN(await cToken.methods.totalReserves().call());
           availableBorrows.push(totalSupply.sub(totalBorrows).sub(totalReserves)); 
-          
+          const blocksPerYear = toBN(6311520); 
+          const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
+          borrows.push(borrowRate);
           const factor = await proxyOracle.methods.tokenFactors(token!.address).call();
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token!.address).call();
@@ -160,6 +165,7 @@ export const Borrow: React.FC = () => {
           maxAmounts,
           reserve0,
           reserve1,
+          borrows,
         };
     } catch (error) {
         console.log(error)
@@ -171,9 +177,15 @@ const [info] = useAsyncState(null, call);
 
 if (!amounts!) return null; 
 
-const borrowValue = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+const individualBorrow = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))) : []; 
+
+const borrowValue = individualBorrow ? individualBorrow.reduce((sum, current) => sum + current, 0) : 0; 
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x)) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
+
+const apy = ((borrowValue + supplyValue) * 
+  (Number(pool.apy)/100) - individualBorrow.map((x, i) => 
+  x * Number(fromWei(info?.borrows[i]!))).reduce((sum, current) => sum + current, 0)) / supplyValue;
 
 const impact = info ? priceImpact(supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10**18)), supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10**18)), info.reserve0, info.reserve1) : 0;
 
@@ -194,6 +206,7 @@ const continueButton = (
         borrowValue,
         supplyValue,
         impact,
+        apy,
         });
       setPage(farmPage.Confirm); 
     }}
@@ -255,6 +268,7 @@ const continueButton = (
         <BlockText mb={2}>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
         <BlockText mb={2}>{"Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
         <BlockText mb={2}>{"Price Impact: ".concat(humanFriendlyNumber(impact*100)).concat("%")}</BlockText>
+        <BlockText mb={2}>{"Farming Apy: ".concat(humanFriendlyNumber(apy*100)).concat("%")}</BlockText>
 
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
