@@ -59,6 +59,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         const price = await coreOracle.methods.getCELOPx(props.pool.lp).call();
         const totalValue = Number(fromWei(props.collateralSize)) * (Number(fromWei(price)) / Number(fromWei(scale)))
         const ret = await bank.methods.getPositionDebts(props.positionId!).call();
+        console.log(ret, props.positionId!)
         let debtValue: number = 0;
         for (let i = 0; i < ret.tokens.length; i += 1) {
           const price = await coreOracle.methods.getCELOPx(ret.tokens[i]!).call();

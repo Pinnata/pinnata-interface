@@ -153,14 +153,15 @@ export const Borrow: React.FC = () => {
 
         let prevBorrow: BN[] = []
 
-        for (let token of pool.tokens) {
-          for (let i = 0; i < positionDebts.tokens.length; i += 1) {
-            if (token.address.toLowerCase() === positionDebts.tokens[i]?.toLowerCase()) {
-              prevBorrow.push(toBN(positionDebts.debts[i]!))
+        for (let i = 0; i < pool.tokens.length; i += 1) {
+          const token = pool.tokens[i]!;
+          for (let j = 0; j < positionDebts.tokens.length; j += 1) {
+            if (token.address.toLowerCase() === positionDebts.tokens[j]?.toLowerCase()) {
+              prevBorrow.push(toBN(positionDebts.debts[j]!))
               break
-            }
-            if (i === positionDebts.tokens.length - 1) prevBorrow.push(toBN(0));
+            }      
           }
+          if (prevBorrow.length === i) prevBorrow.push(toBN(0));
         }
 
         const prevCollateral = existingPosition.map((x, i) => x.sub(prevBorrow[i]!))

@@ -85,23 +85,26 @@ export const Payback: React.FC = () => {
       ) as unknown) as CoreOracle;
         const ret = await bank.methods.getPositionDebts(position.positionId!).call();
         const debts: BN[] = [];
-        for (let token of pool.tokens) {
+        for (let i = 0; i < pool.tokens.length; i += 1) {
+          const token = pool.tokens[i]!;
           const factor = await proxyOracle.methods.tokenFactors(token.address).call();
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token.address).call();
           prices.push(toBN(price));
-          for (let i = 0; i < ret.tokens.length; i += 1) {
-            if (getAddress(token.address) === getAddress(ret.tokens[i]!)) {
-              debts.push(toBN(ret.debts[i]!));
+          for (let j = 0; j < ret.tokens.length; j += 1) {
+            if (getAddress(token.address) === getAddress(ret.tokens[j]!)) {
+              debts.push(toBN(ret.debts[j]!));
               break; 
-            }
-            if (i === ret.tokens.length - 1) debts.push(toBN(0));
+            }      
           }
+          if (debts.length === i) debts.push(toBN(0));
         }
         const existingWeightBorrowValue = await bank.methods.getBorrowCELOValue(position.positionId!).call();
         const weightedCollateralValue = await proxyOracle.methods.asCELOCollateral(pool.wrapper, position.collId!, toBN(position.collateralSize!).sub(remove.removeLp!).toString(), zeroAdd).call();
 
         const maxAmounts = debts.map((x, index) => x.lt(remove.remove![index]!) ? fromWei(x) : fromWei(remove.remove![index]!)); 
+
+        console.log(remove.prevPosition, debts)
 
         const prevCollateral = remove.prevPosition?.map((x, i) => x.sub(debts[i]!))
 
