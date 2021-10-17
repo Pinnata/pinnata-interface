@@ -44,6 +44,7 @@ export const TokenInputForm: React.FC<Props> = ({ token, amount, setAmount, bala
           onChange={(e) => {
             setAmount(e.target.value);
           }}
+          color="text"
           mr={2}
         />
         { dahlia ? <DahliaTokenInfo token={token} /> 

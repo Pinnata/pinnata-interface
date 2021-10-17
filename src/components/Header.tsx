@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Flex, Text, useColorMode } from "theme-ui";
+import { Box, Flex, Text, useColorMode, Card } from "theme-ui";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
 import { StyledLink } from "src/components/StyledLink";
@@ -56,33 +56,36 @@ export const Header: React.FC = () => {
               : "inherit",
           }}
         >
-        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"50px", gap: "20px"}}>
+        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"110px", gap: "20px"}}>
             <HeaderLink page={Page.EARN}>Earn</HeaderLink>
             <HeaderLink page={Page.FARM}>Farm</HeaderLink>
             <HeaderLink page={Page.POSITIONS}>Positions</HeaderLink>
         </Flex>
         </Box>
-        {/* <Flex
-          sx={{
-            alignItems: "center",
-            backgroundColor: "secondaryBackground",
-            mr: 4,
-            px: 2,
-            cursor: "pointer",
-            borderRadius: "6px",
-          }}
-          onClick={() => {
-            if (colorMode === "light") {
-              setColorMode("dark");
-            } else {
-              setColorMode("light");
-            }
-          }}
-        >
-          {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-        </Flex> */}
+        
         <Flex>
-        <ConnectWallet />
+          <Flex sx={{ justifyContent: "space-between" }}>
+            <Flex
+            sx={{
+              alignItems: "center",
+              backgroundColor: "secondaryBackground",
+              mr: 4,
+              px: 2,
+              cursor: "pointer",
+              borderRadius: "6px",
+            }}
+            onClick={() => {
+              if (colorMode === "light") {
+                setColorMode("dark");
+              } else {
+                setColorMode("light");
+              }
+            }}
+          >
+            {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
+          </Flex>
+            <ConnectWallet />
+          </Flex>
       </Flex>
   </Flex>
   );

@@ -70,7 +70,17 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     return 1 + (Number(factor.collateralFactor) / (Number(factor.borrowFactor) - Number(factor.collateralFactor)))
   }
 
-  const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => lever({borrowFactor: x.borrowFactor, collateralFactor: info.lpFactor.collateralFactor})))!) : 0;
+  const maxLever = info ? Math.max(...(info?.tokenFactor.map((x) => 
+    lever({borrowFactor: x.borrowFactor, collateralFactor: info.lpFactor.collateralFactor})))!) : 0;
+
+  const maxApy = info ? Math.max(...(info?.tokenFactor.map((x, i) => {
+    const maxLever =  lever({borrowFactor: x.borrowFactor, collateralFactor: info.lpFactor.collateralFactor})
+    const borrow = fromWei(info.borrowRate[i]!)
+    console.log(Number(props.apy))
+    console.log(Number(borrow.toString()))
+    return maxLever * (Number(props.apy)/100) - (maxLever - 1) * Number(borrow.toString())
+  }))) : 0
+  console.log(maxApy, 'max')
 
   const urlext = props.name + "/" + props.wrapper + "/" + props.spell + "/" + props.lp + "/" + props.apy + "/"
     + props.tokens.map((tok) => tok.address)
@@ -79,7 +89,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
       <td>
       <FarmInfo props={props} />
       </td>
-      <td><Text>{info ? humanFriendlyNumber(Number(props.apy) * maxLever - Math.min(...info.borrowRate.map((x) => Number(fromWei(x.mul(toBN(100)) )) )) ): "--"}%</Text></td>
+      <td><Text>{info ? humanFriendlyNumber(maxApy * 100) : "--"}%</Text></td>
       <td><Text>{props.apy}%</Text></td>
       <td>
         <Flex sx={{ flexDirection: "column", alignItems: "center", gap: "6px"}}>

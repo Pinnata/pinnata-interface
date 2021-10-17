@@ -3,12 +3,11 @@ export const preset = {
   colors: {
 
     primaryText: "#3c9279", //green
-    secondaryBackground: "#F5F2FF",
+    secondaryBackground: "#F1F4F4",
     primary: "#3c9279", //green
 
     text: "#333333",
     primaryButtonText: "#FAFAFA",
-    accent: "#7C71FD",
     background: "#fff",
     secondary: "#bababa",
     muted: "#f6f6f9",
@@ -17,25 +16,23 @@ export const preset = {
     highlight: "hsla(205, 100%, 40%, 0.125)",
     box: "#F1F4F4",
     disabled: "#BDBDBD",
-    // modes: {
-    //   dark: {
-    //     primaryText: "#CCC3FC",
-    //     secondaryBackground: "#363945",
-    //     primary: "#7C71FC",
-
-    //     text: "#FAFAFA",
-    //     primaryButtonText: "#FAFAFA",
-    //     accent: "#5352FC",
-    //     background: "#212121",
-    //     secondary: "#bababa",
-    //     muted: "#757575",
-    //     gray: "#bababa",
-    //     darkgray: "#BDBDBD",
-    //     highlight: "hsla(205, 100%, 40%, 0.125)",
-    //     box: "#363945",
-    //     disabled: "#BDBDBD",
-    //   },
-    // },
+    modes: {
+      dark: {
+        primaryText: "#3c9279",
+        secondaryBackground: "#363945",
+        primary: "#3c9279",
+        text: "#FAFAFA",
+        primaryButtonText: "#FAFAFA",
+        background: "#212121",
+        secondary: "#bababa",
+        muted: "#757575",
+        gray: "#bababa",
+        darkgray: "#BDBDBD",
+        highlight: "hsla(205, 100%, 40%, 0.125)",
+        box: "#363945",
+        disabled: "#BDBDBD",
+      },
+    },
   },
   fonts: {
     body: "Roboto",
@@ -68,6 +65,9 @@ export const preset = {
     primary: {
       variant: "text.default",
       color: "primaryText",
+    },
+    heading: {
+      color: "text",
     },
     title: {
       fontFamily: "body",

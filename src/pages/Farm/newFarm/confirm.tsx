@@ -175,7 +175,7 @@ export const Confirm: React.FC = () => {
       }
     }
     return b; 
-  }, [tokenStates, erc, supply.tokenSupply, supply.lpSupply, pool.tokens, buttonLoading, confirmButton, lpTok]);
+  }, [done, history, setPage, tokenStates, erc, supply.tokenSupply, supply.lpSupply, approveButton, pool.tokens, buttonLoading, confirmButton, lpTok]);
 
   return (
     <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
@@ -247,11 +247,12 @@ export const Confirm: React.FC = () => {
           <Flex sx={{ justifyContent: "left", gap: "8px", flexDirection: "column"}}>
               <BlockText>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(borrow.debtRatio!)).concat("/100")}</BlockText>
               <BlockText>{"Leverage: ".concat(humanFriendlyNumber(borrow.lever!)).concat("x")}</BlockText>
-              {/* change this to usd value */}
+              <BlockText>{"Price Impact: ".concat(humanFriendlyNumber(borrow.impact!)).concat("%")}</BlockText>
               <BlockText>{"Supply Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Borrow Value: ".concat(" ").concat(humanFriendlyNumber(borrow.borrowValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Position Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)).concat(" Celo")}</BlockText>
-              <BlockText>Farming APY: {humanFriendlyNumber(borrow.lever! * Number(pool.apy))}%</BlockText>
+              <BlockText>{"Farming Apy: ".concat(humanFriendlyNumber(borrow.apy!*100)).concat("%")}</BlockText>
+
           </Flex>
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>

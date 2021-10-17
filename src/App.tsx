@@ -21,7 +21,7 @@ const App: React.FC = () => {
   });
 
   return (
-    <Container sx={{ maxWidth: "100%", width: "100%"}}>
+    <Container sx={{ maxWidth: "100%", width: "100%", backgroundColor: "background"}}>
       <Container sx={{ py: 6, px: [4, "15%"] }}>
         <Header />
         <Switch>

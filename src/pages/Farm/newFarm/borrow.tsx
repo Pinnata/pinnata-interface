@@ -30,6 +30,9 @@ import { humanFriendlyNumber } from "src/utils/number";
 import BN from 'bn.js';
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
+import { priceImpact } from "src/utils/swap";
+import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
+import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 
 
 interface newBorrowProps {
@@ -38,6 +41,8 @@ interface newBorrowProps {
   borrowValue: number | null;
   debtRatio: number | null;
   lever: number | null;
+  impact: number | null; 
+  apy: number | null;
 }
 
 const emptyNewBorrowState : newBorrowProps = {
@@ -46,6 +51,8 @@ const emptyNewBorrowState : newBorrowProps = {
   borrowValue: null,
   debtRatio: null,
   lever: null,
+  impact: null,
+  apy: null,
 }
 
 export const newBorrowState = atom({
@@ -74,6 +81,11 @@ export const Borrow: React.FC = () => {
     getAddress(Bank[44787])
   ) as unknown) as HomoraBank, [kit]); 
 
+  const lp = React.useMemo(() => (new kit.web3.eth.Contract(
+    UNI_PAIR.abi as AbiItem[],
+    pool.lp,
+  ) as unknown) as IUniswapV2Pair, [kit.web3.eth.Contract, pool.lp]); 
+
   const call = React.useCallback(async () => {
     try {
         const factors : {
@@ -86,6 +98,7 @@ export const Borrow: React.FC = () => {
         }[] = [];
         const prices: BN[] = [];
         const availableBorrows: BN[] = []
+        const borrows: BN[] = [];
         const oracle = await bank.methods.oracle().call();
         const proxyOracle = (new kit.web3.eth.Contract(
           PROXYORACLE_ABI.abi as AbiItem[],
@@ -108,7 +121,9 @@ export const Borrow: React.FC = () => {
           const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
           const totalReserves = toBN(await cToken.methods.totalReserves().call());
           availableBorrows.push(totalSupply.sub(totalBorrows).sub(totalReserves)); 
-          
+          const blocksPerYear = toBN(6311520); 
+          const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
+          borrows.push(borrowRate);
           const factor = await proxyOracle.methods.tokenFactors(token!.address).call();
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token!.address).call();
@@ -122,12 +137,21 @@ export const Borrow: React.FC = () => {
           .reduce((sum, current) => sum + current, 0) + Number(fromWei(supply.lpSupply!))
           * (Number(fromWei(lpPrice)) / Number(fromWei(scale))) * (Number(lpFactor.collateralFactor) / 10000)
 
-        console.log("weighted", weightedSuppliedCollateralValue)
-
         const borrowMax = prices.map((x, i) => weightedSuppliedCollateralValue / 
           ((Number(fromWei(x)) / Number(fromWei(scale))) * ((Number(factors[i]?.borrowFactor) - Number(lpFactor.collateralFactor)) / 10000)))
 
         const maxAmounts = borrowMax.map((x, index) => String(Math.min(x, Number(fromWei(availableBorrows[index]!)))));
+
+        let reserve0: BN;
+        let reserve1: BN ; 
+        const getReserves = await lp.methods.getReserves().call();
+        if (getAddress(await lp.methods.token0().call()) === getAddress(pool.tokens[0]!.address)) {
+          reserve0 = toBN(getReserves.reserve0);
+          reserve1 = toBN(getReserves.reserve1);
+        } else {
+          reserve0 = toBN(getReserves.reserve1);
+          reserve1 = toBN(getReserves.reserve0);
+        }
 
         if (!init) {
           setInit(true);
@@ -139,26 +163,37 @@ export const Borrow: React.FC = () => {
           lpFactor,
           lpPrice,
           maxAmounts,
+          reserve0,
+          reserve1,
+          borrows,
         };
     } catch (error) {
         console.log(error)
     }
     
-}, [bank.methods, kit.web3.eth.Contract, pool?.lp, pool.tokens, supply.lpSupply, supply.tokenSupply, init, scale])
+}, [bank.methods, kit.web3.eth.Contract, pool.lp, pool.tokens, supply.tokenSupply, supply.lpSupply, scale, lp.methods, init])
 
 const [info] = useAsyncState(null, call);
 
 if (!amounts!) return null; 
 
-const borrowValue = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+const individualBorrow = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))) : []; 
+
+const borrowValue = individualBorrow ? individualBorrow.reduce((sum, current) => sum + current, 0) : 0; 
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x)) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
+
+const apy = ((borrowValue + supplyValue) * 
+  (Number(pool.apy)/100) - individualBorrow.map((x, i) => 
+  x * Number(fromWei(info?.borrows[i]!))).reduce((sum, current) => sum + current, 0)) / supplyValue;
+
+const impact = info ? priceImpact(supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10**18)), supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10**18)), info.reserve0, info.reserve1) : 0;
 
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.tokenFactor[i]?.borrowFactor) / 10000)).reduce((sum, current) => sum + current, 0) : 0; 
 const denom = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
   * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
   .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply!))
-  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000)) : 1; 
+  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) * (1 - impact) / 10000)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
 const continueButton = (
@@ -170,6 +205,8 @@ const continueButton = (
         debtRatio,
         borrowValue,
         supplyValue,
+        impact,
+        apy,
         });
       setPage(farmPage.Confirm); 
     }}
@@ -230,6 +267,9 @@ const continueButton = (
         </Flex>
         <BlockText mb={2}>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
         <BlockText mb={2}>{"Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
+        <BlockText mb={2}>{"Price Impact: ".concat(humanFriendlyNumber(impact*100)).concat("%")}</BlockText>
+        <BlockText mb={2}>{"Farming Apy: ".concat(humanFriendlyNumber(apy*100)).concat("%")}</BlockText>
+
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 

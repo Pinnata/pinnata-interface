@@ -15,5 +15,8 @@ export const SimpleTable = styled.table`
   td {
     text-align: center;
   }
+  td {
+    border-bottom: 1px solid #ddd;
+  }
   width: 100%;
 `;

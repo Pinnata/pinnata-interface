@@ -33,6 +33,8 @@ import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
+import { priceImpact } from "src/utils/swap";
+
 
 interface borrowProps {
   tokenBorrow: BN[] | null;
@@ -40,6 +42,8 @@ interface borrowProps {
   borrowValue: number | null;
   debtRatio: number | null;
   lever: number | null;
+  impact: number | null;
+  apy: number | null;
 }
 
 const emptyBorrowState : borrowProps = {
@@ -48,6 +52,8 @@ const emptyBorrowState : borrowProps = {
   borrowValue: null,
   debtRatio: null,
   lever: null,
+  impact: null,
+  apy: null,
 }
 
 export const addBorrowState = atom({
@@ -94,6 +100,7 @@ export const Borrow: React.FC = () => {
         }[] = [];
         const prices: BN[] = [];
         const availableBorrows: BN[] = [];
+        const borrowRates: BN[] = [];
         const oracle = await bank.methods.oracle().call();
         const proxyOracle = (new kit.web3.eth.Contract(
           PROXYORACLE_ABI.abi as AbiItem[],
@@ -118,6 +125,9 @@ export const Borrow: React.FC = () => {
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token.address).call();
           prices.push(toBN(price));
+          const blocksPerYear = toBN(6311520); 
+          const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
+          borrowRates.push(borrowRate);
         }
         const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call(); 
         const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
@@ -153,14 +163,15 @@ export const Borrow: React.FC = () => {
 
         let prevBorrow: BN[] = []
 
-        for (let token of pool.tokens) {
-          for (let i = 0; i < positionDebts.tokens.length; i += 1) {
-            if (token.address.toLowerCase() === positionDebts.tokens[i]?.toLowerCase()) {
-              prevBorrow.push(toBN(positionDebts.debts[i]!))
+        for (let i = 0; i < pool.tokens.length; i += 1) {
+          const token = pool.tokens[i]!;
+          for (let j = 0; j < positionDebts.tokens.length; j += 1) {
+            if (token.address.toLowerCase() === positionDebts.tokens[j]?.toLowerCase()) {
+              prevBorrow.push(toBN(positionDebts.debts[j]!))
               break
-            }
-            if (i === positionDebts.tokens.length - 1) prevBorrow.push(toBN(0));
+            }      
           }
+          if (prevBorrow.length === i) prevBorrow.push(toBN(0));
         }
 
         const prevCollateral = existingPosition.map((x, i) => x.sub(prevBorrow[i]!))
@@ -180,6 +191,9 @@ export const Borrow: React.FC = () => {
           existingBorrow,
           prevBorrow,
           prevCollateral,
+          reserve0,
+          reserve1,
+          borrowRates,
         };
     } catch (error) {
         console.log(error)
@@ -191,9 +205,16 @@ const [info] = useAsyncState(null, call);
 
 if (!amounts!) return null; 
 
-const borrowValue = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(info.prevBorrow[i]!))) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+const individualBorrow = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(info.prevBorrow[i]!))) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))) : [];
+
+const borrowValue = individualBorrow ? individualBorrow.reduce((sum, current) => sum + current, 0) : 0; 
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x.add(info.prevCollateral[i]!))) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
+
+const impact = info ? priceImpact(supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10**18)), supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10**18)), info.reserve0, info.reserve1) : 0;
+
+const apy = ((borrowValue + supplyValue) * (Number(pool.apy)/100) - individualBorrow.map((x, i) => 
+  x * Number(fromWei(info?.borrowRates[i]!))).reduce((sum, current) => sum + current, 0)) / supplyValue;
 
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
   * (Number(info.tokenFactor[i]?.borrowFactor) / 10000))
@@ -201,7 +222,7 @@ const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.ce
 const denom = info && supply ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
   * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
   .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply!))
-  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000)) + Number(fromWei(info.existingCollateral)) : 1; 
+  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) * (1 - impact) / 10000)) + Number(fromWei(info.existingCollateral)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
 const continueButton = (
@@ -213,6 +234,8 @@ const continueButton = (
         debtRatio,
         borrowValue,
         supplyValue,
+        impact,
+        apy,
         });
       setPage(addPage.Confirm); 
     }}
@@ -291,6 +314,9 @@ const continueButton = (
         </Flex>
         <BlockText mb={2}>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
         <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
+        <BlockText mb={2}>{"Price Impact: ".concat(humanFriendlyNumber(impact*100)).concat("%")}</BlockText>
+        <BlockText mb={2}>{"New Farming Apy: ".concat(humanFriendlyNumber(apy*100)).concat("%")}</BlockText>
+
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 

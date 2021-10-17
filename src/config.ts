@@ -5,9 +5,11 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.Mainnet]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
+  [ChainId.CeloMainnet]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
+  [ChainId.EthereumMainnet]: '0',
+  [ChainId.Kovan]: '0'
 };
 
 export const Alfajores: Network = {
