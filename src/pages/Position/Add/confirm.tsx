@@ -267,7 +267,7 @@ export const Confirm: React.FC = () => {
           <Flex sx={{ justifyContent: "left", gap: "8px", flexDirection: "column"}}>
             <BlockText>{"Est. Debt Ratio: ".concat(humanFriendlyNumber(borrow.debtRatio!)).concat("/100")}</BlockText>
               <BlockText>{"Leverage: ".concat(humanFriendlyNumber(borrow.lever!)).concat("x")}</BlockText>
-              {/* change this to usd value */}
+              <BlockText>{"Price Impact: ".concat(humanFriendlyNumber(borrow.impact!)).concat("%")}</BlockText>
               <BlockText>{"Supply Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Borrow Value: ".concat(" ").concat(humanFriendlyNumber(borrow.borrowValue!)).concat(" Celo")}</BlockText>
               <BlockText>{"Position Value: ".concat(" ").concat(humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)).concat(" Celo")}</BlockText>

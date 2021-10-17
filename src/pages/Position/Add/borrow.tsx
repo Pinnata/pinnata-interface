@@ -33,6 +33,8 @@ import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json"
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
+import { priceImpact } from "src/utils/swap";
+
 
 interface borrowProps {
   tokenBorrow: BN[] | null;
@@ -40,6 +42,7 @@ interface borrowProps {
   borrowValue: number | null;
   debtRatio: number | null;
   lever: number | null;
+  impact: number | null;
 }
 
 const emptyBorrowState : borrowProps = {
@@ -48,6 +51,7 @@ const emptyBorrowState : borrowProps = {
   borrowValue: null,
   debtRatio: null,
   lever: null,
+  impact: null,
 }
 
 export const addBorrowState = atom({
@@ -181,6 +185,8 @@ export const Borrow: React.FC = () => {
           existingBorrow,
           prevBorrow,
           prevCollateral,
+          reserve0,
+          reserve1,
         };
     } catch (error) {
         console.log(error)
@@ -196,13 +202,15 @@ const borrowValue = info ? amounts!.map((x, i) => (Number(x) + Number(fromWei(in
 const supplyValue = info ? supply.tokenSupply!.map((x, i) => Number(fromWei(x.add(info.prevCollateral[i]!))) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
 const lever =  1 + (borrowValue / supplyValue)
 
+const impact = info ? priceImpact(supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10**18)), supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10**18)), info.reserve0, info.reserve1) : 0;
+
 const numer = info ? amounts!.map((x, i) => Number(x) * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
   * (Number(info.tokenFactor[i]?.borrowFactor) / 10000))
   .reduce((sum, current) => sum + current, 0) + Number(fromWei(info.existingBorrow)) : 0; 
 const denom = info && supply ? amounts!.map((x, i) => (Number(x) + Number(fromWei(supply.tokenSupply![i]!)))
   * (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000))
   .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply!))
-  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) / 10000)) + Number(fromWei(info.existingCollateral)) : 1; 
+  * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor?.collateralFactor) * (1 - impact) / 10000)) + Number(fromWei(info.existingCollateral)) : 1; 
 const debtRatio =  (numer/denom) * 100; 
 
 const continueButton = (
@@ -214,6 +222,7 @@ const continueButton = (
         debtRatio,
         borrowValue,
         supplyValue,
+        impact,
         });
       setPage(addPage.Confirm); 
     }}
@@ -292,6 +301,7 @@ const continueButton = (
         </Flex>
         <BlockText mb={2}>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
         <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
+        <BlockText mb={2}>{"Price Impact: ".concat(humanFriendlyNumber(impact*100)).concat("%")}</BlockText>
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
