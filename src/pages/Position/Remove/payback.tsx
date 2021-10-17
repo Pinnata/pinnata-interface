@@ -26,17 +26,21 @@ import { humanFriendlyNumber } from "src/utils/number";
 import BN from 'bn.js';
 import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens"
+import { CErc20Immutable } from "src/generated/CErc20Immutable";
+import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 
 interface paybackProps {
   payback: BN[] | null;
   debtRatio: number | null; 
   lever: number | null;
+  apy: number | null;
 }
 
 const emptyPaybackState : paybackProps = {
   payback: null,
   debtRatio: null,
   lever: null,
+  apy: null,
 }
 
 export const removePaybackState = atom({
@@ -73,6 +77,7 @@ export const Payback: React.FC = () => {
         2: string;
       }[] = [];
       const prices: BN[] = [];
+      const borrowRates: BN[] = [];
       const oracle = await bank.methods.oracle().call();
       const proxyOracle = (new kit.web3.eth.Contract(
         PROXYORACLE_ABI.abi as AbiItem[],
@@ -87,6 +92,14 @@ export const Payback: React.FC = () => {
         const debts: BN[] = [];
         for (let i = 0; i < pool.tokens.length; i += 1) {
           const token = pool.tokens[i]!;
+          const bankInfo =  await bank.methods.getBankInfo(token.address).call();
+          const cToken = (new kit.web3.eth.Contract(
+            CERC20_ABI as AbiItem[],
+            bankInfo.cToken,
+          ) as unknown) as CErc20Immutable;
+          const blocksPerYear = toBN(6311520); 
+          const borrowRate = toBN(await cToken.methods.borrowRatePerBlock().call()).mul(blocksPerYear);
+          borrowRates.push(borrowRate);
           const factor = await proxyOracle.methods.tokenFactors(token.address).call();
           factors.push(factor);
           const price = await coreOracle.methods.getCELOPx(token.address).call();
@@ -126,6 +139,7 @@ export const Payback: React.FC = () => {
           lpFactor,
           prevBorrow: debts,
           prevCollateral,
+          borrowRates,
         };
     } catch (error) {
         console.log(error)
@@ -140,9 +154,14 @@ export const Payback: React.FC = () => {
   const denom = info ? (Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) * (Number(info.lpFactor.collateralFactor) / 10000) : 1; 
   const debtRatio =  denom === 0 && numer === 0 ? 0 : (numer/denom) * 100; 
 
-  const borrowValue = info ? amounts!.map((x, i) => ((Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))).reduce((sum, current) => sum + current, 0) : 0; 
+  const individualBorrow = info ? amounts!.map((x, i) => ((Number(fromWei(info.prevBorrow[i]!)) - Number(x)) * Number(fromWei(info?.prices[i]!)) / Number(fromWei(scale)))): [];
+
+  const borrowValue = individualBorrow ? individualBorrow.reduce((sum, current) => sum + current, 0) : 0; 
   const supplyValue = info ? ((Number(fromWei(position.collateralSize!)) - Number(fromWei(remove.removeLp!))) * Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))) : 0; 
   const lever =  1 + (borrowValue / supplyValue)
+
+  const apy = ((borrowValue + supplyValue) * (Number(pool.apy)/100) - individualBorrow.map((x, i) => 
+  x * Number(fromWei(info?.borrowRates[i]!))).reduce((sum, current) => sum + current, 0)) / supplyValue;
 
   const continueButton = (
     <Button
@@ -152,6 +171,7 @@ export const Payback: React.FC = () => {
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
           debtRatio,
           lever,
+          apy,
         })
         setPage(removePage.Confirm); 
       }}
@@ -215,6 +235,7 @@ export const Payback: React.FC = () => {
         </Flex>
         <BlockText mb={2}>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(debtRatio)).concat("/100")}</BlockText>
         <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}</BlockText>
+        <BlockText mb={2}>{"New Farming Apy: ".concat(humanFriendlyNumber(apy*100)).concat("%")}</BlockText>
           {info && pool.tokens.map((tok, index) => 
             <TokenSlider key={tok.address} token={tok} amount={String(amounts![index])}
             setAmount={(s: string) => setAmounts(amounts!.map((x, i) => i === index ? s : x))} 
