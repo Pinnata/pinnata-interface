@@ -170,7 +170,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           ).send({
             from: kit.defaultAccount,
             gasPrice: DEFAULT_GAS_PRICE,
-            gas: 4000000,
           });
         toastTx(tx.transactionHash);
       } catch (e) {

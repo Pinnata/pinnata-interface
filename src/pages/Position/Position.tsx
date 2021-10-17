@@ -66,7 +66,7 @@ export const Position = () => {
   return (
     <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
     <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
-        <Text color="text" variant="title">Positions</Text>
+        <Text color="text" variant="title">POSITIONS</Text>
         <Text color="text" variant="description">Manage your positions with ease.</Text>
       </Flex>
     <Card sx={{ width: "100%", maxWidth: "1200px", mt: "16px" }} py={4} px={3}>
