@@ -66,6 +66,9 @@ export const preset = {
       variant: "text.default",
       color: "primaryText",
     },
+    heading: {
+      color: "text",
+    },
     title: {
       fontFamily: "body",
       fontSize: "48px",
