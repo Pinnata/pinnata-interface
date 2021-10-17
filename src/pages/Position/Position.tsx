@@ -28,13 +28,13 @@ export const Position = () => {
     try {
       const info = [];
       const nextPositionId = await bank.methods.nextPositionId().call(); 
-      console.log('returned')
       let batch = [];
-      for (let i = 1; i <= Number(nextPositionId); i += 1) {
+      for (let i = 1; i < Number(nextPositionId); i += 1) {
         batch.push(bank.methods.getPositionInfo(i).call());
       }
       const results = await Promise.all(batch);
-      for (let i = 1; i < Number(nextPositionId); i += 1) {
+      for (let i = 0; i < Number(nextPositionId); i += 1) {
+        const positionId = i + 1;
         const positionInfo = results[i];
         if (positionInfo && positionInfo!.owner.toLowerCase() === address!.toLowerCase()) {
           const wrapper = (new kit.web3.eth.Contract(
@@ -48,7 +48,7 @@ export const Position = () => {
                 collId: positionInfo!.collId, 
                 collateralSize: positionInfo!.collateralSize,
                 collToken: positionInfo!.collToken,
-                positionId: i,
+                positionId: positionId,
                 farm: farm,
               })
               break;
