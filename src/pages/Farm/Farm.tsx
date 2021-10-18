@@ -23,7 +23,7 @@ export const Farm = () => {
               
               <Text variant="bold">Pool</Text>
             </th>
-            <th><Text variant="bold">Projected APY</Text></th>
+            <th><Text variant="bold">Max APY</Text></th>
             <th><Text variant="bold">Pool APY</Text></th>
             <th><Text variant="bold">Borrow APY</Text></th>
             <th><Text variant="bold">Max Leverage</Text></th>
