@@ -9,6 +9,7 @@ export const ConnectWallet: React.FC = () => {
   return (
     <Card
       sx={{ cursor: "pointer", height: "fit-content" }}
+      className="hover:opacity-75"
       onClick={async () => {
         try {
           await connect();
@@ -20,9 +21,9 @@ export const ConnectWallet: React.FC = () => {
     >
       <Flex sx={{ alignItems: "center" }}>
         <Wallet size={28} />
-        <Text ml={3}>
+        <p className="font-bold ml-2 tracking-tight">
           {address ? shortenAddress(address) : "Connect Wallet"}
-        </Text>
+        </p>
       </Flex>
     </Card>
   );

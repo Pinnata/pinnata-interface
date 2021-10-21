@@ -6,19 +6,16 @@ import { useLocation } from "react-router-dom";
 export const Footer: React.FC = () => {
   const location = useLocation();
 
-  if (location.pathname !== "/earn" && location.pathname !== "/farm" && location.pathname !== "/positions") {
+  if (
+    location.pathname !== "/earn" &&
+    location.pathname !== "/farm" &&
+    location.pathname !== "/positions"
+  ) {
     return null;
   }
 
   return (
-    <Box
-      sx={{
-        position: "absolute",
-        width: "100%",
-        bottom: 0,
-        pb: 4,
-      }}
-    >
+    <div className="bg-gray-200 mt-16 p-8 shadow-md">
       <Flex sx={{ justifyContent: "center" }}>
         <Link
           target="_blank"
@@ -27,7 +24,7 @@ export const Footer: React.FC = () => {
           style={{ textDecoration: "none" }}
           mr={2}
         >
-          <GithubLogo size={32} />
+          <GithubLogo className="text-gray-900" size={32} />
         </Link>
         <Link
           target="_blank"
@@ -36,7 +33,7 @@ export const Footer: React.FC = () => {
           style={{ textDecoration: "none" }}
           mr={2}
         >
-          <TwitterLogo size={32} />
+          <TwitterLogo className="text-gray-900" size={32} />
         </Link>
         <Link
           target="_blank"
@@ -45,7 +42,7 @@ export const Footer: React.FC = () => {
           style={{ textDecoration: "none" }}
           mr={2}
         >
-          <DiscordLogo size={32} />
+          <DiscordLogo className="text-gray-900" size={32} />
         </Link>
         <Link
           target="_blank"
@@ -53,9 +50,9 @@ export const Footer: React.FC = () => {
           href="https://dahlia-finance.gitbook.io/dahlia-finance/"
           style={{ textDecoration: "none" }}
         >
-          <BookOpen size={32} />
+          <BookOpen className="text-gray-900" size={32} />
         </Link>
       </Flex>
-    </Box>
+    </div>
   );
 };

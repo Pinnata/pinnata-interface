@@ -1,7 +1,6 @@
 export const preset = {
   breakpoints: ["1080px", "1080px"],
   colors: {
-
     primaryText: "#3c9279", //green
     secondaryBackground: "#F1F4F4",
     primary: "#3c9279", //green
@@ -16,23 +15,23 @@ export const preset = {
     highlight: "hsla(205, 100%, 40%, 0.125)",
     box: "#F1F4F4",
     disabled: "#BDBDBD",
-    modes: {
-      dark: {
-        primaryText: "#3c9279",
-        secondaryBackground: "#363945",
-        primary: "#3c9279",
-        text: "#FAFAFA",
-        primaryButtonText: "#FAFAFA",
-        background: "#212121",
-        secondary: "#bababa",
-        muted: "#757575",
-        gray: "#bababa",
-        darkgray: "#BDBDBD",
-        highlight: "hsla(205, 100%, 40%, 0.125)",
-        box: "#363945",
-        disabled: "#BDBDBD",
-      },
-    },
+    // modes: {
+    //   dark: {
+    //     primaryText: "#3c9279",
+    //     secondaryBackground: "#363945",
+    //     primary: "#3c9279",
+    //     text: "#FAFAFA",
+    //     primaryButtonText: "#FAFAFA",
+    //     background: "#212121",
+    //     secondary: "#bababa",
+    //     muted: "#757575",
+    //     gray: "#bababa",
+    //     darkgray: "#BDBDBD",
+    //     highlight: "hsla(205, 100%, 40%, 0.125)",
+    //     box: "#363945",
+    //     disabled: "#BDBDBD",
+    //   },
+    // },
   },
   fonts: {
     body: "Roboto",
@@ -77,7 +76,7 @@ export const preset = {
     },
     description: {
       fontFamily: "body",
-      fontSize: "24px", 
+      fontSize: "24px",
       fontWeight: "400",
     },
     logo: {
@@ -244,13 +243,6 @@ export const preset = {
       width: ["180px", "320px"],
       height: ["180px", "320px"],
       color: "accent",
-    },
-    a: {
-      ":visited": {
-        color: "primaryText",
-      },
-      color: "primaryText",
-      cursor: "pointer",
     },
     h1: {
       fontSize: 24,

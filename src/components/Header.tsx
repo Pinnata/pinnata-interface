@@ -1,71 +1,62 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { Box, Flex, Text, useColorMode, Card } from "theme-ui";
+import { Link, useLocation } from "react-router-dom";
+import { Box, Flex } from "theme-ui";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
-import { StyledLink } from "src/components/StyledLink";
-import { ConnectWallet } from "src/components/ConnectWallet"
-import { Moon, Sun } from "phosphor-react";
+import { ConnectWallet } from "src/components/ConnectWallet";
 
-const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
-  const location = useLocation();
-  const selected = location.pathname.includes(page);
-  return (
-    <Box >
-      <StyledLink to={page}>
-        <Text
-          sx={{
-            color: selected ? "primary" : "text",
-            borderBottom: selected ? "2px solid" : "none",
-            mx: 1,
-            pb: 1,
-            textDecoration: "none",
-            ":hover": {
-              textDecoration: "none"
-            },
-            ":active": {
-              textDecoration: "none"
-            },
-          }}
-          variant="subtitle"
-        >
-          {children}
-        </Text>
-      </StyledLink>
-    </Box>
-  );
-};
+const pages = [
+  {
+    name: "Earn",
+    page: Page.EARN,
+  },
+  {
+    name: "Farm",
+    page: Page.FARM,
+  },
+  { name: "Positions", page: Page.POSITIONS },
+];
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const [colorMode, setColorMode] = useColorMode();
   return (
-    <Flex sx={{ justifyContent: "space-between", alignItems: "center" }} mb={4}>
-        <Flex>
-          <Logo />
-        </Flex>
-        <Box
-          sx={{
-            display:
-              location.pathname.includes(Page.SUPPLY) || 
-              location.pathname.includes(Page.WITHDRAW) || 
-              location.pathname.includes(Page.ADD) ||
-              location.pathname.includes(Page.NEW) ||
-              location.pathname.includes(Page.REMOVE)
+    <nav className="md:flex justify-between items-center text-center my-2 mb-6 bg-gray-100 p-2 rounded-sm shadow-sm">
+      <Logo />
+      <Box
+        sx={{
+          display:
+            location.pathname.includes(Page.SUPPLY) ||
+            location.pathname.includes(Page.WITHDRAW) ||
+            location.pathname.includes(Page.ADD) ||
+            location.pathname.includes(Page.NEW) ||
+            location.pathname.includes(Page.REMOVE)
               ? "none"
               : "inherit",
-          }}
-        >
-        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"110px", gap: "20px"}}>
-            <HeaderLink page={Page.EARN}>Earn</HeaderLink>
-            <HeaderLink page={Page.FARM}>Farm</HeaderLink>
-            <HeaderLink page={Page.POSITIONS}>Positions</HeaderLink>
-        </Flex>
-        </Box>
-        
-        <Flex>
-          <Flex sx={{ justifyContent: "space-between" }}>
-            <Flex
+        }}
+      >
+        {pages.map((page) => (
+          <Link
+            className="no-underline text-xl text-gray-800 font-bold tracking-tighter hover:opacity-75 hover:text-gray-800 mx-2"
+            to={page.page}
+          >
+            {page.name}
+          </Link>
+        ))}
+      </Box>
+      <div className="m-4">
+        <ConnectWallet />
+      </div>
+    </nav>
+  );
+};
+
+{
+  /* 
+          
+          (Todo) Revisit dark mode after tailwind CSS refactor. 
+          https://tailwindcss.com/docs/dark-mode
+
+          <Flex
             sx={{
               alignItems: "center",
               backgroundColor: "secondaryBackground",
@@ -83,10 +74,5 @@ export const Header: React.FC = () => {
             }}
           >
             {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex>
-            <ConnectWallet />
-          </Flex>
-      </Flex>
-  </Flex>
-  );
-};
+          </Flex> */
+}
