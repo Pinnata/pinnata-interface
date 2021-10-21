@@ -9,15 +9,11 @@ interface Props {
   }
 
 export const FarmInfo: React.FC<Props> = (farm: Props) => {
-  const {name, wrapper, spell, tokens} = farm.props;
+  const {name, spell, tokens} = farm.props;
   return (
     <Flex sx={{ alignItems: "center", gap: "8px" }}>
         <PoolIcon tokens={tokens} />
         <Flex sx={{ flexDirection: "column", gap: "8px" }}>
-            {wrapper ? 
-            <Text>Yield Farming</Text> :
-            <Text>Liquidity Providing</Text>
-            }
             <Text>{spellMap.get(spell)} {name}</Text>
         </Flex>
     </Flex>

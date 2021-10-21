@@ -47,6 +47,7 @@ export const Add: React.FC = () => {
       lp: lp,
       apy: apy,
       tokens: (tokens.split(',').map((x) => getToken(x)!)),
+      rewards: [],
   }
   setPool(set);
   setPosition({

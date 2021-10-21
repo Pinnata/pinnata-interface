@@ -81,6 +81,16 @@ export const FARMS = [
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
       }),
     ],
+    rewards: [
+      new Token({
+        address: getAddress("0x32FEC6761d6EC4a2DF5DCe36bf5854Ba0DA6D09b"),
+        name: "Mock1",
+        symbol: "MOCK1",
+        decimals: 18,
+        chainId: ChainId.Alfajores,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cSHIBA.png",
+      })
+    ],
   },
   {
     name: "CELO-cEUR",
@@ -106,6 +116,16 @@ export const FARMS = [
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
       }),
     ],
+    rewards: [
+      new Token({
+        address: getAddress("0x32FEC6761d6EC4a2DF5DCe36bf5854Ba0DA6D09b"),
+        name: "Mock1",
+        symbol: "MOCK1",
+        decimals: 18,
+        chainId: ChainId.Alfajores,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cSHIBA.png",
+      })
+    ],
   },
   {
     name: "cUSD-cEUR",
@@ -130,6 +150,16 @@ export const FARMS = [
         chainId: ChainId.Alfajores,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
       }),
+    ],
+    rewards: [
+      new Token({
+        address: getAddress("0x32FEC6761d6EC4a2DF5DCe36bf5854Ba0DA6D09b"),
+        name: "Mock1",
+        symbol: "MOCK1",
+        decimals: 18,
+        chainId: ChainId.Alfajores,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cSHIBA.png",
+      })
     ],
   },
 ];
