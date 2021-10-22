@@ -84,7 +84,7 @@ export const Withdraw: React.FC = () => {
             });
           toastTx(tx.transactionHash);
           refetchSafeBox();
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setWithdrawLoading(false);

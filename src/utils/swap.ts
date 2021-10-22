@@ -14,7 +14,7 @@ export const optimalDeposit = (amtA: BN, amtB: BN, resA: BN, resB: BN) : ret => 
     }
 }
 
-function sqrt(value: BN) {
+function sqrt(value: any) {
     let o = toBN(0);
     let x = value;
     let limit = 100;
@@ -25,7 +25,7 @@ function sqrt(value: BN) {
     return x
 }
 
-const optimalDepositHelp = (amtA: BN, amtB: BN, resA: BN, resB: BN) => {
+const optimalDepositHelp = (amtA: any, amtB: any, resA: any, resB: any) => {
     const a = toBN(997); 
     const b = toBN(1997).mul(resA);
     const _c = (amtA.mul(resB)).sub(amtB.mul(resA));

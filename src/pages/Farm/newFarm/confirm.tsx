@@ -77,7 +77,7 @@ export const Confirm: React.FC = () => {
           toastTx(tx.transactionHash);
           refetchERC();
           refetchTokenStates();
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setApproveLoading(false);
@@ -129,7 +129,7 @@ export const Confirm: React.FC = () => {
             });
           toastTx(tx.transactionHash);
           refetchERC();
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setConfirmLoading(false);

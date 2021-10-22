@@ -36,7 +36,7 @@ import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 
 
 interface newBorrowProps {
-  tokenBorrow: BN[] | null;
+  tokenBorrow: any[] | null;
   supplyValue: number | null;
   borrowValue: number | null;
   debtRatio: number | null;
@@ -96,9 +96,9 @@ export const Borrow: React.FC = () => {
           1: string;
           2: string;
         }[] = [];
-        const prices: BN[] = [];
-        const availableBorrows: BN[] = []
-        const borrows: BN[] = [];
+        const prices: any[] = [];
+        const availableBorrows: any[] = []
+        const borrows: any[] = [];
         const oracle = await bank.methods.oracle().call();
         const proxyOracle = (new kit.web3.eth.Contract(
           PROXYORACLE_ABI.abi as AbiItem[],

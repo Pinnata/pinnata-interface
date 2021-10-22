@@ -78,7 +78,7 @@ export const Confirm: React.FC = () => {
               gasPrice: DEFAULT_GAS_PRICE,
             });
           toastTx(tx.transactionHash);
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setConfirmLoading(false);

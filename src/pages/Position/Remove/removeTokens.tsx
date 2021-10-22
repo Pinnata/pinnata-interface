@@ -22,10 +22,10 @@ import { useHistory } from "react-router-dom"
 import { CaretLeft } from "phosphor-react";
 
 interface removeProps {
-  existingBalance: BN[] | null; 
-  remove: BN[] | null;
-  prevPosition: BN[] | null;
-  removeLp: BN | null;
+  existingBalance: any[] | null; 
+  remove: any[] | null;
+  prevPosition: any[] | null;
+  removeLp: any | null;
 }
 
 const emptyRemoveState : removeProps = {
@@ -69,7 +69,7 @@ export const RemoveTokens: React.FC = () => {
           reserve0 = toBN(getReserves.reserve1);
           reserve1 = toBN(getReserves.reserve0);
         }
-        return [reserve0, reserve1].map((reserve) => reserve.mul(balance).div(totalSupply))
+        return [reserve0, reserve1].map((reserve) => (reserve.mul(balance).div(totalSupply) as unknown) as any)
     } catch (error) {
         console.log(error)
     }

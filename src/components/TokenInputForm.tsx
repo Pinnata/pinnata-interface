@@ -8,14 +8,14 @@ import {
 import { humanFriendlyWei } from "src/utils/eth";
 import { fromWei } from "web3-utils";
 import { TokenInfo } from "src/components/TokenInfo";
-import BN from 'bn.js';
+// import BN from 'bn.js';
 import { DahliaTokenInfo } from "./DahliaTokenInfo";
 
 interface Props {
   token: Token;
   amount: string;
   setAmount: any;
-  balance: BN | null;
+  balance: any | null;
   dahlia?: boolean;
 }
 
