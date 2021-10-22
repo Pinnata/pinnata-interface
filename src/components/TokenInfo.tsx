@@ -3,17 +3,20 @@ import { Token } from "src/utils/token";
 import { Text } from "theme-ui";
 import Lp from "src/images/LP.png";
 
-
 interface Props {
   token: Token;
 }
 
 export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
-    <Wrapper>
-      <img src={token.logoURL === 'lp' ? Lp : token.logoURL} alt='token_logo'/>
-      <Text>{token.symbol}</Text>
-    </Wrapper>
+    <div className="flex justify-center items-center">
+      <img
+        className="w-8 rounded-full"
+        src={token.logoURL === "lp" ? Lp : token.logoURL}
+        alt="token_logo"
+      />
+      <p className="ml-2 font-bold">{token.symbol}</p>
+    </div>
   );
 };
 

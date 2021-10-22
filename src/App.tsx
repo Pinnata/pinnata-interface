@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <main>
-      <Container sx={{ pt: 4, px: [4, "15%"] }}>
+      <Container>
         <Header />
         <Switch>
           <Route exact path="/">

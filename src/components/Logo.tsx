@@ -9,14 +9,14 @@ export const Logo: React.FC = () => {
   return (
     <Flex
       sx={{ cursor: "pointer", alignItems: "center", justifyContent: "center" }}
-      className="p-2"
+      className=""
       onClick={() => {
         history.push("/");
       }}
     >
       <div className="flex justify-content items-center hover:opacity-75">
-        <img src={Log} alt="Logo" />
-        <h1 className="ml-1 font-bold text-3xl tracking-tighter text-gray-800">
+        {/* Waiting for high-res <img src={Log} alt="Logo" /> */}
+        <h1 className="font-extrabold text-4xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-500">
           Dahlia
         </h1>
       </div>
