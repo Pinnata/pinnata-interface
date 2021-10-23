@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
   const location = useLocation();
   return (
     <nav className="text-center bg-gray-100 rounded-sm shadow-sm p-4">
-      <div className="max-w-3xl mx-auto md:flex justify-between items-center">
+      <div className="max-w-4xl mx-auto md:flex justify-between items-center">
         <Logo />
         {/* <Box
           sx={{
@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
         <div>
           {pages.map((page) => (
             <Link
-              className="no-underline text-xl text-gray-800 font-bold tracking-tighter hover:opacity-75 hover:text-gray-800 mx-2"
+              className="no-underline text-xl text-gray-800 font-bold tracking-tighter hover:opacity-75 hover:text-gray-800 mx-4"
               to={page.page}
             >
               {page.name}

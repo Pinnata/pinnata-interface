@@ -21,8 +21,8 @@ const App: React.FC = () => {
   });
 
   return (
-    <main>
-      <Container>
+    <main className="flex flex-col min-h-screen">
+      <Container className="flex-grow">
         <Header />
         <Switch>
           <Route exact path="/">

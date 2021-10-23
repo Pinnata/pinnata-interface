@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Flex } from "theme-ui";
-import Log from "src/images/logo2.png";
+import Log from "src/images/dahlia-black.png";
 
 export const Logo: React.FC = () => {
   const history = useHistory();
@@ -15,8 +15,10 @@ export const Logo: React.FC = () => {
       }}
     >
       <div className="flex justify-content items-center hover:opacity-75">
-        {/* Waiting for high-res <img src={Log} alt="Logo" /> */}
-        <h1 className="font-extrabold text-4xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-500">
+        <div className="w-10 h-10 mr-2">
+          <img className="w-full" src={Log} alt="Logo" />
+        </div>
+        <h1 className="uppercase font-extrabold text-4xl tracking-widest text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-800">
           Dahlia
         </h1>
       </div>

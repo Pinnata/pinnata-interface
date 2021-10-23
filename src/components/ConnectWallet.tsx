@@ -7,9 +7,8 @@ import { Wallet } from "phosphor-react";
 export const ConnectWallet: React.FC = () => {
   const { address, connect } = useContractKit();
   return (
-    <Card
-      sx={{ cursor: "pointer", height: "fit-content" }}
-      className="hover:opacity-75"
+    <div
+      className="hover:opacity-75 border p-2 cursor-pointer"
       onClick={async () => {
         try {
           await connect();
@@ -17,14 +16,13 @@ export const ConnectWallet: React.FC = () => {
           console.warn(e);
         }
       }}
-      px={3}
     >
-      <Flex sx={{ alignItems: "center" }}>
+      <div className="flex items-center">
         <Wallet size={28} />
         <p className="font-bold ml-2 tracking-tight">
           {address ? shortenAddress(address) : "Connect Wallet"}
         </p>
-      </Flex>
-    </Card>
+      </div>
+    </div>
   );
 };

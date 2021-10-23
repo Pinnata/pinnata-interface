@@ -11,7 +11,7 @@ export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
     <div className="flex justify-center items-center">
       <img
-        className="w-8 rounded-full"
+        className="w-8 rounded-full shadow-md"
         src={token.logoURL === "lp" ? Lp : token.logoURL}
         alt="token_logo"
       />

@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-100 mt-16 p-8">
+    <div className="bg-gray-100 p-8">
       <Flex sx={{ justifyContent: "center" }}>
         <Link
           target="_blank"
