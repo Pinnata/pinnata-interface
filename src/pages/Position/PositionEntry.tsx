@@ -134,7 +134,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
               gasPrice: DEFAULT_GAS_PRICE,
             });
           toastTx(tx.transactionHash);
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setConfirmLoading(false);
@@ -172,7 +172,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             gasPrice: DEFAULT_GAS_PRICE,
           });
         toastTx(tx.transactionHash);
-      } catch (e) {
+      } catch (e: any) {
         toast(e.message);
       } finally {
         setConfirmLoading(false);

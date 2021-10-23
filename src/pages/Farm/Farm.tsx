@@ -27,12 +27,13 @@ export const Farm = () => {
             <th><Text variant="bold">Pool APY</Text></th>
             <th><Text variant="bold">Borrow APY</Text></th>
             <th><Text variant="bold">Max Leverage</Text></th>
+            <th><Text variant="bold">Rewards</Text></th>
             <th />
           </tr>
         </thead>
         <tbody>
           {FARMS.map((farm) => (
-              <FarmEntry key={farm.name} name={farm.name} apy={farm.apy} wrapper={farm.wrapper} spell={farm.spell} tokens={farm.tokens} lp={farm.lp} />
+              <FarmEntry key={farm.name} name={farm.name} apy={farm.apy} wrapper={farm.wrapper} spell={farm.spell} tokens={farm.tokens} lp={farm.lp} rewards={farm.rewards} />
           ))}
         </tbody>
       </SimpleTable>

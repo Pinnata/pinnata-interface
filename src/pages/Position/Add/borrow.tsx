@@ -37,7 +37,7 @@ import { priceImpact } from "src/utils/swap";
 
 
 interface borrowProps {
-  tokenBorrow: BN[] | null;
+  tokenBorrow: any[] | null;
   supplyValue: number | null;
   borrowValue: number | null;
   debtRatio: number | null;
@@ -98,9 +98,9 @@ export const Borrow: React.FC = () => {
           1: string;
           2: string;
         }[] = [];
-        const prices: BN[] = [];
-        const availableBorrows: BN[] = [];
-        const borrowRates: BN[] = [];
+        const prices: any[] = [];
+        const availableBorrows: any[] = [];
+        const borrowRates: any[] = [];
         const oracle = await bank.methods.oracle().call();
         const proxyOracle = (new kit.web3.eth.Contract(
           PROXYORACLE_ABI.abi as AbiItem[],
@@ -161,7 +161,7 @@ export const Borrow: React.FC = () => {
 
         const positionDebts = await bank.methods.getPositionDebts(position.positionId!).call()
 
-        let prevBorrow: BN[] = []
+        let prevBorrow: any[] = []
 
         for (let i = 0; i < pool.tokens.length; i += 1) {
           const token = pool.tokens[i]!;

@@ -28,9 +28,9 @@ import { useHistory } from "react-router-dom"
 import { CaretLeft } from "phosphor-react";
 
 interface supplyProps {
-  tokenSupply: BN[] | null;
-  lpSupply: BN | null;
-  existingBalance: BN[] | null; 
+  tokenSupply: any[] | null;
+  lpSupply: any | null;
+  existingBalance: any[] | null; 
 }
 
 const emptyAddSupplyState : supplyProps = {
@@ -75,8 +75,8 @@ export const Supply: React.FC = () => {
   const call = React.useCallback(async () => {
     try {
         const totalSupply = toBN(await lp.methods.totalSupply().call());
-        let reserve0: BN;
-        let reserve1: BN ; 
+        let reserve0: any;
+        let reserve1: any; 
         const getReserves = await lp.methods.getReserves().call();
         const balance = toBN(position.collateralSize!); 
         if (getAddress(await lp.methods.token0().call()) === getAddress(pool.tokens[0]!.address)) {

@@ -21,8 +21,8 @@ import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
 
 interface supplyProps {
-  tokenSupply: BN[] | null;
-  lpSupply: BN | null;
+  tokenSupply: any[] | null;
+  lpSupply: any | null;
 }
 
 const emptyNewSupplyState : supplyProps = {

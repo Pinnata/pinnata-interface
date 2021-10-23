@@ -57,7 +57,7 @@ export const Supply: React.FC = () => {
             });
           toastTx(tx.transactionHash);
           refetchERC();
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setApproveLoading(false);
@@ -88,7 +88,7 @@ export const Supply: React.FC = () => {
             });
           toastTx(tx.transactionHash);
           refetchERC();
-        } catch (e) {
+        } catch (e: any) {
           toast(e.message);
         } finally {
           setSupplyLoading(false);

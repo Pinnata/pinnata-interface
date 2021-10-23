@@ -20,6 +20,7 @@ import { Flex, Text } from "theme-ui";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
+import { RewardsTokenInfo } from "src/components/RewardsTokenInfo";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
@@ -99,6 +100,13 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
         </Flex>
       </td>
       <td><Text>{String(maxLever).concat("x")}</Text></td>
+      <td>
+        <Flex sx={{ flexDirection: "column", alignItems: "center", gap: "6px"}}>
+          {props.rewards.map((tok) => (
+            <RewardsTokenInfo token={tok} />
+          ))}
+        </Flex>
+      </td>
       <td
         css={css`
           text-align: right;

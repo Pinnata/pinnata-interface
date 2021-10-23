@@ -30,7 +30,7 @@ import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 
 interface paybackProps {
-  payback: BN[] | null;
+  payback: any[] | null;
   debtRatio: number | null; 
   lever: number | null;
   apy: number | null;
@@ -76,8 +76,8 @@ export const Payback: React.FC = () => {
         1: string;
         2: string;
       }[] = [];
-      const prices: BN[] = [];
-      const borrowRates: BN[] = [];
+      const prices: any[] = [];
+      const borrowRates: any[] = [];
       const oracle = await bank.methods.oracle().call();
       const proxyOracle = (new kit.web3.eth.Contract(
         PROXYORACLE_ABI.abi as AbiItem[],
@@ -89,7 +89,7 @@ export const Payback: React.FC = () => {
         source,
       ) as unknown) as CoreOracle;
         const ret = await bank.methods.getPositionDebts(position.positionId!).call();
-        const debts: BN[] = [];
+        const debts: any[] = [];
         for (let i = 0; i < pool.tokens.length; i += 1) {
           const token = pool.tokens[i]!;
           const bankInfo =  await bank.methods.getBankInfo(token.address).call();
