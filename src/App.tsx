@@ -21,7 +21,7 @@ const App: React.FC = () => {
   });
 
   return (
-    <main className="flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full h-screen">
       <Container className="flex-grow">
         <Header />
         <Switch>

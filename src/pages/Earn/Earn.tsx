@@ -6,7 +6,7 @@ import { SimpleTable } from "src/components/SimpleTable";
 
 export const Earn = () => {
   return (
-    <div className="bg-gradient-to-br from-blue-100 to-green-100 w-full h-screen">
+    <div className="">
       <section className="max-w-screen-xl mx-auto">
         <div className="w-full py-6 text-center">
           <h1 className="uppercase tracking-widest font-bold text-4xl text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-800">
@@ -73,15 +73,6 @@ export const Earn = () => {
                       {COLLATERAL_TOKENS.map((token) => (
                         <EarnEntry key={token.address} token={token} />
                       ))}
-                      {/* <tr> */}
-
-                      {/* <td className="px-6 py-4 whitespace-nowrap">
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap"></td>
-                      <td className="px-6 py-4 whitespace-nowrap"></td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td> */}
-                      {/* </tr> */}
                     </tbody>
                   </table>
                 </div>

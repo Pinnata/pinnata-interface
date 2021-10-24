@@ -20,23 +20,20 @@ const pages = [
 export const Header: React.FC = () => {
   const location = useLocation();
   return (
-    <nav className="text-center bg-gray-100 rounded-sm shadow-sm p-4">
+    <nav className="text-center border rounded-sm p-4">
       <div className="max-w-4xl mx-auto md:flex justify-between items-center">
         <Logo />
-        {/* <Box
-          sx={{
-            display:
-              location.pathname.includes(Page.SUPPLY) ||
-              location.pathname.includes(Page.WITHDRAW) ||
-              location.pathname.includes(Page.ADD) ||
-              location.pathname.includes(Page.NEW) ||
-              location.pathname.includes(Page.REMOVE)
-                ? "none"
-                : "inherit",
-          }}
-          className="text-center"
-        > */}
-        <div>
+        <div
+          className={
+            location.pathname.includes(Page.SUPPLY) ||
+            location.pathname.includes(Page.WITHDRAW) ||
+            location.pathname.includes(Page.ADD) ||
+            location.pathname.includes(Page.NEW) ||
+            location.pathname.includes(Page.REMOVE)
+              ? "hidden"
+              : undefined
+          }
+        >
           {pages.map((page) => (
             <Link
               className="no-underline text-xl text-gray-800 font-bold tracking-tighter hover:opacity-75 hover:text-gray-800 mx-4"
