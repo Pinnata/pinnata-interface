@@ -31,12 +31,12 @@ export const Header: React.FC = () => {
             location.pathname.includes(Page.NEW) ||
             location.pathname.includes(Page.REMOVE)
               ? "hidden"
-              : undefined
+              : "bg-gray-700 rounded-md p-2"
           }
         >
           {pages.map((page) => (
             <Link
-              className="no-underline text-xl text-gray-800 font-bold tracking-tighter hover:opacity-75 hover:text-gray-800 mx-4"
+              className="no-underline text-xl text-gray-100 font-bold tracking-tighter hover:opacity-75 mx-4"
               to={page.page}
             >
               {page.name}

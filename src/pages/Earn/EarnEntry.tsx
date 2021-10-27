@@ -65,40 +65,71 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
   const [info] = useAsyncState(null, call);
 
   return (
-    <tr>
-      <td className="px-6 py-4 whitespace-nowrap">
+    <div className="bg-white my-6 mx-4 rounded-md">
+      <div className="border-b-2 p-2">
         <TokenInfo token={token} />
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center font-bold text-xl" >
-        <p>
+      </div>
+
+      <div className="p-4 border-b-2 text-center ">
+        <p className="text-gray-600 uppercase tracking-widest font-bold">APY</p>
+        <p className="text-gray-800 font-bold text-3xl">
+          {" "}
           {info
             ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%")
             : "--"}
         </p>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center font-bold text-xl">
-        <p>{info ? humanFriendlyWei(info.totalSupply) : "--"}</p>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center font-bold text-xl">
-        <p>{info ? humanFriendlyWei(info.totalBorrows) : "--"}</p>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center font-bold text-xl">
-        <p>
-          {info
-            ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat("%")
-            : "--"}
-        </p>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center font-bold text-xl">
-        <p>
-          {safeBox
-            ? humanFriendlyWei(safeBox.balance)
-                .concat(" d")
-                .concat(token.symbol)
-            : "--"}
-        </p>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center">
+      </div>
+
+      <div className="md:flex p-4 border-b-2 justify-center">
+        <div className="m-4 text-center">
+          <p className="text-gray-600 uppercase tracking-widest font-bold">
+            Total Supply
+          </p>
+          <p className="text-gray-900 font-bold text-2xl">
+            {" "}
+            {info ? humanFriendlyWei(info.totalSupply) : "--"}
+          </p>
+        </div>
+        <div className="m-4 text-center">
+          <p className="text-gray-600 uppercase tracking-widest font-bold">
+            Total Borrows
+          </p>
+          <p className="text-gray-900 font-bold text-2xl">
+            {" "}
+            {info ? humanFriendlyWei(info.totalBorrows) : "--"}
+          </p>
+        </div>
+      </div>
+
+      <div className="md:flex p-4 border-b-2 justify-center">
+        <div className="m-4 text-center">
+          <p className="text-gray-600 uppercase tracking-widest font-bold">
+            Utilization
+          </p>
+          <p className="text-gray-900 font-bold text-2xl">
+            {" "}
+            {info
+              ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat(
+                  "%"
+                )
+              : "--"}
+          </p>
+        </div>
+        <div className="m-4 text-center">
+          <p className="text-gray-600 uppercase tracking-widest font-bold">
+            Balance
+          </p>
+          <p className="text-gray-900 font-bold text-2xl">
+            {safeBox
+              ? humanFriendlyWei(safeBox.balance)
+                  .concat(" d")
+                  .concat(token.symbol)
+              : "--"}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex justify-center py-6">
         <button
           onClick={() => history.push(`earn/supply/${token.address}`)}
           className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
@@ -108,39 +139,11 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
 
         <button
           onClick={() => history.push(`earn/withdraw/${token.address}`)}
-          className="ml-2 bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+          className="ml-4 bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
         >
           Withdraw &#x203A;
         </button>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
-
-// <Row>
-//     <td>
-//       <TokenInfo token={token} />
-//     </td>
-//     <td><Text>{info ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%") : "--"}</Text></td>
-//     <td><Text>{info ? humanFriendlyWei(info.totalSupply) : "--"}</Text></td>
-//     <td><Text>{info ? humanFriendlyWei(info.totalBorrows) : "--"}</Text></td>
-//     <td><Text>{info ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat("%") : "--"}</Text></td>
-//     <td><Text>{safeBox ? humanFriendlyWei(safeBox.balance).concat(" d").concat(token.symbol) : "--"}</Text></td>
-//     <td
-//         css={css`
-//           text-align: right;
-//         `}
-//       >
-//         <div
-//           css={css`
-//             display: flex;
-//             justify-content: flex-end;
-//           `}
-//         >
-//           <Flex sx={{gap: "6px"}}>
-//             <Button onClick={() => history.push(`earn/supply/${token.address}`)}>Supply</Button>
-//             <Button onClick={() => history.push(`earn/withdraw/${token.address}`)}>Withdraw</Button>
-//           </Flex>
-//         </div>
-//       </td>
-//   </Row>
