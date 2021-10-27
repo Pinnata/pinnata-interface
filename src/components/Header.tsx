@@ -21,8 +21,10 @@ export const Header: React.FC = () => {
   const location = useLocation();
   return (
     <nav className="text-center border rounded-sm p-4">
-      <div className="max-w-4xl mx-auto md:flex justify-between items-center">
-        <Logo />
+      <div className="max-w-4xl mx-auto md:flex justify-center w-full items-center">
+        <div className="md:flex justify-start w-full">
+          <Logo />
+        </div>
         <div
           className={
             location.pathname.includes(Page.SUPPLY) ||
@@ -36,15 +38,15 @@ export const Header: React.FC = () => {
         >
           {pages.map((page) => (
             <Link
-              className="no-underline text-xl text-gray-100 font-bold tracking-tighter hover:opacity-75 mx-4"
+              className="text-white mx-2 p-2 text-base font-bold tracking-tight hover:opacity-75 hover:text-white"
               to={page.page}
+              style={{ textDecoration: "none" }}
             >
               {page.name}
             </Link>
           ))}
         </div>
-        {/* </Box> */}
-        <div className="my-4 md:m-0">
+        <div className="my-4 md:m-0 md:flex justify-end w-full">
           <ConnectWallet />
         </div>
       </div>

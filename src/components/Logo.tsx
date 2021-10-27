@@ -8,7 +8,7 @@ export const Logo: React.FC = () => {
 
   return (
     <div
-      className="flex items-center md:-mx-5 justify-center md:my-0 my-4"
+      className="flex items-center md:-mx-5 justify-center md:my-0 my-4 cursor-pointer"
       onClick={() => {
         history.push("/");
       }}
