@@ -1,8 +1,6 @@
 import { COLLATERAL_TOKENS } from "src/config";
 import { EarnEntry } from "src/pages/Earn/EarnEntry";
-import { css } from "@emotion/react";
-import { Flex, Text, Card } from "theme-ui";
-import { SimpleTable } from "src/components/SimpleTable";
+
 
 export const Earn = () => {
   return (

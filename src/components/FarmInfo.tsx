@@ -1,21 +1,21 @@
 import { PoolIcon } from "src/components/PoolIcon";
 import { Flex, Text } from "theme-ui";
-import { spellMap } from "src/config"
-import {poolProps} from "src/pages/Farm/newFarm/NewFarm";
-
+import { spellMap } from "src/config";
+import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 
 interface Props {
-   props: poolProps
-  }
+  props: poolProps;
+}
 
 export const FarmInfo: React.FC<Props> = (farm: Props) => {
-  const {name, spell, tokens} = farm.props;
+  const { name, spell, tokens } = farm.props;
   return (
-    <Flex sx={{ alignItems: "center", gap: "8px" }}>
-        <PoolIcon tokens={tokens} />
-        <Flex sx={{ flexDirection: "column", gap: "8px" }}>
-            <Text>{spellMap.get(spell)} {name}</Text>
-        </Flex>
-    </Flex>
+    <div className="flex items-center flex-col justify-center p-2">
+      <PoolIcon tokens={tokens} />
+
+      <p className="ml-2 font-bold tracking-tighter text-3xl text-gray-800 text-center">
+        {spellMap.get(spell)} {name}
+      </p>
+    </div>
   );
 };

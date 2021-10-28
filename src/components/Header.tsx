@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
         >
           {pages.map((page) => (
             <Link
-              className="text-white mx-2 p-2 text-base font-bold tracking-tight hover:opacity-75 hover:text-white"
+              className="text-white mx-2 p-2 text-base font-bold tracking-tight hover:opacity-75 hover:text-white shadow-md"
               to={page.page}
               style={{ textDecoration: "none" }}
             >
@@ -54,29 +54,3 @@ export const Header: React.FC = () => {
   );
 };
 
-{
-  /* 
-          
-          (Todo) Revisit dark mode after tailwind CSS refactor. 
-          https://tailwindcss.com/docs/dark-mode
-
-          <Flex
-            sx={{
-              alignItems: "center",
-              backgroundColor: "secondaryBackground",
-              mr: 4,
-              px: 2,
-              cursor: "pointer",
-              borderRadius: "6px",
-            }}
-            onClick={() => {
-              if (colorMode === "light") {
-                setColorMode("dark");
-              } else {
-                setColorMode("light");
-              }
-            }}
-          >
-            {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex> */
-}

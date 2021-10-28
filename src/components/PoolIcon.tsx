@@ -8,25 +8,15 @@ interface Props {
 
 export const PoolIcon: React.FC<Props> = ({ tokens }: Props) => {
   return (
-    <Wrapper>
+    <div className="flex">
       {tokens.map((tok) => (
         <img
+          className="w-10 rounded-full shadow-md mb-2 -ml-2"
           key={tok.address}
           src={tok.logoURL}
           alt={`Icon of token ${tok.name} (${tok.symbol})`}
         />
       ))}
-    </Wrapper>
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  gap: 0;
-  align-items: center;
-  height: 24px;
-  img {
-    height: 100%;
-    border-radius: 12px;
-  }
-`;

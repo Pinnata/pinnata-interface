@@ -65,7 +65,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
   const [info] = useAsyncState(null, call);
 
   return (
-    <div className="bg-white my-6 mx-4 rounded-md">
+    <div className="bg-white my-6 mx-4 rounded-lg shadow-md">
       <div className="border-b-2 p-2">
         <TokenInfo token={token} />
       </div>

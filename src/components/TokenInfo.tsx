@@ -19,14 +19,3 @@ export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
     </div>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-  }
-`;
