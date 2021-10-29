@@ -65,7 +65,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
   const [info] = useAsyncState(null, call);
 
   return (
-    <div className="bg-white my-6 mx-4 rounded-lg shadow-md">
+    <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
       <div className="border-b-2 p-2">
         <TokenInfo token={token} />
       </div>
@@ -132,14 +132,14 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
       <div className="flex justify-center py-6">
         <button
           onClick={() => history.push(`earn/supply/${token.address}`)}
-          className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+          className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
         >
           Supply &#x203A;
         </button>
 
         <button
           onClick={() => history.push(`earn/withdraw/${token.address}`)}
-          className="ml-4 bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+          className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
         >
           Withdraw &#x203A;
         </button>

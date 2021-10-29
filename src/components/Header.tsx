@@ -20,8 +20,8 @@ const pages = [
 export const Header: React.FC = () => {
   const location = useLocation();
   return (
-    <nav className="text-center border rounded-sm p-4">
-      <div className="max-w-4xl mx-auto md:flex justify-center w-full items-center">
+    <nav className="text-center rounded-sm py-6 px-2">
+      <div className="max-w-5xl mx-auto md:flex justify-center w-full items-center">
         <div className="md:flex justify-start w-full">
           <Logo />
         </div>
@@ -33,14 +33,16 @@ export const Header: React.FC = () => {
             location.pathname.includes(Page.NEW) ||
             location.pathname.includes(Page.REMOVE)
               ? "hidden"
-              : "bg-gray-700 rounded-md p-2"
+              : "bg-gradient-to-br from-blue-700 to-green-800 rounded-md p-3 flex w-full md:justify-between justify-center text-center"
           }
         >
           {pages.map((page) => (
             <Link
-              className="text-white mx-2 p-2 text-base font-bold tracking-tight hover:opacity-75 hover:text-white shadow-md"
+              className={`text-white text-xl tracking-tight hover:opacity-75 hover:text-white visited:text-white mx-5 ${
+                location.pathname.includes(page.page) && "font-bold"
+              }`}
               to={page.page}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", color: "white" }}
             >
               {page.name}
             </Link>
@@ -53,4 +55,3 @@ export const Header: React.FC = () => {
     </nav>
   );
 };
-

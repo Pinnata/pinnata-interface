@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/Dahlia-Finance"
+          className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
         >
@@ -30,6 +31,7 @@ export const Footer: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           href="https://twitter.com/dahliafinance"
+          className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
         >
@@ -39,6 +41,7 @@ export const Footer: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           href="https://discord.gg/C98ehssB"
+          className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
         >
@@ -47,6 +50,7 @@ export const Footer: React.FC = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:opacity-75"
           href="https://dahlia-finance.gitbook.io/dahlia-finance/"
           style={{ textDecoration: "none" }}
         >

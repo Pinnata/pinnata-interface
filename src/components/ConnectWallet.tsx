@@ -8,7 +8,7 @@ export const ConnectWallet: React.FC = () => {
   const { address, connect } = useContractKit();
   return (
     <div
-      className="hover:opacity-75 border p-2 cursor-pointer bg-gray-700 rounded-md"
+      className="hover:opacity-75 border p-2 cursor-pointer bg-gradient-to-br from-blue-700 to-green-800 rounded-md"
       onClick={async () => {
         try {
           await connect();
