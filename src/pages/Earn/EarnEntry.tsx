@@ -11,10 +11,7 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
 import { humanFriendlyWei } from "src/utils/eth";
 import { useSafeBox } from "src/hooks/useSafeBox";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import { TokenInfo } from "src/components/TokenInfo";
-import { Button, Flex, Text } from "theme-ui";
 import { useHistory } from "react-router-dom";
 
 interface Props {

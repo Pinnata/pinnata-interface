@@ -1,5 +1,3 @@
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { AbiItem, toBN, fromWei } from "web3-utils";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
@@ -10,24 +8,19 @@ import { Bank, DEFAULT_GAS_PRICE } from "src/config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
-import { Flex, Button } from "theme-ui";
-import { poolProps, poolState } from "src/pages/Farm/newFarm/NewFarm";
+import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
 import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
 import { MaxUint256 } from "@ethersproject/constants";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import { Spinner, Text } from "theme-ui";
 import { CoreOracle } from "src/generated/CoreOracle";
 import COREORACLE_ABI from "src/abis/dahlia_contracts/CoreOracle.json";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
-import { IERC20Wrapper } from "src/generated/IERC20Wrapper";
-import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
-import BN from "bn.js";
 
 interface Props {
   pool: poolProps;
@@ -151,7 +144,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Borrow Value
             </p>
-            <p className="text-gray-900 font-bold text-2xl">
+            <p className="text-gray-900 font-bold text-2xl tracking-tight">
               {" "}
               {info ? humanFriendlyNumber(info.debtValue) : "--"} Celo
             </p>
@@ -160,7 +153,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Total Value
             </p>
-            <p className="text-gray-900 font-bold text-2xl">
+            <p className="text-gray-900 font-bold text-2xl tracking-tight">
               {" "}
               {info ? humanFriendlyNumber(info.totalValue) : "--"} Celo
             </p>
@@ -171,7 +164,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Debt Ratio
             </p>
-            <p className="text-gray-900 font-bold text-2xl">
+            <p className="text-gray-900 font-bold text-2xl tracking-tight">
               {" "}
               {info
                 ? humanFriendlyNumber(info.debtRatio * 100).concat("%")
@@ -182,7 +175,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Position APY
             </p>
-            <p className="text-gray-900 font-bold text-2xl">
+            <p className="text-gray-900 font-bold text-2xl tracking-tight">
               {" "}
               {info ? humanFriendlyNumber(apy * 100).concat("%") : "--"}
             </p>

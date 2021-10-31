@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React from "react";
 import { Token } from "src/utils/token";
 

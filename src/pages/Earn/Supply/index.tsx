@@ -13,7 +13,7 @@ import { SafeBox } from "src/generated/SafeBox";
 import { useERC } from "src/hooks/useERC";
 import { getAddress } from "ethers/lib/utils";
 import { getToken } from "src/utils/token";
-import { Button, Card, Flex, Heading, Spinner, Text } from "theme-ui";
+import { Button, Flex, Spinner } from "theme-ui";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
@@ -112,9 +112,12 @@ export const Supply: React.FC = () => {
 
   return (
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p  onClick={() => {
-            history.goBack();
-          }} className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold">
+      <p
+        onClick={() => {
+          history.goBack();
+        }}
+        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+      >
         {" "}
         <CaretLeft size={20} />
         Back

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Box, Flex } from "theme-ui";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
 import { ConnectWallet } from "src/components/ConnectWallet";
@@ -33,7 +32,7 @@ export const Header: React.FC = () => {
             location.pathname.includes(Page.NEW) ||
             location.pathname.includes(Page.REMOVE)
               ? "hidden"
-              : "bg-gradient-to-br from-blue-700 to-green-800 rounded-md p-3 flex w-full md:justify-between justify-center text-center"
+              : "bg-gradient-to-br from-blue-700 to-green-800 rounded-md p-3 flex w-full md:justify-between justify-center text-centerr"
           }
         >
           {pages.map((page) => (

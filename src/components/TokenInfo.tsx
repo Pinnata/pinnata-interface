@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
 import { Token } from "src/utils/token";
-import { Text } from "theme-ui";
 import Lp from "src/images/LP.png";
 
 interface Props {

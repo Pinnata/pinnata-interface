@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Flex } from "theme-ui";
 import Log from "src/images/dahlia-black.png";
 
 export const Logo: React.FC = () => {

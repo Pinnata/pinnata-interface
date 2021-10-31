@@ -1,7 +1,4 @@
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import { Button } from "theme-ui";
 import { useHistory } from "react-router-dom";
 import { AbiItem, toBN, fromWei } from "web3-utils";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
@@ -10,17 +7,15 @@ import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank, Alfajores } from "src/config";
+import { Bank } from "src/config";
 import React from "react";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
 import { humanFriendlyWei } from "src/utils/eth";
 import { FarmInfo } from "src/components/FarmInfo";
-import { Flex, Text } from "theme-ui";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
-import { RewardsTokenInfo } from "src/components/RewardsTokenInfo";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
   const { kit } = useContractKit();

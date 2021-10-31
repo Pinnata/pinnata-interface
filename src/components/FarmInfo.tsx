@@ -1,5 +1,4 @@
 import { PoolIcon } from "src/components/PoolIcon";
-import { Flex, Text } from "theme-ui";
 import { spellMap } from "src/config";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 

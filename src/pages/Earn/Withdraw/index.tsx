@@ -1,7 +1,7 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
-import { DEFAULT_GAS_PRICE, safeBoxMap, Bank, Alfajores } from "src/config";
+import { DEFAULT_GAS_PRICE, safeBoxMap, Bank } from "src/config";
 import { AbiItem, toBN, toWei, fromWei } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
@@ -16,7 +16,7 @@ import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getToken } from "src/utils/token";
 import { CaretLeft } from "phosphor-react";
-import { Button, Card, Flex, Heading, Spinner, Text } from "theme-ui";
+import { Button, Flex, Spinner } from "theme-ui";
 import { useHistory } from "react-router-dom";
 import { BoxTokenAmountInfo } from "src/components/BoxTokenAmountInfo";
 import { TokenInputForm } from "src/components/TokenInputForm";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Flex, Heading, Text, Spinner } from "theme-ui";
+import { Button, Flex, Spinner } from "theme-ui";
 import { DEFAULT_GAS_PRICE } from "src/config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";

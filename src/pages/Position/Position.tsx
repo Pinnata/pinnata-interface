@@ -69,17 +69,18 @@ export const Position = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [kit.web3.eth.Contract, address]);
+  }, [bank.methods, address, kit.web3.eth.Contract]);
 
   const [info] = useAsyncState(null, call);
-  return info ? (
-    <div className="">
-      <section className="max-w-screen-xl mx-auto">
-        <div className="w-full text-center md:pb-0 pb-2 pt-2">
-          <h2 className="tracking-tightest font-bold text-gray-700 text-5xl my-6">
-            Manage your positions with ease.
-          </h2>
-        </div>
+  return (
+    <section className="max-w-screen-xl mx-auto">
+      <div className="w-full text-center md:pb-0 pb-2 pt-2">
+        <h2 className="tracking-tightest font-bold text-gray-700 text-5xl my-2">
+          Manage your positions with ease.
+        </h2>
+      </div>
+
+      {info ? (
         <section className="md:flex md:m-4 md:justify-center w-full md:flex-wrap">
           {info.map((x) => (
             <PositionEntry
@@ -92,54 +93,11 @@ export const Position = () => {
             />
           ))}
         </section>
-      </section>
-    </div>
-  ) : (
-    <div className="flex justify-center items-center h-64">
-      <Spinner />
-    </div>
+      ) : (
+        <div className="flex justify-center items-center h-64">
+          <Spinner />
+        </div>
+      )}
+    </section>
   );
 };
-
-// <Flex sx={{flexDirection: "column", alignItems: "center", width: "100%"}}>
-//     <Flex sx={{gap: 15, flexDirection: "column", alignItems: "center", mb: 15}}>
-//         <Text color="text" variant="title">POSITIONS</Text>
-//         <Text color="text" variant="description">Manage your positions with ease.</Text>
-//       </Flex>
-//     <Card sx={{ width: "100%", maxWidth: "1200px", mt: "16px" }} py={4} px={3}>
-//       {info ?
-//     <SimpleTable>
-//           <thead>
-//             <tr>
-//               <th
-//                 css={css`
-//                   text-align: left !important;
-//                 `}
-//               >
-//                 <Text variant="bold">Pool</Text>
-//               </th>
-//               <th><Text variant="bold">Borrow Value</Text></th>
-//               <th><Text variant="bold">Total Value</Text></th>
-//               <th><Text variant="bold">Debt Ratio</Text></th>
-//               <th><Text variant="bold">Position APY</Text></th>
-//               <th />
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {
-//               info.map((x) =>
-//               <PositionEntry
-//                 key={x.positionId}
-//                 collId={x.collId}
-//                 collateralSize={x.collateralSize}
-//                 positionId={x.positionId}
-//                 pool={x.farm!}
-//                 collToken={x.collToken}
-//               />
-//             )}
-//           </tbody>
-//         </SimpleTable>
-//       :
-//       <Flex sx={{justifyContent: "center", alignItems: "center"}}><Spinner /></Flex>}
-//     </Card>
-//   </Flex>

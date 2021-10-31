@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Flex, Heading, Spinner, Text } from "theme-ui";
+import { Button, Flex, Spinner } from "theme-ui";
 import { useERC } from "src/hooks/useERC";
 import { useERCmulti } from "src/hooks/useERCmulti";
 import { TokenInputForm } from "src/components/TokenInputForm";
@@ -9,11 +9,9 @@ import {
   farmPage,
   poolState,
 } from "src/pages/Farm/newFarm/NewFarm";
-import { BlockText } from "src/components/BlockText";
 import { Token } from "src/utils/token";
 import { toWei, toBN } from "web3-utils";
 import { lpToken } from "src/config";
-import BN from "bn.js";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
 

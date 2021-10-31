@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Flex, Heading, Text } from "theme-ui";
+import { Button, Flex } from "theme-ui";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { atom, useSetRecoilState, useRecoilState } from "recoil";

@@ -29,6 +29,6 @@ export const useERCmulti = (tokens: Token[]) => {
           arr.push({allowance, balance});
       }
       return arr;
-  }, [kit, userAddress, tokens]);
+  }, [tokens, userAddress, kit.web3.eth.Contract, network.chainId]);
   return useAsyncState(null, call);
 };

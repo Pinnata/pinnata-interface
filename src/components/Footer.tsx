@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Link } from "theme-ui";
+import {  Flex, Link } from "theme-ui";
 import { GithubLogo, TwitterLogo, DiscordLogo, BookOpen } from "phosphor-react";
 import { useLocation } from "react-router-dom";
 

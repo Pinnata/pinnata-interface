@@ -1,6 +1,5 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
 import React from "react";
-import { Card, Text, Flex } from "theme-ui";
 import { shortenAddress } from "src/utils/address";
 import { Wallet } from "phosphor-react";
 
