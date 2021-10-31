@@ -21,9 +21,9 @@ interface Props {
 
 export const TokenInputForm: React.FC<Props> = ({ token, amount, setAmount, balance, dahlia }: Props) => {
   return (
-    <Flex sx={{ alignItems: "center" }}>
+    <Flex sx={{ alignItems: "center" }} mt={2}>
     <Box sx={{ width: "100%" }} mr={2}>
-      <Flex sx={{ justifyContent: "flex-end", mb: 1 }}>
+      <Flex sx={{ justifyContent: "flex-end" }}>
         <Text
           sx={{ color: "primaryText", cursor: "pointer" }}
           variant="form"
@@ -45,7 +45,7 @@ export const TokenInputForm: React.FC<Props> = ({ token, amount, setAmount, bala
             setAmount(e.target.value);
           }}
           color="text"
-          mr={2}
+          mr={6}
         />
         { dahlia ? <DahliaTokenInfo token={token} /> 
         :

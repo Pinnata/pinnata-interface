@@ -13,7 +13,7 @@ export const FarmInfo: React.FC<Props> = (farm: Props) => {
     <div className="flex items-center flex-col justify-center p-2">
       <PoolIcon tokens={tokens} />
 
-      <p className="ml-2 font-bold tracking-tighter text-3xl text-gray-800 text-center">
+      <p className="ml-2 font-bold tracking-tighter text-xl text-gray-800 text-center">
         {spellMap.get(spell)} {name}
       </p>
     </div>
