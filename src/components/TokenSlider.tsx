@@ -27,7 +27,7 @@ export const TokenSlider: React.FC<Props> = ({
           <Slider
             progress
             defaultValue={start}
-            style={{ width: "100%" }}
+            style={{ width: "80%" }}
             step={0.001}
             max={Number(max)}
             onChange={(value) => setAmount(String(value))}

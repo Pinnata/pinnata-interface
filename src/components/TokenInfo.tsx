@@ -13,7 +13,7 @@ export const TokenInfo: React.FC<Props> = ({ token }: Props) => {
         src={token.logoURL === "lp" ? Lp : token.logoURL}
         alt="token_logo"
       />
-      <p className="ml-2 font-bold tracking-tighter text-3xl text-gray-800">{token.symbol}</p>
+      <p className="ml-2 font-bold tracking-tighter text-2xl text-gray-800">{token.symbol}</p>
     </div>
   );
 };

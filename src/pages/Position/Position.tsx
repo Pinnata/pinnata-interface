@@ -80,7 +80,7 @@ export const Position = () => {
         </h2>
       </div>
 
-      {info ? (
+      {info && info.length > 0 ? (
         <section className="md:flex md:m-4 md:justify-center w-full md:flex-wrap">
           {info.map((x) => (
             <PositionEntry
@@ -93,6 +93,12 @@ export const Position = () => {
             />
           ))}
         </section>
+      ) : info && info.length === 0 ? (
+        <div className="bg-gray-100 rounded-sm p-4 flex justify-center items-center h-24 w-full mt-6">
+          <p className="font-bold tracking-tight text-3xl">
+            You have no open positions at this time.
+          </p>
+        </div>
       ) : (
         <div className="flex justify-center items-center h-64">
           <Spinner />

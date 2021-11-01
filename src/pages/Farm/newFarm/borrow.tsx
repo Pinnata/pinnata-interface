@@ -324,7 +324,7 @@ export const Borrow: React.FC = () => {
         Farm
       </h1>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <BlockText variant="primary">I'm Supplying</BlockText>
+        <p className="text-xl font-bold tracking-tight text-gray-800">I'm Supplying:</p>
         <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
           {pool.tokens.map((tok, index) => (
             <Flex
@@ -361,7 +361,7 @@ export const Borrow: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>
-        <BlockText variant="primary">Borrows</BlockText>
+        <p className="text-xl font-bold tracking-tight text-gray-800">Borrows</p>
       </Flex>
       <BlockText mb={2}>
         {"Est. Debt Ratio: "

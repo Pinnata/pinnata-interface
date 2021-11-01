@@ -56,7 +56,8 @@ export const Supply: React.FC = () => {
   const [lpAmount, setLPAmount] = React.useState("0");
 
   const continueButton = (
-    <Button
+    <button
+      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
       onClick={() => {
         setSupply({
           tokenSupply: amounts.map((x) => toBN(toWei(x))),
@@ -66,7 +67,7 @@ export const Supply: React.FC = () => {
       }}
     >
       Continue
-    </Button>
+    </button>
   );
 
   const invalid = <Button disabled>Enter a valid amount</Button>;
@@ -112,11 +113,11 @@ export const Supply: React.FC = () => {
         Back
       </p>
 
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-4">
+      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-6">
         Farm
       </h1>
 
-      <p className="text-xl font-bold text-center -mb-4">Supply</p>
+      <p className="text-xl font-bold text-center -mb-4 text-gray-800 mt-2">Supply</p>
       {pool.tokens.map((tok, index) => (
         <TokenInputForm
           key={tok.address}
@@ -132,7 +133,7 @@ export const Supply: React.FC = () => {
           }
         />
       ))}
-      <p className="text-xl font-bold text-center mt-4 -mb-4">
+      <p className="text-xl font-bold text-center mt-4 -mb-4 text-gray-800">
         Supply LP Token
       </p>
       <TokenInputForm
@@ -147,31 +148,3 @@ export const Supply: React.FC = () => {
     </div>
   );
 };
-
-{
-  /* <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold">
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
-
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center">
-        Supply
-      </h1> */
-}
-
-//       <div className="flex flex-col items-center justify-center">
-//         <TokenInputForm
-//           key={token.address}
-//           token={token}
-//           amount={amount}
-//           setAmount={setAmount}
-//           balance={erc ? erc.balance! : null}
-//         />
-//       </div>
-
-//       <Flex sx={{ justifyContent: "center", mt: 4, mb: 4 }}>
-//         {loading ? <Spinner /> : button}
-//       </Flex>
-//     </div>

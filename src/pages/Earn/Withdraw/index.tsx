@@ -62,7 +62,8 @@ export const Withdraw: React.FC = () => {
   const exchangeRate = info ? Number(fromWei(info.exchange)) : 1;
 
   const withdrawButton = (
-    <Button
+    <button
+      className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -87,7 +88,7 @@ export const Withdraw: React.FC = () => {
       }}
     >
       Withdraw
-    </Button>
+    </button>
   );
 
   const loading = withdrawLoading || buttonLoading;
@@ -107,9 +108,12 @@ export const Withdraw: React.FC = () => {
 
   return (
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p onClick={() => {
+      <p
+        onClick={() => {
           history.goBack();
-        }} className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold">
+        }}
+        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+      >
         {" "}
         <CaretLeft size={20} />
         Back
@@ -136,7 +140,7 @@ export const Withdraw: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <BlockText variant="primary">You will receive</BlockText>
+        <BlockText>You will receive</BlockText>
         <BoxTokenAmountInfo
           token={token}
           amount={String(Number(amount) * exchangeRate)}

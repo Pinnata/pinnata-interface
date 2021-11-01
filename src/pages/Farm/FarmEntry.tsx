@@ -13,6 +13,7 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
 import { humanFriendlyWei } from "src/utils/eth";
 import { FarmInfo } from "src/components/FarmInfo";
+import { RewardsTokenInfo } from "src/components/RewardsTokenInfo";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
@@ -150,7 +151,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
 
         <div className="md:flex p-4 border-b-2 justify-center">
           <div className="m-4 text-center">
-            <p className="text-gray-600 uppercase tracking-widest font-bold">
+            <p className="text-gray-600 text-xs uppercase tracking-widest font-bold">
               Borrow APY
             </p>
             <p className="text-gray-900 font-bold text-2xl">
@@ -168,7 +169,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
             </p>
           </div>
           <div className="m-4 text-center">
-            <p className="text-gray-600 uppercase tracking-widest font-bold">
+            <p className="text-gray-600 text-xs uppercase tracking-widest font-bold">
               Max Leverage
             </p>
             <p className="text-gray-900 font-bold text-2xl">
@@ -176,6 +177,17 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
               {String(maxLever).concat("x")}
             </p>
           </div>
+        </div>
+
+        <div className="m-4 text-center">
+          <p className="text-gray-600 text-xs uppercase tracking-widest font-bold">
+            Rewards
+          </p>
+          <p className="text-gray-900 font-bold text-2xl">
+            {props.rewards.map((tok) => (
+              <RewardsTokenInfo token={tok} />
+            ))}
+          </p>
         </div>
 
         <div className="flex justify-center py-6">
@@ -187,7 +199,6 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
           </button>
         </div>
       </div>
-     
     </div>
   );
 };
