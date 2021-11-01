@@ -65,7 +65,8 @@ export const Supply: React.FC = () => {
   );
 
   const supplyButton = (
-    <button className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+    <button
+      className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet

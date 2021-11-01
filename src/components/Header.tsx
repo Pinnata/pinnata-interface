@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
         >
           {pages.map((page) => (
             <Link
-            key={page.page}
+              key={page.page}
               className={`text-white text-xl tracking-tight hover:opacity-75 hover:text-white visited:text-white mx-5 ${
                 location.pathname.includes(page.page) && "font-bold"
               }`}

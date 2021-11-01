@@ -67,7 +67,6 @@ export const Borrow: React.FC = () => {
   const [init, setInit] = React.useState(false);
   const history = useHistory();
 
-
   const lpTok: Token = new Token({
     ...lpToken,
     address: pool.lp,
@@ -288,8 +287,7 @@ export const Borrow: React.FC = () => {
 
   const continueButton = (
     <button
-    className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
-
+      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
       onClick={() => {
         setBorrow({
           tokenBorrow: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -306,8 +304,6 @@ export const Borrow: React.FC = () => {
       Continue
     </button>
   );
-
-
 
   return (
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
@@ -326,7 +322,9 @@ export const Borrow: React.FC = () => {
         Farm
       </h1>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800">I'm Supplying:</p>
+        <p className="text-xl font-bold tracking-tight text-gray-800">
+          I'm Supplying:
+        </p>
         <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
           {pool.tokens.map((tok, index) => (
             <Flex
@@ -363,7 +361,9 @@ export const Borrow: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800">Borrows</p>
+        <p className="text-xl font-bold tracking-tight text-gray-800">
+          Borrows
+        </p>
       </Flex>
       <BlockText mb={2}>
         {"Est. Debt Ratio: "

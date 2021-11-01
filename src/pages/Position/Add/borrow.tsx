@@ -430,7 +430,9 @@ export const Borrow: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>
-      <p className="text-xl font-bold tracking-tight text-gray-800">I'd like to borrow</p>
+        <p className="text-xl font-bold tracking-tight text-gray-800">
+          I'd like to borrow
+        </p>
       </Flex>
       <BlockText mb={2}>
         {"New Est. Debt Ratio: "
