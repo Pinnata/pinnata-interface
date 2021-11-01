@@ -101,8 +101,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
             collateralFactor: info.lpFactor.collateralFactor,
           });
           const borrow = fromWei(info.borrowRate[i]!);
-          console.log(Number(props.apy));
-          console.log(Number(borrow.toString()));
+
           return (
             maxLever * (Number(props.apy) / 100) -
             (maxLever - 1) * Number(borrow.toString())
@@ -110,7 +109,6 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
         })
       )
     : 0;
-  console.log(maxApy, "max");
 
   const urlext =
     props.name +

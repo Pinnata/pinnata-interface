@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  Flex,
-  Heading,
-  Text,
-  Spinner,
-} from "theme-ui";
+import { Button, Card, Flex, Heading, Text, Spinner } from "theme-ui";
 import { DEFAULT_GAS_PRICE } from "src/config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import {  useSetRecoilState, useRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilState } from "recoil";
 import { BlockText } from "src/components/BlockText";
 import { Bank } from "src/config";
 import { TokenAmountInfo } from "src/components/TokenAmountInfo";
@@ -29,51 +22,52 @@ import { removeRemoveState } from "./removeTokens";
 import { removePaybackState } from "./payback";
 import { useHistory } from "react-router-dom";
 
-
 export const Confirm: React.FC = () => {
   const { getConnectedKit } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [done, setDone] = React.useState(false); 
+  const [done, setDone] = React.useState(false);
   const [pool] = useRecoilState(poolState);
   const setPage = useSetRecoilState(removePageState);
-  const [position] = useRecoilState(removePositionState); 
+  const [position] = useRecoilState(removePositionState);
   const [remove] = useRecoilState(removeRemoveState);
   const [payback] = useRecoilState(removePaybackState);
-  const history = useHistory(); 
+  const history = useHistory();
 
   const confirmButton = (
-    <Button
+    <button
+      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
         try {
           setConfirmLoading(true);
-          const bank = (new kit.web3.eth.Contract(
+          const bank = new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
             getAddress(Bank[44787])
-            ) as unknown) as HomoraBank;
-          const spell = (new kit.web3.eth.Contract(
+          ) as unknown as HomoraBank;
+          const spell = new kit.web3.eth.Contract(
             UNI_SPELL.abi as AbiItem[],
-            getAddress(pool.spell),
-          ) as unknown) as UniswapV2SpellV1;
-          const bytes = spell.methods.removeLiquidityWStakingRewards(
-            pool.tokens[0]!.address, 
-            pool.tokens[1]!.address, 
-            [
-              remove.removeLp!.toString(),
-              0, 
-              payback.payback![0]!.toString(),
-              payback.payback![1]!.toString(),
-              0, 0, 0
-            ],
-            pool.wrapper,
-          ).encodeABI()
+            getAddress(pool.spell)
+          ) as unknown as UniswapV2SpellV1;
+          const bytes = spell.methods
+            .removeLiquidityWStakingRewards(
+              pool.tokens[0]!.address,
+              pool.tokens[1]!.address,
+              [
+                remove.removeLp!.toString(),
+                0,
+                payback.payback![0]!.toString(),
+                payback.payback![1]!.toString(),
+                0,
+                0,
+                0,
+              ],
+              pool.wrapper
+            )
+            .encodeABI();
           const tx = await bank.methods
-            .execute(
-                position.positionId!,
-                pool.spell,
-                bytes,
-            ).send({
+            .execute(position.positionId!, pool.spell, bytes)
+            .send({
               from: kit.defaultAccount,
               gasPrice: DEFAULT_GAS_PRICE,
             });
@@ -82,12 +76,12 @@ export const Confirm: React.FC = () => {
           toast(e.message);
         } finally {
           setConfirmLoading(false);
-          setDone(true); 
+          setDone(true);
         }
       }}
     >
       Confirm
-    </Button>
+    </button>
   );
 
   return (
@@ -108,80 +102,132 @@ export const Confirm: React.FC = () => {
             Position Breakdown
           </Heading>
         </Flex>
-        <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
-          <BlockText variant="primary">Remove from position</BlockText>
-          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center"}}>
-            {remove && pool.tokens.map((tok, index) => 
-            <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding:2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            Remove from position
+          </p>
+          <Flex
+            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
           >
-              <TokenAmountInfo key={tok.address} token={tok} amount={fromWei(remove.remove![index]!)} />       
-            </Flex>
-          )}
+            {remove &&
+              pool.tokens.map((tok, index) => (
+                <Flex
+                  sx={{
+                    alignItems: "center",
+                    mr: 4,
+                    padding: 2,
+                    borderStyle: "solid",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <TokenAmountInfo
+                    key={tok.address}
+                    token={tok}
+                    amount={fromWei(remove.remove![index]!)}
+                  />
+                </Flex>
+              ))}
           </Flex>
         </Flex>
-        <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
-          <BlockText variant="primary">Payback borrows</BlockText>
-          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center"}}>
-            {remove && pool.tokens.map((tok, index) => 
-            <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding:2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            Payback borrows
+          </p>
+          <Flex
+            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
           >
-              <TokenAmountInfo key={tok.address} token={tok} amount={fromWei(payback.payback![index]!)} />       
-            </Flex>
-          )}
+            {remove &&
+              pool.tokens.map((tok, index) => (
+                <Flex
+                  sx={{
+                    alignItems: "center",
+                    mr: 4,
+                    padding: 2,
+                    borderStyle: "solid",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <TokenAmountInfo
+                    key={tok.address}
+                    token={tok}
+                    amount={fromWei(payback.payback![index]!)}
+                  />
+                </Flex>
+              ))}
           </Flex>
         </Flex>
-        <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
-          <BlockText variant="primary">You receive</BlockText>
-          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center"}}>
-            {remove && pool.tokens.map((tok, index) => 
-            <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding:2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            You receive
+          </p>
+          <Flex
+            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
           >
-              <TokenAmountInfo key={tok.address} token={tok} amount={fromWei(remove.remove![index]!.sub(payback.payback![index]!))} />       
-            </Flex>
-          )}
+            {remove &&
+              pool.tokens.map((tok, index) => (
+                <Flex
+                  sx={{
+                    alignItems: "center",
+                    mr: 4,
+                    padding: 2,
+                    borderStyle: "solid",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <TokenAmountInfo
+                    key={tok.address}
+                    token={tok}
+                    amount={fromWei(
+                      remove.remove![index]!.sub(payback.payback![index]!)
+                    )}
+                  />
+                </Flex>
+              ))}
           </Flex>
         </Flex>
-        <Flex sx={{flexDirection: "column", gap: "25px", mb: 10}}>
-          <BlockText variant="primary">Position Statistics</BlockText>
-          <Flex sx={{ justifyContent: "left", gap: "8px", flexDirection: "column"}}>
-            <BlockText>{"New Est. Debt Ratio: ".concat(humanFriendlyNumber(payback.debtRatio!)).concat("/100")}</BlockText>
-            <BlockText mb={2}>{"New Leverage: ".concat(humanFriendlyNumber(payback.lever!)).concat("x")}</BlockText>
-            <BlockText>{"Farming Apy: ".concat(humanFriendlyNumber(payback.apy!*100)).concat("%")}</BlockText>
-
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800">
+            Position Statistics
+          </p>
+          <Flex
+            sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+          >
+            <BlockText>
+              {"New Est. Debt Ratio: "
+                .concat(humanFriendlyNumber(payback.debtRatio!))
+                .concat("/100")}
+            </BlockText>
+            <BlockText>
+              {"New Leverage: "
+                .concat(humanFriendlyNumber(payback.lever!))
+                .concat("x")}
+            </BlockText>
+            <BlockText>
+              {"Farming APY: "
+                .concat(humanFriendlyNumber(payback.apy! * 100))
+                .concat("%")}
+            </BlockText>
           </Flex>
         </Flex>
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
-            {confirmLoading ? (
-              <Spinner />
-            ) : (
-              <Flex sx={{ justifyContent: "center", gap: "6px"}} >
-                {done ? <Button onClick={() => {
-                  history.push('/positions');
-                  setPage(removePage.Remove); 
-                }}>Return</Button> : confirmButton}
-              </Flex>                
-            )}
+          {confirmLoading ? (
+            <Spinner />
+          ) : (
+            <Flex sx={{ justifyContent: "center", gap: "6px" }}>
+              {done ? (
+                <Button
+                  onClick={() => {
+                    history.push("/positions");
+                    setPage(removePage.Remove);
+                  }}
+                >
+                  Return
+                </Button>
+              ) : (
+                confirmButton
+              )}
+            </Flex>
+          )}
         </Flex>
       </Card>
     </Flex>

@@ -12,9 +12,9 @@ export const Farm = () => {
         </div>
 
         <section className="md:flex md:m-4 md:justify-center w-full md:flex-wrap">
-          {FARMS.map((farm) => (
+          {FARMS.map((farm, index) => (
             <FarmEntry
-              key={farm.name}
+              key={farm.name + index}
               name={farm.name}
               apy={farm.apy}
               wrapper={farm.wrapper}

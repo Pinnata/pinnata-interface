@@ -85,7 +85,8 @@ export const Confirm: React.FC = () => {
   };
 
   const confirmButton = (
-    <Button
+    <button
+      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -131,7 +132,7 @@ export const Confirm: React.FC = () => {
       }}
     >
       Confirm
-    </Button>
+    </button>
   );
 
   const loading = approveLoading || confirmLoading || buttonLoading;
@@ -206,7 +207,9 @@ export const Confirm: React.FC = () => {
         Position Breakdown
       </h1>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <BlockText variant="primary">I'm Supplying</BlockText>
+        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+          I'm Supplying:
+        </p>
         <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
           {pool.tokens.map((tok, index) => (
             <Flex
@@ -243,7 +246,9 @@ export const Confirm: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <BlockText variant="primary">I'm Borrowing</BlockText>
+        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+          I'm Borrowing:
+        </p>
         <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
           {pool.tokens.map((tok, index) => (
             <Flex
@@ -265,7 +270,9 @@ export const Confirm: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <BlockText variant="primary">Position Statistics</BlockText>
+        <p className="text-xl font-bold tracking-tight text-gray-800 mt-4">
+          Position Statistics
+        </p>
         <Flex
           sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
         >

@@ -19,7 +19,7 @@ export const TokenSlider: React.FC<Props> = ({
   max,
 }: Props) => {
   const start: number = Number(max) / 3;
-  React.useEffect(() => setAmount(String(start)), [setAmount, start]);
+  React.useEffect(() => setAmount(String(start)), []);
   return (
     <Flex sx={{ alignItems: "center" }}>
       <Box sx={{ width: "100%" }} mr={2}>
@@ -27,7 +27,7 @@ export const TokenSlider: React.FC<Props> = ({
           <Slider
             progress
             defaultValue={start}
-            style={{ width: "80%" }}
+            style={{ width: "100%" }}
             step={0.001}
             max={Number(max)}
             onChange={(value) => setAmount(String(value))}

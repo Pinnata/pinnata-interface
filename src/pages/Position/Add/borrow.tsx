@@ -329,7 +329,8 @@ export const Borrow: React.FC = () => {
   const debtRatio = (numer / denom) * 100;
 
   const continueButton = (
-    <Button
+    <button
+      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
       onClick={() => {
         setBorrow({
           tokenBorrow: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -344,7 +345,7 @@ export const Borrow: React.FC = () => {
       }}
     >
       Continue
-    </Button>
+    </button>
   );
 
   return (
@@ -429,7 +430,7 @@ export const Borrow: React.FC = () => {
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>
-        <BlockText variant="primary">I'd like to borrow</BlockText>
+      <p className="text-xl font-bold tracking-tight text-gray-800">I'd like to borrow</p>
       </Flex>
       <BlockText mb={2}>
         {"New Est. Debt Ratio: "
