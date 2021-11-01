@@ -1,23 +1,25 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Flex, Text } from "theme-ui";
-import Log from "src/images/logo.png";
-
+import Log from "src/images/dahlia-black.png";
 
 export const Logo: React.FC = () => {
   const history = useHistory();
 
   return (
-    <Flex
-      sx={{ cursor: "pointer", alignItems: "center", justifyContent: "center"}}
+    <div
+      className="flex items-center md:-mx-5 justify-center md:my-0 my-4 cursor-pointer"
       onClick={() => {
         history.push("/");
       }}
     >
-      <Box sx={{ fill: "text" }}>
-        <img src={"https://raw.githubusercontent.com/Dahlia-Finance/dahlia-interface/54767e90c58389912d8b0df55882a0b4138a13ee/src/images/logo.png"} alt='Logo'/>
-      </Box>
-        <Text color="text" variant="logo">Dahlia</Text>
-    </Flex>
+      <div className="flex justify-content items-center hover:opacity-75">
+        <div className="w-10 h-10 mr-2">
+          <img className="w-full" src={Log} alt="Logo" />
+        </div>
+        <h1 className="logo uppercase font-bold text-4xl tracking-widest text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-800">
+          Dahlia
+        </h1>
+      </div>
+    </div>
   );
 };

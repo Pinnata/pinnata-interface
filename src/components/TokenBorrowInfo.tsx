@@ -1,7 +1,5 @@
-import styled from "@emotion/styled";
 import React from "react";
 import { Token } from "src/utils/token";
-import { Text } from "theme-ui"
 
 interface Props {
   token: Token;
@@ -10,24 +8,14 @@ interface Props {
 
 export const TokenBorrowInfo: React.FC<Props> = ({ token, apy }: Props) => {
   return (
-    <Wrapper>
-    <img
+    <div className="flex items-center -mb-1 justify-center">
+      <img
+        className="w-8 shadow-md rounded-full"
         key={token.address}
         src={token.logoURL}
         alt={`Icon of token ${token.name} (${token.symbol})`}
-    />
-    <Text>{apy}%</Text>
-    </Wrapper>
+      />
+      <p className="ml-2 text-base">{apy}%</p>
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  height: 24px;
-  img {
-    height: 100%;
-    border-radius: 12px;
-  }
-`;

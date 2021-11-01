@@ -1,92 +1,56 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { Box, Flex, Text, useColorMode, Card } from "theme-ui";
+import { Link, useLocation } from "react-router-dom";
 import { Logo } from "src/components/Logo";
 import { Page } from "src/state/global";
-import { StyledLink } from "src/components/StyledLink";
-import { ConnectWallet } from "src/components/ConnectWallet"
-import { Moon, Sun } from "phosphor-react";
+import { ConnectWallet } from "src/components/ConnectWallet";
 
-const HeaderLink: React.FC<{ page: Page }> = ({ page, children }) => {
-  const location = useLocation();
-  const selected = location.pathname.includes(page);
-  return (
-    <Box >
-      <StyledLink to={page}>
-        <Text
-          sx={{
-            color: selected ? "primary" : "text",
-            borderBottom: selected ? "2px solid" : "none",
-            mx: 1,
-            pb: 1,
-            textDecoration: "none",
-            ":hover": {
-              textDecoration: "none"
-            },
-            ":active": {
-              textDecoration: "none"
-            },
-          }}
-          variant="subtitle"
-        >
-          {children}
-        </Text>
-      </StyledLink>
-    </Box>
-  );
-};
+const pages = [
+  {
+    name: "Earn",
+    page: Page.EARN,
+  },
+  {
+    name: "Farm",
+    page: Page.FARM,
+  },
+  { name: "Positions", page: Page.POSITIONS },
+];
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const [colorMode, setColorMode] = useColorMode();
   return (
-    <Flex sx={{ justifyContent: "space-between", alignItems: "center" }} mb={4}>
-        <Flex>
+    <nav className="text-center rounded-sm py-6 px-2">
+      <div className="max-w-5xl mx-auto md:flex justify-center w-full items-center">
+        <div className="md:flex justify-start w-full">
           <Logo />
-        </Flex>
-        <Box
-          sx={{
-            display:
-              location.pathname.includes(Page.SUPPLY) || 
-              location.pathname.includes(Page.WITHDRAW) || 
-              location.pathname.includes(Page.ADD) ||
-              location.pathname.includes(Page.NEW) ||
-              location.pathname.includes(Page.REMOVE)
-              ? "none"
-              : "inherit",
-          }}
+        </div>
+        <div
+          className={
+            location.pathname.includes(Page.SUPPLY) ||
+            location.pathname.includes(Page.WITHDRAW) ||
+            location.pathname.includes(Page.ADD) ||
+            location.pathname.includes(Page.NEW) ||
+            location.pathname.includes(Page.REMOVE)
+              ? "hidden"
+              : "bg-gradient-to-br from-blue-700 to-green-800 rounded-md p-3 flex w-full md:justify-between justify-center text-centerr"
+          }
         >
-        <Flex sx={{ justifyContent: "space-between", alignItems: "center", ml:"110px", gap: "20px"}}>
-            <HeaderLink page={Page.EARN}>Earn</HeaderLink>
-            <HeaderLink page={Page.FARM}>Farm</HeaderLink>
-            <HeaderLink page={Page.POSITIONS}>Positions</HeaderLink>
-        </Flex>
-        </Box>
-        
-        <Flex>
-          <Flex sx={{ justifyContent: "space-between" }}>
-            <Flex
-            sx={{
-              alignItems: "center",
-              backgroundColor: "secondaryBackground",
-              mr: 4,
-              px: 2,
-              cursor: "pointer",
-              borderRadius: "6px",
-            }}
-            onClick={() => {
-              if (colorMode === "light") {
-                setColorMode("dark");
-              } else {
-                setColorMode("light");
-              }
-            }}
-          >
-            {colorMode === "light" ? <Sun size={28} /> : <Moon size={28} />}
-          </Flex>
-            <ConnectWallet />
-          </Flex>
-      </Flex>
-  </Flex>
+          {pages.map((page) => (
+            <Link
+              className={`text-white text-xl tracking-tight hover:opacity-75 hover:text-white visited:text-white mx-5 ${
+                location.pathname.includes(page.page) && "font-bold"
+              }`}
+              to={page.page}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              {page.name}
+            </Link>
+          ))}
+        </div>
+        <div className="my-4 md:m-0 md:flex justify-end w-full">
+          <ConnectWallet />
+        </div>
+      </div>
+    </nav>
   );
 };

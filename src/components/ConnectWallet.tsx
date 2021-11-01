@@ -1,14 +1,13 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
 import React from "react";
-import { Card, Text, Flex } from "theme-ui";
 import { shortenAddress } from "src/utils/address";
 import { Wallet } from "phosphor-react";
 
 export const ConnectWallet: React.FC = () => {
   const { address, connect } = useContractKit();
   return (
-    <Card
-      sx={{ cursor: "pointer", height: "fit-content" }}
+    <div
+      className="hover:opacity-75 border p-2 cursor-pointer bg-gradient-to-br from-blue-700 to-green-800 rounded-md"
       onClick={async () => {
         try {
           await connect();
@@ -16,14 +15,13 @@ export const ConnectWallet: React.FC = () => {
           console.warn(e);
         }
       }}
-      px={3}
     >
-      <Flex sx={{ alignItems: "center" }}>
-        <Wallet size={28} />
-        <Text ml={3}>
+      <div className="flex items-center justify-center">
+        <Wallet className="text-white" size={28} />
+        <p className="font-bold ml-2 tracking-tight text-white text-center">
           {address ? shortenAddress(address) : "Connect Wallet"}
-        </Text>
-      </Flex>
-    </Card>
+        </p>
+      </div>
+    </div>
   );
 };

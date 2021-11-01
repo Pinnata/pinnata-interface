@@ -23,7 +23,6 @@ import { Bank } from "src/config";
 import { getAddress } from "ethers/lib/utils";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
-import BN from 'bn.js';
 import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens"
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
@@ -144,7 +143,7 @@ export const Payback: React.FC = () => {
     } catch (error) {
         console.log(error)
     }
-}, [bank.methods, init, kit.web3.eth.Contract, pool.tokens, pool.wrapper, position.collId, position.collateralSize, position.positionId, remove.prevPosition, remove.remove, remove.removeLp])
+}, [bank.methods, init, kit.web3.eth.Contract, pool.lp, pool.tokens, pool.wrapper, position.collId, position.collateralSize, position.positionId, remove.prevPosition, remove.remove, remove.removeLp])
   const [info] = useAsyncState(null, call);
 
   //TODO: account for removed coins

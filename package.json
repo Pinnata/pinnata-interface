@@ -30,9 +30,9 @@
   },
   "scripts": {
     "typechain": "typechain --target=web3-v1 ./src/abis/**/*.json --out-dir src/generated",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write .",
     "postinstall": "yarn typechain"
@@ -52,16 +52,28 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@celo-tools/use-contractkit": "npm:@poofcash/use-contractkit@^1.0.7-beta",
+    "@celo/base": "^1.2.1",
+    "@celo/connect": "^1.2.0",
+    "@celo/contractkit": "^1.2.0",
+    "@celo/utils": "^1.3.1",
+    "@celo/wallet-ledger": "^1.2.0",
+    "@craco/craco": "^6.3.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@json-rpc-tools/ws-connection": "^2.0.0-beta.3",
     "@reduxjs/toolkit": "^1.6.0",
     "@sentry/react": "^6.7.2",
     "@sentry/tracing": "^6.7.2",
+    "@types/qrcode.react": "^1.0.2",
+    "@types/react-modal": "^3.13.1",
     "@ubeswap/default-token-list": "^3.3.6",
     "@ubeswap/token-math": "^4.1.0",
     "@web3-react/injected-connector": "^6.0.7",
+    "autoprefixer": "^9",
+    "big-number": "^2.0.0",
     "ethers": "^5.4.1",
     "phosphor-react": "^1.3.1",
+    "postcss": "^7",
     "qrcode.react": "^1.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -74,6 +86,7 @@
     "react-toastify": "^7.0.4",
     "recoil": "^0.4.1",
     "rsuite": "^4.10.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "theme-ui": "^0.10.0",
     "web3": "^1.3.5",
     "web3-utils": "^1.6.0"
@@ -83,7 +96,7 @@
     "*.{html,md,graphql,json,yaml,yml}": "prettier --write"
   },
   "resolutions": {
-    "@celo/utils": "1.2.1",
+    "@celo/utils": "1.3.1",
     "@celo/wallet-walletconnect": "1.2.0"
   },
   "eslintConfig": {
