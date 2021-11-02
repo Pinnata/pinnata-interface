@@ -9,8 +9,8 @@ import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
-import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
-import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
+import SUSHI_SPELL from "src/abis/dahlia_contracts/SushiswapSpellV1.json";
+import { SushiswapSpellV1 } from "src/generated/SushiswapSpellV1";
 import { MaxUint256 } from "@ethersproject/constants";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
@@ -31,7 +31,7 @@ interface Props {
 }
 
 export const PositionEntry: React.FC<Props> = (props: Props) => {
-  const { kit, getConnectedKit } = useContractKit();
+  const { kit, getConnectedKit, network } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const history = useHistory();
   const scale = toBN(2).pow(toBN(112));
@@ -40,7 +40,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );
@@ -208,14 +208,14 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                 setConfirmLoading(true);
                 const bank = new kit.web3.eth.Contract(
                   BANK_ABI.abi as AbiItem[],
-                  getAddress(Bank[44787])
+                  getAddress(Bank[network.chainId])
                 ) as unknown as HomoraBank;
                 const spell = new kit.web3.eth.Contract(
-                  UNI_SPELL.abi as AbiItem[],
+                  SUSHI_SPELL.abi as AbiItem[],
                   getAddress(props.pool.spell)
-                ) as unknown as UniswapV2SpellV1;
+                ) as unknown as SushiswapSpellV1;
                 const bytes = spell.methods
-                  .removeLiquidityWStakingRewards(
+                  .removeLiquidityWMiniChef(
                     props.pool.tokens[0]!.address,
                     props.pool.tokens[1]!.address,
                     [
@@ -226,8 +226,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                       0,
                       0,
                       0,
-                    ],
-                    props.pool.wrapper
+                    ]
                   )
                   .encodeABI();
                 const tx = await bank.methods
@@ -253,16 +252,16 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
               const kit = await getConnectedKit();
               const bank = new kit.web3.eth.Contract(
                 BANK_ABI.abi as AbiItem[],
-                getAddress(Bank[44787])
+                getAddress(Bank[network.chainId])
               ) as unknown as HomoraBank;
               const spell = new kit.web3.eth.Contract(
-                UNI_SPELL.abi as AbiItem[],
+                SUSHI_SPELL.abi as AbiItem[],
                 getAddress(props.pool.spell)
-              ) as unknown as UniswapV2SpellV1;
+              ) as unknown as SushiswapSpellV1;
               try {
                 setConfirmLoading(true);
                 const bytes = spell.methods
-                  .harvestWStakingRewards(props.pool.wrapper)
+                  .harvestWMiniChef()
                   .encodeABI();
                 const tx = await bank.methods
                   .execute(props.positionId, props.pool.spell, bytes)

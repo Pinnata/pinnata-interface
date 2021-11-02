@@ -53,13 +53,13 @@ export const Payback: React.FC = () => {
   const zeroAdd = "0x0000000000000000000000000000000000000000";
   const scale = toBN(2).pow(toBN(112));
 
-  const { kit } = useContractKit();
+  const { kit, network } = useContractKit();
 
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );

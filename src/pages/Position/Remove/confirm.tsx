@@ -11,9 +11,9 @@ import { fromWei, AbiItem } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
+import SUSHI_SPELL from "src/abis/dahlia_contracts/SushiswapSpellV1.json";
+import { SushiswapSpellV1 } from "src/generated/SushiswapSpellV1";
 import { HomoraBank } from "src/generated/HomoraBank";
-import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
 import { getAddress } from "ethers/lib/utils";
 import { humanFriendlyNumber } from "src/utils/number";
 import { poolState } from "src/pages/Farm/newFarm/NewFarm";
@@ -23,7 +23,7 @@ import { removePaybackState } from "./payback";
 import { useHistory } from "react-router-dom";
 
 export const Confirm: React.FC = () => {
-  const { getConnectedKit } = useContractKit();
+  const { getConnectedKit, network } = useContractKit();
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [done, setDone] = React.useState(false);
   const [pool] = useRecoilState(poolState);
@@ -43,14 +43,14 @@ export const Confirm: React.FC = () => {
           setConfirmLoading(true);
           const bank = new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
-            getAddress(Bank[44787])
+            getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
           const spell = new kit.web3.eth.Contract(
-            UNI_SPELL.abi as AbiItem[],
+            SUSHI_SPELL.abi as AbiItem[],
             getAddress(pool.spell)
-          ) as unknown as UniswapV2SpellV1;
+          ) as unknown as SushiswapSpellV1;
           const bytes = spell.methods
-            .removeLiquidityWStakingRewards(
+            .removeLiquidityWMiniChef(
               pool.tokens[0]!.address,
               pool.tokens[1]!.address,
               [
@@ -61,8 +61,7 @@ export const Confirm: React.FC = () => {
                 0,
                 0,
                 0,
-              ],
-              pool.wrapper
+              ]
             )
             .encodeABI();
           const tx = await bank.methods

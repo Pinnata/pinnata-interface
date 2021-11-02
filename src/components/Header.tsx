@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
         <div className="md:flex justify-start w-full">
           <Logo />
         </div>
-        {/* <div
+        <div
           className={
             location.pathname.includes(Page.SUPPLY) ||
             location.pathname.includes(Page.WITHDRAW) ||
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
               {page.name}
             </Link>
           ))}
-        </div> */}
+        </div>
         <div className="my-4 md:m-0 md:flex justify-end w-full">
           <ConnectWallet />
         </div>

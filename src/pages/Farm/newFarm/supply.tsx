@@ -133,7 +133,7 @@ export const Supply: React.FC = () => {
           }
         />
       ))}
-      <p className="text-xl font-bold text-center mt-4 -mb-4 text-gray-800">
+      {/* <p className="text-xl font-bold text-center mt-4 -mb-4 text-gray-800">
         Supply LP Token
       </p>
       <TokenInputForm
@@ -141,7 +141,7 @@ export const Supply: React.FC = () => {
         amount={lpAmount}
         setAmount={setLPAmount}
         balance={erc ? erc.balance : null}
-      />
+      /> */}
       <Flex sx={{ justifyContent: "center", mt: 6 }}>
         {buttonLoading ? <Spinner /> : button}
       </Flex>

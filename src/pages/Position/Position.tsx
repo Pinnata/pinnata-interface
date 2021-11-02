@@ -14,13 +14,13 @@ import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
 import { Spinner } from "theme-ui";
 
 export const Position = () => {
-  const { kit, address } = useContractKit();
+  const { kit, address, network } = useContractKit();
 
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );

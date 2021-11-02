@@ -72,14 +72,14 @@ export const Borrow: React.FC = () => {
     address: pool.lp,
   });
 
-  const { kit } = useContractKit();
+  const { kit, network } = useContractKit();
   const [amounts, setAmounts] = React.useState<String[] | null>(null);
 
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );
@@ -343,7 +343,7 @@ export const Borrow: React.FC = () => {
               />
             </Flex>
           ))}
-          <Flex
+          {/* <Flex
             sx={{
               alignItems: "center",
               mr: 4,
@@ -357,7 +357,7 @@ export const Borrow: React.FC = () => {
               token={lpTok}
               amount={fromWei(supply.lpSupply!)}
             />
-          </Flex>
+          </Flex> */}
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>
@@ -393,7 +393,7 @@ export const Borrow: React.FC = () => {
           />
         ))}
       <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {debtRatio > 99 ? (
+        {debtRatio > 96 ? (
           <Button disabled={true}>Debt ratio too high</Button>
         ) : (
           continueButton
