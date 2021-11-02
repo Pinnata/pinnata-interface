@@ -462,7 +462,7 @@ export const Borrow: React.FC = () => {
           />
         ))}
       <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {debtRatio > 99 ? (
+        {debtRatio > 96 ? (
           <Button disabled={true}>Debt ratio too high</Button>
         ) : (
           continueButton

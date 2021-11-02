@@ -229,7 +229,7 @@ export const Payback: React.FC = () => {
   const continueButton = (
     <button
       className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
-      disabled={debtRatio > 99}
+      disabled={debtRatio > 96}
       onClick={() => {
         setPayback({
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -344,7 +344,7 @@ export const Payback: React.FC = () => {
             />
           ))}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {debtRatio > 99 ? (
+          {debtRatio > 96 ? (
             <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton
