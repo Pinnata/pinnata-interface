@@ -30,8 +30,8 @@ export const CeloMainnet: Network = {
 
 export const lpToken = {
   address: "",
-  name: "Ubeswap LP",
-  symbol: "ULP",
+  name: "Sushiswap LP",
+  symbol: "SLP",
   decimals: 18,
   chainId: ChainId.CeloMainnet,
   logoURI: "lp"
