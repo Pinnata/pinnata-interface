@@ -107,7 +107,7 @@ export const Confirm: React.FC = () => {
               [
                 supply.tokenSupply![0]!.toString(),
                 supply.tokenSupply![1]!.toString(),
-                0,
+                supply.lpSupply!.toString(),
                 borrow.tokenBorrow![0]!.toString(),
                 borrow.tokenBorrow![1]!.toString(),
                 0,
@@ -150,7 +150,7 @@ export const Confirm: React.FC = () => {
         </Button>,
       ];
     } else {
-      if (tokenStates) {
+      if (tokenStates && erc) {
         for (let i = 0; i < tokenStates.length; i += 1) {
           if (tokenStates[i]!) {
             const amountBN = supply.tokenSupply![i]!;
@@ -160,18 +160,19 @@ export const Confirm: React.FC = () => {
             }
           }
         }
+        const amountBN = supply.lpSupply!;
+        console.log(supply.lpSupply.toString())
+        console.log(erc.allowance.toString())
+        if (amountBN.gt(erc.allowance)) {
+          console.log('in')
+          b.push(approveButton(lpTok));
+        }
+        if (buttonLoading) setButtonLoading(false);
         if (b.length === 0) {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           b = [confirmButton];
           if (buttonLoading) setButtonLoading(false);
         }
-      }
-      if (erc) {
-        const amountBN = supply.lpSupply!;
-        if (amountBN.gt(erc.allowance)) {
-          b.push(approveButton(lpTok));
-        }
-        if (buttonLoading) setButtonLoading(false);
       }
     }
     return b;
@@ -228,7 +229,7 @@ export const Confirm: React.FC = () => {
               />
             </Flex>
           ))}
-          {/* <Flex
+          <Flex
             sx={{
               alignItems: "center",
               mr: 4,
@@ -242,7 +243,7 @@ export const Confirm: React.FC = () => {
               token={lpTok}
               amount={fromWei(supply.lpSupply!)}
             />
-          </Flex> */}
+          </Flex>
         </Flex>
       </Flex>
       <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
