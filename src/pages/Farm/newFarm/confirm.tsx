@@ -192,7 +192,7 @@ export const Confirm: React.FC = () => {
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
       <p
         onClick={() => {
-          history.goBack();
+          setPage(farmPage.Borrow)
         }}
         className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
       >
