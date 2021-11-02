@@ -15,6 +15,6 @@ yarn start
 
 Deploys are sent to Vercel.
 
-TODO: add arweave deploys.
+TODO: add arweave deploys. 
 
 TODO: Add displaying resolution information.
