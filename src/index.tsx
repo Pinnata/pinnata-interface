@@ -49,10 +49,10 @@ ReactDOM.render(
         url: "https://dahlia.finance",
       }}
       network={{
-        name: NetworkNames.Alfajores,
-        rpcUrl: 'https://alfajores-forno.celo-testnet.org',
-        explorer: 'https://alfajores-blockscout.celo-testnet.org',
-        chainId: ChainId.Alfajores,
+        name: NetworkNames.CeloMainnet,
+        rpcUrl: 'https://forno.celo.org',
+        explorer: 'https://explorer.celo.org/',
+        chainId: ChainId.CeloMainnet,
       }}
     >
       <ThemeProvider theme={theme}>

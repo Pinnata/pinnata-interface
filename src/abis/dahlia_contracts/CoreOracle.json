@@ -168,51 +168,51 @@
   ],
   "allSourcePaths": {
     "16": "/Users/kylescott/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/utils/Address.sol",
+    "173": "contracts/oracle/CoreOracle.sol",
+    "200": "interfaces/IBaseOracle.sol",
     "22": "contracts/Governable.sol",
-    "67": "contracts/oracle/CoreOracle.sol",
-    "7": "/Users/kylescott/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/proxy/Initializable.sol",
-    "88": "interfaces/IBaseOracle.sol"
+    "7": "/Users/kylescott/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/proxy/Initializable.sol"
   },
   "ast": {
     "absolutePath": "contracts/oracle/CoreOracle.sol",
     "exportedSymbols": {
       "CoreOracle": [
-        14865
+        27446
       ]
     },
-    "id": 14866,
+    "id": 27447,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 14757,
+        "id": 27338,
         "literals": [
           "solidity",
           "0.6",
           ".12"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:67"
+        "src": "33:23:173"
       },
       {
         "absolutePath": "interfaces/IBaseOracle.sol",
         "file": "../../interfaces/IBaseOracle.sol",
-        "id": 14758,
+        "id": 27339,
         "nodeType": "ImportDirective",
-        "scope": 14866,
-        "sourceUnit": 22186,
-        "src": "58:42:67",
+        "scope": 27447,
+        "sourceUnit": 38799,
+        "src": "58:42:173",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "contracts/Governable.sol",
         "file": "../Governable.sol",
-        "id": 14759,
+        "id": 27340,
         "nodeType": "ImportDirective",
-        "scope": 14866,
+        "scope": 27447,
         "sourceUnit": 109,
-        "src": "101:27:67",
+        "src": "101:27:173",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -223,53 +223,53 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 14760,
+              "id": 27341,
               "name": "IBaseOracle",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 22185,
-              "src": "153:11:67",
+              "referencedDeclaration": 38798,
+              "src": "153:11:173",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBaseOracle_$22185",
+                "typeIdentifier": "t_contract$_IBaseOracle_$38798",
                 "typeString": "contract IBaseOracle"
               }
             },
-            "id": 14761,
+            "id": 27342,
             "nodeType": "InheritanceSpecifier",
-            "src": "153:11:67"
+            "src": "153:11:173"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 14762,
+              "id": 27343,
               "name": "Governable",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 108,
-              "src": "166:10:67",
+              "src": "166:10:173",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_Governable_$108",
                 "typeString": "contract Governable"
               }
             },
-            "id": 14763,
+            "id": 27344,
             "nodeType": "InheritanceSpecifier",
-            "src": "166:10:67"
+            "src": "166:10:173"
           }
         ],
         "contractDependencies": [
           108,
-          19831,
-          22185
+          36357,
+          38798
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 14865,
+        "id": 27446,
         "linearizedBaseContracts": [
-          14865,
+          27446,
           108,
-          19831,
-          22185
+          36357,
+          38798
         ],
         "name": "CoreOracle",
         "nodeType": "ContractDefinition",
@@ -277,23 +277,23 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 14769,
+            "id": 27350,
             "name": "SetRoute",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14768,
+              "id": 27349,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14765,
+                  "id": 27346,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14769,
-                  "src": "196:21:67",
+                  "scope": 27350,
+                  "src": "196:21:173",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -301,10 +301,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14764,
+                    "id": 27345,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "196:7:67",
+                    "src": "196:7:173",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -316,14 +316,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 14767,
+                  "id": 27348,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "route",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14769,
-                  "src": "219:13:67",
+                  "scope": 27350,
+                  "src": "219:13:173",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -331,10 +331,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14766,
+                    "id": 27347,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "219:7:67",
+                    "src": "219:7:173",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -345,20 +345,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "195:38:67"
+              "src": "195:38:173"
             },
-            "src": "181:53:67"
+            "src": "181:53:173"
           },
           {
             "constant": false,
             "functionSelector": "d7409659",
-            "id": 14773,
+            "id": 27354,
             "mutability": "mutable",
             "name": "routes",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 14865,
-            "src": "237:41:67",
+            "scope": 27446,
+            "src": "237:41:173",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -366,28 +366,28 @@
               "typeString": "mapping(address => address)"
             },
             "typeName": {
-              "id": 14772,
+              "id": 27353,
               "keyType": {
-                "id": 14770,
+                "id": 27351,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "245:7:67",
+                "src": "245:7:173",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "237:27:67",
+              "src": "237:27:173",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
                 "typeString": "mapping(address => address)"
               },
               "valueType": {
-                "id": 14771,
+                "id": 27352,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "256:7:67",
+                "src": "256:7:173",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -400,9 +400,9 @@
           },
           {
             "body": {
-              "id": 14779,
+              "id": 27360,
               "nodeType": "Block",
-              "src": "343:31:67",
+              "src": "343:31:173",
               "statements": [
                 {
                   "expression": {
@@ -410,18 +410,18 @@
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
-                      "id": 14776,
+                      "id": 27357,
                       "name": "__Governable__init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 60,
-                      "src": "349:18:67",
+                      "src": "349:18:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
                         "typeString": "function ()"
                       }
                     },
-                    "id": 14777,
+                    "id": 27358,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -429,21 +429,21 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "349:20:67",
+                    "src": "349:20:173",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14778,
+                  "id": 27359,
                   "nodeType": "ExpressionStatement",
-                  "src": "349:20:67"
+                  "src": "349:20:173"
                 }
               ]
             },
             "documentation": null,
-            "id": 14780,
+            "id": 27361,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -451,28 +451,28 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 14774,
+              "id": 27355,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "333:2:67"
+              "src": "333:2:173"
             },
             "returnParameters": {
-              "id": 14775,
+              "id": 27356,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "343:0:67"
+              "src": "343:0:173"
             },
-            "scope": 14865,
-            "src": "322:52:67",
+            "scope": 27446,
+            "src": "322:52:173",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 14833,
+              "id": 27414,
               "nodeType": "Block",
-              "src": "600:223:67",
+              "src": "600:223:173",
               "statements": [
                 {
                   "expression": {
@@ -484,7 +484,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 14797,
+                        "id": 27378,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -493,18 +493,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 14793,
+                            "id": 27374,
                             "name": "tokens",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14784,
-                            "src": "614:6:67",
+                            "referencedDeclaration": 27365,
+                            "src": "614:6:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                               "typeString": "address[] calldata"
                             }
                           },
-                          "id": 14794,
+                          "id": 27375,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -512,7 +512,7 @@
                           "memberName": "length",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "614:13:67",
+                          "src": "614:13:173",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -524,18 +524,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 14795,
+                            "id": 27376,
                             "name": "targets",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14787,
-                            "src": "631:7:67",
+                            "referencedDeclaration": 27368,
+                            "src": "631:7:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                               "typeString": "address[] calldata"
                             }
                           },
-                          "id": 14796,
+                          "id": 27377,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -543,13 +543,13 @@
                           "memberName": "length",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "631:14:67",
+                          "src": "631:14:173",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "src": "614:31:67",
+                        "src": "614:31:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -558,14 +558,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "696e636f6e73697374656e74206c656e677468",
-                        "id": 14798,
+                        "id": 27379,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "647:21:67",
+                        "src": "647:21:173",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_e39bb8790077c3776fc27d43a4a6ec16cc20ec68b47f9e789badccd37562c187",
@@ -585,7 +585,7 @@
                           "typeString": "literal_string \"inconsistent length\""
                         }
                       ],
-                      "id": 14792,
+                      "id": 27373,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -593,13 +593,13 @@
                         -18
                       ],
                       "referencedDeclaration": -18,
-                      "src": "606:7:67",
+                      "src": "606:7:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14799,
+                    "id": 27380,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -607,27 +607,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "606:63:67",
+                    "src": "606:63:173",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14800,
+                  "id": 27381,
                   "nodeType": "ExpressionStatement",
-                  "src": "606:63:67"
+                  "src": "606:63:173"
                 },
                 {
                   "body": {
-                    "id": 14831,
+                    "id": 27412,
                     "nodeType": "Block",
-                    "src": "722:97:67",
+                    "src": "722:97:173",
                     "statements": [
                       {
                         "expression": {
                           "argumentTypes": null,
-                          "id": 14820,
+                          "id": 27401,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -636,42 +636,42 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 14812,
+                              "id": 27393,
                               "name": "routes",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14773,
-                              "src": "730:6:67",
+                              "referencedDeclaration": 27354,
+                              "src": "730:6:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
                                 "typeString": "mapping(address => address)"
                               }
                             },
-                            "id": 14816,
+                            "id": 27397,
                             "indexExpression": {
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 14813,
+                                "id": 27394,
                                 "name": "tokens",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14784,
-                                "src": "737:6:67",
+                                "referencedDeclaration": 27365,
+                                "src": "737:6:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                                   "typeString": "address[] calldata"
                                 }
                               },
-                              "id": 14815,
+                              "id": 27396,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 14814,
+                                "id": 27395,
                                 "name": "idx",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14802,
-                                "src": "744:3:67",
+                                "referencedDeclaration": 27383,
+                                "src": "744:3:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -682,7 +682,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "737:11:67",
+                              "src": "737:11:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -693,7 +693,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "730:19:67",
+                            "src": "730:19:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -705,26 +705,26 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 14817,
+                              "id": 27398,
                               "name": "targets",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14787,
-                              "src": "752:7:67",
+                              "referencedDeclaration": 27368,
+                              "src": "752:7:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                                 "typeString": "address[] calldata"
                               }
                             },
-                            "id": 14819,
+                            "id": 27400,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 14818,
+                              "id": 27399,
                               "name": "idx",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14802,
-                              "src": "760:3:67",
+                              "referencedDeclaration": 27383,
+                              "src": "760:3:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -735,21 +735,21 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "752:12:67",
+                            "src": "752:12:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
                             }
                           },
-                          "src": "730:34:67",
+                          "src": "730:34:173",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-                        "id": 14821,
+                        "id": 27402,
                         "nodeType": "ExpressionStatement",
-                        "src": "730:34:67"
+                        "src": "730:34:173"
                       },
                       {
                         "eventCall": {
@@ -759,26 +759,26 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 14823,
+                                "id": 27404,
                                 "name": "tokens",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14784,
-                                "src": "786:6:67",
+                                "referencedDeclaration": 27365,
+                                "src": "786:6:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                                   "typeString": "address[] calldata"
                                 }
                               },
-                              "id": 14825,
+                              "id": 27406,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 14824,
+                                "id": 27405,
                                 "name": "idx",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14802,
-                                "src": "793:3:67",
+                                "referencedDeclaration": 27383,
+                                "src": "793:3:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -789,7 +789,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "786:11:67",
+                              "src": "786:11:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -799,26 +799,26 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 14826,
+                                "id": 27407,
                                 "name": "targets",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14787,
-                                "src": "799:7:67",
+                                "referencedDeclaration": 27368,
+                                "src": "799:7:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                                   "typeString": "address[] calldata"
                                 }
                               },
-                              "id": 14828,
+                              "id": 27409,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 14827,
+                                "id": 27408,
                                 "name": "idx",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14802,
-                                "src": "807:3:67",
+                                "referencedDeclaration": 27383,
+                                "src": "807:3:173",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -829,7 +829,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "799:12:67",
+                              "src": "799:12:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -847,18 +847,18 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 14822,
+                            "id": 27403,
                             "name": "SetRoute",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14769,
-                            "src": "777:8:67",
+                            "referencedDeclaration": 27350,
+                            "src": "777:8:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                               "typeString": "function (address,address)"
                             }
                           },
-                          "id": 14829,
+                          "id": 27410,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -866,16 +866,16 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "777:35:67",
+                          "src": "777:35:173",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14830,
+                        "id": 27411,
                         "nodeType": "EmitStatement",
-                        "src": "772:40:67"
+                        "src": "772:40:173"
                       }
                     ]
                   },
@@ -885,19 +885,19 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 14808,
+                    "id": 27389,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 14805,
+                      "id": 27386,
                       "name": "idx",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14802,
-                      "src": "694:3:67",
+                      "referencedDeclaration": 27383,
+                      "src": "694:3:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -909,18 +909,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 14806,
+                        "id": 27387,
                         "name": "tokens",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14784,
-                        "src": "700:6:67",
+                        "referencedDeclaration": 27365,
+                        "src": "700:6:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
                           "typeString": "address[] calldata"
                         }
                       },
-                      "id": 14807,
+                      "id": 27388,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -928,33 +928,33 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "700:13:67",
+                      "src": "700:13:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "694:19:67",
+                    "src": "694:19:173",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 14832,
+                  "id": 27413,
                   "initializationExpression": {
                     "assignments": [
-                      14802
+                      27383
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 14802,
+                        "id": 27383,
                         "mutability": "mutable",
                         "name": "idx",
                         "nodeType": "VariableDeclaration",
                         "overrides": null,
-                        "scope": 14832,
-                        "src": "680:8:67",
+                        "scope": 27413,
+                        "src": "680:8:173",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -962,10 +962,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 14801,
+                          "id": 27382,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "680:4:67",
+                          "src": "680:4:173",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -975,18 +975,18 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 14804,
+                    "id": 27385,
                     "initialValue": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 14803,
+                      "id": 27384,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "691:1:67",
+                      "src": "691:1:173",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -995,12 +995,12 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "680:12:67"
+                    "src": "680:12:173"
                   },
                   "loopExpression": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 14810,
+                      "id": 27391,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1008,15 +1008,15 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "715:5:67",
+                      "src": "715:5:173",
                       "subExpression": {
                         "argumentTypes": null,
-                        "id": 14809,
+                        "id": 27390,
                         "name": "idx",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14802,
-                        "src": "715:3:67",
+                        "referencedDeclaration": 27383,
+                        "src": "715:3:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1027,62 +1027,62 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 14811,
+                    "id": 27392,
                     "nodeType": "ExpressionStatement",
-                    "src": "715:5:67"
+                    "src": "715:5:173"
                   },
                   "nodeType": "ForStatement",
-                  "src": "675:144:67"
+                  "src": "675:144:173"
                 }
               ]
             },
             "documentation": {
-              "id": 14781,
+              "id": 27362,
               "nodeType": "StructuredDocumentation",
-              "src": "378:129:67",
+              "src": "378:129:173",
               "text": "@dev Set oracle source routes for tokens\n @param tokens List of tokens\n @param targets List of oracle source routes"
             },
             "functionSelector": "573f775a",
-            "id": 14834,
+            "id": 27415,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 14790,
+                "id": 27371,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 14789,
+                  "id": 27370,
                   "name": "onlyGov",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
                   "referencedDeclaration": 36,
-                  "src": "592:7:67",
+                  "src": "592:7:173",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "592:7:67"
+                "src": "592:7:173"
               }
             ],
             "name": "setRoute",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 14788,
+              "id": 27369,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14784,
+                  "id": 27365,
                   "mutability": "mutable",
                   "name": "tokens",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14834,
-                  "src": "528:25:67",
+                  "scope": 27415,
+                  "src": "528:25:173",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -1091,20 +1091,20 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 14782,
+                      "id": 27363,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "528:7:67",
+                      "src": "528:7:173",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 14783,
+                    "id": 27364,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "528:9:67",
+                    "src": "528:9:173",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1115,13 +1115,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 14787,
+                  "id": 27368,
                   "mutability": "mutable",
                   "name": "targets",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14834,
-                  "src": "555:26:67",
+                  "scope": 27415,
+                  "src": "555:26:173",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -1130,20 +1130,20 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 14785,
+                      "id": 27366,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "555:7:67",
+                      "src": "555:7:173",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 14786,
+                    "id": 27367,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "555:9:67",
+                    "src": "555:9:173",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1153,43 +1153,43 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "527:55:67"
+              "src": "527:55:173"
             },
             "returnParameters": {
-              "id": 14791,
+              "id": 27372,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "600:0:67"
+              "src": "600:0:173"
             },
-            "scope": 14865,
-            "src": "510:313:67",
+            "scope": 27446,
+            "src": "510:313:173",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "baseFunctions": [
-              22184
+              38797
             ],
             "body": {
-              "id": 14863,
+              "id": 27444,
               "nodeType": "Block",
-              "src": "1042:125:67",
+              "src": "1042:125:173",
               "statements": [
                 {
                   "assignments": [
-                    14844
+                    27425
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 14844,
+                      "id": 27425,
                       "mutability": "mutable",
                       "name": "px",
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
-                      "scope": 14863,
-                      "src": "1048:7:67",
+                      "scope": 27444,
+                      "src": "1048:7:173",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -1197,10 +1197,10 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 14843,
+                        "id": 27424,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1048:4:67",
+                        "src": "1048:4:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1210,18 +1210,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 14853,
+                  "id": 27434,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 14851,
+                        "id": 27432,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14837,
-                        "src": "1095:5:67",
+                        "referencedDeclaration": 27418,
+                        "src": "1095:5:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1242,26 +1242,26 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 14846,
+                              "id": 27427,
                               "name": "routes",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14773,
-                              "src": "1070:6:67",
+                              "referencedDeclaration": 27354,
+                              "src": "1070:6:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
                                 "typeString": "mapping(address => address)"
                               }
                             },
-                            "id": 14848,
+                            "id": 27429,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 14847,
+                              "id": 27428,
                               "name": "token",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14837,
-                              "src": "1077:5:67",
+                              "referencedDeclaration": 27418,
+                              "src": "1077:5:173",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -1272,7 +1272,7 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "1070:13:67",
+                            "src": "1070:13:173",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -1286,18 +1286,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 14845,
+                          "id": 27426,
                           "name": "IBaseOracle",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 22185,
-                          "src": "1058:11:67",
+                          "referencedDeclaration": 38798,
+                          "src": "1058:11:173",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IBaseOracle_$22185_$",
+                            "typeIdentifier": "t_type$_t_contract$_IBaseOracle_$38798_$",
                             "typeString": "type(contract IBaseOracle)"
                           }
                         },
-                        "id": 14849,
+                        "id": 27430,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1305,28 +1305,28 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1058:26:67",
+                        "src": "1058:26:173",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBaseOracle_$22185",
+                          "typeIdentifier": "t_contract$_IBaseOracle_$38798",
                           "typeString": "contract IBaseOracle"
                         }
                       },
-                      "id": 14850,
+                      "id": 27431,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getCELOPx",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 22184,
-                      "src": "1058:36:67",
+                      "referencedDeclaration": 38797,
+                      "src": "1058:36:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
                         "typeString": "function (address) view external returns (uint256)"
                       }
                     },
-                    "id": 14852,
+                    "id": 27433,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1334,7 +1334,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1058:43:67",
+                    "src": "1058:43:173",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1342,7 +1342,7 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1048:53:67"
+                  "src": "1048:53:173"
                 },
                 {
                   "expression": {
@@ -1354,19 +1354,19 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 14857,
+                        "id": 27438,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 14855,
+                          "id": 27436,
                           "name": "px",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 14844,
-                          "src": "1115:2:67",
+                          "referencedDeclaration": 27425,
+                          "src": "1115:2:173",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1377,14 +1377,14 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "30",
-                          "id": 14856,
+                          "id": 27437,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "1121:1:67",
+                          "src": "1121:1:173",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -1392,7 +1392,7 @@
                           },
                           "value": "0"
                         },
-                        "src": "1115:7:67",
+                        "src": "1115:7:173",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1401,14 +1401,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "7072696365206f7261636c65206661696c757265",
-                        "id": 14858,
+                        "id": 27439,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1124:22:67",
+                        "src": "1124:22:173",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_f6180f7b6a79675b250958a1c90e7906891af7545e42f313ec27203d69de0a82",
@@ -1428,7 +1428,7 @@
                           "typeString": "literal_string \"price oracle failure\""
                         }
                       ],
-                      "id": 14854,
+                      "id": 27435,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -1436,13 +1436,13 @@
                         -18
                       ],
                       "referencedDeclaration": -18,
-                      "src": "1107:7:67",
+                      "src": "1107:7:173",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14859,
+                    "id": 27440,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1450,70 +1450,70 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1107:40:67",
+                    "src": "1107:40:173",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14860,
+                  "id": 27441,
                   "nodeType": "ExpressionStatement",
-                  "src": "1107:40:67"
+                  "src": "1107:40:173"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 14861,
+                    "id": 27442,
                     "name": "px",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 14844,
-                    "src": "1160:2:67",
+                    "referencedDeclaration": 27425,
+                    "src": "1160:2:173",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 14842,
-                  "id": 14862,
+                  "functionReturnParameters": 27423,
+                  "id": 27443,
                   "nodeType": "Return",
-                  "src": "1153:9:67"
+                  "src": "1153:9:173"
                 }
               ]
             },
             "documentation": {
-              "id": 14835,
+              "id": 27416,
               "nodeType": "StructuredDocumentation",
-              "src": "827:140:67",
+              "src": "827:140:173",
               "text": "@dev Return the value of the given input as CELO per unit, multiplied by 2**112.\n @param token The ERC-20 token to check the value."
             },
             "functionSelector": "11e56aff",
-            "id": 14864,
+            "id": 27445,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getCELOPx",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 14839,
+              "id": 27420,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "1018:8:67"
+              "src": "1018:8:173"
             },
             "parameters": {
-              "id": 14838,
+              "id": 27419,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14837,
+                  "id": 27418,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14864,
-                  "src": "989:13:67",
+                  "scope": 27445,
+                  "src": "989:13:173",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1521,10 +1521,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14836,
+                    "id": 27417,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "989:7:67",
+                    "src": "989:7:173",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1535,21 +1535,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "988:15:67"
+              "src": "988:15:173"
             },
             "returnParameters": {
-              "id": 14842,
+              "id": 27423,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14841,
+                  "id": 27422,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 14864,
-                  "src": "1036:4:67",
+                  "scope": 27445,
+                  "src": "1036:4:173",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1557,10 +1557,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14840,
+                    "id": 27421,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1036:4:67",
+                    "src": "1036:4:173",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1570,20 +1570,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1035:6:67"
+              "src": "1035:6:173"
             },
-            "scope": 14865,
-            "src": "970:197:67",
+            "scope": 27446,
+            "src": "970:197:173",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 14866,
-        "src": "130:1039:67"
+        "scope": 27447,
+        "src": "130:1039:173"
       }
     ],
-    "src": "33:1137:67"
+    "src": "33:1137:173"
   },
   "bytecode": "608060405234801561001057600080fd5b5061001961001e565b610142565b600054610100900460ff16806100375750610037610121565b80610045575060005460ff16155b6100805760405162461bcd60e51b815260040180806020018281038252602e8152602001806107ce602e913960400191505060405180910390fd5b600054610100900460ff161580156100ab576000805460ff1961ff0019909116610100171660011790555b6000805462010000600160b01b0319163362010000810291909117909155600180546001600160a01b031916905560408051918252517fbce074c8369e26e70e1ae2f14fc944da352cfe6f52e2de9572f0c9942a24b7fc916020908290030190a1801561011e576000805461ff00191690555b50565b60006101363061013c60201b6106411760201c565b15905090565b3b151590565b61067d806101516000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c8063d74096591161005b578063d7409659146101a2578063e3056a34146101c8578063e58bb639146101d0578063f235757f146101d85761007d565b80630c340a241461008257806311e56aff146100a6578063573f775a146100de575b600080fd5b61008a6101fe565b604080516001600160a01b039092168252519081900360200190f35b6100cc600480360360208110156100bc57600080fd5b50356001600160a01b0316610213565b60408051918252519081900360200190f35b6101a0600480360360408110156100f457600080fd5b81019060208101813564010000000081111561010f57600080fd5b82018360208201111561012157600080fd5b8035906020019184602083028401116401000000008311171561014357600080fd5b91939092909160208101903564010000000081111561016157600080fd5b82018360208201111561017357600080fd5b8035906020019184602083028401116401000000008311171561019557600080fd5b5090925090506102ed565b005b61008a600480360360208110156101b857600080fd5b50356001600160a01b03166104a9565b61008a6104c4565b6101a06104d3565b6101a0600480360360208110156101ee57600080fd5b50356001600160a01b0316610595565b6000546201000090046001600160a01b031681565b6001600160a01b0380821660008181526042602090815260408083205481516311e56aff60e01b815260048101959095529051929485949116926311e56aff92602480840193919291829003018186803b15801561027057600080fd5b505afa158015610284573d6000803e3d6000fd5b505050506040513d602081101561029a57600080fd5b50519050806102e7576040805162461bcd60e51b81526020600482015260146024820152737072696365206f7261636c65206661696c75726560601b604482015290519081900360640190fd5b92915050565b6000546201000090046001600160a01b03163314610345576040805162461bcd60e51b815260206004820152601060248201526f3737ba103a34329033b7bb32b93737b960811b604482015290519081900360640190fd5b82811461038f576040805162461bcd60e51b81526020600482015260136024820152720d2dcc6dedce6d2e6e8cadce840d8cadccee8d606b1b604482015290519081900360640190fd5b60005b838110156104a2578282828181106103a657fe5b905060200201356001600160a01b0316604260008787858181106103c657fe5b905060200201356001600160a01b03166001600160a01b03166001600160a01b0316815260200190815260200160002060006101000a8154816001600160a01b0302191690836001600160a01b0316021790555084848281811061042657fe5b905060200201356001600160a01b03166001600160a01b03167fa8c96090e146ce1076efa81e5424d56e13d5c3854943f7926406c12d15d6dbe984848481811061046c57fe5b905060200201356001600160a01b031660405180826001600160a01b0316815260200191505060405180910390a2600101610392565b5050505050565b6042602052600090815260409020546001600160a01b031681565b6001546001600160a01b031681565b6001546001600160a01b03163314610532576040805162461bcd60e51b815260206004820152601860248201527f6e6f74207468652070656e64696e6720676f7665726e6f720000000000000000604482015290519081900360640190fd5b600180546001600160a01b03191690556000805462010000600160b01b031916336201000081029190911790915560408051918252517fd345d81ce68c70b119a17eee79dc1421700bd9cb21ca148a62dc90983964e82f916020908290030190a1565b6000546201000090046001600160a01b031633146105ed576040805162461bcd60e51b815260206004820152601060248201526f3737ba103a34329033b7bb32b93737b960811b604482015290519081900360640190fd5b600180546001600160a01b0383166001600160a01b0319909116811790915560408051918252517f964dea888b00b2ab53f13dfe7ca334b46e99338c222ae232d98547a1da019f609181900360200190a150565b3b15159056fea26469706673582212207135e364d5f9b9f2c619c42577c791e4fdd42966cf6f8c03558be9d49b6113d864736f6c634300060c0033496e697469616c697a61626c653a20636f6e747261637420697320616c726561647920696e697469616c697a6564",
   "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -1599,16 +1599,7 @@
   "coverageMap": {
     "branches": {
       "16": {},
-      "22": {
-        "Governable.acceptGovernor": {
-          "15": [
-            1283,
-            1312,
-            true
-          ]
-        }
-      },
-      "67": {
+      "173": {
         "CoreOracle.getCELOPx": {
           "13": [
             1115,
@@ -1624,8 +1615,17 @@
           ]
         }
       },
-      "7": {},
-      "88": {}
+      "200": {},
+      "22": {
+        "Governable.acceptGovernor": {
+          "15": [
+            1283,
+            1312,
+            true
+          ]
+        }
+      },
+      "7": {}
     },
     "statements": {
       "16": {
@@ -1636,6 +1636,37 @@
           ]
         }
       },
+      "173": {
+        "CoreOracle.getCELOPx": {
+          "0": [
+            1107,
+            1147
+          ],
+          "1": [
+            1153,
+            1162
+          ]
+        },
+        "CoreOracle.setRoute": {
+          "2": [
+            606,
+            669
+          ],
+          "3": [
+            730,
+            764
+          ],
+          "4": [
+            772,
+            812
+          ],
+          "5": [
+            715,
+            720
+          ]
+        }
+      },
+      "200": {},
       "22": {
         "Governable.acceptGovernor": {
           "6": [
@@ -1666,38 +1697,7 @@
           ]
         }
       },
-      "67": {
-        "CoreOracle.getCELOPx": {
-          "0": [
-            1107,
-            1147
-          ],
-          "1": [
-            1153,
-            1162
-          ]
-        },
-        "CoreOracle.setRoute": {
-          "2": [
-            606,
-            669
-          ],
-          "3": [
-            730,
-            764
-          ],
-          "4": [
-            772,
-            812
-          ],
-          "5": [
-            715,
-            720
-          ]
-        }
-      },
-      "7": {},
-      "88": {}
+      "7": {}
     }
   },
   "dependencies": [
@@ -1707,7 +1707,7 @@
     "OpenZeppelin/openzeppelin-contracts@3.4.0/Initializable"
   ],
   "deployedBytecode": "608060405234801561001057600080fd5b506004361061007d5760003560e01c8063d74096591161005b578063d7409659146101a2578063e3056a34146101c8578063e58bb639146101d0578063f235757f146101d85761007d565b80630c340a241461008257806311e56aff146100a6578063573f775a146100de575b600080fd5b61008a6101fe565b604080516001600160a01b039092168252519081900360200190f35b6100cc600480360360208110156100bc57600080fd5b50356001600160a01b0316610213565b60408051918252519081900360200190f35b6101a0600480360360408110156100f457600080fd5b81019060208101813564010000000081111561010f57600080fd5b82018360208201111561012157600080fd5b8035906020019184602083028401116401000000008311171561014357600080fd5b91939092909160208101903564010000000081111561016157600080fd5b82018360208201111561017357600080fd5b8035906020019184602083028401116401000000008311171561019557600080fd5b5090925090506102ed565b005b61008a600480360360208110156101b857600080fd5b50356001600160a01b03166104a9565b61008a6104c4565b6101a06104d3565b6101a0600480360360208110156101ee57600080fd5b50356001600160a01b0316610595565b6000546201000090046001600160a01b031681565b6001600160a01b0380821660008181526042602090815260408083205481516311e56aff60e01b815260048101959095529051929485949116926311e56aff92602480840193919291829003018186803b15801561027057600080fd5b505afa158015610284573d6000803e3d6000fd5b505050506040513d602081101561029a57600080fd5b50519050806102e7576040805162461bcd60e51b81526020600482015260146024820152737072696365206f7261636c65206661696c75726560601b604482015290519081900360640190fd5b92915050565b6000546201000090046001600160a01b03163314610345576040805162461bcd60e51b815260206004820152601060248201526f3737ba103a34329033b7bb32b93737b960811b604482015290519081900360640190fd5b82811461038f576040805162461bcd60e51b81526020600482015260136024820152720d2dcc6dedce6d2e6e8cadce840d8cadccee8d606b1b604482015290519081900360640190fd5b60005b838110156104a2578282828181106103a657fe5b905060200201356001600160a01b0316604260008787858181106103c657fe5b905060200201356001600160a01b03166001600160a01b03166001600160a01b0316815260200190815260200160002060006101000a8154816001600160a01b0302191690836001600160a01b0316021790555084848281811061042657fe5b905060200201356001600160a01b03166001600160a01b03167fa8c96090e146ce1076efa81e5424d56e13d5c3854943f7926406c12d15d6dbe984848481811061046c57fe5b905060200201356001600160a01b031660405180826001600160a01b0316815260200191505060405180910390a2600101610392565b5050505050565b6042602052600090815260409020546001600160a01b031681565b6001546001600160a01b031681565b6001546001600160a01b03163314610532576040805162461bcd60e51b815260206004820152601860248201527f6e6f74207468652070656e64696e6720676f7665726e6f720000000000000000604482015290519081900360640190fd5b600180546001600160a01b03191690556000805462010000600160b01b031916336201000081029190911790915560408051918252517fd345d81ce68c70b119a17eee79dc1421700bd9cb21ca148a62dc90983964e82f916020908290030190a1565b6000546201000090046001600160a01b031633146105ed576040805162461bcd60e51b815260206004820152601060248201526f3737ba103a34329033b7bb32b93737b960811b604482015290519081900360640190fd5b600180546001600160a01b0383166001600160a01b0319909116811790915560408051918252517f964dea888b00b2ab53f13dfe7ca334b46e99338c222ae232d98547a1da019f609181900360200190a150565b3b15159056fea26469706673582212207135e364d5f9b9f2c619c42577c791e4fdd42966cf6f8c03558be9d49b6113d864736f6c634300060c0033",
-  "deployedSourceMap": "130:1039:67:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;321:23:22;;;:::i;:::-;;;;-1:-1:-1;;;;;321:23:22;;;;;;;;;;;;;;970:197:67;;;;;;;;;;;;;;;;-1:-1:-1;970:197:67;-1:-1:-1;;;;;970:197:67;;:::i;:::-;;;;;;;;;;;;;;;;510:313;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;510:313:67;;-1:-1:-1;510:313:67;-1:-1:-1;510:313:67;:::i;:::-;;237:41;;;;;;;;;;;;;;;;-1:-1:-1;237:41:67;-1:-1:-1;;;;;237:41:67;;:::i;373:30:22:-;;;:::i;1234:210::-;;;:::i;981:163::-;;;;;;;;;;;;;;;;-1:-1:-1;981:163:22;-1:-1:-1;;;;;981:163:22;;:::i;321:23::-;;;;;;-1:-1:-1;;;;;321:23:22;;:::o;970:197:67:-;-1:-1:-1;;;;;1070:13:67;;;1036:4;1070:13;;;:6;:13;;;;;;;;;1058:43;;-1:-1:-1;;;1058:43:67;;;;;;;;;;;1036:4;;;;1070:13;;;1058:36;;:43;;;;;1070:13;;1058:43;;;;;;1070:13;1058:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1058:43:67;;-1:-1:-1;1115:7:67;1107:40;;;;;-1:-1:-1;;;1107:40:67;;;;;;;;;;;;-1:-1:-1;;;1107:40:67;;;;;;;;;;;;;;;1160:2;970:197;-1:-1:-1;;970:197:67:o;510:313::-;566:8:22;;;;;-1:-1:-1;;;;;566:8:22;552:10;:22;544:51;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;;;;614:31:67;;::::1;606:63;;;::::0;;-1:-1:-1;;;606:63:67;;::::1;;::::0;::::1;::::0;::::1;::::0;;;;-1:-1:-1;;;606:63:67;;;;;;;;;;;;;::::1;;680:8;675:144;694:19:::0;;::::1;675:144;;;752:7;;760:3;752:12;;;;;;;;;;;;;-1:-1:-1::0;;;;;752:12:67::1;730:6;:19;737:6;;744:3;737:11;;;;;;;;;;;;;-1:-1:-1::0;;;;;737:11:67::1;-1:-1:-1::0;;;;;730:19:67::1;-1:-1:-1::0;;;;;730:19:67::1;;;;;;;;;;;;;:34;;;;;-1:-1:-1::0;;;;;730:34:67::1;;;;;-1:-1:-1::0;;;;;730:34:67::1;;;;;;786:6;;793:3;786:11;;;;;;;;;;;;;-1:-1:-1::0;;;;;786:11:67::1;-1:-1:-1::0;;;;;777:35:67::1;;799:7;;807:3;799:12;;;;;;;;;;;;;-1:-1:-1::0;;;;;799:12:67::1;777:35;;;;-1:-1:-1::0;;;;;777:35:67::1;;;;;;;;;;;;;;;715:5;;675:144;;;;510:313:::0;;;;:::o;237:41::-;;;;;;;;;;;;-1:-1:-1;;;;;237:41:67;;:::o;373:30:22:-;;;-1:-1:-1;;;;;373:30:22;;:::o;1234:210::-;1297:15;;-1:-1:-1;;;;;1297:15:22;1283:10;:29;1275:66;;;;;-1:-1:-1;;;1275:66:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;1347:15;:28;;-1:-1:-1;;;;;;1347:28:22;;;-1:-1:-1;1381:21:22;;-1:-1:-1;;;;;;1381:21:22;1392:10;1381:21;;;;;;;;;;1413:26;;;;;;;;;;;;;;;;;1234:210::o;981:163::-;566:8;;;;;-1:-1:-1;;;;;566:8:22;552:10;:22;544:51;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;;;;1058:15:::1;:34:::0;;-1:-1:-1;;;;;1058:34:22;::::1;-1:-1:-1::0;;;;;;1058:34:22;;::::1;::::0;::::1;::::0;;;1103:36:::1;::::0;;;;;;::::1;::::0;;;;::::1;::::0;;::::1;981:163:::0;:::o;726:413:16:-;1086:20;1124:8;;;726:413::o",
+  "deployedSourceMap": "130:1039:173:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;321:23:22;;;:::i;:::-;;;;-1:-1:-1;;;;;321:23:22;;;;;;;;;;;;;;970:197:173;;;;;;;;;;;;;;;;-1:-1:-1;970:197:173;-1:-1:-1;;;;;970:197:173;;:::i;:::-;;;;;;;;;;;;;;;;510:313;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;510:313:173;;-1:-1:-1;510:313:173;-1:-1:-1;510:313:173;:::i;:::-;;237:41;;;;;;;;;;;;;;;;-1:-1:-1;237:41:173;-1:-1:-1;;;;;237:41:173;;:::i;373:30:22:-;;;:::i;1234:210::-;;;:::i;981:163::-;;;;;;;;;;;;;;;;-1:-1:-1;981:163:22;-1:-1:-1;;;;;981:163:22;;:::i;321:23::-;;;;;;-1:-1:-1;;;;;321:23:22;;:::o;970:197:173:-;-1:-1:-1;;;;;1070:13:173;;;1036:4;1070:13;;;:6;:13;;;;;;;;;1058:43;;-1:-1:-1;;;1058:43:173;;;;;;;;;;;1036:4;;;;1070:13;;;1058:36;;:43;;;;;1070:13;;1058:43;;;;;;1070:13;1058:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1058:43:173;;-1:-1:-1;1115:7:173;1107:40;;;;;-1:-1:-1;;;1107:40:173;;;;;;;;;;;;-1:-1:-1;;;1107:40:173;;;;;;;;;;;;;;;1160:2;970:197;-1:-1:-1;;970:197:173:o;510:313::-;566:8:22;;;;;-1:-1:-1;;;;;566:8:22;552:10;:22;544:51;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;;;;614:31:173;;::::1;606:63;;;::::0;;-1:-1:-1;;;606:63:173;;::::1;;::::0;::::1;::::0;::::1;::::0;;;;-1:-1:-1;;;606:63:173;;;;;;;;;;;;;::::1;;680:8;675:144;694:19:::0;;::::1;675:144;;;752:7;;760:3;752:12;;;;;;;;;;;;;-1:-1:-1::0;;;;;752:12:173::1;730:6;:19;737:6;;744:3;737:11;;;;;;;;;;;;;-1:-1:-1::0;;;;;737:11:173::1;-1:-1:-1::0;;;;;730:19:173::1;-1:-1:-1::0;;;;;730:19:173::1;;;;;;;;;;;;;:34;;;;;-1:-1:-1::0;;;;;730:34:173::1;;;;;-1:-1:-1::0;;;;;730:34:173::1;;;;;;786:6;;793:3;786:11;;;;;;;;;;;;;-1:-1:-1::0;;;;;786:11:173::1;-1:-1:-1::0;;;;;777:35:173::1;;799:7;;807:3;799:12;;;;;;;;;;;;;-1:-1:-1::0;;;;;799:12:173::1;777:35;;;;-1:-1:-1::0;;;;;777:35:173::1;;;;;;;;;;;;;;;715:5;;675:144;;;;510:313:::0;;;;:::o;237:41::-;;;;;;;;;;;;-1:-1:-1;;;;;237:41:173;;:::o;373:30:22:-;;;-1:-1:-1;;;;;373:30:22;;:::o;1234:210::-;1297:15;;-1:-1:-1;;;;;1297:15:22;1283:10;:29;1275:66;;;;;-1:-1:-1;;;1275:66:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;1347:15;:28;;-1:-1:-1;;;;;;1347:28:22;;;-1:-1:-1;1381:21:22;;-1:-1:-1;;;;;;1381:21:22;1392:10;1381:21;;;;;;;;;;1413:26;;;;;;;;;;;;;;;;;1234:210::o;981:163::-;566:8;;;;;-1:-1:-1;;;;;566:8:22;552:10;:22;544:51;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;-1:-1:-1;;;544:51:22;;;;;;;;;;;;;;;1058:15:::1;:34:::0;;-1:-1:-1;;;;;1058:34:22;::::1;-1:-1:-1::0;;;;;;1058:34:22;;::::1;::::0;::::1;::::0;;;1103:36:::1;::::0;;;;;;::::1;::::0;;;;::::1;::::0;;::::1;981:163:::0;:::o;726:413:16:-;1086:20;1124:8;;;726:413::o",
   "language": "Solidity",
   "natspec": {
     "kind": "dev",
@@ -1749,7 +1749,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x80"
     },
     "2": {
@@ -1759,7 +1759,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "4": {
@@ -1769,7 +1769,7 @@
         1169
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "5": {
       "fn": null,
@@ -1778,7 +1778,7 @@
         1169
       ],
       "op": "CALLVALUE",
-      "path": "67"
+      "path": "173"
     },
     "6": {
       "fn": null,
@@ -1787,7 +1787,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "7": {
       "fn": null,
@@ -1796,7 +1796,7 @@
         1169
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "8": {
       "fn": null,
@@ -1805,7 +1805,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x10"
     },
     "11": {
@@ -1815,7 +1815,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "12": {
       "fn": null,
@@ -1824,7 +1824,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "14": {
@@ -1834,7 +1834,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "15": {
       "dev": "Cannot send ether to nonpayable function",
@@ -1844,7 +1844,7 @@
         1169
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "16": {
       "fn": null,
@@ -1853,7 +1853,7 @@
         1169
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "17": {
       "fn": null,
@@ -1862,7 +1862,7 @@
         1169
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "18": {
       "fn": null,
@@ -1871,7 +1871,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "20": {
@@ -1881,7 +1881,7 @@
         1169
       ],
       "op": "CALLDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "21": {
       "fn": null,
@@ -1890,7 +1890,7 @@
         1169
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "22": {
       "fn": null,
@@ -1899,7 +1899,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x7D"
     },
     "25": {
@@ -1909,7 +1909,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "26": {
       "fn": null,
@@ -1918,7 +1918,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "28": {
@@ -1928,7 +1928,7 @@
         1169
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "29": {
       "fn": null,
@@ -1937,7 +1937,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0xE0"
     },
     "31": {
@@ -1947,7 +1947,7 @@
         1169
       ],
       "op": "SHR",
-      "path": "67"
+      "path": "173"
     },
     "32": {
       "fn": null,
@@ -1956,7 +1956,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "33": {
       "fn": null,
@@ -1965,7 +1965,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xD7409659"
     },
     "38": {
@@ -1975,7 +1975,7 @@
         1169
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "39": {
       "fn": null,
@@ -1984,7 +1984,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x5B"
     },
     "42": {
@@ -1994,7 +1994,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "43": {
       "fn": null,
@@ -2003,7 +2003,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "44": {
       "fn": null,
@@ -2012,7 +2012,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xD7409659"
     },
     "49": {
@@ -2022,7 +2022,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "50": {
       "fn": null,
@@ -2031,7 +2031,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1A2"
     },
     "53": {
@@ -2041,7 +2041,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "54": {
       "fn": null,
@@ -2050,7 +2050,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "55": {
       "fn": null,
@@ -2059,7 +2059,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xE3056A34"
     },
     "60": {
@@ -2069,7 +2069,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "61": {
       "fn": null,
@@ -2078,7 +2078,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1C8"
     },
     "64": {
@@ -2088,7 +2088,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "65": {
       "fn": null,
@@ -2097,7 +2097,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "66": {
       "fn": null,
@@ -2106,7 +2106,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xE58BB639"
     },
     "71": {
@@ -2116,7 +2116,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "72": {
       "fn": null,
@@ -2125,7 +2125,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1D0"
     },
     "75": {
@@ -2135,7 +2135,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "76": {
       "fn": null,
@@ -2144,7 +2144,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "77": {
       "fn": null,
@@ -2153,7 +2153,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xF235757F"
     },
     "82": {
@@ -2163,7 +2163,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "83": {
       "fn": null,
@@ -2172,7 +2172,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1D8"
     },
     "86": {
@@ -2182,7 +2182,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "87": {
       "fn": null,
@@ -2191,7 +2191,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x7D"
     },
     "90": {
@@ -2201,7 +2201,7 @@
         1169
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "91": {
       "fn": null,
@@ -2210,7 +2210,7 @@
         1169
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "92": {
       "fn": null,
@@ -2219,7 +2219,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "93": {
       "fn": null,
@@ -2228,7 +2228,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0xC340A24"
     },
     "98": {
@@ -2238,7 +2238,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "99": {
       "fn": null,
@@ -2247,7 +2247,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x82"
     },
     "102": {
@@ -2257,7 +2257,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "103": {
       "fn": null,
@@ -2266,7 +2266,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "104": {
       "fn": null,
@@ -2275,7 +2275,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0x11E56AFF"
     },
     "109": {
@@ -2285,7 +2285,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "110": {
       "fn": null,
@@ -2294,7 +2294,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0xA6"
     },
     "113": {
@@ -2304,7 +2304,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "114": {
       "fn": null,
@@ -2313,7 +2313,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "115": {
       "fn": null,
@@ -2322,7 +2322,7 @@
         1169
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0x573F775A"
     },
     "120": {
@@ -2332,7 +2332,7 @@
         1169
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "121": {
       "fn": null,
@@ -2341,7 +2341,7 @@
         1169
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0xDE"
     },
     "124": {
@@ -2351,7 +2351,7 @@
         1169
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "125": {
       "fn": null,
@@ -2360,7 +2360,7 @@
         1169
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "126": {
       "fn": null,
@@ -2369,7 +2369,7 @@
         1169
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "128": {
@@ -2379,7 +2379,7 @@
         1169
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "129": {
       "first_revert": true,
@@ -2389,7 +2389,7 @@
         1169
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "130": {
       "offset": [
@@ -2617,7 +2617,7 @@
         1167
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "167": {
       "fn": "CoreOracle.getCELOPx",
@@ -2626,7 +2626,7 @@
         1167
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0xCC"
     },
     "170": {
@@ -2636,7 +2636,7 @@
         1167
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "172": {
@@ -2646,7 +2646,7 @@
         1167
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "173": {
       "fn": "CoreOracle.getCELOPx",
@@ -2655,7 +2655,7 @@
         1167
       ],
       "op": "CALLDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "174": {
       "fn": "CoreOracle.getCELOPx",
@@ -2664,7 +2664,7 @@
         1167
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "175": {
       "fn": "CoreOracle.getCELOPx",
@@ -2673,7 +2673,7 @@
         1167
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "177": {
@@ -2683,7 +2683,7 @@
         1167
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "178": {
       "fn": "CoreOracle.getCELOPx",
@@ -2692,7 +2692,7 @@
         1167
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "179": {
       "fn": "CoreOracle.getCELOPx",
@@ -2701,7 +2701,7 @@
         1167
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "180": {
       "fn": "CoreOracle.getCELOPx",
@@ -2710,7 +2710,7 @@
         1167
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0xBC"
     },
     "183": {
@@ -2720,7 +2720,7 @@
         1167
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "184": {
       "fn": "CoreOracle.getCELOPx",
@@ -2729,7 +2729,7 @@
         1167
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "186": {
@@ -2739,7 +2739,7 @@
         1167
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "187": {
       "fn": "CoreOracle.getCELOPx",
@@ -2748,7 +2748,7 @@
         1167
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "188": {
       "fn": "CoreOracle.getCELOPx",
@@ -2757,7 +2757,7 @@
         1167
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "189": {
       "op": "POP"
@@ -2769,7 +2769,7 @@
         1167
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "191": {
       "op": "PUSH1",
@@ -2796,7 +2796,7 @@
         1167
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "200": {
       "fn": "CoreOracle.getCELOPx",
@@ -2805,7 +2805,7 @@
         1167
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x213"
     },
     "203": {
@@ -2816,7 +2816,7 @@
         1167
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "204": {
       "fn": "CoreOracle.getCELOPx",
@@ -2825,7 +2825,7 @@
         1167
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "205": {
       "fn": "CoreOracle.getCELOPx",
@@ -2834,7 +2834,7 @@
         1167
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "207": {
@@ -2844,7 +2844,7 @@
         1167
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "208": {
       "fn": "CoreOracle.getCELOPx",
@@ -2853,7 +2853,7 @@
         1167
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "209": {
       "fn": "CoreOracle.getCELOPx",
@@ -2862,7 +2862,7 @@
         1167
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "210": {
       "fn": "CoreOracle.getCELOPx",
@@ -2871,7 +2871,7 @@
         1167
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "211": {
       "fn": "CoreOracle.getCELOPx",
@@ -2880,7 +2880,7 @@
         1167
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "212": {
       "fn": "CoreOracle.getCELOPx",
@@ -2889,7 +2889,7 @@
         1167
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "213": {
       "fn": "CoreOracle.getCELOPx",
@@ -2898,7 +2898,7 @@
         1167
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "214": {
       "fn": "CoreOracle.getCELOPx",
@@ -2907,7 +2907,7 @@
         1167
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "215": {
       "fn": "CoreOracle.getCELOPx",
@@ -2916,7 +2916,7 @@
         1167
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "216": {
       "fn": "CoreOracle.getCELOPx",
@@ -2925,7 +2925,7 @@
         1167
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "217": {
       "fn": "CoreOracle.getCELOPx",
@@ -2934,7 +2934,7 @@
         1167
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "219": {
@@ -2944,7 +2944,7 @@
         1167
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "220": {
       "fn": "CoreOracle.getCELOPx",
@@ -2953,7 +2953,7 @@
         1167
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "221": {
       "fn": "CoreOracle.getCELOPx",
@@ -2962,7 +2962,7 @@
         1167
       ],
       "op": "RETURN",
-      "path": "67"
+      "path": "173"
     },
     "222": {
       "fn": "CoreOracle.setRoute",
@@ -2971,7 +2971,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "223": {
       "fn": "CoreOracle.setRoute",
@@ -2980,7 +2980,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1A0"
     },
     "226": {
@@ -2990,7 +2990,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "228": {
@@ -3000,7 +3000,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "229": {
       "fn": "CoreOracle.setRoute",
@@ -3009,7 +3009,7 @@
         823
       ],
       "op": "CALLDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "230": {
       "fn": "CoreOracle.setRoute",
@@ -3018,7 +3018,7 @@
         823
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "231": {
       "fn": "CoreOracle.setRoute",
@@ -3027,7 +3027,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "233": {
@@ -3037,7 +3037,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "234": {
       "fn": "CoreOracle.setRoute",
@@ -3046,7 +3046,7 @@
         823
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "235": {
       "fn": "CoreOracle.setRoute",
@@ -3055,7 +3055,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "236": {
       "fn": "CoreOracle.setRoute",
@@ -3064,7 +3064,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0xF4"
     },
     "239": {
@@ -3074,7 +3074,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "240": {
       "fn": "CoreOracle.setRoute",
@@ -3083,7 +3083,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "242": {
@@ -3093,7 +3093,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "243": {
       "fn": "CoreOracle.setRoute",
@@ -3102,7 +3102,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "244": {
       "fn": "CoreOracle.setRoute",
@@ -3111,7 +3111,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "245": {
       "fn": "CoreOracle.setRoute",
@@ -3120,7 +3120,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "246": {
       "fn": "CoreOracle.setRoute",
@@ -3129,7 +3129,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "247": {
       "fn": "CoreOracle.setRoute",
@@ -3138,7 +3138,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "248": {
       "fn": "CoreOracle.setRoute",
@@ -3147,7 +3147,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "250": {
@@ -3157,7 +3157,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "251": {
       "fn": "CoreOracle.setRoute",
@@ -3166,7 +3166,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "252": {
       "fn": "CoreOracle.setRoute",
@@ -3175,7 +3175,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "253": {
       "fn": "CoreOracle.setRoute",
@@ -3184,7 +3184,7 @@
         823
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "254": {
       "fn": "CoreOracle.setRoute",
@@ -3193,7 +3193,7 @@
         823
       ],
       "op": "PUSH5",
-      "path": "67",
+      "path": "173",
       "value": "0x100000000"
     },
     "260": {
@@ -3203,7 +3203,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "261": {
       "fn": "CoreOracle.setRoute",
@@ -3212,7 +3212,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "262": {
       "fn": "CoreOracle.setRoute",
@@ -3221,7 +3221,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "263": {
       "fn": "CoreOracle.setRoute",
@@ -3230,7 +3230,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x10F"
     },
     "266": {
@@ -3240,7 +3240,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "267": {
       "fn": "CoreOracle.setRoute",
@@ -3249,7 +3249,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "269": {
@@ -3259,7 +3259,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "270": {
       "fn": "CoreOracle.setRoute",
@@ -3268,7 +3268,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "271": {
       "fn": "CoreOracle.setRoute",
@@ -3277,7 +3277,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "272": {
       "fn": "CoreOracle.setRoute",
@@ -3286,7 +3286,7 @@
         823
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "273": {
       "fn": "CoreOracle.setRoute",
@@ -3295,7 +3295,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "274": {
       "fn": "CoreOracle.setRoute",
@@ -3304,7 +3304,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "275": {
       "fn": "CoreOracle.setRoute",
@@ -3313,7 +3313,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "277": {
@@ -3323,7 +3323,7 @@
         823
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "278": {
       "fn": "CoreOracle.setRoute",
@@ -3332,7 +3332,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "279": {
       "fn": "CoreOracle.setRoute",
@@ -3341,7 +3341,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "280": {
       "fn": "CoreOracle.setRoute",
@@ -3350,7 +3350,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "281": {
       "fn": "CoreOracle.setRoute",
@@ -3359,7 +3359,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x121"
     },
     "284": {
@@ -3369,7 +3369,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "285": {
       "fn": "CoreOracle.setRoute",
@@ -3378,7 +3378,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "287": {
@@ -3388,7 +3388,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "288": {
       "fn": "CoreOracle.setRoute",
@@ -3397,7 +3397,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "289": {
       "fn": "CoreOracle.setRoute",
@@ -3406,7 +3406,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "290": {
       "fn": "CoreOracle.setRoute",
@@ -3415,7 +3415,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "291": {
       "fn": "CoreOracle.setRoute",
@@ -3424,7 +3424,7 @@
         823
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "292": {
       "fn": "CoreOracle.setRoute",
@@ -3433,7 +3433,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "293": {
       "fn": "CoreOracle.setRoute",
@@ -3442,7 +3442,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "295": {
@@ -3452,7 +3452,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "296": {
       "fn": "CoreOracle.setRoute",
@@ -3461,7 +3461,7 @@
         823
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "297": {
       "fn": "CoreOracle.setRoute",
@@ -3470,7 +3470,7 @@
         823
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "298": {
       "fn": "CoreOracle.setRoute",
@@ -3479,7 +3479,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "300": {
@@ -3489,7 +3489,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "301": {
       "fn": "CoreOracle.setRoute",
@@ -3498,7 +3498,7 @@
         823
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "302": {
       "fn": "CoreOracle.setRoute",
@@ -3507,7 +3507,7 @@
         823
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "303": {
       "fn": "CoreOracle.setRoute",
@@ -3516,7 +3516,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "304": {
       "fn": "CoreOracle.setRoute",
@@ -3525,7 +3525,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "305": {
       "fn": "CoreOracle.setRoute",
@@ -3534,7 +3534,7 @@
         823
       ],
       "op": "PUSH5",
-      "path": "67",
+      "path": "173",
       "value": "0x100000000"
     },
     "311": {
@@ -3544,7 +3544,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "312": {
       "fn": "CoreOracle.setRoute",
@@ -3553,7 +3553,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "313": {
       "fn": "CoreOracle.setRoute",
@@ -3562,7 +3562,7 @@
         823
       ],
       "op": "OR",
-      "path": "67"
+      "path": "173"
     },
     "314": {
       "fn": "CoreOracle.setRoute",
@@ -3571,7 +3571,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "315": {
       "fn": "CoreOracle.setRoute",
@@ -3580,7 +3580,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x143"
     },
     "318": {
@@ -3590,7 +3590,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "319": {
       "fn": "CoreOracle.setRoute",
@@ -3599,7 +3599,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "321": {
@@ -3609,7 +3609,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "322": {
       "fn": "CoreOracle.setRoute",
@@ -3618,7 +3618,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "323": {
       "fn": "CoreOracle.setRoute",
@@ -3627,7 +3627,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "324": {
       "fn": "CoreOracle.setRoute",
@@ -3636,7 +3636,7 @@
         823
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "325": {
       "fn": "CoreOracle.setRoute",
@@ -3645,7 +3645,7 @@
         823
       ],
       "op": "SWAP4",
-      "path": "67"
+      "path": "173"
     },
     "326": {
       "fn": "CoreOracle.setRoute",
@@ -3654,7 +3654,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "327": {
       "fn": "CoreOracle.setRoute",
@@ -3663,7 +3663,7 @@
         823
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "328": {
       "fn": "CoreOracle.setRoute",
@@ -3672,7 +3672,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "329": {
       "fn": "CoreOracle.setRoute",
@@ -3681,7 +3681,7 @@
         823
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "330": {
       "fn": "CoreOracle.setRoute",
@@ -3690,7 +3690,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "332": {
@@ -3700,7 +3700,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "333": {
       "fn": "CoreOracle.setRoute",
@@ -3709,7 +3709,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "334": {
       "fn": "CoreOracle.setRoute",
@@ -3718,7 +3718,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "335": {
       "fn": "CoreOracle.setRoute",
@@ -3727,7 +3727,7 @@
         823
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "336": {
       "fn": "CoreOracle.setRoute",
@@ -3736,7 +3736,7 @@
         823
       ],
       "op": "PUSH5",
-      "path": "67",
+      "path": "173",
       "value": "0x100000000"
     },
     "342": {
@@ -3746,7 +3746,7 @@
         823
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "343": {
       "fn": "CoreOracle.setRoute",
@@ -3755,7 +3755,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "344": {
       "fn": "CoreOracle.setRoute",
@@ -3764,7 +3764,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "345": {
       "fn": "CoreOracle.setRoute",
@@ -3773,7 +3773,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x161"
     },
     "348": {
@@ -3783,7 +3783,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "349": {
       "fn": "CoreOracle.setRoute",
@@ -3792,7 +3792,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "351": {
@@ -3802,7 +3802,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "352": {
       "fn": "CoreOracle.setRoute",
@@ -3811,7 +3811,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "353": {
       "fn": "CoreOracle.setRoute",
@@ -3820,7 +3820,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "354": {
       "fn": "CoreOracle.setRoute",
@@ -3829,7 +3829,7 @@
         823
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "355": {
       "fn": "CoreOracle.setRoute",
@@ -3838,7 +3838,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "356": {
       "fn": "CoreOracle.setRoute",
@@ -3847,7 +3847,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "357": {
       "fn": "CoreOracle.setRoute",
@@ -3856,7 +3856,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "359": {
@@ -3866,7 +3866,7 @@
         823
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "360": {
       "fn": "CoreOracle.setRoute",
@@ -3875,7 +3875,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "361": {
       "fn": "CoreOracle.setRoute",
@@ -3884,7 +3884,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "362": {
       "fn": "CoreOracle.setRoute",
@@ -3893,7 +3893,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "363": {
       "fn": "CoreOracle.setRoute",
@@ -3902,7 +3902,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x173"
     },
     "366": {
@@ -3912,7 +3912,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "367": {
       "fn": "CoreOracle.setRoute",
@@ -3921,7 +3921,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "369": {
@@ -3931,7 +3931,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "370": {
       "fn": "CoreOracle.setRoute",
@@ -3940,7 +3940,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "371": {
       "fn": "CoreOracle.setRoute",
@@ -3949,7 +3949,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "372": {
       "fn": "CoreOracle.setRoute",
@@ -3958,7 +3958,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "373": {
       "fn": "CoreOracle.setRoute",
@@ -3967,7 +3967,7 @@
         823
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "374": {
       "fn": "CoreOracle.setRoute",
@@ -3976,7 +3976,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "375": {
       "fn": "CoreOracle.setRoute",
@@ -3985,7 +3985,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "377": {
@@ -3995,7 +3995,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "378": {
       "fn": "CoreOracle.setRoute",
@@ -4004,7 +4004,7 @@
         823
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "379": {
       "fn": "CoreOracle.setRoute",
@@ -4013,7 +4013,7 @@
         823
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "380": {
       "fn": "CoreOracle.setRoute",
@@ -4022,7 +4022,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "382": {
@@ -4032,7 +4032,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "383": {
       "fn": "CoreOracle.setRoute",
@@ -4041,7 +4041,7 @@
         823
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "384": {
       "fn": "CoreOracle.setRoute",
@@ -4050,7 +4050,7 @@
         823
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "385": {
       "fn": "CoreOracle.setRoute",
@@ -4059,7 +4059,7 @@
         823
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "386": {
       "fn": "CoreOracle.setRoute",
@@ -4068,7 +4068,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "387": {
       "fn": "CoreOracle.setRoute",
@@ -4077,7 +4077,7 @@
         823
       ],
       "op": "PUSH5",
-      "path": "67",
+      "path": "173",
       "value": "0x100000000"
     },
     "393": {
@@ -4087,7 +4087,7 @@
         823
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "394": {
       "fn": "CoreOracle.setRoute",
@@ -4096,7 +4096,7 @@
         823
       ],
       "op": "GT",
-      "path": "67"
+      "path": "173"
     },
     "395": {
       "fn": "CoreOracle.setRoute",
@@ -4105,7 +4105,7 @@
         823
       ],
       "op": "OR",
-      "path": "67"
+      "path": "173"
     },
     "396": {
       "fn": "CoreOracle.setRoute",
@@ -4114,7 +4114,7 @@
         823
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "397": {
       "fn": "CoreOracle.setRoute",
@@ -4123,7 +4123,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x195"
     },
     "400": {
@@ -4133,7 +4133,7 @@
         823
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "401": {
       "fn": "CoreOracle.setRoute",
@@ -4142,7 +4142,7 @@
         823
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "403": {
@@ -4152,7 +4152,7 @@
         823
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "404": {
       "fn": "CoreOracle.setRoute",
@@ -4161,7 +4161,7 @@
         823
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "405": {
       "fn": "CoreOracle.setRoute",
@@ -4170,7 +4170,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "406": {
       "op": "POP"
@@ -4182,7 +4182,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "408": {
       "fn": "CoreOracle.setRoute",
@@ -4191,7 +4191,7 @@
         823
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "409": {
       "op": "POP"
@@ -4203,7 +4203,7 @@
         823
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "411": {
       "op": "POP"
@@ -4215,7 +4215,7 @@
         823
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x2ED"
     },
     "415": {
@@ -4226,7 +4226,7 @@
         823
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "416": {
       "fn": "CoreOracle.setRoute",
@@ -4235,7 +4235,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "417": {
       "fn": "CoreOracle.setRoute",
@@ -4244,7 +4244,7 @@
         823
       ],
       "op": "STOP",
-      "path": "67"
+      "path": "173"
     },
     "418": {
       "offset": [
@@ -4252,7 +4252,7 @@
         278
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "419": {
       "fn": "CoreOracle.setRoute",
@@ -4261,7 +4261,7 @@
         278
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x8A"
     },
     "422": {
@@ -4271,7 +4271,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "424": {
@@ -4281,7 +4281,7 @@
         278
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "425": {
       "fn": "CoreOracle.setRoute",
@@ -4290,7 +4290,7 @@
         278
       ],
       "op": "CALLDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "426": {
       "fn": "CoreOracle.setRoute",
@@ -4299,7 +4299,7 @@
         278
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "427": {
       "fn": "CoreOracle.setRoute",
@@ -4308,7 +4308,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "429": {
@@ -4318,7 +4318,7 @@
         278
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "430": {
       "fn": "CoreOracle.setRoute",
@@ -4327,7 +4327,7 @@
         278
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "431": {
       "fn": "CoreOracle.setRoute",
@@ -4336,7 +4336,7 @@
         278
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "432": {
       "fn": "CoreOracle.setRoute",
@@ -4345,7 +4345,7 @@
         278
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x1B8"
     },
     "435": {
@@ -4355,7 +4355,7 @@
         278
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "436": {
       "fn": "CoreOracle.setRoute",
@@ -4364,7 +4364,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "438": {
@@ -4374,7 +4374,7 @@
         278
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "439": {
       "fn": "CoreOracle.setRoute",
@@ -4383,7 +4383,7 @@
         278
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "440": {
       "fn": "CoreOracle.setRoute",
@@ -4392,7 +4392,7 @@
         278
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "441": {
       "op": "POP"
@@ -4403,7 +4403,7 @@
         278
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "443": {
       "op": "PUSH1",
@@ -4429,7 +4429,7 @@
         278
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "452": {
       "fn": "CoreOracle.setRoute",
@@ -4438,7 +4438,7 @@
         278
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x4A9"
     },
     "455": {
@@ -4449,7 +4449,7 @@
         278
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "456": {
       "offset": [
@@ -4843,7 +4843,7 @@
         1167
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "532": {
       "op": "PUSH1",
@@ -4870,7 +4870,7 @@
         1083
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "541": {
       "fn": "CoreOracle.getCELOPx",
@@ -4879,7 +4879,7 @@
         1083
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "542": {
       "fn": "CoreOracle.getCELOPx",
@@ -4888,7 +4888,7 @@
         1083
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "543": {
       "fn": "CoreOracle.getCELOPx",
@@ -4897,7 +4897,7 @@
         1040
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "545": {
@@ -4907,7 +4907,7 @@
         1083
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "546": {
       "fn": "CoreOracle.getCELOPx",
@@ -4916,7 +4916,7 @@
         1083
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "547": {
       "fn": "CoreOracle.getCELOPx",
@@ -4925,7 +4925,7 @@
         1083
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "548": {
       "fn": "CoreOracle.getCELOPx",
@@ -4934,7 +4934,7 @@
         1076
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x42"
     },
     "550": {
@@ -4944,7 +4944,7 @@
         1083
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "552": {
@@ -4954,7 +4954,7 @@
         1083
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "553": {
       "fn": "CoreOracle.getCELOPx",
@@ -4963,7 +4963,7 @@
         1083
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "554": {
       "fn": "CoreOracle.getCELOPx",
@@ -4972,7 +4972,7 @@
         1083
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "555": {
       "fn": "CoreOracle.getCELOPx",
@@ -4981,7 +4981,7 @@
         1083
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "557": {
@@ -4991,7 +4991,7 @@
         1083
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "558": {
       "fn": "CoreOracle.getCELOPx",
@@ -5000,7 +5000,7 @@
         1083
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "559": {
       "fn": "CoreOracle.getCELOPx",
@@ -5009,7 +5009,7 @@
         1083
       ],
       "op": "KECCAK256",
-      "path": "67"
+      "path": "173"
     },
     "560": {
       "fn": "CoreOracle.getCELOPx",
@@ -5018,7 +5018,7 @@
         1083
       ],
       "op": "SLOAD",
-      "path": "67"
+      "path": "173"
     },
     "561": {
       "fn": "CoreOracle.getCELOPx",
@@ -5027,7 +5027,7 @@
         1101
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "562": {
       "fn": "CoreOracle.getCELOPx",
@@ -5036,7 +5036,7 @@
         1101
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "563": {
       "op": "PUSH4",
@@ -5056,7 +5056,7 @@
         1101
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "572": {
       "fn": "CoreOracle.getCELOPx",
@@ -5065,7 +5065,7 @@
         1101
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "573": {
       "fn": "CoreOracle.getCELOPx",
@@ -5074,7 +5074,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "575": {
@@ -5084,7 +5084,7 @@
         1101
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "576": {
       "fn": "CoreOracle.getCELOPx",
@@ -5093,7 +5093,7 @@
         1101
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "577": {
       "fn": "CoreOracle.getCELOPx",
@@ -5102,7 +5102,7 @@
         1101
       ],
       "op": "SWAP6",
-      "path": "67"
+      "path": "173"
     },
     "578": {
       "fn": "CoreOracle.getCELOPx",
@@ -5111,7 +5111,7 @@
         1101
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "579": {
       "fn": "CoreOracle.getCELOPx",
@@ -5120,7 +5120,7 @@
         1101
       ],
       "op": "SWAP6",
-      "path": "67"
+      "path": "173"
     },
     "580": {
       "fn": "CoreOracle.getCELOPx",
@@ -5129,7 +5129,7 @@
         1101
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "581": {
       "fn": "CoreOracle.getCELOPx",
@@ -5138,7 +5138,7 @@
         1101
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "582": {
       "fn": "CoreOracle.getCELOPx",
@@ -5147,7 +5147,7 @@
         1101
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "583": {
       "fn": "CoreOracle.getCELOPx",
@@ -5156,7 +5156,7 @@
         1040
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "584": {
       "fn": "CoreOracle.getCELOPx",
@@ -5165,7 +5165,7 @@
         1040
       ],
       "op": "SWAP5",
-      "path": "67"
+      "path": "173"
     },
     "585": {
       "fn": "CoreOracle.getCELOPx",
@@ -5174,7 +5174,7 @@
         1040
       ],
       "op": "DUP6",
-      "path": "67"
+      "path": "173"
     },
     "586": {
       "fn": "CoreOracle.getCELOPx",
@@ -5183,7 +5183,7 @@
         1040
       ],
       "op": "SWAP5",
-      "path": "67"
+      "path": "173"
     },
     "587": {
       "fn": "CoreOracle.getCELOPx",
@@ -5192,7 +5192,7 @@
         1083
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "588": {
       "fn": "CoreOracle.getCELOPx",
@@ -5201,7 +5201,7 @@
         1083
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "589": {
       "fn": "CoreOracle.getCELOPx",
@@ -5210,7 +5210,7 @@
         1083
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "590": {
       "fn": "CoreOracle.getCELOPx",
@@ -5219,7 +5219,7 @@
         1094
       ],
       "op": "PUSH4",
-      "path": "67",
+      "path": "173",
       "value": "0x11E56AFF"
     },
     "595": {
@@ -5229,7 +5229,7 @@
         1094
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "596": {
       "fn": "CoreOracle.getCELOPx",
@@ -5238,7 +5238,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x24"
     },
     "598": {
@@ -5248,7 +5248,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "599": {
       "fn": "CoreOracle.getCELOPx",
@@ -5257,7 +5257,7 @@
         1101
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "600": {
       "fn": "CoreOracle.getCELOPx",
@@ -5266,7 +5266,7 @@
         1101
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "601": {
       "fn": "CoreOracle.getCELOPx",
@@ -5275,7 +5275,7 @@
         1101
       ],
       "op": "SWAP4",
-      "path": "67"
+      "path": "173"
     },
     "602": {
       "fn": "CoreOracle.getCELOPx",
@@ -5284,7 +5284,7 @@
         1083
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "603": {
       "fn": "CoreOracle.getCELOPx",
@@ -5293,7 +5293,7 @@
         1083
       ],
       "op": "SWAP3",
-      "path": "67"
+      "path": "173"
     },
     "604": {
       "fn": "CoreOracle.getCELOPx",
@@ -5302,7 +5302,7 @@
         1101
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "605": {
       "fn": "CoreOracle.getCELOPx",
@@ -5311,7 +5311,7 @@
         1101
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "606": {
       "fn": "CoreOracle.getCELOPx",
@@ -5320,7 +5320,7 @@
         1101
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "607": {
       "fn": "CoreOracle.getCELOPx",
@@ -5329,7 +5329,7 @@
         1101
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "608": {
       "fn": "CoreOracle.getCELOPx",
@@ -5338,7 +5338,7 @@
         1101
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "609": {
       "fn": "CoreOracle.getCELOPx",
@@ -5347,7 +5347,7 @@
         1101
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "610": {
       "fn": "CoreOracle.getCELOPx",
@@ -5356,7 +5356,7 @@
         1083
       ],
       "op": "DUP7",
-      "path": "67"
+      "path": "173"
     },
     "611": {
       "fn": "CoreOracle.getCELOPx",
@@ -5365,7 +5365,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "612": {
       "fn": "CoreOracle.getCELOPx",
@@ -5374,7 +5374,7 @@
         1101
       ],
       "op": "EXTCODESIZE",
-      "path": "67"
+      "path": "173"
     },
     "613": {
       "fn": "CoreOracle.getCELOPx",
@@ -5383,7 +5383,7 @@
         1101
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "614": {
       "fn": "CoreOracle.getCELOPx",
@@ -5392,7 +5392,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "615": {
       "fn": "CoreOracle.getCELOPx",
@@ -5401,7 +5401,7 @@
         1101
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "616": {
       "fn": "CoreOracle.getCELOPx",
@@ -5410,7 +5410,7 @@
         1101
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x270"
     },
     "619": {
@@ -5420,7 +5420,7 @@
         1101
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "620": {
       "fn": "CoreOracle.getCELOPx",
@@ -5429,7 +5429,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "622": {
@@ -5439,7 +5439,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "623": {
       "fn": "CoreOracle.getCELOPx",
@@ -5448,7 +5448,7 @@
         1101
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "624": {
       "fn": "CoreOracle.getCELOPx",
@@ -5457,7 +5457,7 @@
         1101
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "625": {
       "fn": "CoreOracle.getCELOPx",
@@ -5466,7 +5466,7 @@
         1101
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "626": {
       "fn": "CoreOracle.getCELOPx",
@@ -5475,7 +5475,7 @@
         1101
       ],
       "op": "GAS",
-      "path": "67"
+      "path": "173"
     },
     "627": {
       "fn": "CoreOracle.getCELOPx",
@@ -5484,7 +5484,7 @@
         1101
       ],
       "op": "STATICCALL",
-      "path": "67"
+      "path": "173"
     },
     "628": {
       "fn": "CoreOracle.getCELOPx",
@@ -5493,7 +5493,7 @@
         1101
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "629": {
       "fn": "CoreOracle.getCELOPx",
@@ -5502,7 +5502,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "630": {
       "fn": "CoreOracle.getCELOPx",
@@ -5511,7 +5511,7 @@
         1101
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "631": {
       "fn": "CoreOracle.getCELOPx",
@@ -5520,7 +5520,7 @@
         1101
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x284"
     },
     "634": {
@@ -5530,7 +5530,7 @@
         1101
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "635": {
       "fn": "CoreOracle.getCELOPx",
@@ -5539,7 +5539,7 @@
         1101
       ],
       "op": "RETURNDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "636": {
       "fn": "CoreOracle.getCELOPx",
@@ -5548,7 +5548,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "638": {
@@ -5558,7 +5558,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "639": {
       "fn": "CoreOracle.getCELOPx",
@@ -5567,7 +5567,7 @@
         1101
       ],
       "op": "RETURNDATACOPY",
-      "path": "67"
+      "path": "173"
     },
     "640": {
       "fn": "CoreOracle.getCELOPx",
@@ -5576,7 +5576,7 @@
         1101
       ],
       "op": "RETURNDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "641": {
       "fn": "CoreOracle.getCELOPx",
@@ -5585,7 +5585,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "643": {
@@ -5595,7 +5595,7 @@
         1101
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "644": {
       "fn": "CoreOracle.getCELOPx",
@@ -5604,7 +5604,7 @@
         1101
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "645": {
       "fn": "CoreOracle.getCELOPx",
@@ -5613,7 +5613,7 @@
         1101
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "646": {
       "fn": "CoreOracle.getCELOPx",
@@ -5622,7 +5622,7 @@
         1101
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "647": {
       "fn": "CoreOracle.getCELOPx",
@@ -5631,7 +5631,7 @@
         1101
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "648": {
       "fn": "CoreOracle.getCELOPx",
@@ -5640,7 +5640,7 @@
         1101
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "649": {
       "fn": "CoreOracle.getCELOPx",
@@ -5649,7 +5649,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "651": {
@@ -5659,7 +5659,7 @@
         1101
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "652": {
       "fn": "CoreOracle.getCELOPx",
@@ -5668,7 +5668,7 @@
         1101
       ],
       "op": "RETURNDATASIZE",
-      "path": "67"
+      "path": "173"
     },
     "653": {
       "fn": "CoreOracle.getCELOPx",
@@ -5677,7 +5677,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "655": {
@@ -5687,7 +5687,7 @@
         1101
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "656": {
       "fn": "CoreOracle.getCELOPx",
@@ -5696,7 +5696,7 @@
         1101
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "657": {
       "fn": "CoreOracle.getCELOPx",
@@ -5705,7 +5705,7 @@
         1101
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "658": {
       "fn": "CoreOracle.getCELOPx",
@@ -5714,7 +5714,7 @@
         1101
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x29A"
     },
     "661": {
@@ -5724,7 +5724,7 @@
         1101
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "662": {
       "fn": "CoreOracle.getCELOPx",
@@ -5733,7 +5733,7 @@
         1101
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "664": {
@@ -5743,7 +5743,7 @@
         1101
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "665": {
       "fn": "CoreOracle.getCELOPx",
@@ -5752,7 +5752,7 @@
         1101
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "666": {
       "fn": "CoreOracle.getCELOPx",
@@ -5761,7 +5761,7 @@
         1101
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "667": {
       "op": "POP"
@@ -5773,7 +5773,7 @@
         1101
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "669": {
       "fn": "CoreOracle.getCELOPx",
@@ -5782,7 +5782,7 @@
         1101
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "670": {
       "op": "POP"
@@ -5795,7 +5795,7 @@
         1122
       ],
       "op": "DUP1",
-      "path": "67",
+      "path": "173",
       "statement": 0
     },
     "672": {
@@ -5805,7 +5805,7 @@
         1147
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x2E7"
     },
     "675": {
@@ -5816,7 +5816,7 @@
         1147
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "676": {
       "fn": "CoreOracle.getCELOPx",
@@ -5825,7 +5825,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "678": {
@@ -5835,7 +5835,7 @@
         1147
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "679": {
       "fn": "CoreOracle.getCELOPx",
@@ -5844,7 +5844,7 @@
         1147
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "680": {
       "op": "PUSH3",
@@ -5864,7 +5864,7 @@
         1147
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "688": {
       "fn": "CoreOracle.getCELOPx",
@@ -5873,7 +5873,7 @@
         1147
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "689": {
       "fn": "CoreOracle.getCELOPx",
@@ -5882,7 +5882,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "691": {
@@ -5892,7 +5892,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "693": {
@@ -5902,7 +5902,7 @@
         1147
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "694": {
       "fn": "CoreOracle.getCELOPx",
@@ -5911,7 +5911,7 @@
         1147
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "695": {
       "fn": "CoreOracle.getCELOPx",
@@ -5920,7 +5920,7 @@
         1147
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "696": {
       "fn": "CoreOracle.getCELOPx",
@@ -5929,7 +5929,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x14"
     },
     "698": {
@@ -5939,7 +5939,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x24"
     },
     "700": {
@@ -5949,7 +5949,7 @@
         1147
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "701": {
       "fn": "CoreOracle.getCELOPx",
@@ -5958,7 +5958,7 @@
         1147
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "702": {
       "fn": "CoreOracle.getCELOPx",
@@ -5967,7 +5967,7 @@
         1147
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "703": {
       "op": "PUSH20",
@@ -5987,7 +5987,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x44"
     },
     "729": {
@@ -5997,7 +5997,7 @@
         1147
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "730": {
       "fn": "CoreOracle.getCELOPx",
@@ -6006,7 +6006,7 @@
         1147
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "731": {
       "fn": "CoreOracle.getCELOPx",
@@ -6015,7 +6015,7 @@
         1147
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "732": {
       "fn": "CoreOracle.getCELOPx",
@@ -6024,7 +6024,7 @@
         1147
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "733": {
       "fn": "CoreOracle.getCELOPx",
@@ -6033,7 +6033,7 @@
         1147
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "734": {
       "fn": "CoreOracle.getCELOPx",
@@ -6042,7 +6042,7 @@
         1147
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "735": {
       "fn": "CoreOracle.getCELOPx",
@@ -6051,7 +6051,7 @@
         1147
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "736": {
       "fn": "CoreOracle.getCELOPx",
@@ -6060,7 +6060,7 @@
         1147
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "737": {
       "fn": "CoreOracle.getCELOPx",
@@ -6069,7 +6069,7 @@
         1147
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "738": {
       "fn": "CoreOracle.getCELOPx",
@@ -6078,7 +6078,7 @@
         1147
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x64"
     },
     "740": {
@@ -6088,7 +6088,7 @@
         1147
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "741": {
       "fn": "CoreOracle.getCELOPx",
@@ -6097,7 +6097,7 @@
         1147
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "742": {
       "fn": "CoreOracle.getCELOPx",
@@ -6106,7 +6106,7 @@
         1147
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "743": {
       "fn": "CoreOracle.getCELOPx",
@@ -6115,7 +6115,7 @@
         1147
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "744": {
       "fn": "CoreOracle.getCELOPx",
@@ -6124,7 +6124,7 @@
         1162
       ],
       "op": "SWAP3",
-      "path": "67",
+      "path": "173",
       "statement": 1
     },
     "745": {
@@ -6134,7 +6134,7 @@
         1167
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "746": {
       "op": "POP"
@@ -6150,7 +6150,7 @@
         1167
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "749": {
       "fn": "CoreOracle.setRoute",
@@ -6159,7 +6159,7 @@
         823
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "750": {
       "offset": [
@@ -6570,7 +6570,7 @@
         645
       ],
       "op": "DUP3",
-      "path": "67",
+      "path": "173",
       "statement": 2
     },
     "839": {
@@ -6580,7 +6580,7 @@
         645
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "840": {
       "branch": 14,
@@ -6590,7 +6590,7 @@
         645
       ],
       "op": "EQ",
-      "path": "67"
+      "path": "173"
     },
     "841": {
       "fn": "CoreOracle.setRoute",
@@ -6599,7 +6599,7 @@
         669
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x38F"
     },
     "844": {
@@ -6610,7 +6610,7 @@
         669
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "845": {
       "fn": "CoreOracle.setRoute",
@@ -6619,7 +6619,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "847": {
@@ -6629,7 +6629,7 @@
         669
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "848": {
       "fn": "CoreOracle.setRoute",
@@ -6638,7 +6638,7 @@
         669
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "849": {
       "op": "PUSH3",
@@ -6658,7 +6658,7 @@
         669
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "857": {
       "fn": "CoreOracle.setRoute",
@@ -6667,7 +6667,7 @@
         669
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "858": {
       "fn": "CoreOracle.setRoute",
@@ -6676,7 +6676,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "860": {
@@ -6686,7 +6686,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x4"
     },
     "862": {
@@ -6696,7 +6696,7 @@
         669
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "863": {
       "fn": "CoreOracle.setRoute",
@@ -6705,7 +6705,7 @@
         669
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "864": {
       "fn": "CoreOracle.setRoute",
@@ -6714,7 +6714,7 @@
         669
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "865": {
       "fn": "CoreOracle.setRoute",
@@ -6723,7 +6723,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x13"
     },
     "867": {
@@ -6733,7 +6733,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x24"
     },
     "869": {
@@ -6743,7 +6743,7 @@
         669
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "870": {
       "fn": "CoreOracle.setRoute",
@@ -6752,7 +6752,7 @@
         669
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "871": {
       "fn": "CoreOracle.setRoute",
@@ -6761,7 +6761,7 @@
         669
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "872": {
       "op": "PUSH19",
@@ -6781,7 +6781,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x44"
     },
     "897": {
@@ -6791,7 +6791,7 @@
         669
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "898": {
       "fn": "CoreOracle.setRoute",
@@ -6800,7 +6800,7 @@
         669
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "899": {
       "fn": "CoreOracle.setRoute",
@@ -6809,7 +6809,7 @@
         669
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "900": {
       "fn": "CoreOracle.setRoute",
@@ -6818,7 +6818,7 @@
         669
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "901": {
       "fn": "CoreOracle.setRoute",
@@ -6827,7 +6827,7 @@
         669
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "902": {
       "fn": "CoreOracle.setRoute",
@@ -6836,7 +6836,7 @@
         669
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "903": {
       "fn": "CoreOracle.setRoute",
@@ -6845,7 +6845,7 @@
         669
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "904": {
       "fn": "CoreOracle.setRoute",
@@ -6854,7 +6854,7 @@
         669
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "905": {
       "fn": "CoreOracle.setRoute",
@@ -6863,7 +6863,7 @@
         669
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "906": {
       "fn": "CoreOracle.setRoute",
@@ -6872,7 +6872,7 @@
         669
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x64"
     },
     "908": {
@@ -6882,7 +6882,7 @@
         669
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "909": {
       "fn": "CoreOracle.setRoute",
@@ -6891,7 +6891,7 @@
         669
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "910": {
       "fn": "CoreOracle.setRoute",
@@ -6900,7 +6900,7 @@
         669
       ],
       "op": "REVERT",
-      "path": "67"
+      "path": "173"
     },
     "911": {
       "fn": "CoreOracle.setRoute",
@@ -6909,7 +6909,7 @@
         669
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "912": {
       "fn": "CoreOracle.setRoute",
@@ -6918,7 +6918,7 @@
         688
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "914": {
@@ -6928,7 +6928,7 @@
         819
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "915": {
       "fn": "CoreOracle.setRoute",
@@ -6937,7 +6937,7 @@
         713
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "916": {
       "fn": "CoreOracle.setRoute",
@@ -6946,7 +6946,7 @@
         713
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "917": {
       "fn": "CoreOracle.setRoute",
@@ -6955,7 +6955,7 @@
         713
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "918": {
       "fn": "CoreOracle.setRoute",
@@ -6964,7 +6964,7 @@
         819
       ],
       "op": "ISZERO",
-      "path": "67"
+      "path": "173"
     },
     "919": {
       "fn": "CoreOracle.setRoute",
@@ -6973,7 +6973,7 @@
         819
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x4A2"
     },
     "922": {
@@ -6983,7 +6983,7 @@
         819
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "923": {
       "fn": "CoreOracle.setRoute",
@@ -6992,7 +6992,7 @@
         759
       ],
       "op": "DUP3",
-      "path": "67",
+      "path": "173",
       "statement": 3
     },
     "924": {
@@ -7002,7 +7002,7 @@
         759
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "925": {
       "fn": "CoreOracle.setRoute",
@@ -7011,7 +7011,7 @@
         763
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "926": {
       "fn": "CoreOracle.setRoute",
@@ -7020,7 +7020,7 @@
         764
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "927": {
       "fn": "CoreOracle.setRoute",
@@ -7029,7 +7029,7 @@
         764
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "928": {
       "fn": "CoreOracle.setRoute",
@@ -7038,7 +7038,7 @@
         764
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "929": {
       "fn": "CoreOracle.setRoute",
@@ -7047,7 +7047,7 @@
         764
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x3A6"
     },
     "932": {
@@ -7057,7 +7057,7 @@
         764
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "933": {
       "dev": "Index out of range",
@@ -7067,7 +7067,7 @@
         764
       ],
       "op": "INVALID",
-      "path": "67"
+      "path": "173"
     },
     "934": {
       "fn": "CoreOracle.setRoute",
@@ -7076,7 +7076,7 @@
         764
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "935": {
       "fn": "CoreOracle.setRoute",
@@ -7085,7 +7085,7 @@
         764
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "936": {
       "fn": "CoreOracle.setRoute",
@@ -7094,7 +7094,7 @@
         764
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "937": {
       "fn": "CoreOracle.setRoute",
@@ -7103,7 +7103,7 @@
         764
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "939": {
@@ -7113,7 +7113,7 @@
         764
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "940": {
       "fn": "CoreOracle.setRoute",
@@ -7122,7 +7122,7 @@
         764
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "941": {
       "fn": "CoreOracle.setRoute",
@@ -7131,7 +7131,7 @@
         764
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "942": {
       "op": "PUSH1",
@@ -7158,7 +7158,7 @@
         764
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "951": {
       "fn": "CoreOracle.setRoute",
@@ -7167,7 +7167,7 @@
         736
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x42"
     },
     "953": {
@@ -7177,7 +7177,7 @@
         749
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "955": {
@@ -7187,7 +7187,7 @@
         743
       ],
       "op": "DUP8",
-      "path": "67"
+      "path": "173"
     },
     "956": {
       "fn": "CoreOracle.setRoute",
@@ -7196,7 +7196,7 @@
         743
       ],
       "op": "DUP8",
-      "path": "67"
+      "path": "173"
     },
     "957": {
       "fn": "CoreOracle.setRoute",
@@ -7205,7 +7205,7 @@
         747
       ],
       "op": "DUP6",
-      "path": "67"
+      "path": "173"
     },
     "958": {
       "fn": "CoreOracle.setRoute",
@@ -7214,7 +7214,7 @@
         748
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "959": {
       "fn": "CoreOracle.setRoute",
@@ -7223,7 +7223,7 @@
         748
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "960": {
       "fn": "CoreOracle.setRoute",
@@ -7232,7 +7232,7 @@
         748
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "961": {
       "fn": "CoreOracle.setRoute",
@@ -7241,7 +7241,7 @@
         748
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x3C6"
     },
     "964": {
@@ -7251,7 +7251,7 @@
         748
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "965": {
       "dev": "Index out of range",
@@ -7261,7 +7261,7 @@
         748
       ],
       "op": "INVALID",
-      "path": "67"
+      "path": "173"
     },
     "966": {
       "fn": "CoreOracle.setRoute",
@@ -7270,7 +7270,7 @@
         748
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "967": {
       "fn": "CoreOracle.setRoute",
@@ -7279,7 +7279,7 @@
         748
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "968": {
       "fn": "CoreOracle.setRoute",
@@ -7288,7 +7288,7 @@
         748
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "969": {
       "fn": "CoreOracle.setRoute",
@@ -7297,7 +7297,7 @@
         748
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "971": {
@@ -7307,7 +7307,7 @@
         748
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "972": {
       "fn": "CoreOracle.setRoute",
@@ -7316,7 +7316,7 @@
         748
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "973": {
       "fn": "CoreOracle.setRoute",
@@ -7325,7 +7325,7 @@
         748
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "974": {
       "op": "PUSH1",
@@ -7352,7 +7352,7 @@
         748
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "983": {
       "op": "PUSH1",
@@ -7379,7 +7379,7 @@
         749
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "992": {
       "op": "PUSH1",
@@ -7406,7 +7406,7 @@
         749
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1001": {
       "fn": "CoreOracle.setRoute",
@@ -7415,7 +7415,7 @@
         749
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1002": {
       "fn": "CoreOracle.setRoute",
@@ -7424,7 +7424,7 @@
         749
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1003": {
       "fn": "CoreOracle.setRoute",
@@ -7433,7 +7433,7 @@
         749
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1005": {
@@ -7443,7 +7443,7 @@
         749
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1006": {
       "fn": "CoreOracle.setRoute",
@@ -7452,7 +7452,7 @@
         749
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1007": {
       "fn": "CoreOracle.setRoute",
@@ -7461,7 +7461,7 @@
         749
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1008": {
       "fn": "CoreOracle.setRoute",
@@ -7470,7 +7470,7 @@
         749
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1009": {
       "fn": "CoreOracle.setRoute",
@@ -7479,7 +7479,7 @@
         749
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1011": {
@@ -7489,7 +7489,7 @@
         749
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1012": {
       "fn": "CoreOracle.setRoute",
@@ -7498,7 +7498,7 @@
         749
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "1014": {
@@ -7508,7 +7508,7 @@
         749
       ],
       "op": "KECCAK256",
-      "path": "67"
+      "path": "173"
     },
     "1015": {
       "fn": "CoreOracle.setRoute",
@@ -7517,7 +7517,7 @@
         749
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "1017": {
@@ -7527,7 +7527,7 @@
         764
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x100"
     },
     "1020": {
@@ -7537,7 +7537,7 @@
         764
       ],
       "op": "EXP",
-      "path": "67"
+      "path": "173"
     },
     "1021": {
       "fn": "CoreOracle.setRoute",
@@ -7546,7 +7546,7 @@
         764
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1022": {
       "fn": "CoreOracle.setRoute",
@@ -7555,7 +7555,7 @@
         764
       ],
       "op": "SLOAD",
-      "path": "67"
+      "path": "173"
     },
     "1023": {
       "fn": "CoreOracle.setRoute",
@@ -7564,7 +7564,7 @@
         764
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1024": {
       "op": "PUSH1",
@@ -7591,7 +7591,7 @@
         764
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "1033": {
       "fn": "CoreOracle.setRoute",
@@ -7600,7 +7600,7 @@
         764
       ],
       "op": "NOT",
-      "path": "67"
+      "path": "173"
     },
     "1034": {
       "fn": "CoreOracle.setRoute",
@@ -7609,7 +7609,7 @@
         764
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1035": {
       "fn": "CoreOracle.setRoute",
@@ -7618,7 +7618,7 @@
         764
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1036": {
       "fn": "CoreOracle.setRoute",
@@ -7627,7 +7627,7 @@
         764
       ],
       "op": "DUP4",
-      "path": "67"
+      "path": "173"
     },
     "1037": {
       "op": "PUSH1",
@@ -7654,7 +7654,7 @@
         764
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1046": {
       "fn": "CoreOracle.setRoute",
@@ -7663,7 +7663,7 @@
         764
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "1047": {
       "fn": "CoreOracle.setRoute",
@@ -7672,7 +7672,7 @@
         764
       ],
       "op": "OR",
-      "path": "67"
+      "path": "173"
     },
     "1048": {
       "fn": "CoreOracle.setRoute",
@@ -7681,7 +7681,7 @@
         764
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1049": {
       "fn": "CoreOracle.setRoute",
@@ -7690,7 +7690,7 @@
         764
       ],
       "op": "SSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1050": {
       "fn": "CoreOracle.setRoute",
@@ -7699,7 +7699,7 @@
         764
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1051": {
       "fn": "CoreOracle.setRoute",
@@ -7708,7 +7708,7 @@
         792
       ],
       "op": "DUP5",
-      "path": "67",
+      "path": "173",
       "statement": 4
     },
     "1052": {
@@ -7718,7 +7718,7 @@
         792
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "1053": {
       "fn": "CoreOracle.setRoute",
@@ -7727,7 +7727,7 @@
         796
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "1054": {
       "fn": "CoreOracle.setRoute",
@@ -7736,7 +7736,7 @@
         797
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1055": {
       "fn": "CoreOracle.setRoute",
@@ -7745,7 +7745,7 @@
         797
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1056": {
       "fn": "CoreOracle.setRoute",
@@ -7754,7 +7754,7 @@
         797
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "1057": {
       "fn": "CoreOracle.setRoute",
@@ -7763,7 +7763,7 @@
         797
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x426"
     },
     "1060": {
@@ -7773,7 +7773,7 @@
         797
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "1061": {
       "dev": "Index out of range",
@@ -7783,7 +7783,7 @@
         797
       ],
       "op": "INVALID",
-      "path": "67"
+      "path": "173"
     },
     "1062": {
       "fn": "CoreOracle.setRoute",
@@ -7792,7 +7792,7 @@
         797
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "1063": {
       "fn": "CoreOracle.setRoute",
@@ -7801,7 +7801,7 @@
         797
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1064": {
       "fn": "CoreOracle.setRoute",
@@ -7810,7 +7810,7 @@
         797
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1065": {
       "fn": "CoreOracle.setRoute",
@@ -7819,7 +7819,7 @@
         797
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1067": {
@@ -7829,7 +7829,7 @@
         797
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "1068": {
       "fn": "CoreOracle.setRoute",
@@ -7838,7 +7838,7 @@
         797
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1069": {
       "fn": "CoreOracle.setRoute",
@@ -7847,7 +7847,7 @@
         797
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "1070": {
       "op": "PUSH1",
@@ -7874,7 +7874,7 @@
         797
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1079": {
       "op": "PUSH1",
@@ -7901,7 +7901,7 @@
         812
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1088": {
       "fn": "CoreOracle.setRoute",
@@ -7910,7 +7910,7 @@
         812
       ],
       "op": "PUSH32",
-      "path": "67",
+      "path": "173",
       "value": "0xA8C96090E146CE1076EFA81E5424D56E13D5C3854943F7926406C12D15D6DBE9"
     },
     "1121": {
@@ -7920,7 +7920,7 @@
         806
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "1122": {
       "fn": "CoreOracle.setRoute",
@@ -7929,7 +7929,7 @@
         806
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "1123": {
       "fn": "CoreOracle.setRoute",
@@ -7938,7 +7938,7 @@
         810
       ],
       "op": "DUP5",
-      "path": "67"
+      "path": "173"
     },
     "1124": {
       "fn": "CoreOracle.setRoute",
@@ -7947,7 +7947,7 @@
         811
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1125": {
       "fn": "CoreOracle.setRoute",
@@ -7956,7 +7956,7 @@
         811
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1126": {
       "fn": "CoreOracle.setRoute",
@@ -7965,7 +7965,7 @@
         811
       ],
       "op": "LT",
-      "path": "67"
+      "path": "173"
     },
     "1127": {
       "fn": "CoreOracle.setRoute",
@@ -7974,7 +7974,7 @@
         811
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x46C"
     },
     "1130": {
@@ -7984,7 +7984,7 @@
         811
       ],
       "op": "JUMPI",
-      "path": "67"
+      "path": "173"
     },
     "1131": {
       "dev": "Index out of range",
@@ -7994,7 +7994,7 @@
         811
       ],
       "op": "INVALID",
-      "path": "67"
+      "path": "173"
     },
     "1132": {
       "fn": "CoreOracle.setRoute",
@@ -8003,7 +8003,7 @@
         811
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "1133": {
       "fn": "CoreOracle.setRoute",
@@ -8012,7 +8012,7 @@
         811
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1134": {
       "fn": "CoreOracle.setRoute",
@@ -8021,7 +8021,7 @@
         811
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1135": {
       "fn": "CoreOracle.setRoute",
@@ -8030,7 +8030,7 @@
         811
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1137": {
@@ -8040,7 +8040,7 @@
         811
       ],
       "op": "MUL",
-      "path": "67"
+      "path": "173"
     },
     "1138": {
       "fn": "CoreOracle.setRoute",
@@ -8049,7 +8049,7 @@
         811
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1139": {
       "fn": "CoreOracle.setRoute",
@@ -8058,7 +8058,7 @@
         811
       ],
       "op": "CALLDATALOAD",
-      "path": "67"
+      "path": "173"
     },
     "1140": {
       "op": "PUSH1",
@@ -8085,7 +8085,7 @@
         811
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1149": {
       "fn": "CoreOracle.setRoute",
@@ -8094,7 +8094,7 @@
         812
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "1151": {
@@ -8104,7 +8104,7 @@
         812
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "1152": {
       "fn": "CoreOracle.setRoute",
@@ -8113,7 +8113,7 @@
         812
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "1153": {
       "fn": "CoreOracle.setRoute",
@@ -8122,7 +8122,7 @@
         812
       ],
       "op": "DUP3",
-      "path": "67"
+      "path": "173"
     },
     "1154": {
       "op": "PUSH1",
@@ -8149,7 +8149,7 @@
         812
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1163": {
       "fn": "CoreOracle.setRoute",
@@ -8158,7 +8158,7 @@
         812
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1164": {
       "fn": "CoreOracle.setRoute",
@@ -8167,7 +8167,7 @@
         812
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1165": {
       "fn": "CoreOracle.setRoute",
@@ -8176,7 +8176,7 @@
         812
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1167": {
@@ -8186,7 +8186,7 @@
         812
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1168": {
       "fn": "CoreOracle.setRoute",
@@ -8195,7 +8195,7 @@
         812
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "1169": {
       "fn": "CoreOracle.setRoute",
@@ -8204,7 +8204,7 @@
         812
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1170": {
       "fn": "CoreOracle.setRoute",
@@ -8213,7 +8213,7 @@
         812
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1171": {
       "fn": "CoreOracle.setRoute",
@@ -8222,7 +8222,7 @@
         812
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "1173": {
@@ -8232,7 +8232,7 @@
         812
       ],
       "op": "MLOAD",
-      "path": "67"
+      "path": "173"
     },
     "1174": {
       "fn": "CoreOracle.setRoute",
@@ -8241,7 +8241,7 @@
         812
       ],
       "op": "DUP1",
-      "path": "67"
+      "path": "173"
     },
     "1175": {
       "fn": "CoreOracle.setRoute",
@@ -8250,7 +8250,7 @@
         812
       ],
       "op": "SWAP2",
-      "path": "67"
+      "path": "173"
     },
     "1176": {
       "fn": "CoreOracle.setRoute",
@@ -8259,7 +8259,7 @@
         812
       ],
       "op": "SUB",
-      "path": "67"
+      "path": "173"
     },
     "1177": {
       "fn": "CoreOracle.setRoute",
@@ -8268,7 +8268,7 @@
         812
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1178": {
       "fn": "CoreOracle.setRoute",
@@ -8277,7 +8277,7 @@
         812
       ],
       "op": "LOG2",
-      "path": "67"
+      "path": "173"
     },
     "1179": {
       "fn": "CoreOracle.setRoute",
@@ -8286,7 +8286,7 @@
         720
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "statement": 5,
       "value": "0x1"
     },
@@ -8297,7 +8297,7 @@
         720
       ],
       "op": "ADD",
-      "path": "67"
+      "path": "173"
     },
     "1182": {
       "fn": "CoreOracle.setRoute",
@@ -8306,7 +8306,7 @@
         819
       ],
       "op": "PUSH2",
-      "path": "67",
+      "path": "173",
       "value": "0x392"
     },
     "1185": {
@@ -8316,7 +8316,7 @@
         819
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "1186": {
       "fn": "CoreOracle.setRoute",
@@ -8325,7 +8325,7 @@
         819
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "1187": {
       "fn": "CoreOracle.setRoute",
@@ -8334,7 +8334,7 @@
         819
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1188": {
       "fn": "CoreOracle.setRoute",
@@ -8343,7 +8343,7 @@
         823
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1189": {
       "fn": "CoreOracle.setRoute",
@@ -8352,7 +8352,7 @@
         823
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1190": {
       "fn": "CoreOracle.setRoute",
@@ -8361,7 +8361,7 @@
         823
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1191": {
       "fn": "CoreOracle.setRoute",
@@ -8370,7 +8370,7 @@
         823
       ],
       "op": "POP",
-      "path": "67"
+      "path": "173"
     },
     "1192": {
       "fn": "CoreOracle.setRoute",
@@ -8380,7 +8380,7 @@
         823
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "1193": {
       "offset": [
@@ -8388,7 +8388,7 @@
         278
       ],
       "op": "JUMPDEST",
-      "path": "67"
+      "path": "173"
     },
     "1194": {
       "fn": "CoreOracle.setRoute",
@@ -8397,7 +8397,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x42"
     },
     "1196": {
@@ -8407,7 +8407,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x20"
     },
     "1198": {
@@ -8417,7 +8417,7 @@
         278
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1199": {
       "fn": "CoreOracle.setRoute",
@@ -8426,7 +8426,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x0"
     },
     "1201": {
@@ -8436,7 +8436,7 @@
         278
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1202": {
       "fn": "CoreOracle.setRoute",
@@ -8445,7 +8445,7 @@
         278
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1203": {
       "fn": "CoreOracle.setRoute",
@@ -8454,7 +8454,7 @@
         278
       ],
       "op": "MSTORE",
-      "path": "67"
+      "path": "173"
     },
     "1204": {
       "fn": "CoreOracle.setRoute",
@@ -8463,7 +8463,7 @@
         278
       ],
       "op": "PUSH1",
-      "path": "67",
+      "path": "173",
       "value": "0x40"
     },
     "1206": {
@@ -8473,7 +8473,7 @@
         278
       ],
       "op": "SWAP1",
-      "path": "67"
+      "path": "173"
     },
     "1207": {
       "fn": "CoreOracle.setRoute",
@@ -8482,7 +8482,7 @@
         278
       ],
       "op": "KECCAK256",
-      "path": "67"
+      "path": "173"
     },
     "1208": {
       "fn": "CoreOracle.setRoute",
@@ -8491,7 +8491,7 @@
         278
       ],
       "op": "SLOAD",
-      "path": "67"
+      "path": "173"
     },
     "1209": {
       "op": "PUSH1",
@@ -8517,7 +8517,7 @@
         278
       ],
       "op": "AND",
-      "path": "67"
+      "path": "173"
     },
     "1218": {
       "fn": "CoreOracle.setRoute",
@@ -8526,7 +8526,7 @@
         278
       ],
       "op": "DUP2",
-      "path": "67"
+      "path": "173"
     },
     "1219": {
       "fn": "CoreOracle.setRoute",
@@ -8536,7 +8536,7 @@
         278
       ],
       "op": "JUMP",
-      "path": "67"
+      "path": "173"
     },
     "1220": {
       "offset": [
@@ -10195,7 +10195,7 @@
   },
   "sha1": "c79f0811f698ca076f3d0c4a1d8703db24c14599",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../../interfaces/IBaseOracle.sol';\nimport '../Governable.sol';\n\ncontract CoreOracle is IBaseOracle, Governable {\n  event SetRoute(address indexed token, address route);\n  mapping(address => address) public routes; // Mapping from token to oracle source\n\n  constructor() public {\n    __Governable__init();\n  }\n\n  /// @dev Set oracle source routes for tokens\n  /// @param tokens List of tokens\n  /// @param targets List of oracle source routes\n  function setRoute(address[] calldata tokens, address[] calldata targets) external onlyGov {\n    require(tokens.length == targets.length, 'inconsistent length');\n    for (uint idx = 0; idx < tokens.length; idx++) {\n      routes[tokens[idx]] = targets[idx];\n      emit SetRoute(tokens[idx], targets[idx]);\n    }\n  }\n\n  /// @dev Return the value of the given input as CELO per unit, multiplied by 2**112.\n  /// @param token The ERC-20 token to check the value.\n  function getCELOPx(address token) external view override returns (uint) {\n    uint px = IBaseOracle(routes[token]).getCELOPx(token);\n    require(px != 0, 'price oracle failure');\n    return px;\n  }\n}\n",
-  "sourceMap": "130:1039:67:-:0;;;322:52;;;;;;;;;-1:-1:-1;349:20:67;:18;:20::i;:::-;130:1039;;673:151:22;1501:13:7;;;;;;;;:33;;-1:-1:-1;1518:16:7;:14;:16::i;:::-;1501:50;;;-1:-1:-1;1539:12:7;;;;1538:13;1501:50;1493:109;;;;-1:-1:-1;;;1493:109:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1613:19;1636:13;;;;;;1635:14;1659:98;;;;1693:13;:20;;-1:-1:-1;;;;1693:20:7;;;;;1727:19;1709:4;1727:19;;;1659:98;730:8:22::1;:21:::0;;-1:-1:-1;;;;;;730:21:22::1;741:10;730:21:::0;;::::1;::::0;;;::::1;::::0;;;-1:-1:-1;757:28:22;;-1:-1:-1;;;;;;757:28:22::1;::::0;;796:23:::1;::::0;;;;;;::::1;::::0;::::1;::::0;;;;;;::::1;1783:14:7::0;1779:66;;;1829:5;1813:21;;-1:-1:-1;;1813:21:7;;;1779:66;673:151:22;:::o;1941:112:7:-;1989:4;2013:33;2040:4;2013:18;;;;;:33;;:::i;:::-;2012:34;2005:41;;1941:112;:::o;726:413:16:-;1086:20;1124:8;;;726:413::o;130:1039:67:-;;;;;;;",
+  "sourceMap": "130:1039:173:-:0;;;322:52;;;;;;;;;-1:-1:-1;349:20:173;:18;:20::i;:::-;130:1039;;673:151:22;1501:13:7;;;;;;;;:33;;-1:-1:-1;1518:16:7;:14;:16::i;:::-;1501:50;;;-1:-1:-1;1539:12:7;;;;1538:13;1501:50;1493:109;;;;-1:-1:-1;;;1493:109:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1613:19;1636:13;;;;;;1635:14;1659:98;;;;1693:13;:20;;-1:-1:-1;;;;1693:20:7;;;;;1727:19;1709:4;1727:19;;;1659:98;730:8:22::1;:21:::0;;-1:-1:-1;;;;;;730:21:22::1;741:10;730:21:::0;;::::1;::::0;;;::::1;::::0;;;-1:-1:-1;757:28:22;;-1:-1:-1;;;;;;757:28:22::1;::::0;;796:23:::1;::::0;;;;;;::::1;::::0;::::1;::::0;;;;;;::::1;1783:14:7::0;1779:66;;;1829:5;1813:21;;-1:-1:-1;;1813:21:7;;;1779:66;673:151:22;:::o;1941:112:7:-;1989:4;2013:33;2040:4;2013:18;;;;;:33;;:::i;:::-;2012:34;2005:41;;1941:112;:::o;726:413:16:-;1086:20;1124:8;;;726:413::o;130:1039:173:-;;;;;;;",
   "sourcePath": "contracts/oracle/CoreOracle.sol",
   "type": "contract"
 }

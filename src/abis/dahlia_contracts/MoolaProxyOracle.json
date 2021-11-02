@@ -1,0 +1,3745 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IBaseOracle",
+          "name": "_source",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "getCELOPx",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "moolaToUnderlying",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "source",
+      "outputs": [
+        {
+          "internalType": "contract IBaseOracle",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "175": "contracts/oracle/MoolaProxyOracle.sol",
+    "200": "interfaces/IBaseOracle.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/oracle/MoolaProxyOracle.sol",
+    "exportedSymbols": {
+      "MoolaProxyOracle": [
+        27577
+      ]
+    },
+    "id": 27578,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 27511,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:175"
+      },
+      {
+        "absolutePath": "interfaces/IBaseOracle.sol",
+        "file": "../../interfaces/IBaseOracle.sol",
+        "id": 27512,
+        "nodeType": "ImportDirective",
+        "scope": 27578,
+        "sourceUnit": 38799,
+        "src": "58:42:175",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 27513,
+              "name": "IBaseOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 38798,
+              "src": "131:11:175",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                "typeString": "contract IBaseOracle"
+              }
+            },
+            "id": 27514,
+            "nodeType": "InheritanceSpecifier",
+            "src": "131:11:175"
+          }
+        ],
+        "contractDependencies": [
+          38798
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 27577,
+        "linearizedBaseContracts": [
+          27577,
+          38798
+        ],
+        "name": "MoolaProxyOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "67e828bf",
+            "id": 27516,
+            "mutability": "immutable",
+            "name": "source",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 27577,
+            "src": "147:35:175",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+              "typeString": "contract IBaseOracle"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 27515,
+              "name": "IBaseOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 38798,
+              "src": "147:11:175",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                "typeString": "contract IBaseOracle"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "1298f04b",
+            "id": 27520,
+            "mutability": "mutable",
+            "name": "moolaToUnderlying",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 27577,
+            "src": "208:52:175",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+              "typeString": "mapping(address => address)"
+            },
+            "typeName": {
+              "id": 27519,
+              "keyType": {
+                "id": 27517,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "216:7:175",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "208:27:175",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+                "typeString": "mapping(address => address)"
+              },
+              "valueType": {
+                "id": 27518,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "227:7:175",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 27541,
+              "nodeType": "Block",
+              "src": "305:251:175",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 27527,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 27525,
+                      "name": "source",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 27516,
+                      "src": "311:6:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                        "typeString": "contract IBaseOracle"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 27526,
+                      "name": "_source",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 27522,
+                      "src": "320:7:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                        "typeString": "contract IBaseOracle"
+                      }
+                    },
+                    "src": "311:16:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                      "typeString": "contract IBaseOracle"
+                    }
+                  },
+                  "id": 27528,
+                  "nodeType": "ExpressionStatement",
+                  "src": "311:16:175"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 27533,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 27529,
+                        "name": "moolaToUnderlying",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 27520,
+                        "src": "333:17:175",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+                          "typeString": "mapping(address => address)"
+                        }
+                      },
+                      "id": 27531,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "307839313831343633353932363443343932424436393334303731633642643331433835344544426333",
+                        "id": 27530,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "351:42:175",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        "value": "0x918146359264C492BD6934071c6Bd31C854EDBc3"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "333:61:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "307837363544453831363834353836316537354132356643413132326262363839384238423132383261",
+                      "id": 27532,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "397:42:175",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      },
+                      "value": "0x765DE816845861e75A25fCA122bb6898B8B1282a"
+                    },
+                    "src": "333:106:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 27534,
+                  "nodeType": "ExpressionStatement",
+                  "src": "333:106:175"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 27539,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 27535,
+                        "name": "moolaToUnderlying",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 27520,
+                        "src": "445:17:175",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+                          "typeString": "mapping(address => address)"
+                        }
+                      },
+                      "id": 27537,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "307845323733416437656531316443664141383733383361443539373745453135303461433037353638",
+                        "id": 27536,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "463:42:175",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        "value": "0xE273Ad7ee11dCfAA87383aD5977EE1504aC07568"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "445:61:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "307844383736334342613237366133373338453644453835623462336246354644656436443663413733",
+                      "id": 27538,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "509:42:175",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      },
+                      "value": "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"
+                    },
+                    "src": "445:106:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 27540,
+                  "nodeType": "ExpressionStatement",
+                  "src": "445:106:175"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 27542,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 27523,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 27522,
+                  "mutability": "mutable",
+                  "name": "_source",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 27542,
+                  "src": "277:19:175",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                    "typeString": "contract IBaseOracle"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 27521,
+                    "name": "IBaseOracle",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 38798,
+                    "src": "277:11:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                      "typeString": "contract IBaseOracle"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "276:21:175"
+            },
+            "returnParameters": {
+              "id": 27524,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "305:0:175"
+            },
+            "scope": 27577,
+            "src": "265:291:175",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              38797
+            ],
+            "body": {
+              "id": 27575,
+              "nodeType": "Block",
+              "src": "775:159:175",
+              "statements": [
+                {
+                  "assignments": [
+                    27552
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 27552,
+                      "mutability": "mutable",
+                      "name": "underlying",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 27575,
+                      "src": "781:18:175",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 27551,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "781:7:175",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 27556,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 27553,
+                      "name": "moolaToUnderlying",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 27520,
+                      "src": "802:17:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+                        "typeString": "mapping(address => address)"
+                      }
+                    },
+                    "id": 27555,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 27554,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 27545,
+                      "src": "820:5:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "802:24:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "781:45:175"
+                },
+                {
+                  "assignments": [
+                    27558
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 27558,
+                      "mutability": "mutable",
+                      "name": "px",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 27575,
+                      "src": "832:7:175",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 27557,
+                        "name": "uint",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "832:4:175",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 27565,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 27563,
+                        "name": "underlying",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 27552,
+                        "src": "872:10:175",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 27560,
+                            "name": "source",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 27516,
+                            "src": "854:6:175",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                              "typeString": "contract IBaseOracle"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                              "typeString": "contract IBaseOracle"
+                            }
+                          ],
+                          "id": 27559,
+                          "name": "IBaseOracle",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 38798,
+                          "src": "842:11:175",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IBaseOracle_$38798_$",
+                            "typeString": "type(contract IBaseOracle)"
+                          }
+                        },
+                        "id": 27561,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "842:19:175",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IBaseOracle_$38798",
+                          "typeString": "contract IBaseOracle"
+                        }
+                      },
+                      "id": 27562,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getCELOPx",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 38797,
+                      "src": "842:29:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) view external returns (uint256)"
+                      }
+                    },
+                    "id": 27564,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "842:41:175",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "832:51:175"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 27569,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 27567,
+                          "name": "px",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 27558,
+                          "src": "897:2:175",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 27568,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "903:1:175",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "897:7:175",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6e6f207078",
+                        "id": 27570,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "906:7:175",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_9e3128f870e8f931a4c299f4d82edc430880f3d6a531378299a3aefc4e17eecb",
+                          "typeString": "literal_string \"no px\""
+                        },
+                        "value": "no px"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_9e3128f870e8f931a4c299f4d82edc430880f3d6a531378299a3aefc4e17eecb",
+                          "typeString": "literal_string \"no px\""
+                        }
+                      ],
+                      "id": 27566,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "889:7:175",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 27571,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "889:25:175",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 27572,
+                  "nodeType": "ExpressionStatement",
+                  "src": "889:25:175"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 27573,
+                    "name": "px",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 27558,
+                    "src": "927:2:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 27550,
+                  "id": 27574,
+                  "nodeType": "Return",
+                  "src": "920:9:175"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 27543,
+              "nodeType": "StructuredDocumentation",
+              "src": "560:140:175",
+              "text": "@dev Return the value of the given input as CELO per unit, multiplied by 2**112.\n @param token The ERC-20 token to check the value."
+            },
+            "functionSelector": "11e56aff",
+            "id": 27576,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCELOPx",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 27547,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "751:8:175"
+            },
+            "parameters": {
+              "id": 27546,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 27545,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 27576,
+                  "src": "722:13:175",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 27544,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "722:7:175",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "721:15:175"
+            },
+            "returnParameters": {
+              "id": 27550,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 27549,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 27576,
+                  "src": "769:4:175",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 27548,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "769:4:175",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "768:6:175"
+            },
+            "scope": 27577,
+            "src": "703:231:175",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 27578,
+        "src": "102:835:175"
+      }
+    ],
+    "src": "33:904:175"
+  },
+  "bytecode": "60a060405234801561001057600080fd5b5060405161033a38038061033a8339818101604052602081101561003357600080fd5b50516001600160601b031960609190911b16608052600060208190527fa60e911b8576f451751ae86ba9800215c20f7720c4ace6b02520680a645117b680546001600160a01b031990811673765de816845861e75a25fca122bb6898b8b1282a1790915573e273ad7ee11dcfaa87383ad5977ee1504ac075689091527f06fabd53a22d3ad5c95ea354802fdb37613df5bbd836395ad2b22ac1eb2dd918805490911673d8763cba276a3738e6de85b4b3bf5fded6d6ca7317905560805160601c61022b61010f6000398061010352806101d3525061022b6000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806311e56aff146100465780631298f04b1461007e57806367e828bf146100c0575b600080fd5b61006c6004803603602081101561005c57600080fd5b50356001600160a01b03166100c8565b60408051918252519081900360200190f35b6100a46004803603602081101561009457600080fd5b50356001600160a01b03166101b6565b604080516001600160a01b039092168252519081900360200190f35b6100a46101d1565b6001600160a01b038082166000908152602081815260408083205481516311e56aff60e01b81529085166004820181905291519394919385937f0000000000000000000000000000000000000000000000000000000000000000909316926311e56aff9260248082019391829003018186803b15801561014757600080fd5b505afa15801561015b573d6000803e3d6000fd5b505050506040513d602081101561017157600080fd5b50519050806101af576040805162461bcd60e51b81526020600482015260056024820152640dcde40e0f60db1b604482015290519081900360640190fd5b9392505050565b6000602081905290815260409020546001600160a01b031681565b7f00000000000000000000000000000000000000000000000000000000000000008156fea2646970667358221220732cd1b517938a32b6dc6289b9be20b655f7131353d0e031cb752fee9697743a64736f6c634300060c0033",
+  "bytecodeSha1": "23d123ecfbeac2b3f96d5d30135ccb28b61958d1",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.6.12+commit.27d51765"
+  },
+  "contractName": "MoolaProxyOracle",
+  "coverageMap": {
+    "branches": {
+      "175": {
+        "MoolaProxyOracle.getCELOPx": {
+          "2": [
+            897,
+            904,
+            true
+          ]
+        }
+      },
+      "200": {}
+    },
+    "statements": {
+      "175": {
+        "MoolaProxyOracle.getCELOPx": {
+          "0": [
+            889,
+            914
+          ],
+          "1": [
+            920,
+            929
+          ]
+        }
+      },
+      "200": {}
+    }
+  },
+  "dependencies": [
+    "IBaseOracle"
+  ],
+  "deployedBytecode": "608060405234801561001057600080fd5b50600436106100415760003560e01c806311e56aff146100465780631298f04b1461007e57806367e828bf146100c0575b600080fd5b61006c6004803603602081101561005c57600080fd5b50356001600160a01b03166100c8565b60408051918252519081900360200190f35b6100a46004803603602081101561009457600080fd5b50356001600160a01b03166101b6565b604080516001600160a01b039092168252519081900360200190f35b6100a46101d1565b6001600160a01b038082166000908152602081815260408083205481516311e56aff60e01b81529085166004820181905291519394919385937f0000000000000000000000000000000000000000000000000000000000000000909316926311e56aff9260248082019391829003018186803b15801561014757600080fd5b505afa15801561015b573d6000803e3d6000fd5b505050506040513d602081101561017157600080fd5b50519050806101af576040805162461bcd60e51b81526020600482015260056024820152640dcde40e0f60db1b604482015290519081900360640190fd5b9392505050565b6000602081905290815260409020546001600160a01b031681565b7f00000000000000000000000000000000000000000000000000000000000000008156fea2646970667358221220732cd1b517938a32b6dc6289b9be20b655f7131353d0e031cb752fee9697743a64736f6c634300060c0033",
+  "deployedSourceMap": "102:835:175:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;703:231;;;;;;;;;;;;;;;;-1:-1:-1;703:231:175;-1:-1:-1;;;;;703:231:175;;:::i;:::-;;;;;;;;;;;;;;;;208:52;;;;;;;;;;;;;;;;-1:-1:-1;208:52:175;-1:-1:-1;;;;;208:52:175;;:::i;:::-;;;;-1:-1:-1;;;;;208:52:175;;;;;;;;;;;;;;147:35;;;:::i;703:231::-;-1:-1:-1;;;;;802:24:175;;;769:4;802:24;;;;;;;;;;;;842:41;;-1:-1:-1;;;842:41:175;;802:24;;;842:41;;;;;;;;769:4;;802:24;;769:4;;854:6;842:29;;;;;;:41;;;;;;;;;;;:29;:41;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;842:41:175;;-1:-1:-1;897:7:175;889:25;;;;;-1:-1:-1;;;889:25:175;;;;;;;;;;;;-1:-1:-1;;;889:25:175;;;;;;;;;;;;;;;927:2;703:231;-1:-1:-1;;;703:231:175:o;208:52::-;;;;;;;;;;;;;-1:-1:-1;;;;;208:52:175;;:::o;147:35::-;;;:::o",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {
+      "getCELOPx(address)": {
+        "details": "Return the value of the given input as CELO per unit, multiplied by 2**112.",
+        "params": {
+          "token": "The ERC-20 token to check the value."
+        }
+      }
+    },
+    "version": 1
+  },
+  "offset": [
+    102,
+    937
+  ],
+  "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x41 JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x11E56AFF EQ PUSH2 0x46 JUMPI DUP1 PUSH4 0x1298F04B EQ PUSH2 0x7E JUMPI DUP1 PUSH4 0x67E828BF EQ PUSH2 0xC0 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x6C PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x5C JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0xC8 JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD SWAP2 DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH2 0xA4 PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x94 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x1B6 JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP3 AND DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH2 0xA4 PUSH2 0x1D1 JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP1 DUP3 AND PUSH1 0x0 SWAP1 DUP2 MSTORE PUSH1 0x20 DUP2 DUP2 MSTORE PUSH1 0x40 DUP1 DUP4 KECCAK256 SLOAD DUP2 MLOAD PUSH4 0x11E56AFF PUSH1 0xE0 SHL DUP2 MSTORE SWAP1 DUP6 AND PUSH1 0x4 DUP3 ADD DUP2 SWAP1 MSTORE SWAP2 MLOAD SWAP4 SWAP5 SWAP2 SWAP4 DUP6 SWAP4 PUSH32 0x0 SWAP1 SWAP4 AND SWAP3 PUSH4 0x11E56AFF SWAP3 PUSH1 0x24 DUP1 DUP3 ADD SWAP4 SWAP2 DUP3 SWAP1 SUB ADD DUP2 DUP7 DUP1 EXTCODESIZE ISZERO DUP1 ISZERO PUSH2 0x147 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP GAS STATICCALL ISZERO DUP1 ISZERO PUSH2 0x15B JUMPI RETURNDATASIZE PUSH1 0x0 DUP1 RETURNDATACOPY RETURNDATASIZE PUSH1 0x0 REVERT JUMPDEST POP POP POP POP PUSH1 0x40 MLOAD RETURNDATASIZE PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x171 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP MLOAD SWAP1 POP DUP1 PUSH2 0x1AF JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x5 PUSH1 0x24 DUP3 ADD MSTORE PUSH5 0xDCDE40E0F PUSH1 0xDB SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST SWAP4 SWAP3 POP POP POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP2 SWAP1 MSTORE SWAP1 DUP2 MSTORE PUSH1 0x40 SWAP1 KECCAK256 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP JUMPDEST PUSH32 0x0 DUP2 JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH20 0x2CD1B517938A32B6DC6289B9BE20B655F7131353 0xD0 0xE0 BALANCE 0xCB PUSH22 0x2FEE9697743A64736F6C634300060C00330000000000 ",
+  "pcMap": {
+    "0": {
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x80"
+    },
+    "2": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "4": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "5": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "CALLVALUE",
+      "path": "175"
+    },
+    "6": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "7": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "8": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x10"
+    },
+    "11": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "12": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "14": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "15": {
+      "dev": "Cannot send ether to nonpayable function",
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "16": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "17": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "18": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x4"
+    },
+    "20": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "CALLDATASIZE",
+      "path": "175"
+    },
+    "21": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "LT",
+      "path": "175"
+    },
+    "22": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x41"
+    },
+    "25": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "26": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "28": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "CALLDATALOAD",
+      "path": "175"
+    },
+    "29": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0xE0"
+    },
+    "31": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "SHR",
+      "path": "175"
+    },
+    "32": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "33": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH4",
+      "path": "175",
+      "value": "0x11E56AFF"
+    },
+    "38": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "EQ",
+      "path": "175"
+    },
+    "39": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x46"
+    },
+    "42": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "43": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "44": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH4",
+      "path": "175",
+      "value": "0x1298F04B"
+    },
+    "49": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "EQ",
+      "path": "175"
+    },
+    "50": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x7E"
+    },
+    "53": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "54": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "55": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH4",
+      "path": "175",
+      "value": "0x67E828BF"
+    },
+    "60": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "EQ",
+      "path": "175"
+    },
+    "61": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0xC0"
+    },
+    "64": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "65": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "66": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "68": {
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "69": {
+      "first_revert": true,
+      "fn": null,
+      "offset": [
+        102,
+        937
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "70": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "71": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x6C"
+    },
+    "74": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x4"
+    },
+    "76": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "77": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "CALLDATASIZE",
+      "path": "175"
+    },
+    "78": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "79": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "81": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "82": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "LT",
+      "path": "175"
+    },
+    "83": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "84": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x5C"
+    },
+    "87": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "88": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "90": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "91": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "92": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "93": {
+      "op": "POP"
+    },
+    "94": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "CALLDATALOAD",
+      "path": "175"
+    },
+    "95": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "97": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "99": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "101": {
+      "op": "SHL"
+    },
+    "102": {
+      "op": "SUB"
+    },
+    "103": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "104": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0xC8"
+    },
+    "107": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "i",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMP",
+      "path": "175"
+    },
+    "108": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "109": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "111": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "112": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "113": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SWAP2",
+      "path": "175"
+    },
+    "114": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "115": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "116": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "117": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "118": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "119": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "120": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "121": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "123": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "124": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "125": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "RETURN",
+      "path": "175"
+    },
+    "126": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "127": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0xA4"
+    },
+    "130": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x4"
+    },
+    "132": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "133": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "CALLDATASIZE",
+      "path": "175"
+    },
+    "134": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "135": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "137": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "138": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "LT",
+      "path": "175"
+    },
+    "139": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "140": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x94"
+    },
+    "143": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "144": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "146": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "147": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "148": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "149": {
+      "op": "POP"
+    },
+    "150": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "CALLDATALOAD",
+      "path": "175"
+    },
+    "151": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "153": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "155": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "157": {
+      "op": "SHL"
+    },
+    "158": {
+      "op": "SUB"
+    },
+    "159": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "160": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x1B6"
+    },
+    "163": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "i",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMP",
+      "path": "175"
+    },
+    "164": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "165": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "167": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "168": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "169": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "171": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "173": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "175": {
+      "op": "SHL"
+    },
+    "176": {
+      "op": "SUB"
+    },
+    "177": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "178": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP3",
+      "path": "175"
+    },
+    "179": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "180": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "181": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "182": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "183": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "184": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "185": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "186": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "187": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "189": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "190": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "191": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "RETURN",
+      "path": "175"
+    },
+    "192": {
+      "offset": [
+        147,
+        182
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "193": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0xA4"
+    },
+    "196": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x1D1"
+    },
+    "199": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "i",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "JUMP",
+      "path": "175"
+    },
+    "200": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "201": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "203": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "205": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "207": {
+      "op": "SHL"
+    },
+    "208": {
+      "op": "SUB"
+    },
+    "209": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "210": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "211": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "212": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        769,
+        773
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "214": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "215": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "216": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "217": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "219": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "220": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "221": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "222": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "224": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "225": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP4",
+      "path": "175"
+    },
+    "226": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "KECCAK256",
+      "path": "175"
+    },
+    "227": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "SLOAD",
+      "path": "175"
+    },
+    "228": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "229": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "230": {
+      "op": "PUSH4",
+      "value": "0x11E56AFF"
+    },
+    "235": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "237": {
+      "op": "SHL"
+    },
+    "238": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "239": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "240": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "241": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "DUP6",
+      "path": "175"
+    },
+    "242": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "243": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x4"
+    },
+    "245": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "246": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "247": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "248": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "249": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "250": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP2",
+      "path": "175"
+    },
+    "251": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "252": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        769,
+        773
+      ],
+      "op": "SWAP4",
+      "path": "175"
+    },
+    "253": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        769,
+        773
+      ],
+      "op": "SWAP5",
+      "path": "175"
+    },
+    "254": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "SWAP2",
+      "path": "175"
+    },
+    "255": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        802,
+        826
+      ],
+      "op": "SWAP4",
+      "path": "175"
+    },
+    "256": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        769,
+        773
+      ],
+      "op": "DUP6",
+      "path": "175"
+    },
+    "257": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        769,
+        773
+      ],
+      "op": "SWAP4",
+      "path": "175"
+    },
+    "258": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        854,
+        860
+      ],
+      "op": "PUSH32",
+      "path": "175",
+      "value": "0x0"
+    },
+    "291": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "292": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "SWAP4",
+      "path": "175"
+    },
+    "293": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "294": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "SWAP3",
+      "path": "175"
+    },
+    "295": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "PUSH4",
+      "path": "175",
+      "value": "0x11E56AFF"
+    },
+    "300": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "SWAP3",
+      "path": "175"
+    },
+    "301": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x24"
+    },
+    "303": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "304": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "305": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "306": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP4",
+      "path": "175"
+    },
+    "307": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP2",
+      "path": "175"
+    },
+    "308": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "309": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "310": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "311": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "312": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "313": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        871
+      ],
+      "op": "DUP7",
+      "path": "175"
+    },
+    "314": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "315": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "EXTCODESIZE",
+      "path": "175"
+    },
+    "316": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "317": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "318": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "319": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x147"
+    },
+    "322": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "323": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "325": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "326": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "327": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "328": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "329": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "GAS",
+      "path": "175"
+    },
+    "330": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "STATICCALL",
+      "path": "175"
+    },
+    "331": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "332": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "333": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "334": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x15B"
+    },
+    "337": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "338": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "RETURNDATASIZE",
+      "path": "175"
+    },
+    "339": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "341": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "342": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "RETURNDATACOPY",
+      "path": "175"
+    },
+    "343": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "RETURNDATASIZE",
+      "path": "175"
+    },
+    "344": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "346": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "347": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "348": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "349": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "350": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "351": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "POP",
+      "path": "175"
+    },
+    "352": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "354": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "355": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "RETURNDATASIZE",
+      "path": "175"
+    },
+    "356": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "358": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "359": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "LT",
+      "path": "175"
+    },
+    "360": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "ISZERO",
+      "path": "175"
+    },
+    "361": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x171"
+    },
+    "364": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "365": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "367": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "368": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "369": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "370": {
+      "op": "POP"
+    },
+    "371": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "372": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        842,
+        883
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "373": {
+      "op": "POP"
+    },
+    "374": {
+      "branch": 2,
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        897,
+        904
+      ],
+      "op": "DUP1",
+      "path": "175",
+      "statement": 0
+    },
+    "375": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH2",
+      "path": "175",
+      "value": "0x1AF"
+    },
+    "378": {
+      "branch": 2,
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "JUMPI",
+      "path": "175"
+    },
+    "379": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "381": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP1",
+      "path": "175"
+    },
+    "382": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "383": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "387": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "389": {
+      "op": "SHL"
+    },
+    "390": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "391": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "392": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "394": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x4"
+    },
+    "396": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "397": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "398": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "399": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x5"
+    },
+    "401": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x24"
+    },
+    "403": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "404": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "405": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "406": {
+      "op": "PUSH5",
+      "value": "0xDCDE40E0F"
+    },
+    "412": {
+      "op": "PUSH1",
+      "value": "0xDB"
+    },
+    "414": {
+      "op": "SHL"
+    },
+    "415": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x44"
+    },
+    "417": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP3",
+      "path": "175"
+    },
+    "418": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "419": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "420": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "421": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "MLOAD",
+      "path": "175"
+    },
+    "422": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "423": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "424": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "425": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "SUB",
+      "path": "175"
+    },
+    "426": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x64"
+    },
+    "428": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "ADD",
+      "path": "175"
+    },
+    "429": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "430": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "REVERT",
+      "path": "175"
+    },
+    "431": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        889,
+        914
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "432": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        927,
+        929
+      ],
+      "op": "SWAP4",
+      "path": "175",
+      "statement": 1
+    },
+    "433": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "SWAP3",
+      "path": "175"
+    },
+    "434": {
+      "op": "POP"
+    },
+    "435": {
+      "op": "POP"
+    },
+    "436": {
+      "op": "POP"
+    },
+    "437": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "o",
+      "offset": [
+        703,
+        934
+      ],
+      "op": "JUMP",
+      "path": "175"
+    },
+    "438": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "439": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x0"
+    },
+    "441": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x20"
+    },
+    "443": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "444": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "445": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "446": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "447": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "448": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "MSTORE",
+      "path": "175"
+    },
+    "449": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "PUSH1",
+      "path": "175",
+      "value": "0x40"
+    },
+    "451": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SWAP1",
+      "path": "175"
+    },
+    "452": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "KECCAK256",
+      "path": "175"
+    },
+    "453": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "SLOAD",
+      "path": "175"
+    },
+    "454": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "456": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "458": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "460": {
+      "op": "SHL"
+    },
+    "461": {
+      "op": "SUB"
+    },
+    "462": {
+      "offset": [
+        208,
+        260
+      ],
+      "op": "AND",
+      "path": "175"
+    },
+    "463": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "464": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "o",
+      "offset": [
+        208,
+        260
+      ],
+      "op": "JUMP",
+      "path": "175"
+    },
+    "465": {
+      "offset": [
+        147,
+        182
+      ],
+      "op": "JUMPDEST",
+      "path": "175"
+    },
+    "466": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "PUSH32",
+      "path": "175",
+      "value": "0x0"
+    },
+    "499": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "DUP2",
+      "path": "175"
+    },
+    "500": {
+      "fn": "MoolaProxyOracle.getCELOPx",
+      "jump": "o",
+      "offset": [
+        147,
+        182
+      ],
+      "op": "JUMP",
+      "path": "175"
+    }
+  },
+  "sha1": "438be76597453b5bbcfdab86dba5d0ec5bb9db72",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../../interfaces/IBaseOracle.sol';\n\ncontract MoolaProxyOracle is IBaseOracle {\n  IBaseOracle public immutable source; // Main oracle source\n  mapping(address => address) public moolaToUnderlying;\n\n  constructor(IBaseOracle _source) public {\n    source = _source;\n    moolaToUnderlying[0x918146359264C492BD6934071c6Bd31C854EDBc3] = 0x765DE816845861e75A25fCA122bb6898B8B1282a;\n    moolaToUnderlying[0xE273Ad7ee11dCfAA87383aD5977EE1504aC07568] = 0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73;\n  }\n\n  /// @dev Return the value of the given input as CELO per unit, multiplied by 2**112.\n  /// @param token The ERC-20 token to check the value.\n  function getCELOPx(address token) external view override returns (uint) {\n    address underlying = moolaToUnderlying[token];\n    uint px = IBaseOracle(source).getCELOPx(underlying);\n    require(px != 0, 'no px');\n    return px;\n  }\n\n}",
+  "sourceMap": "102:835:175:-:0;;;265:291;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;265:291:175;-1:-1:-1;;;;;;311:16:175;;;;;;;;333:17;265:291;333:61;;;;:106;;-1:-1:-1;;;;;;333:106:175;;;397:42;333:106;;;;463:42;445:61;;;;:106;;;;;509:42;445:106;;;102:835;;;;;;;;;;;",
+  "sourcePath": "contracts/oracle/MoolaProxyOracle.sol",
+  "type": "contract"
+}

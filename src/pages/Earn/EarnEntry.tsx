@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
-  const { kit } = useContractKit();
+  const { kit, network } = useContractKit();
   const [safeBox] = useSafeBox(safeBoxMap.get(token.address)!);
   const history = useHistory();
 
@@ -27,9 +27,9 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
-    [kit]
+    [kit, network]
   );
 
   const call = React.useCallback(async () => {

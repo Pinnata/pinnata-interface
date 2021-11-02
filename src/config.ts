@@ -5,19 +5,27 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.CeloMainnet]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
+  [ChainId.CeloMainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.EthereumMainnet]: '0',
   [ChainId.Kovan]: '0'
 };
 
-export const Alfajores: Network = {
-  graphQl: "https://alfajores-blockscout.celo-testnet.org/graphiql",
-  name: NetworkNames.Alfajores,
-  rpcUrl: "https://alfajores-forno.celo-testnet.org",
-  chainId: ChainId.Alfajores,
-  explorer: "https://alfajores-blockscout.celo-testnet.org/",
+// export const Alfajores: Network = {
+//   graphQl: "https://alfajores-blockscout.celo-testnet.org/graphiql",
+//   name: NetworkNames.Alfajores,
+//   rpcUrl: "https://alfajores-forno.celo-testnet.org",
+//   chainId: ChainId.Alfajores,
+//   explorer: "https://alfajores-blockscout.celo-testnet.org/",
+// }
+
+export const CeloMainnet: Network = {
+  graphQl: "https://explorer.celo.org/graphiql",
+  name: NetworkNames.CeloMainnet,
+  rpcUrl: "https://forno.celo.org",
+  chainId: ChainId.CeloMainnet,
+  explorer: "https://explorer.celo.org/",
 }
 
 export const lpToken = {
@@ -25,33 +33,33 @@ export const lpToken = {
   name: "Ubeswap LP",
   symbol: "ULP",
   decimals: 18,
-  chainId: ChainId.Alfajores,
+  chainId: ChainId.CeloMainnet,
   logoURI: "lp"
 };
 
 export const COLLATERAL_TOKENS = [
+  // new Token({
+  //   address: getAddress("0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"),
+  //   name: "Celo",
+  //   symbol: "CELO",
+  //   decimals: 18,
+  //   chainId: ChainId.Alfajores,
+  //   logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  // }),
   new Token({
-    address: getAddress("0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"),
-    name: "Celo",
-    symbol: "CELO",
-    decimals: 18,
-    chainId: ChainId.Alfajores,
-    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  }),
-  new Token({
-    address: getAddress("0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"),
+    address: getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"),
     name: "Celo Dollar",
     symbol: "cUSD",
     decimals: 18,
-    chainId: ChainId.Alfajores,
+    chainId: ChainId.CeloMainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
   }),
   new Token({
-    address: getAddress("0x10c892A6EC43a53E45D0B916B4b7D383B1b78C0F"),
+    address: getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"),
     name: "Celo Euro",
     symbol: "cEUR",
     decimals: 18,
-    chainId: ChainId.Alfajores,
+    chainId: ChainId.CeloMainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
   }),
 ];
@@ -292,13 +300,12 @@ export const FARMS = [
   },
 ];
 
-export const DECIMAL_PRECISION = 3; // Number of decimals to show
+export const DECIMAL_PRECISION = 2; // Number of decimals to show
 
 //collateral type to safebox
 export const safeBoxMap = new Map<string, string>([
-  [getAddress("0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"), getAddress("0x325416cb0d7c18457B4538F53525C51F92762FA2")], // celo
-  [getAddress("0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"), getAddress("0x95f06d7CE0014a655ede3690314e6440816Db0BD")], // cusd
-  [getAddress("0x10c892A6EC43a53E45D0B916B4b7D383B1b78C0F"), getAddress("0x701FcC5914b0cEb34CdEd76474b731ec6d4a9D21")], // ceur
+  [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0xb104422F2Fbc050055671265b95E08aD6057B0B3")], // cusd
+  [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0x998BA352aD84CC0CD7E71B1Cc11Fd192D624254C")], // ceur
 ]);
 
 export const spellMap = new Map<string, string>([

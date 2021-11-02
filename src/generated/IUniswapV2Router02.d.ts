@@ -71,6 +71,11 @@ export interface IUniswapV2Router02 extends BaseContract {
       path: string[]
     ): NonPayableTransactionObject<string[]>;
 
+    pairFor(
+      tokenA: string,
+      tokenB: string
+    ): NonPayableTransactionObject<string>;
+
     quote(
       amountA: number | string | BN,
       reserveA: number | string | BN,

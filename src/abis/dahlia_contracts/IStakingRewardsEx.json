@@ -1,10 +1,81 @@
 {
   "abi": [
     {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "earned",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "exit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "getReward",
       "outputs": [],
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRewardForDuration",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastTimeRewardApplicable",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -60,6 +131,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -77,31 +161,31 @@
     "absolutePath": "interfaces/IStakingRewardsEx.sol",
     "exportedSymbols": {
       "IStakingRewardsEx": [
-        1332
+        1472
       ]
     },
-    "id": 1333,
+    "id": 1473,
     "license": null,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1318,
+        "id": 1458,
         "literals": [
           "solidity",
           "0.6",
           ".12"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:23"
+        "src": "0:23:26"
       },
       {
         "absolutePath": "interfaces/IStakingRewards.sol",
         "file": "./IStakingRewards.sol",
-        "id": 1319,
+        "id": 1459,
         "nodeType": "ImportDirective",
-        "scope": 1333,
-        "sourceUnit": 1317,
-        "src": "25:31:23",
+        "scope": 1473,
+        "sourceUnit": 2003,
+        "src": "25:31:26",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -112,31 +196,31 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1320,
+              "id": 1460,
               "name": "IStakingRewards",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1316,
-              "src": "89:15:23",
+              "referencedDeclaration": 2002,
+              "src": "89:15:26",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IStakingRewards_$1316",
+                "typeIdentifier": "t_contract$_IStakingRewards_$2002",
                 "typeString": "contract IStakingRewards"
               }
             },
-            "id": 1321,
+            "id": 1461,
             "nodeType": "InheritanceSpecifier",
-            "src": "89:15:23"
+            "src": "89:15:26"
           }
         ],
         "contractDependencies": [
-          1316
+          2002
         ],
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1332,
+        "id": 1472,
         "linearizedBaseContracts": [
-          1332,
-          1316
+          1472,
+          2002
         ],
         "name": "IStakingRewardsEx",
         "nodeType": "ContractDefinition",
@@ -145,7 +229,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "d1af0c7d",
-            "id": 1326,
+            "id": 1466,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -153,24 +237,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1322,
+              "id": 1462,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "130:2:23"
+              "src": "130:2:26"
             },
             "returnParameters": {
-              "id": 1325,
+              "id": 1465,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1324,
+                  "id": 1464,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1326,
-                  "src": "156:7:23",
+                  "scope": 1466,
+                  "src": "156:7:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -178,10 +262,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1323,
+                    "id": 1463,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "156:7:23",
+                    "src": "156:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -192,10 +276,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "155:9:23"
+              "src": "155:9:26"
             },
-            "scope": 1332,
-            "src": "109:56:23",
+            "scope": 1472,
+            "src": "109:56:26",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -204,7 +288,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "72f702f3",
-            "id": 1331,
+            "id": 1471,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -212,24 +296,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1327,
+              "id": 1467,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "190:2:23"
+              "src": "190:2:26"
             },
             "returnParameters": {
-              "id": 1330,
+              "id": 1470,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1329,
+                  "id": 1469,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1331,
-                  "src": "216:7:23",
+                  "scope": 1471,
+                  "src": "216:7:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -237,10 +321,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1328,
+                    "id": 1468,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "216:7:23",
+                    "src": "216:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -251,20 +335,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "215:9:23"
+              "src": "215:9:26"
             },
-            "scope": 1332,
-            "src": "169:56:23",
+            "scope": 1472,
+            "src": "169:56:26",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1333,
-        "src": "58:169:23"
+        "scope": 1473,
+        "src": "58:169:26"
       }
     ],
-    "src": "0:228:23"
+    "src": "0:228:26"
   },
   "contractName": "IStakingRewardsEx",
   "dependencies": [
