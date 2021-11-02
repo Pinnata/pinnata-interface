@@ -84,7 +84,11 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
           </p>
           <p className="text-gray-900 font-bold text-2xl">
             {" "}
-            {info ? humanFriendlyWei(info.totalSupply) : "--"}
+            {info
+              ? humanFriendlyWei(info.totalSupply)
+                  .concat(" ")
+                  .concat(token.symbol)
+              : "--"}
           </p>
         </div>
         <div className="m-4 text-center">
@@ -93,7 +97,11 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
           </p>
           <p className="text-gray-900 font-bold text-2xl">
             {" "}
-            {info ? humanFriendlyWei(info.totalBorrows) : "--"}
+            {info
+              ? humanFriendlyWei(info.totalBorrows)
+                  .concat(" ")
+                  .concat(token.symbol)
+              : "--"}
           </p>
         </div>
       </div>
