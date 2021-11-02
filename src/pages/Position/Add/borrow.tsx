@@ -279,7 +279,7 @@ export const Borrow: React.FC = () => {
             Number(fromWei(x.add(info.prevCollateral[i]!))) *
             (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
         )
-        .reduce((sum, current) => sum + current, 0)
+        .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply)) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))))
     : 0;
   const lever = 1 + borrowValue / supplyValue;
 
@@ -412,7 +412,7 @@ export const Borrow: React.FC = () => {
               />
             </Flex>
           ))}
-          {/* <Flex
+          <Flex
             sx={{
               alignItems: "center",
               mr: 4,
@@ -426,7 +426,7 @@ export const Borrow: React.FC = () => {
               token={lpTok}
               amount={fromWei(supply.lpSupply!)}
             />
-          </Flex> */}
+          </Flex>
         </Flex>
       </Flex>
       <Flex sx={{ mb: 2, mt: "25px" }}>

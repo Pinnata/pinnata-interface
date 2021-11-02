@@ -161,10 +161,7 @@ export const Confirm: React.FC = () => {
           }
         }
         const amountBN = supply.lpSupply!;
-        console.log(supply.lpSupply.toString())
-        console.log(erc.allowance.toString())
         if (amountBN.gt(erc.allowance)) {
-          console.log('in')
           b.push(approveButton(lpTok));
         }
         if (buttonLoading) setButtonLoading(false);
