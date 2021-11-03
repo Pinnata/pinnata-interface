@@ -8,9 +8,16 @@ interface Props {
 
 export const RewardsTokenInfo: React.FC<Props> = ({ token }: Props) => {
   return (
-    <div className="flex justify-center items-center">
-      <img className="w-10" src={token.logoURL} alt="token_logo" />
-      <Text>{token.symbol}</Text>
+    <div className="flex items-center -mb-1 justify-center">
+      <img
+        className="w-8 shadow-md rounded-full"
+        key={token.address}
+        src={token.logoURL}
+        alt={`Icon of token ${token.name} (${token.symbol})`}
+      />
+      <p className="ml-2 text-base">{token.name}</p>
     </div>
   );
 };
+
+
