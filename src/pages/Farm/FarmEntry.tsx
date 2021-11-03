@@ -17,10 +17,15 @@ import { RewardsTokenInfo } from "src/components/RewardsTokenInfo";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
+import { useAPR } from "src/hooks/useAPR";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
   const { kit, network } = useContractKit();
   const history = useHistory();
+  const [apr, refetchapr] = useAPR(
+    props.lp,
+    props.wrapper,
+  );
 
   const bank = React.useMemo(
     () =>
