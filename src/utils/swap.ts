@@ -45,7 +45,9 @@ const getAmountOut = (amtIn: BN, resIn: BN, resOut: BN) => {
 }
 
 export const priceImpact = (amtA: BN, amtB: BN, resA: BN, resB: BN) => {
+    console.log(1)
     const {swapAmt, reversed} = optimalDeposit(amtA, amtB, resA, resB);
+    console.log(3)
     if (reversed) {
         const dA = amtA.add(getAmountOut(swapAmt, resB, resA));
         const dB = amtB.sub(swapAmt);
@@ -57,6 +59,7 @@ export const priceImpact = (amtA: BN, amtB: BN, resA: BN, resB: BN) => {
         const dA = amtA.sub(swapAmt);
         const spot = Number(resB.toString()) / Number(resA.toString());
         const real = Number(dB.toString()) / Number(dA.toString());
-        return (spot - real) / spot
+        console.log((spot-real) / spot)
+        return parseInt(((spot - real) / spot).toFixed(0))
     }
 }
