@@ -21,9 +21,9 @@ import { fromWei, AbiItem } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
-import UNI_SPELL from "src/abis/dahlia_contracts/UniswapV2SpellV1.json";
+import SUSHI_SPELL from "src/abis/dahlia_contracts/SushiswapSpellV1.json";
+import { SushiswapSpellV1 } from "src/generated/SushiswapSpellV1";
 import { HomoraBank } from "src/generated/HomoraBank";
-import { UniswapV2SpellV1 } from "src/generated/UniswapV2SpellV1";
 import { getAddress } from "ethers/lib/utils";
 import { MaxUint256 } from "@ethersproject/constants";
 import ERC20_ABI from "src/abis/fountain_of_youth/ERC20.json";
@@ -32,7 +32,7 @@ import { humanFriendlyNumber } from "src/utils/number";
 import { useHistory } from "react-router";
 
 export const Confirm: React.FC = () => {
-  const { getConnectedKit } = useContractKit();
+  const { getConnectedKit, network } = useContractKit();
   const [approveLoading, setApproveLoading] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [buttonLoading, setButtonLoading] = React.useState(true);
@@ -49,7 +49,7 @@ export const Confirm: React.FC = () => {
   });
 
   const [tokenStates, refetchTokenStates] = useERCmulti(pool.tokens);
-  const [erc, refetchERC] = useERC(lpTok.address, Bank[44787]);
+  const [erc, refetchERC] = useERC(lpTok.address, Bank[network.chainId]);
 
   const approveButton = (token: Token): any => {
     return (
@@ -64,7 +64,7 @@ export const Confirm: React.FC = () => {
               token.address!
             ) as unknown as ERC20;
             const tx = await ERCToken.methods
-              .approve(Bank[44787], MaxUint256.toString())
+              .approve(Bank[network.chainId], MaxUint256.toString())
               .send({
                 from: kit.defaultAccount,
                 gasPrice: DEFAULT_GAS_PRICE,
@@ -94,14 +94,14 @@ export const Confirm: React.FC = () => {
           setConfirmLoading(true);
           const bank = new kit.web3.eth.Contract(
             BANK_ABI.abi as AbiItem[],
-            getAddress(Bank[44787])
+            getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
           const spell = new kit.web3.eth.Contract(
-            UNI_SPELL.abi as AbiItem[],
+            SUSHI_SPELL.abi as AbiItem[],
             getAddress(pool.spell)
-          ) as unknown as UniswapV2SpellV1;
+          ) as unknown as SushiswapSpellV1;
           const bytes = spell.methods
-            .addLiquidityWStakingRewards(
+            .addLiquidityWMiniChef(
               pool.tokens[0]!.address,
               pool.tokens[1]!.address,
               [
@@ -114,7 +114,7 @@ export const Confirm: React.FC = () => {
                 0,
                 0,
               ],
-              pool.wrapper
+              '3',
             )
             .encodeABI();
           const tx = await bank.methods.execute(0, pool.spell, bytes).send({
@@ -150,7 +150,7 @@ export const Confirm: React.FC = () => {
         </Button>,
       ];
     } else {
-      if (tokenStates) {
+      if (tokenStates && erc) {
         for (let i = 0; i < tokenStates.length; i += 1) {
           if (tokenStates[i]!) {
             const amountBN = supply.tokenSupply![i]!;
@@ -160,18 +160,16 @@ export const Confirm: React.FC = () => {
             }
           }
         }
-        if (b.length === 0) {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          b = [confirmButton];
-          if (buttonLoading) setButtonLoading(false);
-        }
-      }
-      if (erc) {
         const amountBN = supply.lpSupply!;
         if (amountBN.gt(erc.allowance)) {
           b.push(approveButton(lpTok));
         }
         if (buttonLoading) setButtonLoading(false);
+        if (b.length === 0) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          b = [confirmButton];
+          if (buttonLoading) setButtonLoading(false);
+        }
       }
     }
     return b;
@@ -194,7 +192,7 @@ export const Confirm: React.FC = () => {
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
       <p
         onClick={() => {
-          history.goBack();
+          setPage(farmPage.Borrow)
         }}
         className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
       >

@@ -73,14 +73,14 @@ export const Borrow: React.FC = () => {
     address: pool.lp,
   });
 
-  const { kit } = useContractKit();
+  const { kit, network } = useContractKit();
   const [amounts, setAmounts] = React.useState<String[] | null>(null);
 
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );
@@ -279,7 +279,7 @@ export const Borrow: React.FC = () => {
             Number(fromWei(x.add(info.prevCollateral[i]!))) *
             (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
         )
-        .reduce((sum, current) => sum + current, 0)
+        .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply)) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))))
     : 0;
   const lever = 1 + borrowValue / supplyValue;
 
@@ -352,7 +352,7 @@ export const Borrow: React.FC = () => {
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
       <p
         onClick={() => {
-          history.goBack();
+          setPage(addPage.Supply)
         }}
         className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
       >
@@ -462,7 +462,7 @@ export const Borrow: React.FC = () => {
           />
         ))}
       <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {debtRatio > 99 ? (
+        {debtRatio > 96 ? (
           <Button disabled={true}>Debt ratio too high</Button>
         ) : (
           continueButton

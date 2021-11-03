@@ -31,19 +31,19 @@ const App: React.FC = () => {
           <Route exact path="/earn">
             <Earn />
           </Route>
-          {/* <Route exact path="/farm">
+          <Route exact path="/farm">
             <Farm />
-          </Route> */}
+          </Route>
           <Route exact path="/earn/supply/:tokenAddress">
             <Supply />
           </Route>
           <Route exact path="/earn/withdraw/:tokenAddress">
             <Withdraw />
           </Route>
-          {/* <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens">
+          <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens">
             <NewFarm />
-          </Route> */}
-          {/* <Route
+          </Route>
+          <Route
             exact
             path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens"
           >
@@ -54,10 +54,10 @@ const App: React.FC = () => {
             path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens"
           >
             <Remove />
-          </Route> */}
-          {/* <Route exact path="/positions">
+          </Route>
+          <Route exact path="/positions">
             <Position />
-          </Route> */}
+          </Route>
         </Switch>
         <ToastContainer />
       </Container>

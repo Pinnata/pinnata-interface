@@ -24,7 +24,7 @@ import { BlockText } from "src/components/BlockText";
 
 export const Withdraw: React.FC = () => {
   // TODO: does the number of decimals factor in?
-  const { kit, getConnectedKit } = useContractKit();
+  const { kit, getConnectedKit, network } = useContractKit();
   const [amount, setAmount] = React.useState("1");
   const [withdrawLoading, setWithdrawLoading] = React.useState(false);
   const [buttonLoading, setButtonLoading] = React.useState(true);
@@ -36,7 +36,7 @@ export const Withdraw: React.FC = () => {
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );

@@ -53,13 +53,13 @@ export const Payback: React.FC = () => {
   const zeroAdd = "0x0000000000000000000000000000000000000000";
   const scale = toBN(2).pow(toBN(112));
 
-  const { kit } = useContractKit();
+  const { kit, network } = useContractKit();
 
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
         BANK_ABI.abi as AbiItem[],
-        getAddress(Bank[44787])
+        getAddress(Bank[network.chainId])
       ) as unknown as HomoraBank,
     [kit]
   );
@@ -229,7 +229,7 @@ export const Payback: React.FC = () => {
   const continueButton = (
     <button
       className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
-      disabled={debtRatio > 99}
+      disabled={debtRatio > 96}
       onClick={() => {
         setPayback({
           payback: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -344,7 +344,7 @@ export const Payback: React.FC = () => {
             />
           ))}
         <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {debtRatio > 99 ? (
+          {debtRatio > 96 ? (
             <Button disabled={true}>Debt ratio too high</Button>
           ) : (
             continueButton
