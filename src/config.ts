@@ -92,7 +92,7 @@ export const FARMS = [
     rewards: [
       new Token({
         address: getAddress("0xD15EC721C2A896512Ad29C671997DD68f9593226"),
-        name: "SushiToken",
+        name: "Sushi",
         symbol: "SUSHI",
         decimals: 18,
         chainId: ChainId.CeloMainnet,
