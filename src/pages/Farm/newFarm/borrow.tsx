@@ -73,7 +73,7 @@ export const Borrow: React.FC = () => {
   });
 
   const { kit, network } = useContractKit();
-  const [amounts, setAmounts] = React.useState<String[] | null>(null);
+  const [amounts, setAmounts] = React.useState<string[] | null>(null);
 
   const bank = React.useMemo(
     () =>
@@ -117,7 +117,6 @@ export const Borrow: React.FC = () => {
         COREORACLE_ABI.abi as AbiItem[],
         source
       ) as unknown as CoreOracle;
-
       for (let token of pool.tokens) {
         const bankInfo = await bank.methods.getBankInfo(token.address).call();
         const cToken = new kit.web3.eth.Contract(
@@ -142,7 +141,6 @@ export const Borrow: React.FC = () => {
       }
       const lpPrice = await coreOracle.methods.getCELOPx(pool.lp).call();
       const lpFactor = await proxyOracle.methods.tokenFactors(pool.lp).call();
-
       const weightedSuppliedCollateralValue =
         supply
           .tokenSupply!.map(
@@ -155,7 +153,6 @@ export const Borrow: React.FC = () => {
         Number(fromWei(supply.lpSupply!)) *
           (Number(fromWei(lpPrice)) / Number(fromWei(scale))) *
           (Number(lpFactor.collateralFactor) / 10000);
-
       const borrowMax = prices.map(
         (x, i) =>
           weightedSuppliedCollateralValue /
@@ -164,7 +161,6 @@ export const Borrow: React.FC = () => {
               Number(lpFactor.collateralFactor)) /
               10000))
       );
-
       const maxAmounts = borrowMax.map((x, index) =>
         String(Math.min(x, Number(fromWei(availableBorrows[index]!))))
       );
@@ -182,7 +178,6 @@ export const Borrow: React.FC = () => {
         reserve0 = toBN(getReserves.reserve1);
         reserve1 = toBN(getReserves.reserve0);
       }
-
       if (!init) {
         setInit(true);
         setAmounts(
@@ -248,11 +243,10 @@ export const Borrow: React.FC = () => {
         .map((x, i) => x * Number(fromWei(info?.borrows[i]!)))
         .reduce((sum, current) => sum + current, 0)) /
     supplyValue;
-
   const impact = info
     ? priceImpact(
-        supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10 ** 18)),
-        supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10 ** 18)),
+        supply.tokenSupply![0]!.add(toBN(toWei(amounts[0]!))),
+        supply.tokenSupply![1]!.add(toBN(toWei(amounts[1]!))),
         info.reserve0,
         info.reserve1
       )

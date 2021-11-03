@@ -74,7 +74,7 @@ export const Borrow: React.FC = () => {
   });
 
   const { kit, network } = useContractKit();
-  const [amounts, setAmounts] = React.useState<String[] | null>(null);
+  const [amounts, setAmounts] = React.useState<string[] | null>(null);
 
   const bank = React.useMemo(
     () =>
@@ -285,8 +285,8 @@ export const Borrow: React.FC = () => {
 
   const impact = info
     ? priceImpact(
-        supply.tokenSupply![0]!.add(toBN(Number(amounts[0]) * 10 ** 18)),
-        supply.tokenSupply![1]!.add(toBN(Number(amounts[1]) * 10 ** 18)),
+        supply.tokenSupply![0]!.add(toBN(toWei(amounts[0]!))),
+        supply.tokenSupply![1]!.add(toBN(toWei(amounts[1]!))),
         info.reserve0,
         info.reserve1
       )
