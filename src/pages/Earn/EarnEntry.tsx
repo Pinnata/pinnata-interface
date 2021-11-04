@@ -73,7 +73,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
       </div>
 
       <div className="p-4 border-b-2 text-center ">
-        <p className="text-gray-600 uppercase tracking-widest font-bold">APY</p>
+        <p className="text-gray-600 uppercase tracking-widest font-bold">APR</p>
         <p className="text-gray-800 font-bold text-3xl">
           {" "}
           {info

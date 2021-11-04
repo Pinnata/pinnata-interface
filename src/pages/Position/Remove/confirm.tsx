@@ -202,7 +202,7 @@ export const Confirm: React.FC = () => {
                 .concat("x")}
             </BlockText>
             <BlockText>
-              {"Farming APY: "
+              {"Farming APR: "
                 .concat(humanFriendlyNumber(payback.apy! * 100))
                 .concat("%")}
             </BlockText>

@@ -327,7 +327,7 @@ export const Payback: React.FC = () => {
           {"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
         </BlockText>
         <BlockText mb={2}>
-          {"New Farming Apy: "
+          {"New Farming APR: "
             .concat(humanFriendlyNumber(apy * 100))
             .concat("%")}
         </BlockText>

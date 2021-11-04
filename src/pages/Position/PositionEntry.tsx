@@ -173,7 +173,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           </div>
           <div className="m-4 text-center">
             <p className="text-gray-600 uppercase tracking-widest font-bold">
-              Position APY
+              Position APR
             </p>
             <p className="text-gray-900 font-bold text-2xl tracking-tight">
               {" "}
