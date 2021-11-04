@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { AbiItem } from "web3-utils";
 import { HomoraBank } from "src/generated/HomoraBank";
@@ -71,7 +71,8 @@ export const Position = () => {
     }
   }, [bank.methods, address, kit.web3.eth.Contract]);
 
-  const [info] = useAsyncState(null, call);
+  const [info] = useAsyncState(null, call, "positions");
+
   return (
     <section className="max-w-screen-xl mx-auto">
       <div className="w-full text-center md:pb-0 pb-2 pt-2">
