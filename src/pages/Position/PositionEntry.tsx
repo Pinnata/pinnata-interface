@@ -192,7 +192,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             Add &#x203A;
           </button>
 
-<<<<<<< HEAD
           <button
             onClick={() => {
               history.push(`positions/remove/${urlext}`);
@@ -284,28 +283,5 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         </div>
       </div>
     </div>
-=======
-          <Flex sx={{justifyContent: "center", alighnItems: "center", gap: "6px"}}>
-            <Button onClick={() => {
-             history.push(`positions/add/${urlext}`)}
-            }>
-              Add
-            </Button>
-            <Button onClick={() => {
-             history.push(`positions/remove/${urlext}`)}
-            }>
-              Remove
-            </Button>
-          </Flex>
-          <Flex sx={{justifyContent: "center", alighnItems: "center", gap: "6px"}}>
-            {closeButton}
-            {harvestButton}
-          </Flex>
-          </Flex>
-          )}
-        
-      </td>
-    </Row>
->>>>>>> 73dff82728da2883ec81b9a571a4bafb6d4cc7f4
   );
 };
