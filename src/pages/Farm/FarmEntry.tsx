@@ -27,6 +27,8 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     props.wrapper,
   );
 
+  console.log(apr)
+
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
