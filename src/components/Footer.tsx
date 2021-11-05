@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://discord.gg/C98ehssB"
+          href="https://discord.gg/vSKBpWrGEQ"
           className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
