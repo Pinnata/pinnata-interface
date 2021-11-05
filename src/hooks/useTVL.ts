@@ -27,7 +27,6 @@ export const useTVL = () => {
     [kit, network]
   );
   const call = React.useCallback(async () => {
-    console.log(9)
     const oracle = await bank.methods.oracle().call();
 
     const proxyOracle = new kit.web3.eth.Contract(
@@ -65,9 +64,7 @@ export const useTVL = () => {
         ) as unknown as CErc20Immutable;
         const totalSupply = toBN(await cToken.methods.totalSupply().call());
         const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
-        console.log(2)
         const cash = totalSupply.sub(totalBorrows)
-        console.log('cash', cash.toString())
         const price = toBN(await coreOracle.methods.getCELOPx(token.address).call())
         sum = sum.add(price.mul(cash))
     }

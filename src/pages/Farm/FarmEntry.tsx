@@ -18,7 +18,6 @@ import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
 import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
 import { useAPR } from "src/hooks/useAPR";
-import { useTVL } from "src/hooks/useTVL";
 
 export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
   const { kit, network } = useContractKit();
@@ -27,11 +26,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     props.lp,
     props.wrapper,
   );
-  const [tvl, refetchTVL] = useTVL()
   console.log('apr', apr)
-  console.log('tvl', tvl)
-
-  console.log(apr)
 
   const bank = React.useMemo(
     () =>
