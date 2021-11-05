@@ -371,7 +371,7 @@ export const Borrow: React.FC = () => {
         {"Price Impact: ".concat(humanFriendlyNumber(impact * 100)).concat("%")}
       </BlockText>
       <BlockText mb={2}>
-        {"Farming Apy: ".concat(humanFriendlyNumber(apy * 100)).concat("%")}
+        {"Farming Apr: ".concat(humanFriendlyNumber(apy * 100)).concat("%")}
       </BlockText>
 
       {info &&

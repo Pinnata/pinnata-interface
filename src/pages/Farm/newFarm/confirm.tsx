@@ -310,7 +310,7 @@ export const Confirm: React.FC = () => {
               .concat(" Celo")}
           </BlockText>
           <BlockText>
-            {"Farming Apy: "
+            {"Farming Apr: "
               .concat(humanFriendlyNumber(borrow.apy! * 100))
               .concat("%")}
           </BlockText>

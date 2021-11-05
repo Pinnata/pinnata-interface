@@ -1,6 +1,6 @@
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { Token } from "src/utils/token";
-import { AbiItem, toBN } from "web3-utils";
+import { AbiItem, toBN, fromWei } from "web3-utils";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import { HomoraBank } from "src/generated/HomoraBank";
@@ -13,6 +13,7 @@ import { humanFriendlyWei } from "src/utils/eth";
 import { useSafeBox } from "src/hooks/useSafeBox";
 import { TokenInfo } from "src/components/TokenInfo";
 import { useHistory } from "react-router-dom";
+import { humanFriendlyNumber } from "src/utils/number";
 
 interface Props {
   token: Token;
@@ -39,6 +40,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         CERC20_ABI as AbiItem[],
         bankInfo.cToken
       ) as unknown as CErc20Immutable;
+      const exchangeRate = toBN(await cToken.methods.exchangeRateStored().call());
       const totalSupply = toBN(await cToken.methods.totalSupply().call());
       const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
       const blocksPerYear = toBN(6311520);
@@ -53,6 +55,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         totalBorrows: totalBorrows,
         utilizationRate: utilRate,
         projectedAPY: supplyRate,
+        exchangeRate,
       };
     } catch (error) {
       console.log(error);
@@ -61,6 +64,8 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
 
   const [info] = useAsyncState(null, call);
 
+  const exchangeRate = info ? Number(fromWei(info.exchangeRate)) : 1;
+
   return (
     <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
       <div className="border-b-2 p-2">
@@ -68,7 +73,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
       </div>
 
       <div className="p-4 border-b-2 text-center ">
-        <p className="text-gray-600 uppercase tracking-widest font-bold">APY</p>
+        <p className="text-gray-600 uppercase tracking-widest font-bold">APR</p>
         <p className="text-gray-800 font-bold text-3xl">
           {" "}
           {info
@@ -126,8 +131,8 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
           </p>
           <p className="text-gray-900 font-bold text-2xl">
             {safeBox
-              ? humanFriendlyWei(safeBox.balance)
-                  .concat(" d")
+              ? humanFriendlyNumber(Number(fromWei(safeBox.balance)) * exchangeRate)
+                  .concat(" ")
                   .concat(token.symbol)
               : "--"}
           </p>

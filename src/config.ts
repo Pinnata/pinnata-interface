@@ -1,5 +1,5 @@
 import { ChainId, Network, NetworkNames } from "@celo-tools/use-contractkit";
-import { toWei } from "web3-utils";
+import { toWei, toBN } from "web3-utils";
 import { Token } from "src/utils/token";
 import { getAddress } from "ethers/lib/utils";
 
@@ -123,3 +123,8 @@ export const spellMap = new Map<string, string>([
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
+
+export const sushiLP = getAddress("0x02F726B5E819eCF33aA93be5274c94a22Df3619f")
+
+export const priceScale = toBN(2).pow(toBN(112))
+export const scale = toBN(10).pow(toBN(18))

@@ -26,6 +26,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     props.lp,
     props.wrapper,
   );
+  console.log('apr', apr)
 
   const bank = React.useMemo(
     () =>
@@ -137,7 +138,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
         <div className="md:flex p-4 border-b-2 justify-center">
           <div className="m-4 text-center">
             <p className="text-gray-600 uppercase tracking-widest font-bold">
-              Max APY
+              Max APR
             </p>
             <p className="text-gray-900 font-bold text-2xl">
               {" "}
@@ -146,7 +147,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
           </div>
           <div className="m-4 text-center">
             <p className="text-gray-600 uppercase tracking-widest font-bold">
-              Pool APY
+              Pool APR
             </p>
             <p className="text-gray-900 font-bold text-2xl"> {props.apy}%</p>
           </div>
@@ -155,7 +156,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
         <div className="md:flex p-4 border-b-2 justify-center">
           <div className="m-4 text-center">
             <p className="text-gray-600 text-xs uppercase tracking-widest font-bold">
-              Borrow APY
+              Borrow APR
             </p>
             <p className="text-gray-900 font-bold text-2xl">
               {props.tokens.map((tok, index) => (
