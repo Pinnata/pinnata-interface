@@ -11,7 +11,9 @@ export function useAsyncState<T>(
     if (localStorageKey) {
       const localStorageValue = localStorage.getItem(localStorageKey);
       if (localStorageValue) {
-        setState(JSON.parse(localStorageValue));
+        if (IsJsonString(localStorageValue)) {
+          setState(JSON.parse(localStorageValue));
+        }
       }
     }
 
@@ -31,4 +33,13 @@ export function useAsyncState<T>(
   };
 
   return [state, refetch];
+}
+
+function IsJsonString(str: string) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
 }
