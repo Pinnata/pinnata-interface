@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Flex, Heading, Text, Spinner } from "theme-ui";
+import { Card, Flex, Heading, Text, Spinner } from "theme-ui";
 import { DEFAULT_GAS_PRICE } from "src/config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
@@ -21,6 +21,7 @@ import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens";
 import { removePaybackState } from "./payback";
 import { useHistory } from "react-router-dom";
+import { Button } from "src/components/Button";
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -34,8 +35,7 @@ export const Confirm: React.FC = () => {
   const history = useHistory();
 
   const confirmButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -80,7 +80,7 @@ export const Confirm: React.FC = () => {
       }}
     >
       Confirm
-    </button>
+    </Button>
   );
 
   return (

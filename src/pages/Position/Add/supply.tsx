@@ -106,8 +106,7 @@ export const Supply: React.FC = () => {
   const [info] = useAsyncState(null, call);
 
   const continueButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={() => {
         setSupply({
           tokenSupply: amounts.map((x) => toBN(toWei(x))),
@@ -118,7 +117,7 @@ export const Supply: React.FC = () => {
       }}
     >
       Continue
-    </button>
+    </Button>
   );
 
   const invalid = <Button disabled>Enter a valid amount</Button>;

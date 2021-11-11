@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Spinner } from "theme-ui";
+import { Flex, Spinner } from "theme-ui";
 import { DEFAULT_GAS_PRICE } from "src/config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
@@ -30,6 +30,7 @@ import ERC20_ABI from "src/abis/fountain_of_youth/ERC20.json";
 import { ERC20 } from "src/generated/ERC20";
 import { humanFriendlyNumber } from "src/utils/number";
 import { useHistory } from "react-router";
+import { Button } from "src/components/Button";
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -85,8 +86,7 @@ export const Confirm: React.FC = () => {
   };
 
   const confirmButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -132,7 +132,7 @@ export const Confirm: React.FC = () => {
       }}
     >
       Confirm
-    </button>
+    </Button>
   );
 
   const loading = approveLoading || confirmLoading || buttonLoading;

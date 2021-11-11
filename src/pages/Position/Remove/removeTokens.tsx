@@ -82,8 +82,7 @@ export const RemoveTokens: React.FC = () => {
   const [info] = useAsyncState(null, call);
 
   const continueButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={() => {
         setRemove({
           existingBalance: info!,
@@ -101,7 +100,7 @@ export const RemoveTokens: React.FC = () => {
       }}
     >
       Continue
-    </button>
+    </Button>
   );
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex } from "theme-ui";
+import { Flex } from "theme-ui";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { atom, useSetRecoilState, useRecoilState } from "recoil";
@@ -32,6 +32,7 @@ import { priceImpact } from "src/utils/swap";
 import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json";
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 import { useHistory } from "react-router-dom";
+import { Button } from "src/components/Button";
 
 interface newBorrowProps {
   tokenBorrow: any[] | null;
@@ -280,8 +281,7 @@ export const Borrow: React.FC = () => {
   const debtRatio = (numer / denom) * 100;
 
   const continueButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={() => {
         setBorrow({
           tokenBorrow: amounts!.map((x) => toBN(toWei(String(x)))),
@@ -296,7 +296,7 @@ export const Borrow: React.FC = () => {
       }}
     >
       Continue
-    </button>
+    </Button>
   );
 
   return (

@@ -87,8 +87,7 @@ export const Confirm: React.FC = () => {
   };
 
   const confirmButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -136,7 +135,7 @@ export const Confirm: React.FC = () => {
       }}
     >
       Confirm
-    </button>
+    </Button>
   );
 
   const loading = approveLoading || confirmLoading || buttonLoading;
