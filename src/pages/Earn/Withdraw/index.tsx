@@ -16,11 +16,12 @@ import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getToken } from "src/utils/token";
 import { CaretLeft } from "phosphor-react";
-import { Button, Flex, Spinner } from "theme-ui";
+import { Flex, Spinner } from "theme-ui";
 import { useHistory } from "react-router-dom";
 import { BoxTokenAmountInfo } from "src/components/BoxTokenAmountInfo";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import { BlockText } from "src/components/BlockText";
+import { Button } from "src/components/Button";
 
 export const Withdraw: React.FC = () => {
   // TODO: does the number of decimals factor in?
@@ -62,8 +63,7 @@ export const Withdraw: React.FC = () => {
   const exchangeRate = info ? Number(fromWei(info.exchange)) : 1;
 
   const withdrawButton = (
-    <button
-      className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -88,7 +88,7 @@ export const Withdraw: React.FC = () => {
       }}
     >
       Withdraw
-    </button>
+    </Button>
   );
 
   const loading = withdrawLoading || buttonLoading;

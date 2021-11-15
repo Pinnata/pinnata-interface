@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Flex, Text } from "theme-ui";
+import { Card, Flex, Text } from "theme-ui";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { atom, useSetRecoilState, useRecoilState } from "recoil";
@@ -22,6 +22,7 @@ import { removePage, removePageState, removePositionState } from "./remove";
 import { removeRemoveState } from "./removeTokens";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
+import { Button } from "src/components/Button";
 
 interface paybackProps {
   payback: any[] | null;
@@ -227,8 +228,7 @@ export const Payback: React.FC = () => {
     supplyValue;
 
   const continueButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       disabled={debtRatio > 96}
       onClick={() => {
         setPayback({
@@ -241,7 +241,7 @@ export const Payback: React.FC = () => {
       }}
     >
       Continue
-    </button>
+    </Button>
   );
 
   if (!info! || !amounts!) return null;

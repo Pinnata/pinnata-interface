@@ -13,10 +13,11 @@ import { SafeBox } from "src/generated/SafeBox";
 import { useERC } from "src/hooks/useERC";
 import { getAddress } from "ethers/lib/utils";
 import { getToken } from "src/utils/token";
-import { Button, Flex, Spinner } from "theme-ui";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
+import { Button } from "src/components/Button";
+import { Flex, Spinner } from "theme-ui";
 
 export const Supply: React.FC = () => {
   const { getConnectedKit } = useContractKit();
@@ -65,8 +66,7 @@ export const Supply: React.FC = () => {
   );
 
   const supplyButton = (
-    <button
-      className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={async () => {
         const kit = await getConnectedKit();
         // kit is connected to a wallet
@@ -91,7 +91,7 @@ export const Supply: React.FC = () => {
       }}
     >
       Deposit
-    </button>
+    </Button>
   );
 
   const loading = approveLoading || supplyLoading || buttonLoading;

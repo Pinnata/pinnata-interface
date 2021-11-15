@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Spinner } from "theme-ui";
+import { Flex, Spinner } from "theme-ui";
 import { useERC } from "src/hooks/useERC";
 import { useERCmulti } from "src/hooks/useERCmulti";
 import { TokenInputForm } from "src/components/TokenInputForm";
@@ -14,6 +14,7 @@ import { toWei, toBN } from "web3-utils";
 import { lpToken } from "src/config";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
+import { Button } from "src/components/Button";
 
 interface supplyProps {
   tokenSupply: any[] | null;
@@ -56,8 +57,7 @@ export const Supply: React.FC = () => {
   const [lpAmount, setLPAmount] = React.useState("0");
 
   const continueButton = (
-    <button
-      className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+    <Button
       onClick={() => {
         setSupply({
           tokenSupply: amounts.map((x) => toBN(toWei(x))),
@@ -67,7 +67,7 @@ export const Supply: React.FC = () => {
       }}
     >
       Continue
-    </button>
+    </Button>
   );
 
   const invalid = <Button disabled>Enter a valid amount</Button>;
@@ -117,7 +117,9 @@ export const Supply: React.FC = () => {
         Farm
       </h1>
 
-      <p className="text-xl font-bold text-center -mb-4 text-gray-800 mt-2">Supply</p>
+      <p className="text-xl font-bold text-center -mb-4 text-gray-800 mt-2">
+        Supply
+      </p>
       {pool.tokens.map((tok, index) => (
         <TokenInputForm
           key={tok.address}
