@@ -44,9 +44,9 @@ ReactDOM.render(
     <ContractKitProvider
       dapp={{
         icon: "",
-        name: "Dahlia",
+        name: "Pinnata",
         description: "Leverage yield farming protocol",
-        url: "https://dahlia.finance",
+        url: "https://pinnata.xyz",
       }}
       network={{
         name: NetworkNames.CeloMainnet,
