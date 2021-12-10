@@ -17,7 +17,7 @@ export const Logo: React.FC = () => {
           <img className="w-full" src={Log} alt="Logo" />
         </div>
         <h1 className="logo uppercase font-bold text-4xl tracking-widest text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-800">
-          Dahlia
+          Pinnata
         </h1>
       </div>
     </div>
