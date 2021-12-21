@@ -23,6 +23,8 @@ import { toast } from "react-toastify";
 import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import SUSHI_SPELL from "src/abis/dahlia_contracts/SushiswapSpellV1.json";
 import { SushiswapSpellV1 } from "src/generated/SushiswapSpellV1";
+import UBE_SPELL from "src/abis/dahlia_contracts/UbeswapMSRSpellV1.json";
+import { UbeswapMSRSpellV1 } from "src/generated/UbeswapMSRSpellV1";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { getAddress } from "ethers/lib/utils";
 import { MaxUint256 } from "@ethersproject/constants";
@@ -31,6 +33,7 @@ import { ERC20 } from "src/generated/ERC20";
 import { humanFriendlyNumber } from "src/utils/number";
 import { useHistory } from "react-router";
 import { Button } from "src/components/Button";
+import { FarmType } from "src/config"
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -44,14 +47,16 @@ export const Confirm: React.FC = () => {
   const [borrow] = useRecoilState(newBorrowState);
   const history = useHistory();
 
-  const lpTok: Token = new Token({
+  const lpTok: Token = React.useMemo(() => {
+    return new Token({
     ...lpToken,
     address: pool.lp,
-  });
+  })}, [pool.lp])
 
   const [tokenStates, refetchTokenStates] = useERCmulti(pool.tokens);
   const [erc, refetchERC] = useERC(lpTok.address, Bank[network.chainId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const approveButton = (token: Token): any => {
     return (
       <Button
@@ -85,6 +90,7 @@ export const Confirm: React.FC = () => {
     );
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const confirmButton = (
     <Button
       onClick={async () => {
@@ -96,27 +102,52 @@ export const Confirm: React.FC = () => {
             BANK_ABI.abi as AbiItem[],
             getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
-          const spell = new kit.web3.eth.Contract(
-            SUSHI_SPELL.abi as AbiItem[],
-            getAddress(pool.spell)
-          ) as unknown as SushiswapSpellV1;
-          const bytes = spell.methods
-            .addLiquidityWMiniChef(
-              pool.tokens[0]!.address,
-              pool.tokens[1]!.address,
-              [
-                supply.tokenSupply![0]!.toString(),
-                supply.tokenSupply![1]!.toString(),
-                supply.lpSupply!.toString(),
-                borrow.tokenBorrow![0]!.toString(),
-                borrow.tokenBorrow![1]!.toString(),
-                0,
-                0,
-                0,
-              ],
-              '3',
-            )
-            .encodeABI();
+          let bytes: string
+          if (pool.type === FarmType.SushiSwap) {
+            const spell = new kit.web3.eth.Contract(
+              SUSHI_SPELL.abi as AbiItem[],
+              getAddress(pool.spell)
+            ) as unknown as SushiswapSpellV1;
+            bytes = spell.methods
+              .addLiquidityWMiniChef(
+                pool.tokens[0]!.address,
+                pool.tokens[1]!.address,
+                [
+                  supply.tokenSupply![0]!.toString(),
+                  supply.tokenSupply![1]!.toString(),
+                  supply.lpSupply!.toString(),
+                  borrow.tokenBorrow![0]!.toString(),
+                  borrow.tokenBorrow![1]!.toString(),
+                  0,
+                  0,
+                  0,
+                ],
+                '3',
+              )
+              .encodeABI();
+          } else {
+            const spell = new kit.web3.eth.Contract(
+              UBE_SPELL.abi as AbiItem[],
+              getAddress(pool.spell)
+            ) as unknown as UbeswapMSRSpellV1;
+            bytes = spell.methods
+              .addLiquidityWStakingRewards(
+                pool.tokens[0]!.address,
+                pool.tokens[1]!.address,
+                [
+                  supply.tokenSupply![0]!.toString(),
+                  supply.tokenSupply![1]!.toString(),
+                  supply.lpSupply!.toString(),
+                  borrow.tokenBorrow![0]!.toString(),
+                  borrow.tokenBorrow![1]!.toString(),
+                  0,
+                  0,
+                  0,
+                ],
+                pool.wrapper,
+              )
+              .encodeABI();
+          }
           const tx = await bank.methods.execute(0, pool.spell, bytes).send({
             from: kit.defaultAccount,
             gasPrice: DEFAULT_GAS_PRICE,
