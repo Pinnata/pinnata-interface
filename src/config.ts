@@ -5,7 +5,7 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.CeloMainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
+  [ChainId.CeloMainnet]: getAddress("0xD598a21bA32B1B2c70950d38E4651528E47e0471"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.EthereumMainnet]: '0',
@@ -72,8 +72,8 @@ export enum FarmType {
 export const FARMS = [
   {
     name: "cUSD-cEUR",
-    wrapper: getAddress("0xE583FeC0B218bB89CbB24d76D2A6D901E082DAAA"),
-    spell: getAddress("0x4163A7dB783D3d6d761Bd9060EcDe42D1C2D8c74"),
+    wrapper: getAddress("0x88EFB15fBeb0A542e9B05443e2578817Bb773E16"),
+    spell: getAddress("0xCb5cF76c3D1A5a8A0D80312A76eF0b3C965b4Ad1"),
     lp: getAddress("0x0b655E7D966CB27998af94AA5719ab7BFe07D3b3"),
     apy: "51", 
     tokens: [
@@ -120,8 +120,8 @@ export const DECIMAL_PRECISION = 2; // Number of decimals to show
 
 //collateral type to safebox
 export const safeBoxMap = new Map<string, string>([
-  [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0xb104422F2Fbc050055671265b95E08aD6057B0B3")], // cusd
-  [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0x998BA352aD84CC0CD7E71B1Cc11Fd192D624254C")], // ceur
+  [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0x85271d63FaBBEbb6194c2A1FFC2F55047E4cb839")], // cusd
+  [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0xfc6eE763CefaF7FFc25ceE9251d50FB8890992F9")], // ceur
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
