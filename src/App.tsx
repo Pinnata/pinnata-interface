@@ -40,18 +40,18 @@ const App: React.FC = () => {
           <Route exact path="/earn/withdraw/:tokenAddress">
             <Withdraw />
           </Route>
-          <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens">
+          <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens/:type">
             <NewFarm />
           </Route>
           <Route
             exact
-            path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens"
+            path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type"
           >
             <Add />
           </Route>
           <Route
             exact
-            path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens"
+            path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type"
           >
             <Remove />
           </Route>

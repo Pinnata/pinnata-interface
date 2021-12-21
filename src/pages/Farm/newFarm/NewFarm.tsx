@@ -61,6 +61,8 @@ export const NewFarm: React.FC = () => {
   }
   setPool(set);  
 
+  
+
   const [page] = useRecoilState(farmPageState);
 
   return (

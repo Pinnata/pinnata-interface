@@ -127,7 +127,10 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     "/" +
     apr +
     "/" +
-    props.tokens.map((tok) => tok.address);
+    props.tokens.map((tok) => tok.address) +
+    "/" +
+    props.type;
+
   return (
     <div className="w-full md:w-1/3">
       <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
