@@ -216,6 +216,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             onClick={async () => {
               const kit = await getConnectedKit();
               try {
+                console.log(props.positionId, 'this here')
                 setConfirmLoading(true);
                 const bank = new kit.web3.eth.Contract(
                   BANK_ABI.abi as AbiItem[],
