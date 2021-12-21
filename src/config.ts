@@ -64,6 +64,11 @@ export const COLLATERAL_TOKENS = [
   }),
 ];
 
+export enum FarmType {
+  SushiSwap = "Sushiswap",
+  Ubeswap = "Ubeswap"
+}
+
 export const FARMS = [
   {
     name: "cUSD-cEUR",
@@ -89,6 +94,7 @@ export const FARMS = [
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
       }),
     ],
+    type: FarmType.SushiSwap,
     rewards: [
       new Token({
         address: getAddress("0xD15EC721C2A896512Ad29C671997DD68f9593226"),
@@ -116,10 +122,6 @@ export const DECIMAL_PRECISION = 2; // Number of decimals to show
 export const safeBoxMap = new Map<string, string>([
   [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0xb104422F2Fbc050055671265b95E08aD6057B0B3")], // cusd
   [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0x998BA352aD84CC0CD7E71B1Cc11Fd192D624254C")], // ceur
-]);
-
-export const spellMap = new Map<string, string>([
-  [getAddress("0x4163A7dB783D3d6d761Bd9060EcDe42D1C2D8c74"), "SushiSwap"],
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");

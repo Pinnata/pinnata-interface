@@ -6,6 +6,7 @@ import { poolState, poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { Supply } from "src/pages/Position/Add/supply";
 import { Borrow } from "src/pages/Position/Add/borrow";
 import { Confirm } from "src/pages/Position/Add/confirm";
+import { getFarm } from "src/utils/farm";
 
 
 export enum addPage {
@@ -37,7 +38,7 @@ export const addPositionState = atom({
 })
 
 export const Add: React.FC = () => {
-  const { positionId, collId, collateralSize, name, wrapper, spell, lp, apy, tokens } = useParams<{ positionId: string, collId: string, collateralSize: string, name: string, wrapper: string, spell: string, lp: string, apy: string, tokens:string}>();
+  const { positionId, collId, collateralSize, name, wrapper, spell, lp, apy, tokens, type } = useParams<{ positionId: string, collId: string, collateralSize: string, name: string, wrapper: string, spell: string, lp: string, apy: string, tokens: string, type: string}>();
   const setPool = useSetRecoilState(poolState); 
   const setPosition = useSetRecoilState(addPositionState); 
   const set: poolProps = {
@@ -48,6 +49,7 @@ export const Add: React.FC = () => {
       apy: apy,
       tokens: (tokens.split(',').map((x) => getToken(x)!)),
       rewards: [],
+      type: getFarm(type)!,
   }
   setPool(set);
   setPosition({
