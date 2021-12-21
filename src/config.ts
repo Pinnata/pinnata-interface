@@ -38,14 +38,6 @@ export const lpToken = {
 };
 
 export const COLLATERAL_TOKENS = [
-  // new Token({
-  //   address: getAddress("0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"),
-  //   name: "Celo",
-  //   symbol: "CELO",
-  //   decimals: 18,
-  //   chainId: ChainId.Alfajores,
-  //   logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  // }),
   new Token({
     address: getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"),
     name: "Celo Dollar",
@@ -61,6 +53,30 @@ export const COLLATERAL_TOKENS = [
     decimals: 18,
     chainId: ChainId.CeloMainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
+  }),
+  new Token({
+    address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+    name: "Celo",
+    symbol: "CELO",
+    decimals: 18,
+    chainId: ChainId.CeloMainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  }),
+  new Token({
+    address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+    name: "Ubeswap",
+    symbol: "UBE",
+    decimals: 18,
+    chainId: ChainId.CeloMainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  }),
+  new Token({
+    address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+    name: "Mobius",
+    symbol: "MOBI",
+    decimals: 18,
+    chainId: ChainId.CeloMainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
   }),
 ];
 
@@ -122,6 +138,9 @@ export const DECIMAL_PRECISION = 2; // Number of decimals to show
 export const safeBoxMap = new Map<string, string>([
   [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0x85271d63FaBBEbb6194c2A1FFC2F55047E4cb839")], // cusd
   [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0xfc6eE763CefaF7FFc25ceE9251d50FB8890992F9")], // ceur
+  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0x24B162B4Bb738b09757A099650c588daC28E9e2d")],
+  [getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"), getAddress("0x97931360B98DD11fA0Bc8AD4FB8Ce44D856CA927")],
+  [getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"), getAddress("0x39d90818304992270bd131471EF3ACd20a4aaE2A")],
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
