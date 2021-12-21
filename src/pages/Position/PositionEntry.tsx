@@ -21,6 +21,7 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
+import { useAPR } from "../../hooks/useAPR"
 
 interface Props {
   pool: poolProps;
@@ -35,6 +36,11 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const history = useHistory();
   const scale = toBN(2).pow(toBN(112));
+
+  const [apr, refetchapr] = useAPR(
+    props.pool.lp,
+    props.pool.wrapper,
+  );
 
   const bank = React.useMemo(
     () =>
@@ -123,12 +129,12 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     "/" +
     props.pool.lp +
     "/" +
-    props.pool.apy +
+    apr +
     "/" +
     props.pool.tokens.map((tok) => tok.address);
 
-  const apy = info
-    ? (info.totalValue * (Number(props.pool.apy) / 100) - info.debtInterest) /
+  const apy = info && apr
+    ? (info.totalValue * (apr / 100) - info.debtInterest) /
       (info.totalValue - info.debtValue)
     : 0;
 

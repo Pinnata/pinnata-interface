@@ -109,7 +109,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
           const borrow = fromWei(info.borrowRate[i]!);
 
           return (
-            maxLever * (Number(props.apy) / 100) -
+            maxLever * ((apr ?? 0) / 100) -
             (maxLever - 1) * Number(borrow.toString())
           );
         })
@@ -125,7 +125,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     "/" +
     props.lp +
     "/" +
-    props.apy +
+    apr +
     "/" +
     props.tokens.map((tok) => tok.address);
   return (
@@ -149,7 +149,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Pool APR
             </p>
-            <p className="text-gray-900 font-bold text-2xl"> {props.apy}%</p>
+            <p className="text-gray-900 font-bold text-2xl"> {apr ? humanFriendlyNumber(apr) : '--'}%</p>
           </div>
         </div>
 

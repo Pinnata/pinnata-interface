@@ -11,7 +11,6 @@ import { ProxyOracle } from "src/generated/ProxyOracle";
 import { CoreOracle } from "src/generated/CoreOracle";
 import {
   Bank,
-  sushiLP,
   scale,
   priceScale,
   COLLATERAL_TOKENS,
