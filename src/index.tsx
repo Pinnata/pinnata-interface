@@ -18,26 +18,26 @@ import { RecoilRoot } from "recoil";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-if (process.env.REACT_APP_SENTRY_DSN) {
-  const sentryCfg = {
-    environment: `${process.env.REACT_APP_VERCEL_ENV ?? "unknown"}`,
-    release: `${
-      process.env.REACT_APP_VERCEL_GIT_COMMIT_REF?.replace(/\//g, "--") ??
-      "unknown"
-    }-${process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA ?? "unknown"}`,
-  };
-  Sentry.init({
-    dsn: process.env.REACT_APP_SENTRY_DSN,
-    integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 0.2,
-    ...sentryCfg,
-  });
-  console.log(
-    `Initializing Sentry environment at release ${sentryCfg.release} in environment ${sentryCfg.environment}`
-  );
-} else {
-  console.warn(`REACT_APP_SENTRY_DSN not found. Sentry will not be loaded.`);
-}
+// if (process.env.REACT_APP_SENTRY_DSN) {
+//   const sentryCfg = {
+//     environment: `${process.env.REACT_APP_VERCEL_ENV ?? "unknown"}`,
+//     release: `${
+//       process.env.REACT_APP_VERCEL_GIT_COMMIT_REF?.replace(/\//g, "--") ??
+//       "unknown"
+//     }-${process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA ?? "unknown"}`,
+//   };
+//   Sentry.init({
+//     dsn: process.env.REACT_APP_SENTRY_DSN,
+//     integrations: [new Integrations.BrowserTracing()],
+//     tracesSampleRate: 0.2,
+//     ...sentryCfg,
+//   });
+//   console.log(
+//     `Initializing Sentry environment at release ${sentryCfg.release} in environment ${sentryCfg.environment}`
+//   );
+// } else {
+//   console.warn(`REACT_APP_SENTRY_DSN not found. Sentry will not be loaded.`);
+// }
 
 ReactDOM.render(
   <React.StrictMode>
@@ -49,10 +49,11 @@ ReactDOM.render(
         url: "https://pinnata.xyz",
       }}
       network={{
-        name: NetworkNames.CeloMainnet,
+        name: NetworkNames.Mainnet,
         rpcUrl: 'https://forno.celo.org',
         explorer: 'https://explorer.celo.org/',
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
+        graphQl: ""
       }}
     >
       <ThemeProvider theme={theme}>

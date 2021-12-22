@@ -5,11 +5,9 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.CeloMainnet]: getAddress("0xD598a21bA32B1B2c70950d38E4651528E47e0471"),
+  [ChainId.Mainnet]: getAddress("0xD598a21bA32B1B2c70950d38E4651528E47e0471"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
-  [ChainId.EthereumMainnet]: '0',
-  [ChainId.Kovan]: '0'
 };
 
 // export const Alfajores: Network = {
@@ -20,11 +18,11 @@ export const Bank = {
 //   explorer: "https://alfajores-blockscout.celo-testnet.org/",
 // }
 
-export const CeloMainnet: Network = {
+export const Mainnet: Network = {
   graphQl: "https://explorer.celo.org/graphiql",
-  name: NetworkNames.CeloMainnet,
+  name: NetworkNames.Mainnet,
   rpcUrl: "https://forno.celo.org",
-  chainId: ChainId.CeloMainnet,
+  chainId: ChainId.Mainnet,
   explorer: "https://explorer.celo.org/",
 }
 
@@ -33,7 +31,7 @@ export const lpToken = {
   name: "Sushiswap LP",
   symbol: "SLP",
   decimals: 18,
-  chainId: ChainId.CeloMainnet,
+  chainId: ChainId.Mainnet,
   logoURI: "lp"
 };
 
@@ -43,7 +41,7 @@ export const COLLATERAL_TOKENS = [
     name: "Celo Dollar",
     symbol: "cUSD",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
   }),
   new Token({
@@ -51,7 +49,7 @@ export const COLLATERAL_TOKENS = [
     name: "Celo Euro",
     symbol: "cEUR",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
   }),
   new Token({
@@ -59,7 +57,7 @@ export const COLLATERAL_TOKENS = [
     name: "Celo",
     symbol: "CELO",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
   }),
   new Token({
@@ -67,7 +65,7 @@ export const COLLATERAL_TOKENS = [
     name: "Ubeswap",
     symbol: "UBE",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
   }),
   new Token({
@@ -75,7 +73,7 @@ export const COLLATERAL_TOKENS = [
     name: "Mobius",
     symbol: "MOBI",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
   }),
 ];
@@ -98,7 +96,7 @@ export const FARMS = [
         name: "Celo Euro",
         symbol: "cEUR",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
       }),
       new Token({
@@ -106,7 +104,7 @@ export const FARMS = [
         name: "Celo Dollar",
         symbol: "cUSD",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
       }),
     ],
@@ -117,7 +115,7 @@ export const FARMS = [
         name: "Sushi",
         symbol: "SUSHI",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SUSHI.png",
       }),
       new Token({
@@ -125,7 +123,7 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
         }),
     ],
@@ -141,7 +139,7 @@ export const FARMS = [
         name: "Ubeswap",
         symbol: "UBE",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
       }),
       new Token({
@@ -149,7 +147,7 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
       }),
     ],
@@ -161,7 +159,7 @@ export const FARMS = [
         name: "Ubeswap",
         symbol: "UBE",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
       }),
       new Token({
@@ -169,7 +167,7 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
         }),
     ],
@@ -185,7 +183,7 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
       }),
       new Token({
@@ -193,7 +191,7 @@ export const FARMS = [
         name: "Mobius",
         symbol: "MOBI",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
       }),
     ],
@@ -205,7 +203,7 @@ export const FARMS = [
         name: "Ubeswap",
         symbol: "UBE",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
       }),
       new Token({
@@ -213,7 +211,7 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
       }),
       new Token({
@@ -221,7 +219,7 @@ export const FARMS = [
         name: "Mobius",
         symbol: "MOBI",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
       }),
     ],
