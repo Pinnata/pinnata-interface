@@ -22,7 +22,7 @@ export const Earn = () => {
           </div>
         )}
 
-        <section className="md:flex md:m-4 md:justify-center w-full">
+        <section className="md:flex md:flex-wrap md:m-4 md:justify-center w-full">
           {COLLATERAL_TOKENS.map((token) => (
             <EarnEntry key={token.address} token={token} />
           ))}
