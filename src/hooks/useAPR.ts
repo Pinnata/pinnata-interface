@@ -18,14 +18,14 @@ import WMINICHEF_ABI from "src/abis/dahlia_contracts/WMiniChefV2.json";
 import { WMiniChefV2 } from "src/generated/WMiniChefV2";
 import COMPLEXREWARDERTIME from "src/abis/sushi/ComplexRewarderTime.json";
 import { ComplexRewarderTime } from "src/generated/ComplexRewarderTime";
-import { Bank, sushiLPadd } from "src/config";
+import { Bank, FarmType, sushiLPadd } from "src/config";
+import { TokenType } from "./price";
 
-export const useAPR = (lp: string, wrapper: string) => {
+export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
   const { kit, network } = useContractKit();
   const scale = toBN(2).pow(toBN(112));
   const secondsPerYear = toBN(31540000);
   const secondsPerDay = toBN(86400);
-
 
   const bank = React.useMemo(
     () =>
@@ -40,82 +40,93 @@ export const useAPR = (lp: string, wrapper: string) => {
     if (!lp || !isAddress(lp) || !wrapper || !isAddress(wrapper)) {
       return null;
     }
-    const sushiLP = (new kit.web3.eth.Contract(
-      UNI_PAIR.abi as AbiItem[],
-      sushiLPadd,
-    ) as unknown) as IUniswapV2Pair;
-
-    const pairLP = (new kit.web3.eth.Contract(
-      UNI_PAIR.abi as AbiItem[],
-      lp,
-    ) as unknown) as IUniswapV2Pair;
-
     const oracle = await bank.methods.oracle().call();
-
+    
     const proxyOracle = new kit.web3.eth.Contract(
       PROXYORACLE_ABI.abi as AbiItem[],
       oracle
     ) as unknown as ProxyOracle;
-
+  
     const coreOracle = new kit.web3.eth.Contract(
       COREORACLE_ABI.abi as AbiItem[],
       (await proxyOracle.methods.source().call())
     ) as unknown as CoreOracle;
 
-    const wminichef = new kit.web3.eth.Contract(
-        WMINICHEF_ABI.abi as AbiItem[],
-        wrapper,
-    ) as unknown as WMiniChefV2;
+    const sushiLP = (new kit.web3.eth.Contract(
+      UNI_PAIR.abi as AbiItem[],
+      sushiLPadd,
+    ) as unknown) as IUniswapV2Pair;
 
-    const minichef = new kit.web3.eth.Contract(
-        MINICHEF_ABI.abi as AbiItem[],
-        (await wminichef.methods.chef().call()),
-    ) as unknown as MiniChefV2;
+    const price = async (token: string, tokenType: TokenType, bank: HomoraBank) => {
+      if (tokenType === TokenType.Oracle) {
+        return toBN(await coreOracle.methods.getCELOPx(token).call())
+      } else {
+        let reserveS: any;
+        let reserveC: any;
+        const getReserves = await sushiLP.methods.getReserves().call();
+        if (
+          getAddress(await sushiLP.methods.token0().call()) ===
+          getAddress(token)
+        ) {
+        reserveS = toBN(getReserves.reserve0);
+        reserveC = toBN(getReserves.reserve1);
+        } else {
+        reserveS = toBN(getReserves.reserve1);
+        reserveC = toBN(getReserves.reserve0);
+        }
+        return reserveC.mul(scale).div(reserveS);
+      }
+    };
 
-    const rewarder = new kit.web3.eth.Contract(
-      COMPLEXREWARDERTIME.abi as AbiItem[],
-      (await minichef.methods.rewarder('3').call()),
-    ) as unknown as ComplexRewarderTime;
-    
-    const lpPrice = toBN(await coreOracle.methods.getCELOPx(lp).call())
+    if (type === FarmType.SushiSwap) {
 
-    const amountDeposited = toBN(await pairLP.methods.balanceOf(await wminichef.methods.chef().call()).call())
-
-    const valueDeposited = amountDeposited.mul(lpPrice).div(scale)
-    const sushiPerSecond = toBN(await minichef.methods.sushiPerSecond().call());
-    const totalAlloc = toBN(await minichef.methods.totalAllocPoint().call())
-    const { allocPoint } = await minichef.methods.poolInfo('3').call()
-    const length = await minichef.methods.poolLength().call()
-    const sushiReward = toBN(allocPoint).mul(sushiPerSecond).mul(secondsPerDay).mul(toBN(365)).div(totalAlloc);
-    const sushi = await minichef.methods.SUSHI().call();
-
-    let reserveS: any;
-    let reserveC: any;
-    const getReserves = await sushiLP.methods.getReserves().call();
-    if (
-      getAddress(await sushiLP.methods.token0().call()) ===
-      getAddress(sushi)
-    ) {
-    reserveS = toBN(getReserves.reserve0);
-    reserveC = toBN(getReserves.reserve1);
-    } else {
-    reserveS = toBN(getReserves.reserve1);
-    reserveC = toBN(getReserves.reserve0);
-    }
-
-    const celo = sushiReward.mul(reserveC).div(reserveS);
-
-    let sum = 0
-    for (let i = 0; i < Number(length); i += 1) {
-      let info = await rewarder.methods.poolInfo(String(i)).call()
-      sum += Number(info.allocPoint)
-    }
-    
-    const rewardPerSecond = toBN(await rewarder.methods.rewardPerSecond().call());
-    const rewardInfo = await rewarder.methods.poolInfo('3').call()
-    const externalRewards = toBN(rewardInfo.allocPoint).mul(rewardPerSecond).mul(secondsPerYear).div(toBN(sum));
-    const apr = (celo.add(externalRewards).mul(toBN(10).pow(toBN(18))).div(valueDeposited))
-    return Number(fromWei(apr)) * 100;
-  }, [bank.methods, kit.web3.eth.Contract, lp, scale, secondsPerDay, secondsPerYear, wrapper]);
+      const pairLP = (new kit.web3.eth.Contract(
+        UNI_PAIR.abi as AbiItem[],
+        lp,
+      ) as unknown) as IUniswapV2Pair;
+  
+      const wminichef = new kit.web3.eth.Contract(
+          WMINICHEF_ABI.abi as AbiItem[],
+          wrapper,
+      ) as unknown as WMiniChefV2;
+  
+      const minichef = new kit.web3.eth.Contract(
+          MINICHEF_ABI.abi as AbiItem[],
+          (await wminichef.methods.chef().call()),
+      ) as unknown as MiniChefV2;
+  
+      const rewarder = new kit.web3.eth.Contract(
+        COMPLEXREWARDERTIME.abi as AbiItem[],
+        (await minichef.methods.rewarder('3').call()),
+      ) as unknown as ComplexRewarderTime;
+      const lpPrice = await price(lp, TokenType.Oracle, bank)
+      const amountDeposited = toBN(await pairLP.methods.balanceOf(await wminichef.methods.chef().call()).call())
+  
+      const valueDeposited = amountDeposited.mul(lpPrice).div(scale)
+      console.log(0, valueDeposited.toString())
+      const sushiPerSecond = toBN(await minichef.methods.sushiPerSecond().call());
+      const totalAlloc = toBN(await minichef.methods.totalAllocPoint().call())
+      const { allocPoint } = await minichef.methods.poolInfo('3').call()
+      const length = await minichef.methods.poolLength().call()
+      const sushiReward = toBN(allocPoint).mul(sushiPerSecond).mul(secondsPerDay).mul(toBN(365)).div(totalAlloc);
+      const sushi = await minichef.methods.SUSHI().call();
+      console.log(1, sushi, sushiReward.toString())
+      const sushiPrice = await price(sushi, TokenType.Sushi, bank)
+      const celo = sushiReward.mul(sushiPrice).div(scale)
+      console.log(2, celo.toString())
+      let sum = 0
+      for (let i = 0; i < Number(length); i += 1) {
+        let info = await rewarder.methods.poolInfo(String(i)).call()
+        sum += Number(info.allocPoint)
+      }
+      const rewardPerSecond = toBN(await rewarder.methods.rewardPerSecond().call());
+      const rewardInfo = await rewarder.methods.poolInfo('3').call()
+      const externalRewards = toBN(rewardInfo.allocPoint).mul(rewardPerSecond).mul(secondsPerYear).div(toBN(sum));
+      console.log(3, externalRewards.toString())
+      const apr = (celo.add(externalRewards).mul(toBN(10).pow(toBN(18))).div(valueDeposited))
+      console.log(apr.toString())
+      return Number(fromWei(apr)) * 100;
+    } else return 1
+  }, [bank, kit.web3.eth.Contract, lp, scale, secondsPerDay, secondsPerYear, wrapper]);
   return useAsyncState(null, call);
 };

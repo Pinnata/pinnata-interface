@@ -43,6 +43,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   const [apr, refetchapr] = useAPR(
     props.pool.lp,
     props.pool.wrapper,
+    props.pool.type,
   );
 
   const bank = React.useMemo(
