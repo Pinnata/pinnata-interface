@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { Supply } from "src/pages/Farm/newFarm/supply";
 import { Borrow } from "src/pages/Farm/newFarm/borrow";
 import { Confirm } from "src/pages/Farm/newFarm/confirm";
+import { FarmType } from "src/config"
+import { getFarm } from "src/utils/farm";
 
 export enum farmPage {
   Supply, 
@@ -25,6 +27,7 @@ export interface poolProps {
     apy: string;
     tokens: Token[];
     rewards: Token[];
+    type: FarmType;
 }
 
 const emptyPoolState : poolProps = {
@@ -35,6 +38,7 @@ const emptyPoolState : poolProps = {
     apy: "",
     tokens: [],
     rewards: [],
+    type: FarmType.Ubeswap,
 }
 
 export const poolState = atom({
@@ -43,7 +47,7 @@ export const poolState = atom({
 })
 
 export const NewFarm: React.FC = () => {
-  const { name, wrapper, spell, lp, apy, tokens } = useParams<{ name: string, wrapper: string, spell: string, lp: string, apy: string, tokens:string }>();
+  const { name, wrapper, spell, lp, apy, tokens, type } = useParams<{ name: string, wrapper: string, spell: string, lp: string, apy: string, tokens: string, type: string }>();
   const setPool = useSetRecoilState(poolState); 
   const set: poolProps  = {
       name: name,
@@ -53,8 +57,11 @@ export const NewFarm: React.FC = () => {
       apy: apy,
       tokens: (tokens.split(',').map((x) => getToken(x)!)),
       rewards: [],
+      type: getFarm(type)!,
   }
   setPool(set);  
+
+  
 
   const [page] = useRecoilState(farmPageState);
 

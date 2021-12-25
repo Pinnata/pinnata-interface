@@ -25,6 +25,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
   const [apr, refetchapr] = useAPR(
     props.lp,
     props.wrapper,
+    props.type,
   );
   console.log('apr', apr)
 
@@ -127,7 +128,10 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     "/" +
     apr +
     "/" +
-    props.tokens.map((tok) => tok.address);
+    props.tokens.map((tok) => tok.address) +
+    "/" +
+    props.type;
+
   return (
     <div className="w-full md:w-1/3">
       <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
@@ -149,7 +153,7 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Pool APR
             </p>
-            <p className="text-gray-900 font-bold text-2xl"> {apr ? humanFriendlyNumber(apr) : '--'}%</p>
+            <p className="text-gray-900 font-bold text-2xl"> {apr !== null ? humanFriendlyNumber(apr) : '--'}%</p>
           </div>
         </div>
 

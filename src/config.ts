@@ -5,11 +5,9 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.CeloMainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
+  [ChainId.Mainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
-  [ChainId.EthereumMainnet]: '0',
-  [ChainId.Kovan]: '0'
 };
 
 // export const Alfajores: Network = {
@@ -20,11 +18,11 @@ export const Bank = {
 //   explorer: "https://alfajores-blockscout.celo-testnet.org/",
 // }
 
-export const CeloMainnet: Network = {
+export const Mainnet: Network = {
   graphQl: "https://explorer.celo.org/graphiql",
-  name: NetworkNames.CeloMainnet,
+  name: NetworkNames.Mainnet,
   rpcUrl: "https://forno.celo.org",
-  chainId: ChainId.CeloMainnet,
+  chainId: ChainId.Mainnet,
   explorer: "https://explorer.celo.org/",
 }
 
@@ -33,25 +31,41 @@ export const lpToken = {
   name: "Sushiswap LP",
   symbol: "SLP",
   decimals: 18,
-  chainId: ChainId.CeloMainnet,
+  chainId: ChainId.Mainnet,
   logoURI: "lp"
 };
 
 export const COLLATERAL_TOKENS = [
-  // new Token({
-  //   address: getAddress("0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"),
-  //   name: "Celo",
-  //   symbol: "CELO",
-  //   decimals: 18,
-  //   chainId: ChainId.Alfajores,
-  //   logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  // }),
+  new Token({
+    address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+    name: "Celo",
+    symbol: "CELO",
+    decimals: 18,
+    chainId: ChainId.Mainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  }),
+  new Token({
+    address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+    name: "Ubeswap",
+    symbol: "UBE",
+    decimals: 18,
+    chainId: ChainId.Mainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  }),
+  new Token({
+    address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+    name: "Mobius",
+    symbol: "MOBI",
+    decimals: 18,
+    chainId: ChainId.Mainnet,
+    logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
+  }),
   new Token({
     address: getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"),
     name: "Celo Dollar",
     symbol: "cUSD",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
   }),
   new Token({
@@ -59,10 +73,15 @@ export const COLLATERAL_TOKENS = [
     name: "Celo Euro",
     symbol: "cEUR",
     decimals: 18,
-    chainId: ChainId.CeloMainnet,
+    chainId: ChainId.Mainnet,
     logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
   }),
 ];
+
+export enum FarmType {
+  SushiSwap = "Sushiswap",
+  Ubeswap = "Ubeswap"
+}
 
 export const FARMS = [
   {
@@ -77,7 +96,7 @@ export const FARMS = [
         name: "Celo Euro",
         symbol: "cEUR",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png",
       }),
       new Token({
@@ -85,17 +104,18 @@ export const FARMS = [
         name: "Celo Dollar",
         symbol: "cUSD",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png",
       }),
     ],
+    type: FarmType.SushiSwap,
     rewards: [
       new Token({
         address: getAddress("0xD15EC721C2A896512Ad29C671997DD68f9593226"),
         name: "Sushi",
         symbol: "SUSHI",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SUSHI.png",
       }),
       new Token({
@@ -103,11 +123,107 @@ export const FARMS = [
         name: "Celo",
         symbol: "CELO",
         decimals: 18,
-        chainId: ChainId.CeloMainnet,
+        chainId: ChainId.Mainnet,
         logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
         }),
     ],
   },
+  // {
+  //   name: "CELO-UBE",
+  //   wrapper: getAddress("0x29dA8B9a1835Ea8E87d20262Cd28a8794254d25B"),
+  //   spell: getAddress("0x2c0A65a28e860e423c82eCac8220Db2a2C505053"),
+  //   lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
+  //   tokens: [
+  //     new Token({
+  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+  //       name: "Ubeswap",
+  //       symbol: "UBE",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  //     }),
+  //     new Token({
+  //       address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+  //       name: "Celo",
+  //       symbol: "CELO",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  //     }),
+  //   ],
+  //   apy: "0",
+  //   type: FarmType.Ubeswap,
+  //   rewards: [
+  //     new Token({
+  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+  //       name: "Ubeswap",
+  //       symbol: "UBE",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  //     }),
+  //     new Token({
+  //       address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
+  //       name: "Celo",
+  //       symbol: "CELO",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  //       }),
+  //   ],
+  // },
+  // {
+  //   name: "CELO-MOBI",
+  //   wrapper: getAddress("0xa7C1c812b6c434D2f08cB2b3A4D825Cdf323aeCf"),
+  //   spell: getAddress("0x2c0A65a28e860e423c82eCac8220Db2a2C505053"),
+  //   lp: getAddress("0x0b81cf47c8f97275d14c006e537d5101b6c87300"),
+  //   tokens: [
+  //     new Token({
+  //       address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+  //       name: "Celo",
+  //       symbol: "CELO",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  //     }),
+  //     new Token({
+  //       address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+  //       name: "Mobius",
+  //       symbol: "MOBI",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
+  //     }),
+  //   ],
+  //   apy: "0",
+  //   type: FarmType.Ubeswap,
+  //   rewards: [
+  //     new Token({
+  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+  //       name: "Ubeswap",
+  //       symbol: "UBE",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  //     }),
+  //     new Token({
+  //       address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
+  //       name: "Celo",
+  //       symbol: "CELO",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+  //     }),
+  //     new Token({
+  //       address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+  //       name: "Mobius",
+  //       symbol: "MOBI",
+  //       decimals: 18,
+  //       chainId: ChainId.Mainnet,
+  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
+  //     }),
+  //   ],
+  // },
 ];
 
 export const DECIMAL_PRECISION = 2; // Number of decimals to show
@@ -116,10 +232,9 @@ export const DECIMAL_PRECISION = 2; // Number of decimals to show
 export const safeBoxMap = new Map<string, string>([
   [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0xb104422F2Fbc050055671265b95E08aD6057B0B3")], // cusd
   [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0x998BA352aD84CC0CD7E71B1Cc11Fd192D624254C")], // ceur
-]);
-
-export const spellMap = new Map<string, string>([
-  [getAddress("0x4163A7dB783D3d6d761Bd9060EcDe42D1C2D8c74"), "SushiSwap"],
+  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0x7a6d627b0464dd33C988AE3a99aa6372191E7EB2")], // celo
+  [getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"), getAddress("0x37a022Bd03A8b0F66ea68996410E0F70EC395C5e")], // ube
+  [getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"), getAddress("0xEfbD2788A0dea9EB959a61CE0098Be6499fB0d78")], // mobi
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
