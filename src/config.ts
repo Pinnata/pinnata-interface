@@ -128,102 +128,102 @@ export const FARMS = [
         }),
     ],
   },
-  // {
-  //   name: "CELO-UBE",
-  //   wrapper: getAddress("0x29dA8B9a1835Ea8E87d20262Cd28a8794254d25B"),
-  //   spell: getAddress("0x2c0A65a28e860e423c82eCac8220Db2a2C505053"),
-  //   lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
-  //   tokens: [
-  //     new Token({
-  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
-  //       name: "Ubeswap",
-  //       symbol: "UBE",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
-  //     }),
-  //     new Token({
-  //       address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
-  //       name: "Celo",
-  //       symbol: "CELO",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  //     }),
-  //   ],
-  //   apy: "0",
-  //   type: FarmType.Ubeswap,
-  //   rewards: [
-  //     new Token({
-  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
-  //       name: "Ubeswap",
-  //       symbol: "UBE",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
-  //     }),
-  //     new Token({
-  //       address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
-  //       name: "Celo",
-  //       symbol: "CELO",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  //       }),
-  //   ],
-  // },
-  // {
-  //   name: "CELO-MOBI",
-  //   wrapper: getAddress("0xa7C1c812b6c434D2f08cB2b3A4D825Cdf323aeCf"),
-  //   spell: getAddress("0x2c0A65a28e860e423c82eCac8220Db2a2C505053"),
-  //   lp: getAddress("0x0b81cf47c8f97275d14c006e537d5101b6c87300"),
-  //   tokens: [
-  //     new Token({
-  //       address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
-  //       name: "Celo",
-  //       symbol: "CELO",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  //     }),
-  //     new Token({
-  //       address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
-  //       name: "Mobius",
-  //       symbol: "MOBI",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
-  //     }),
-  //   ],
-  //   apy: "0",
-  //   type: FarmType.Ubeswap,
-  //   rewards: [
-  //     new Token({
-  //       address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
-  //       name: "Ubeswap",
-  //       symbol: "UBE",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
-  //     }),
-  //     new Token({
-  //       address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
-  //       name: "Celo",
-  //       symbol: "CELO",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
-  //     }),
-  //     new Token({
-  //       address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
-  //       name: "Mobius",
-  //       symbol: "MOBI",
-  //       decimals: 18,
-  //       chainId: ChainId.Mainnet,
-  //       logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
-  //     }),
-  //   ],
-  // },
+  {
+    name: "CELO-UBE",
+    wrapper: getAddress("0x1B9dF6fd569778f48E7db3eB000C93a80920EA23"),
+    spell: getAddress("0x7B775b2AF169D1249db545Cd89754D3C70FAd069"),
+    lp: getAddress("0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c"),
+    tokens: [
+      new Token({
+        address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+        name: "Ubeswap",
+        symbol: "UBE",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+      }),
+      new Token({
+        address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+        name: "Celo",
+        symbol: "CELO",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+      }),
+    ],
+    apy: "0",
+    type: FarmType.Ubeswap,
+    rewards: [
+      new Token({
+        address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+        name: "Ubeswap",
+        symbol: "UBE",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+      }),
+      new Token({
+        address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
+        name: "Celo",
+        symbol: "CELO",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+        }),
+    ],
+  },
+  {
+    name: "CELO-MOBI",
+    wrapper: getAddress("0xFab4224Ce8E71e2f8F95f63a088d828d5B570e12"),
+    spell: getAddress("0x7B775b2AF169D1249db545Cd89754D3C70FAd069"),
+    lp: getAddress("0x0b81cf47c8f97275d14c006e537d5101b6c87300"),
+    tokens: [
+      new Token({
+        address: getAddress("0x471ece3750da237f93b8e339c536989b8978a438"),
+        name: "Celo",
+        symbol: "CELO",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+      }),
+      new Token({
+        address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+        name: "Mobius",
+        symbol: "MOBI",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
+      }),
+    ],
+    apy: "0",
+    type: FarmType.Ubeswap,
+    rewards: [
+      new Token({
+        address: getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"),
+        name: "Ubeswap",
+        symbol: "UBE",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+      }),
+      new Token({
+        address: getAddress("0x471EcE3750Da237f93B8E339c536989b8978a438"),
+        name: "Celo",
+        symbol: "CELO",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png",
+      }),
+      new Token({
+        address: getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"),
+        name: "Mobius",
+        symbol: "MOBI",
+        decimals: 18,
+        chainId: ChainId.Mainnet,
+        logoURI: "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOBI.png"
+      }),
+    ],
+  },
 ];
 
 export const DECIMAL_PRECISION = 2; // Number of decimals to show
