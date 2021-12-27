@@ -13,6 +13,9 @@ import { IERC20Wrapper } from "src/generated/IERC20Wrapper";
 import IERC20W_ABI from "src/abis/dahlia_contracts/IERC20Wrapper.json";
 import { Spinner } from "theme-ui";
 
+import { Container } from "theme-ui";
+import { Header } from "src/components/Header";
+
 export const Position = () => {
   const { kit, address, network } = useContractKit();
 
@@ -74,37 +77,42 @@ export const Position = () => {
   const [info] = useAsyncState(null, call, "positions");
 
   return (
-    <section className="max-w-screen-xl mx-auto">
-      <div className="w-full text-center md:pb-0 pb-2 pt-2">
-        <h2 className="tracking-tightest font-bold text-gray-700 text-5xl my-2">
-          Manage your positions with ease.
-        </h2>
-      </div>
+    <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
+      <Container className="flex-grow">
+        <Header />
+        <section className="max-w-screen-xl mx-auto">
+          <div className="w-full text-center md:pb-0 pb-2 pt-2">
+            <h2 className="tracking-tightest font-bold text-gray-700 text-5xl my-2">
+              Manage your positions with ease.
+            </h2>
+          </div>
 
-      {info && info.length > 0 ? (
-        <section className="md:flex md:m-4 md:justify-center w-full md:flex-wrap">
-          {info.map((x) => (
-            <PositionEntry
-              key={x.positionId}
-              collId={x.collId}
-              collateralSize={x.collateralSize}
-              positionId={x.positionId}
-              pool={x.farm!}
-              collToken={x.collToken}
-            />
-          ))}
+          {info && info.length > 0 ? (
+            <section className="md:flex md:m-4 md:justify-center w-full md:flex-wrap">
+              {info.map((x) => (
+                <PositionEntry
+                  key={x.positionId}
+                  collId={x.collId}
+                  collateralSize={x.collateralSize}
+                  positionId={x.positionId}
+                  pool={x.farm!}
+                  collToken={x.collToken}
+                />
+              ))}
+            </section>
+          ) : info && info.length === 0 ? (
+            <div className="bg-gray-100 rounded-sm p-4 flex justify-center items-center h-24 w-full mt-6">
+              <p className="font-bold tracking-tight text-3xl">
+                You have no open positions at this time.
+              </p>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-64">
+              <Spinner />
+            </div>
+          )}
         </section>
-      ) : info && info.length === 0 ? (
-        <div className="bg-gray-100 rounded-sm p-4 flex justify-center items-center h-24 w-full mt-6">
-          <p className="font-bold tracking-tight text-3xl">
-            You have no open positions at this time.
-          </p>
-        </div>
-      ) : (
-        <div className="flex justify-center items-center h-64">
-          <Spinner />
-        </div>
-      )}
-    </section>
+      </Container>
+    </main>
   );
 };

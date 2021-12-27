@@ -18,6 +18,7 @@ import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
 import { Button } from "src/components/Button";
 import { Flex, Spinner } from "theme-ui";
+import { Header } from "src/components/Header";
 
 export const Supply: React.FC = () => {
   const { getConnectedKit } = useContractKit();
@@ -112,6 +113,10 @@ export const Supply: React.FC = () => {
   const token = getToken(tokenAddress)!;
 
   return (
+    <div>
+    <div>
+      <Header /> 
+    </div>
     <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
       <p
         onClick={() => {
@@ -141,6 +146,7 @@ export const Supply: React.FC = () => {
       <Flex sx={{ justifyContent: "center", mt: 4, mb: 4 }}>
         {loading ? <Spinner /> : button}
       </Flex>
+    </div>
     </div>
   );
 };
