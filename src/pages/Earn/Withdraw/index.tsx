@@ -22,6 +22,7 @@ import { BoxTokenAmountInfo } from "src/components/BoxTokenAmountInfo";
 import { TokenInputForm } from "src/components/TokenInputForm";
 import { BlockText } from "src/components/BlockText";
 import { Button } from "src/components/Button";
+import { Header } from "src/components/Header";
 
 export const Withdraw: React.FC = () => {
   // TODO: does the number of decimals factor in?
@@ -107,50 +108,53 @@ export const Withdraw: React.FC = () => {
   const token = getToken(tokenAddress)!;
 
   return (
-    <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p
-        onClick={() => {
-          history.goBack();
-        }}
-        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
-      >
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
+    <div>
+      <Header />
+      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+        <p
+          onClick={() => {
+            history.goBack();
+          }}
+          className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+        >
+          {" "}
+          <CaretLeft size={20} />
+          Back
+        </p>
 
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center">
-        Withdraw
-      </h1>
+        <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center">
+          Withdraw
+        </h1>
 
-      <TokenInputForm
-        key={token.address}
-        dahlia
-        token={token}
-        amount={amount}
-        setAmount={setAmount}
-        balance={safeBox ? safeBox.balance : null}
-      />
-
-      <Flex
-        sx={{
-          justifyContent: "center",
-          gap: "10px",
-          mt: 6,
-          alignItems: "center",
-        }}
-      >
-        <BlockText>You will receive</BlockText>
-        <BoxTokenAmountInfo
+        <TokenInputForm
+          key={token.address}
+          dahlia
           token={token}
-          amount={String(Number(amount) * exchangeRate)}
+          amount={amount}
+          setAmount={setAmount}
+          balance={safeBox ? safeBox.balance : null}
         />
-      </Flex>
-      <Flex
-        sx={{ justifyContent: "center", alignItems: "center", mt: 6, mb: 4 }}
-      >
-        {loading ? <Spinner /> : button}
-      </Flex>
+
+        <Flex
+          sx={{
+            justifyContent: "center",
+            gap: "10px",
+            mt: 6,
+            alignItems: "center",
+          }}
+        >
+          <BlockText>You will receive</BlockText>
+          <BoxTokenAmountInfo
+            token={token}
+            amount={String(Number(amount) * exchangeRate)}
+          />
+        </Flex>
+        <Flex
+          sx={{ justifyContent: "center", alignItems: "center", mt: 6, mb: 4 }}
+        >
+          {loading ? <Spinner /> : button}
+        </Flex>
+      </div>
     </div>
   );
 };
