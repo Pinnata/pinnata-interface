@@ -23,6 +23,7 @@ import {
 import { poolState } from "src/pages/Farm/newFarm/NewFarm";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
+import { Header } from "src/components/Header";
 
 interface supplyProps {
   tokenSupply: any[] | null;
@@ -151,80 +152,83 @@ export const Supply: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p
-        onClick={() => {
-          history.goBack();
-        }}
-        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
-      >
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
+    <div>
+      <Header />
+      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+        <p
+          onClick={() => {
+            history.goBack();
+          }}
+          className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+        >
+          {" "}
+          <CaretLeft size={20} />
+          Back
+        </p>
 
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-6">
-        Farm
-      </h1>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-          My position has
-        </p>
-        <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
-          {info &&
-            pool.tokens.map((tok, index) => (
-              <Flex
-                sx={{
-                  alignItems: "center",
-                  mr: 4,
-                  padding: 2,
-                  borderStyle: "solid",
-                  borderRadius: "10px",
-                }}
-              >
-                <TokenAmountInfo
-                  key={tok.address + position.positionId}
-                  token={tok}
-                  amount={fromWei(info![index]!)}
-                />
-              </Flex>
-            ))}
+        <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-6">
+          Farm
+        </h1>
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            My position has
+          </p>
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
+            {info &&
+              pool.tokens.map((tok, index) => (
+                <Flex
+                  sx={{
+                    alignItems: "center",
+                    mr: 4,
+                    padding: 2,
+                    borderStyle: "solid",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <TokenAmountInfo
+                    key={tok.address + position.positionId}
+                    token={tok}
+                    amount={fromWei(info![index]!)}
+                  />
+                </Flex>
+              ))}
+          </Flex>
         </Flex>
-      </Flex>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-8 mt-4">
-          Supply More
-        </p>
-        {pool.tokens.map((tok, index) => (
-          <TokenInputForm
-            key={tok.address + position.positionId}
-            token={tok}
-            amount={amounts[index]!}
-            setAmount={(s: string) =>
-              setAmounts(amounts.map((x, i) => (i === index ? s : x)))
-            }
-            balance={
-              tokenStates && tokenStates![index]!
-                ? tokenStates![index]?.balance!
-                : null
-            }
-          />
-        ))}
-      </Flex>
-      <Flex sx={{ mt: "25px" }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-2 mt-4">
-          Supply LP Token
-        </p>
-      </Flex>
-      <TokenInputForm
-        token={lpTok}
-        amount={lpAmount}
-        setAmount={setLPAmount}
-        balance={erc ? erc.balance : null}
-      />
-      <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {buttonLoading ? <Spinner /> : button}
-      </Flex>
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-8 mt-4">
+            Supply More
+          </p>
+          {pool.tokens.map((tok, index) => (
+            <TokenInputForm
+              key={tok.address + position.positionId}
+              token={tok}
+              amount={amounts[index]!}
+              setAmount={(s: string) =>
+                setAmounts(amounts.map((x, i) => (i === index ? s : x)))
+              }
+              balance={
+                tokenStates && tokenStates![index]!
+                  ? tokenStates![index]?.balance!
+                  : null
+              }
+            />
+          ))}
+        </Flex>
+        <Flex sx={{ mt: "25px" }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-2 mt-4">
+            Supply LP Token
+          </p>
+        </Flex>
+        <TokenInputForm
+          token={lpTok}
+          amount={lpAmount}
+          setAmount={setLPAmount}
+          balance={erc ? erc.balance : null}
+        />
+        <Flex sx={{ justifyContent: "center", mt: 6 }}>
+          {buttonLoading ? <Spinner /> : button}
+        </Flex>
+      </div>
     </div>
   );
 };

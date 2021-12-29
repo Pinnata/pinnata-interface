@@ -23,6 +23,7 @@ import { removeRemoveState } from "./removeTokens";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import { Button } from "src/components/Button";
+import { Header } from "src/components/Header";
 
 interface paybackProps {
   payback: any[] | null;
@@ -246,111 +247,114 @@ export const Payback: React.FC = () => {
 
   if (!info! || !amounts!) return null;
   return (
-    <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
-      <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
-        <Flex
-          onClick={() => {
-            setPage(removePage.Remove);
-          }}
-          sx={{ alignItems: "center", cursor: "pointer" }}
-          mb={4}
-        >
-          <CaretLeft size={28} />
-          <Text>Back</Text>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-            I'm receiving
-          </p>
+    <div>
+      <Header />
+      <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
+        <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
           <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            onClick={() => {
+              setPage(removePage.Remove);
+            }}
+            sx={{ alignItems: "center", cursor: "pointer" }}
+            mb={4}
           >
-            {remove &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(remove.remove![index]!)}
-                  />
-                </Flex>
-              ))}
+            <CaretLeft size={28} />
+            <Text>Back</Text>
           </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 mt-4 -mb-4">
-            Your position debts
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {info &&
-              remove &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(info!.debts[index]!)}
-                  />
-                </Flex>
-              ))}
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+              I'm receiving
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {remove &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(remove.remove![index]!)}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex sx={{ mb: 2, mt: "25px" }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            I'd like to repay
-          </p>
-        </Flex>
-        <BlockText mb={2}>
-          {"New Est. Debt Ratio: "
-            .concat(humanFriendlyNumber(debtRatio))
-            .concat("/100")}
-        </BlockText>
-        <BlockText mb={2}>
-          {"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
-        </BlockText>
-        <BlockText mb={2}>
-          {"New Farming APR: "
-            .concat(humanFriendlyNumber(apy * 100))
-            .concat("%")}
-        </BlockText>
-        {info &&
-          pool.tokens.map((tok, index) => (
-            <TokenSlider
-              key={tok.address}
-              token={tok}
-              amount={String(amounts![index])}
-              setAmount={(s: string) =>
-                setAmounts(amounts!.map((x, i) => (i === index ? s : x)))
-              }
-              max={info!.maxAmounts[index]!}
-            />
-          ))}
-        <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {debtRatio > 96 ? (
-            <Button disabled={true}>Debt ratio too high</Button>
-          ) : (
-            continueButton
-          )}
-        </Flex>
-      </Card>
-    </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 mt-4 -mb-4">
+              Your position debts
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {info &&
+                remove &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(info!.debts[index]!)}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
+          </Flex>
+          <Flex sx={{ mb: 2, mt: "25px" }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              I'd like to repay
+            </p>
+          </Flex>
+          <BlockText mb={2}>
+            {"New Est. Debt Ratio: "
+              .concat(humanFriendlyNumber(debtRatio))
+              .concat("/100")}
+          </BlockText>
+          <BlockText mb={2}>
+            {"New Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
+          </BlockText>
+          <BlockText mb={2}>
+            {"New Farming APR: "
+              .concat(humanFriendlyNumber(apy * 100))
+              .concat("%")}
+          </BlockText>
+          {info &&
+            pool.tokens.map((tok, index) => (
+              <TokenSlider
+                key={tok.address}
+                token={tok}
+                amount={String(amounts![index])}
+                setAmount={(s: string) =>
+                  setAmounts(amounts!.map((x, i) => (i === index ? s : x)))
+                }
+                max={info!.maxAmounts[index]!}
+              />
+            ))}
+          <Flex sx={{ justifyContent: "center", mt: 6 }}>
+            {debtRatio > 96 ? (
+              <Button disabled={true}>Debt ratio too high</Button>
+            ) : (
+              continueButton
+            )}
+          </Flex>
+        </Card>
+      </Flex>
+    </div>
   );
 };

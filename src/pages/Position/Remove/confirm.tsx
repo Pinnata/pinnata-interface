@@ -25,6 +25,7 @@ import { removePaybackState } from "./payback";
 import { useHistory } from "react-router-dom";
 import { Button } from "src/components/Button";
 import { FarmType } from "src/config"
+import { Header } from "src/components/Header";
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -111,151 +112,154 @@ export const Confirm: React.FC = () => {
   );
 
   return (
-    <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
-      <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
-        <Flex
-          onClick={() => {
-            setPage(removePage.Payback);
-          }}
-          sx={{ alignItems: "center", cursor: "pointer" }}
-          mb={4}
-        >
-          <CaretLeft size={28} />
-          <Text>Back</Text>
-        </Flex>
-        <Flex mb={4}>
-          <Heading as="h2" mr={2}>
-            Position Breakdown
-          </Heading>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-            Remove from position
-          </p>
+    <div>
+      <Header />
+      <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
+        <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
           <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            onClick={() => {
+              setPage(removePage.Payback);
+            }}
+            sx={{ alignItems: "center", cursor: "pointer" }}
+            mb={4}
           >
-            {remove &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(remove.remove![index]!)}
-                  />
-                </Flex>
-              ))}
+            <CaretLeft size={28} />
+            <Text>Back</Text>
           </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-            Payback borrows
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {remove &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(payback.payback![index]!)}
-                  />
-                </Flex>
-              ))}
+          <Flex mb={4}>
+            <Heading as="h2" mr={2}>
+              Position Breakdown
+            </Heading>
           </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-            You receive
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {remove &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(
-                      remove.remove![index]!.sub(payback.payback![index]!)
-                    )}
-                  />
-                </Flex>
-              ))}
-          </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            Position Statistics
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
-          >
-            <BlockText>
-              {"New Est. Debt Ratio: "
-                .concat(humanFriendlyNumber(payback.debtRatio!))
-                .concat("/100")}
-            </BlockText>
-            <BlockText>
-              {"New Leverage: "
-                .concat(humanFriendlyNumber(payback.lever!))
-                .concat("x")}
-            </BlockText>
-            <BlockText>
-              {"Farming APR: "
-                .concat(humanFriendlyNumber(payback.apy! * 100))
-                .concat("%")}
-            </BlockText>
-          </Flex>
-        </Flex>
-        <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {confirmLoading ? (
-            <Spinner />
-          ) : (
-            <Flex sx={{ justifyContent: "center", gap: "6px" }}>
-              {done ? (
-                <Button
-                  onClick={() => {
-                    history.push("/positions");
-                    setPage(removePage.Remove);
-                  }}
-                >
-                  Return
-                </Button>
-              ) : (
-                confirmButton
-              )}
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+              Remove from position
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {remove &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(remove.remove![index]!)}
+                    />
+                  </Flex>
+                ))}
             </Flex>
-          )}
-        </Flex>
-      </Card>
-    </Flex>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+              Payback borrows
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {remove &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(payback.payback![index]!)}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+              You receive
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {remove &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(
+                        remove.remove![index]!.sub(payback.payback![index]!)
+                      )}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              Position Statistics
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+            >
+              <BlockText>
+                {"New Est. Debt Ratio: "
+                  .concat(humanFriendlyNumber(payback.debtRatio!))
+                  .concat("/100")}
+              </BlockText>
+              <BlockText>
+                {"New Leverage: "
+                  .concat(humanFriendlyNumber(payback.lever!))
+                  .concat("x")}
+              </BlockText>
+              <BlockText>
+                {"Farming APR: "
+                  .concat(humanFriendlyNumber(payback.apy! * 100))
+                  .concat("%")}
+              </BlockText>
+            </Flex>
+          </Flex>
+          <Flex sx={{ justifyContent: "center", mt: 6 }}>
+            {confirmLoading ? (
+              <Spinner />
+            ) : (
+              <Flex sx={{ justifyContent: "center", gap: "6px" }}>
+                {done ? (
+                  <Button
+                    onClick={() => {
+                      history.push("/positions");
+                      setPage(removePage.Remove);
+                    }}
+                  >
+                    Return
+                  </Button>
+                ) : (
+                  confirmButton
+                )}
+              </Flex>
+            )}
+          </Flex>
+        </Card>
+      </Flex>
+    </div>
   );
 };

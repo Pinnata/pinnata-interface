@@ -33,6 +33,7 @@ import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mai
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 import { useHistory } from "react-router-dom";
 import { Button } from "src/components/Button";
+import { Header } from "src/components/Header";
 
 interface newBorrowProps {
   tokenBorrow: any[] | null;
@@ -300,27 +301,45 @@ export const Borrow: React.FC = () => {
   );
 
   return (
-    <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p
-        onClick={() => {
-          setPage(farmPage.Supply)
-        }}
-        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
-      >
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
-
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-4">
-        Farm
-      </h1>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800">
-          I'm Supplying:
+    <div>
+      <Header />
+      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+        <p
+          onClick={() => {
+            setPage(farmPage.Supply)
+          }}
+          className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+        >
+          {" "}
+          <CaretLeft size={20} />
+          Back
         </p>
-        <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
-          {pool.tokens.map((tok, index) => (
+
+        <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-4">
+          Farm
+        </h1>
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800">
+            I'm Supplying:
+          </p>
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
+            {pool.tokens.map((tok, index) => (
+              <Flex
+                sx={{
+                  alignItems: "center",
+                  mr: 4,
+                  padding: 2,
+                  borderStyle: "solid",
+                  borderRadius: "10px",
+                }}
+              >
+                <TokenAmountInfo
+                  key={tok.address}
+                  token={tok}
+                  amount={fromWei(supply.tokenSupply![index]!)}
+                />
+              </Flex>
+            ))}
             <Flex
               sx={{
                 alignItems: "center",
@@ -331,68 +350,53 @@ export const Borrow: React.FC = () => {
               }}
             >
               <TokenAmountInfo
-                key={tok.address}
-                token={tok}
-                amount={fromWei(supply.tokenSupply![index]!)}
+                key={lpTok.address}
+                token={lpTok}
+                amount={fromWei(supply.lpSupply!)}
               />
             </Flex>
-          ))}
-          <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding: 2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
-          >
-            <TokenAmountInfo
-              key={lpTok.address}
-              token={lpTok}
-              amount={fromWei(supply.lpSupply!)}
-            />
           </Flex>
         </Flex>
-      </Flex>
-      <Flex sx={{ mb: 2, mt: "25px" }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800">
-          Borrows
-        </p>
-      </Flex>
-      <BlockText mb={2}>
-        {"Est. Debt Ratio: "
-          .concat(humanFriendlyNumber(debtRatio))
-          .concat("/100")}
-      </BlockText>
-      <BlockText mb={2}>
-        {"Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
-      </BlockText>
-      <BlockText mb={2}>
-        {"Price Impact: ".concat(humanFriendlyNumber(impact * 100)).concat("%")}
-      </BlockText>
-      <BlockText mb={2}>
-        {"Farming Apr: ".concat(humanFriendlyNumber(apy * 100)).concat("%")}
-      </BlockText>
+        <Flex sx={{ mb: 2, mt: "25px" }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800">
+            Borrows
+          </p>
+        </Flex>
+        <BlockText mb={2}>
+          {"Est. Debt Ratio: "
+            .concat(humanFriendlyNumber(debtRatio))
+            .concat("/100")}
+        </BlockText>
+        <BlockText mb={2}>
+          {"Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
+        </BlockText>
+        <BlockText mb={2}>
+          {"Price Impact: ".concat(humanFriendlyNumber(impact * 100)).concat("%")}
+        </BlockText>
+        <BlockText mb={2}>
+          {"Farming Apr: ".concat(humanFriendlyNumber(apy * 100)).concat("%")}
+        </BlockText>
 
-      {info &&
-        pool.tokens.map((tok, index) => (
-          <TokenSlider
-            key={tok.address}
-            token={tok}
-            amount={String(amounts![index])}
-            setAmount={(s: string) =>
-              setAmounts(amounts!.map((x, i) => (i === index ? s : x)))
-            }
-            max={info!.maxAmounts[index]!}
-          />
-        ))}
-      <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {debtRatio > 96 ? (
-          <Button disabled={true}>Debt ratio too high</Button>
-        ) : (
-          continueButton
-        )}
-      </Flex>
+        {info &&
+          pool.tokens.map((tok, index) => (
+            <TokenSlider
+              key={tok.address}
+              token={tok}
+              amount={String(amounts![index])}
+              setAmount={(s: string) =>
+                setAmounts(amounts!.map((x, i) => (i === index ? s : x)))
+              }
+              max={info!.maxAmounts[index]!}
+            />
+          ))}
+        <Flex sx={{ justifyContent: "center", mt: 6 }}>
+          {debtRatio > 96 ? (
+            <Button disabled={true}>Debt ratio too high</Button>
+          ) : (
+            continueButton
+          )}
+        </Flex>
+      </div>
     </div>
   );
 };

@@ -34,6 +34,7 @@ import { addBorrowState } from "./borrow";
 import { poolState } from "src/pages/Farm/newFarm/NewFarm";
 import { useHistory } from "react-router";
 import { FarmType } from "src/config";
+import { Header } from "src/components/Header";
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -207,180 +208,183 @@ export const Confirm: React.FC = () => {
   }, [tokenStates, supply.tokenSupply, pool.tokens, erc, supply.lpSupply]);
 
   return (
-    <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
-      <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
-        <Flex
-          onClick={() => {
-            setPage(addPage.Borrow);
-          }}
-          sx={{ alignItems: "center", cursor: "pointer" }}
-          mb={4}
-        >
-          <CaretLeft size={28} />
-          <Text>Back</Text>
-        </Flex>
-        <Flex mb={4}>
-          <Heading as="h2" mr={2}>
-            Position Breakdown
-          </Heading>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            My position has
-          </p>
+    <div>
+      <Header />
+      <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
+        <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
           <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            onClick={() => {
+              setPage(addPage.Borrow);
+            }}
+            sx={{ alignItems: "center", cursor: "pointer" }}
+            mb={4}
           >
-            {supply.existingBalance &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(supply.existingBalance![index]!)}
-                  />
-                </Flex>
-              ))}
+            <CaretLeft size={28} />
+            <Text>Back</Text>
           </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            I'm Supplying
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {supply.tokenSupply &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(supply.tokenSupply![index]!)}
-                  />
-                </Flex>
-              ))}
+          <Flex mb={4}>
+            <Heading as="h2" mr={2}>
+              Position Breakdown
+            </Heading>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              My position has
+            </p>
             <Flex
-              sx={{
-                alignItems: "center",
-                mr: 4,
-                padding: 2,
-                borderStyle: "solid",
-                borderRadius: "10px",
-              }}
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
             >
-              {supply.lpSupply && (
-                <TokenAmountInfo
-                  key={lpTok.address}
-                  token={lpTok}
-                  amount={fromWei(supply.lpSupply!)}
-                />
-              )}
+              {supply.existingBalance &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(supply.existingBalance![index]!)}
+                    />
+                  </Flex>
+                ))}
             </Flex>
           </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            I'm Borrowing
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {borrow.tokenBorrow &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              I'm Supplying
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {supply.tokenSupply &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(supply.tokenSupply![index]!)}
+                    />
+                  </Flex>
+                ))}
+              <Flex
+                sx={{
+                  alignItems: "center",
+                  mr: 4,
+                  padding: 2,
+                  borderStyle: "solid",
+                  borderRadius: "10px",
+                }}
+              >
+                {supply.lpSupply && (
                   <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(borrow.tokenBorrow![index]!)}
+                    key={lpTok.address}
+                    token={lpTok}
+                    amount={fromWei(supply.lpSupply!)}
                   />
-                </Flex>
-              ))}
-          </Flex>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            Position Statistics
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
-          >
-            <BlockText>
-              {"Est. Debt Ratio: "
-                .concat(humanFriendlyNumber(borrow.debtRatio!))
-                .concat("/100")}
-            </BlockText>
-            <BlockText>
-              {"Leverage: "
-                .concat(humanFriendlyNumber(borrow.lever!))
-                .concat("x")}
-            </BlockText>
-            <BlockText>
-              {"Price Impact: "
-                .concat(humanFriendlyNumber(borrow.impact!))
-                .concat("%")}
-            </BlockText>
-            <BlockText>
-              {"Supply Value: "
-                .concat(" ")
-                .concat(humanFriendlyNumber(borrow.supplyValue!))
-                .concat(" Celo")}
-            </BlockText>
-            <BlockText>
-              {"Borrow Value: "
-                .concat(" ")
-                .concat(humanFriendlyNumber(borrow.borrowValue!))
-                .concat(" Celo")}
-            </BlockText>
-            <BlockText>
-              {"Position Value: "
-                .concat(" ")
-                .concat(
-                  humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)
-                )
-                .concat(" Celo")}
-            </BlockText>
-            <BlockText>
-              {"Farming APR: "
-                .concat(humanFriendlyNumber(borrow.apy! * 100))
-                .concat("%")}
-            </BlockText>
-          </Flex>
-        </Flex>
-        <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {loading ? (
-            <Spinner />
-          ) : (
-            <Flex sx={{ justifyContent: "center", gap: "6px" }}>
-              {button[0]}
+                )}
+              </Flex>
             </Flex>
-          )}
-        </Flex>
-      </Card>
-    </Flex>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              I'm Borrowing
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {borrow.tokenBorrow &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(borrow.tokenBorrow![index]!)}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              Position Statistics
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+            >
+              <BlockText>
+                {"Est. Debt Ratio: "
+                  .concat(humanFriendlyNumber(borrow.debtRatio!))
+                  .concat("/100")}
+              </BlockText>
+              <BlockText>
+                {"Leverage: "
+                  .concat(humanFriendlyNumber(borrow.lever!))
+                  .concat("x")}
+              </BlockText>
+              <BlockText>
+                {"Price Impact: "
+                  .concat(humanFriendlyNumber(borrow.impact!))
+                  .concat("%")}
+              </BlockText>
+              <BlockText>
+                {"Supply Value: "
+                  .concat(" ")
+                  .concat(humanFriendlyNumber(borrow.supplyValue!))
+                  .concat(" Celo")}
+              </BlockText>
+              <BlockText>
+                {"Borrow Value: "
+                  .concat(" ")
+                  .concat(humanFriendlyNumber(borrow.borrowValue!))
+                  .concat(" Celo")}
+              </BlockText>
+              <BlockText>
+                {"Position Value: "
+                  .concat(" ")
+                  .concat(
+                    humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)
+                  )
+                  .concat(" Celo")}
+              </BlockText>
+              <BlockText>
+                {"Farming APR: "
+                  .concat(humanFriendlyNumber(borrow.apy! * 100))
+                  .concat("%")}
+              </BlockText>
+            </Flex>
+          </Flex>
+          <Flex sx={{ justifyContent: "center", mt: 6 }}>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <Flex sx={{ justifyContent: "center", gap: "6px" }}>
+                {button[0]}
+              </Flex>
+            )}
+          </Flex>
+        </Card>
+      </Flex>
+    </div>
   );
 };
