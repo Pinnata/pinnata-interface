@@ -8,6 +8,7 @@ import { RemoveTokens } from "./removeTokens";
 import { Payback } from "./payback";
 import { Confirm } from "./confirm";
 import { getFarm } from "src/utils/farm";
+import { Header } from "src/components/Header";
 
 export enum removePage {
     Remove, 

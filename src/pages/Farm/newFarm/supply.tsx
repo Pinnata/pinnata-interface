@@ -15,6 +15,7 @@ import { lpToken } from "src/config";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
 import { Button } from "src/components/Button";
+import { Header } from "src/components/Header";
 
 interface supplyProps {
   tokenSupply: any[] | null;
@@ -101,52 +102,55 @@ export const Supply: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p
-        onClick={() => {
-          history.goBack();
-        }}
-        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
-      >
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
+    <div>
+      <Header />
+      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+        <p
+          onClick={() => {
+            history.goBack();
+          }}
+          className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+        >
+          {" "}
+          <CaretLeft size={20} />
+          Back
+        </p>
 
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-6">
-        Farm
-      </h1>
+        <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-6">
+          Farm
+        </h1>
 
-      <p className="text-xl font-bold text-center -mb-4 text-gray-800 mt-2">
-        Supply
-      </p>
-      {pool.tokens.map((tok, index) => (
+        <p className="text-xl font-bold text-center -mb-4 text-gray-800 mt-2">
+          Supply
+        </p>
+        {pool.tokens.map((tok, index) => (
+          <TokenInputForm
+            key={tok.address}
+            token={tok}
+            amount={amounts[index]!}
+            setAmount={(s: string) =>
+              setAmounts(amounts.map((x, i) => (i === index ? s : x)))
+            }
+            balance={
+              tokenStates && tokenStates![index]!
+                ? tokenStates![index]?.balance!
+                : null
+            }
+          />
+        ))}
+        <p className="text-xl font-bold text-center mt-4 -mb-4 text-gray-800">
+          Supply LP Token
+        </p>
         <TokenInputForm
-          key={tok.address}
-          token={tok}
-          amount={amounts[index]!}
-          setAmount={(s: string) =>
-            setAmounts(amounts.map((x, i) => (i === index ? s : x)))
-          }
-          balance={
-            tokenStates && tokenStates![index]!
-              ? tokenStates![index]?.balance!
-              : null
-          }
+          token={lpTok}
+          amount={lpAmount}
+          setAmount={setLPAmount}
+          balance={erc ? erc.balance : null}
         />
-      ))}
-      <p className="text-xl font-bold text-center mt-4 -mb-4 text-gray-800">
-        Supply LP Token
-      </p>
-      <TokenInputForm
-        token={lpTok}
-        amount={lpAmount}
-        setAmount={setLPAmount}
-        balance={erc ? erc.balance : null}
-      />
-      <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {buttonLoading ? <Spinner /> : button}
-      </Flex>
+        <Flex sx={{ justifyContent: "center", mt: 6 }}>
+          {buttonLoading ? <Spinner /> : button}
+        </Flex>
+      </div>
     </div>
   );
 };

@@ -15,6 +15,7 @@ import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 import { removePage, removePageState, removePositionState } from "./remove";
 import { useHistory } from "react-router-dom";
 import { CaretLeft } from "phosphor-react";
+import { Header } from "src/components/Header";
 
 interface removeProps {
   existingBalance: any[] | null;
@@ -104,96 +105,99 @@ export const RemoveTokens: React.FC = () => {
   );
 
   return (
-    <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
-      <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
-        <Flex
-          onClick={() => history.goBack()}
-          sx={{ alignItems: "center", cursor: "pointer" }}
-          mb={4}
-        >
-          <CaretLeft size={28} />
-          <Text>Back</Text>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-            Your Position Balance
-          </p>
+    <div>
+      <Header />
+      <Flex sx={{ alignItems: "center", flexDirection: "column" }}>
+        <Card sx={{ width: "100%", maxWidth: "800px" }} py={4} px={3}>
           <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            onClick={() => history.goBack()}
+            sx={{ alignItems: "center", cursor: "pointer" }}
+            mb={4}
           >
-            {info &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={fromWei(info![index]!)}
-                  />
-                </Flex>
-              ))}
+            <CaretLeft size={28} />
+            <Text>Back</Text>
           </Flex>
-        </Flex>
-        <Flex sx={{ mb: 2, mt: "25px" }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800">
-            I'd like to remove
-          </p>
-        </Flex>
-        <Flex sx={{ width: "100%", alignItems: "center", gap: "12px" }}>
-          <Slider
-            progress
-            defaultValue={50}
-            style={{ width: "100%" }}
-            step={0.01}
-            max={Number(100)}
-            onChange={(value) => setPer(value)}
-          />
-          <BlockText>{per}%</BlockText>
-        </Flex>
-        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-          <p className="text-xl font-bold tracking-tight text-gray-800 mt-4 -mb-4">
-            You receive
-          </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
-            {info &&
-              pool.tokens.map((tok, index) => (
-                <Flex
-                  sx={{
-                    alignItems: "center",
-                    mr: 4,
-                    padding: 2,
-                    borderStyle: "solid",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <TokenAmountInfo
-                    key={tok.address}
-                    token={tok}
-                    amount={String(
-                      Number(fromWei(info![index]!)) * (per / 100)
-                    )}
-                  />
-                </Flex>
-              ))}
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+              Your Position Balance
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {info &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={fromWei(info![index]!)}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex sx={{ justifyContent: "center", mt: 6 }}>
-          {per === 0 ? (
-            <Button disabled>Enter a valid amount</Button>
-          ) : (
-            continueButton
-          )}
-        </Flex>
-      </Card>
-    </Flex>
+          <Flex sx={{ mb: 2, mt: "25px" }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800">
+              I'd like to remove
+            </p>
+          </Flex>
+          <Flex sx={{ width: "100%", alignItems: "center", gap: "12px" }}>
+            <Slider
+              progress
+              defaultValue={50}
+              style={{ width: "100%" }}
+              step={0.01}
+              max={Number(100)}
+              onChange={(value) => setPer(value)}
+            />
+            <BlockText>{per}%</BlockText>
+          </Flex>
+          <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+            <p className="text-xl font-bold tracking-tight text-gray-800 mt-4 -mb-4">
+              You receive
+            </p>
+            <Flex
+              sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
+            >
+              {info &&
+                pool.tokens.map((tok, index) => (
+                  <Flex
+                    sx={{
+                      alignItems: "center",
+                      mr: 4,
+                      padding: 2,
+                      borderStyle: "solid",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <TokenAmountInfo
+                      key={tok.address}
+                      token={tok}
+                      amount={String(
+                        Number(fromWei(info![index]!)) * (per / 100)
+                      )}
+                    />
+                  </Flex>
+                ))}
+            </Flex>
+          </Flex>
+          <Flex sx={{ justifyContent: "center", mt: 6 }}>
+            {per === 0 ? (
+              <Button disabled>Enter a valid amount</Button>
+            ) : (
+              continueButton
+            )}
+          </Flex>
+        </Card>
+      </Flex>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "theme-ui";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, BrowserRouter } from "react-router-dom";
 import { Earn } from "src/pages/Earn/Earn";
 import { Position } from "src/pages/Position/Position";
 import { Farm } from "src/pages/Farm/Farm";
@@ -14,6 +14,9 @@ import { Header } from "src/components/Header";
 import { Footer } from "src/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LandingPage } from "src/components/LandingPage";
+import { HomePage } from "src/components/HomePage";
+import { Token } from "./utils/token";
 
 const App: React.FC = () => {
   React.useEffect(() => {
@@ -22,46 +25,21 @@ const App: React.FC = () => {
 
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
-      <Container className="flex-grow">
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/earn" />
-          </Route>
-          <Route exact path="/earn">
-            <Earn />
-          </Route>
-          <Route exact path="/farm">
-            <Farm />
-          </Route>
-          <Route exact path="/earn/supply/:tokenAddress">
-            <Supply />
-          </Route>
-          <Route exact path="/earn/withdraw/:tokenAddress">
-            <Withdraw />
-          </Route>
-          <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens/:type">
-            <NewFarm />
-          </Route>
-          <Route
-            exact
-            path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type"
-          >
-            <Add />
-          </Route>
-          <Route
-            exact
-            path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type"
-          >
-            <Remove />
-          </Route>
-          <Route exact path="/positions">
-            <Position />
-          </Route>
-        </Switch>
-        <ToastContainer />
-      </Container>
-      <Footer />
+      <BrowserRouter>
+        <Container className="flex-grow">
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/earn" component={Earn} />
+          <Route exact path="/earn/supply/:tokenAddress" component={Supply} />
+          <Route exact path="/earn/withdraw/:tokenAddress" component={Withdraw} />
+          <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens/:type" component={NewFarm} />
+          <Route exact path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type" component={Add} />
+          <Route exact path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type" component={Remove} />
+          <Route exact path="/farm" component={Farm}/>
+          <Route exact path="/positions" component={Position}/>
+          <ToastContainer />
+          <Footer />
+        </Container>
+      </BrowserRouter>
     </main>
   );
 };

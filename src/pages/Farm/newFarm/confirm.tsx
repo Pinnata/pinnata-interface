@@ -34,6 +34,7 @@ import { humanFriendlyNumber } from "src/utils/number";
 import { useHistory } from "react-router";
 import { Button } from "src/components/Button";
 import { FarmType } from "src/config"
+import { Header } from "src/components/Header";
 
 export const Confirm: React.FC = () => {
   const { getConnectedKit, network } = useContractKit();
@@ -222,27 +223,45 @@ export const Confirm: React.FC = () => {
   ]);
 
   return (
-    <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
-      <p
-        onClick={() => {
-          setPage(farmPage.Borrow)
-        }}
-        className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
-      >
-        {" "}
-        <CaretLeft size={20} />
-        Back
-      </p>
-
-      <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-4">
-        Position Breakdown
-      </h1>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-          I'm Supplying:
+    <div>
+      <Header />
+      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+        <p
+          onClick={() => {
+            setPage(farmPage.Borrow)
+          }}
+          className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
+        >
+          {" "}
+          <CaretLeft size={20} />
+          Back
         </p>
-        <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
-          {pool.tokens.map((tok, index) => (
+
+        <h1 className="text-gray-800 text-3xl font-bold tracking-tight text-center mb-4">
+          Position Breakdown
+        </h1>
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            I'm Supplying:
+          </p>
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
+            {pool.tokens.map((tok, index) => (
+              <Flex
+                sx={{
+                  alignItems: "center",
+                  mr: 4,
+                  padding: 2,
+                  borderStyle: "solid",
+                  borderRadius: "10px",
+                }}
+              >
+                <TokenAmountInfo
+                  key={tok.address}
+                  token={tok}
+                  amount={fromWei(supply.tokenSupply![index]!)}
+                />
+              </Flex>
+            ))}
             <Flex
               sx={{
                 alignItems: "center",
@@ -253,109 +272,94 @@ export const Confirm: React.FC = () => {
               }}
             >
               <TokenAmountInfo
-                key={tok.address}
-                token={tok}
-                amount={fromWei(supply.tokenSupply![index]!)}
+                key={lpTok.address}
+                token={lpTok}
+                amount={fromWei(supply.lpSupply!)}
               />
             </Flex>
-          ))}
-          <Flex
-            sx={{
-              alignItems: "center",
-              mr: 4,
-              padding: 2,
-              borderStyle: "solid",
-              borderRadius: "10px",
-            }}
-          >
-            <TokenAmountInfo
-              key={lpTok.address}
-              token={lpTok}
-              amount={fromWei(supply.lpSupply!)}
-            />
           </Flex>
         </Flex>
-      </Flex>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
-          I'm Borrowing:
-        </p>
-        <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
-          {pool.tokens.map((tok, index) => (
-            <Flex
-              sx={{
-                alignItems: "center",
-                mr: 4,
-                padding: 2,
-                borderStyle: "solid",
-                borderRadius: "10px",
-              }}
-            >
-              <TokenAmountInfo
-                key={tok.address}
-                token={tok}
-                amount={fromWei(borrow.tokenBorrow![index]!)}
-              />
-            </Flex>
-          ))}
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
+            I'm Borrowing:
+          </p>
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
+            {pool.tokens.map((tok, index) => (
+              <Flex
+                sx={{
+                  alignItems: "center",
+                  mr: 4,
+                  padding: 2,
+                  borderStyle: "solid",
+                  borderRadius: "10px",
+                }}
+              >
+                <TokenAmountInfo
+                  key={tok.address}
+                  token={tok}
+                  amount={fromWei(borrow.tokenBorrow![index]!)}
+                />
+              </Flex>
+            ))}
+          </Flex>
         </Flex>
-      </Flex>
-      <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
-        <p className="text-xl font-bold tracking-tight text-gray-800 mt-4">
-          Position Statistics
-        </p>
-        <Flex
-          sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
-        >
-          <BlockText>
-            {"Est. Debt Ratio: "
-              .concat(humanFriendlyNumber(borrow.debtRatio!))
-              .concat("/100")}
-          </BlockText>
-          <BlockText>
-            {"Leverage: "
-              .concat(humanFriendlyNumber(borrow.lever!))
-              .concat("x")}
-          </BlockText>
-          <BlockText>
-            {"Price Impact: "
-              .concat(humanFriendlyNumber(borrow.impact!))
-              .concat("%")}
-          </BlockText>
-          <BlockText>
-            {"Supply Value: "
-              .concat(" ")
-              .concat(humanFriendlyNumber(borrow.supplyValue!))
-              .concat(" Celo")}
-          </BlockText>
-          <BlockText>
-            {"Borrow Value: "
-              .concat(" ")
-              .concat(humanFriendlyNumber(borrow.borrowValue!))
-              .concat(" Celo")}
-          </BlockText>
-          <BlockText>
-            {"Position Value: "
-              .concat(" ")
-              .concat(
-                humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)
-              )
-              .concat(" Celo")}
-          </BlockText>
-          <BlockText>
-            {"Farming Apr: "
-              .concat(humanFriendlyNumber(borrow.apy! * 100))
-              .concat("%")}
-          </BlockText>
+        <Flex sx={{ flexDirection: "column", gap: "25px", mb: 10 }}>
+          <p className="text-xl font-bold tracking-tight text-gray-800 mt-4">
+            Position Statistics
+          </p>
+          <Flex
+            sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+          >
+            <BlockText>
+              {"Est. Debt Ratio: "
+                .concat(humanFriendlyNumber(borrow.debtRatio!))
+                .concat("/100")}
+            </BlockText>
+            <BlockText>
+              {"Leverage: "
+                .concat(humanFriendlyNumber(borrow.lever!))
+                .concat("x")}
+            </BlockText>
+            <BlockText>
+              {"Price Impact: "
+                .concat(humanFriendlyNumber(borrow.impact!))
+                .concat("%")}
+            </BlockText>
+            <BlockText>
+              {"Supply Value: "
+                .concat(" ")
+                .concat(humanFriendlyNumber(borrow.supplyValue!))
+                .concat(" Celo")}
+            </BlockText>
+            <BlockText>
+              {"Borrow Value: "
+                .concat(" ")
+                .concat(humanFriendlyNumber(borrow.borrowValue!))
+                .concat(" Celo")}
+            </BlockText>
+            <BlockText>
+              {"Position Value: "
+                .concat(" ")
+                .concat(
+                  humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)
+                )
+                .concat(" Celo")}
+            </BlockText>
+            <BlockText>
+              {"Farming Apr: "
+                .concat(humanFriendlyNumber(borrow.apy! * 100))
+                .concat("%")}
+            </BlockText>
+          </Flex>
         </Flex>
-      </Flex>
-      <Flex sx={{ justifyContent: "center", mt: 6 }}>
-        {loading ? (
-          <Spinner />
-        ) : (
-          <Flex sx={{ justifyContent: "center", gap: "6px" }}>{button[0]}</Flex>
-        )}
-      </Flex>
+        <Flex sx={{ justifyContent: "center", mt: 6 }}>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <Flex sx={{ justifyContent: "center", gap: "6px" }}>{button[0]}</Flex>
+          )}
+        </Flex>
+      </div>
     </div>
   );
 };
