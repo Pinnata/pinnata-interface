@@ -17,7 +17,7 @@ export const LandingPage: React.FC<Props> = (props: RouteComponentProps<{}>) => 
         <div className="flex-grow">
             <LandingPageHeader {...props} />
             <HeroSection {...props} />
-            <FeatureSection {...props} />
+            {/* <FeatureSection {...props} /> */}
         </div>
     );
 };
