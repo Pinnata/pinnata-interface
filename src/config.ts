@@ -5,7 +5,7 @@ import { getAddress } from "ethers/lib/utils";
 
 
 export const Bank = {
-  [ChainId.Mainnet]: getAddress("0xD598a21bA32B1B2c70950d38E4651528E47e0471"),
+  [ChainId.Mainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
   [ChainId.Baklava]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
 };
@@ -98,8 +98,8 @@ export interface Farm {
 export const FARMS : Farm[] = [
   {
     name: "cUSD-cEUR v1",
-    wrapper: getAddress("0x88EFB15fBeb0A542e9B05443e2578817Bb773E16"),
-    spell: getAddress("0xCb5cF76c3D1A5a8A0D80312A76eF0b3C965b4Ad1"),
+    wrapper: getAddress("0xE583FeC0B218bB89CbB24d76D2A6D901E082DAAA"),
+    spell: getAddress("0x4163A7dB783D3d6d761Bd9060EcDe42D1C2D8c74"),
     lp: getAddress("0x0b655E7D966CB27998af94AA5719ab7BFe07D3b3"),
     apy: "51", 
     tokens: [
@@ -143,8 +143,8 @@ export const FARMS : Farm[] = [
   },
   {
     name: "cUSD-cEUR v2",
-    wrapper: getAddress("0xDCB1d0E68Bdec9756d3666C0C96dABFEa6d6B6Dc"),
-    spell: getAddress("0x4378E8E7836E186a844c63267B32dF26e7ef24Ac"),
+    wrapper: getAddress("0x1C4da0695aE25847260628d7eA92c5d336Fe1998"),
+    spell: getAddress("0x70CFe574715213782B3BcCfFcbb8d4a298388de7"),
     lp: getAddress("0x0b655E7D966CB27998af94AA5719ab7BFe07D3b3"),
     apy: "51", 
     tokens: [
@@ -188,8 +188,8 @@ export const FARMS : Farm[] = [
   },
   {
     name: "CELO-MOBI",
-    wrapper: getAddress("0xDCB1d0E68Bdec9756d3666C0C96dABFEa6d6B6Dc"),
-    spell: getAddress("0x4378E8E7836E186a844c63267B32dF26e7ef24Ac"),
+    wrapper: getAddress("0x1C4da0695aE25847260628d7eA92c5d336Fe1998"),
+    spell: getAddress("0x70CFe574715213782B3BcCfFcbb8d4a298388de7"),
     lp: getAddress("0x8ecded81a2abf3b7e724978060739edbeb01b24f"),
     apy: "51", 
     tokens: [
@@ -333,11 +333,11 @@ export const DECIMAL_PRECISION = 2; // Number of decimals to show
 
 //collateral type to safebox
 export const safeBoxMap = new Map<string, string>([
-  [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0x85271d63FaBBEbb6194c2A1FFC2F55047E4cb839")], // cusd
-  [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0xfc6eE763CefaF7FFc25ceE9251d50FB8890992F9")], // ceur
-  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0x24B162B4Bb738b09757A099650c588daC28E9e2d")], // celo
-  [getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"), getAddress("0x97931360B98DD11fA0Bc8AD4FB8Ce44D856CA927")], // ube
-  [getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"), getAddress("0x39d90818304992270bd131471EF3ACd20a4aaE2A")], // mobi
+  [getAddress("0x765DE816845861e75A25fCA122bb6898B8B1282a"), getAddress("0xb104422F2Fbc050055671265b95E08aD6057B0B3")], // cusd
+  [getAddress("0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73"), getAddress("0x998BA352aD84CC0CD7E71B1Cc11Fd192D624254C")], // ceur
+  [getAddress("0x471ece3750da237f93b8e339c536989b8978a438"), getAddress("0x7a6d627b0464dd33C988AE3a99aa6372191E7EB2")], // celo
+  [getAddress("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC"), getAddress("0x37a022Bd03A8b0F66ea68996410E0F70EC395C5e")], // ube
+  [getAddress("0x73a210637f6F6B7005512677Ba6B3C96bb4AA44B"), getAddress("0xEfbD2788A0dea9EB959a61CE0098Be6499fB0d78")], // mobi
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
