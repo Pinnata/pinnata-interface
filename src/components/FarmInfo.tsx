@@ -1,8 +1,8 @@
 import { PoolIcon } from "src/components/PoolIcon";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
+import { Farm } from "src/config";
 
 interface Props {
-  props: poolProps;
+  props: Farm;
 }
 
 export const FarmInfo: React.FC<Props> = (farm: Props) => {

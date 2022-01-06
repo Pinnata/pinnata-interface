@@ -121,7 +121,7 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                '3'
+                pool.id!
               )
               .encodeABI();
           } else {

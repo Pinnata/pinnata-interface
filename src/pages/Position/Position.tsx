@@ -54,6 +54,7 @@ export const Position = () => {
           for (let farm of FARMS) {
             if (
               getAddress(underlying) === farm.lp &&
+              getAddress(positionInfo!.collToken) === farm.wrapper &&
               positionInfo!.collateralSize !== "0"
             ) {
               info.push({
