@@ -28,6 +28,7 @@ export const Farm = () => {
                   lp={farm.lp}
                   rewards={farm.rewards}
                   type={farm.type}
+                  id={farm.id}
                 />
               ))}
             </section>

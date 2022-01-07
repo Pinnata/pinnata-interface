@@ -4,11 +4,10 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
-import { Bank, DEFAULT_GAS_PRICE } from "src/config";
+import { Bank, DEFAULT_GAS_PRICE, Farm, FarmType } from "src/config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import SUSHI_SPELL from "src/abis/dahlia_contracts/SushiswapSpellV1.json";
 import { SushiswapSpellV1 } from "src/generated/SushiswapSpellV1";
 import UBE_SPELL from "src/abis/dahlia_contracts/UbeswapMSRSpellV1.json";
@@ -24,10 +23,9 @@ import { humanFriendlyNumber } from "src/utils/number";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
 import { useAPR } from "../../hooks/useAPR"
-import { FarmType } from "src/config"
 
 interface Props {
-  pool: poolProps;
+  pool: Farm;
   positionId: number;
   collateralSize: string;
   collId: string;
@@ -40,10 +38,11 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   const history = useHistory();
   const scale = toBN(2).pow(toBN(112));
 
-  const [apr, refetchapr] = useAPR(
+  const [apr] = useAPR(
     props.pool.lp,
     props.pool.wrapper,
     props.pool.type,
+    props.pool.id
   );
 
   const bank = React.useMemo(
@@ -217,7 +216,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             onClick={async () => {
               const kit = await getConnectedKit();
               try {
-                console.log(props.positionId, 'this here')
                 setConfirmLoading(true);
                 const bank = new kit.web3.eth.Contract(
                   BANK_ABI.abi as AbiItem[],

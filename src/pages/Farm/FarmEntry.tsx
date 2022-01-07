@@ -7,7 +7,7 @@ import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
-import { Bank } from "src/config";
+import { Bank, Farm } from "src/config";
 import React from "react";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import { getAddress } from "ethers/lib/utils";
@@ -15,19 +15,18 @@ import { humanFriendlyWei } from "src/utils/eth";
 import { FarmInfo } from "src/components/FarmInfo";
 import { RewardsTokenInfo } from "src/components/RewardsTokenInfo";
 import { TokenBorrowInfo } from "src/components/TokenBorrowInfo";
-import { poolProps } from "src/pages/Farm/newFarm/NewFarm";
 import { humanFriendlyNumber } from "src/utils/number";
 import { useAPR } from "src/hooks/useAPR";
 
-export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
+export const FarmEntry: React.FC<Farm> = (props: Farm) => {
   const { kit, network } = useContractKit();
   const history = useHistory();
-  const [apr, refetchapr] = useAPR(
+  const [apr] = useAPR(
     props.lp,
     props.wrapper,
     props.type,
+    props.id,
   );
-  console.log('apr', apr)
 
   const bank = React.useMemo(
     () =>
@@ -130,7 +129,9 @@ export const FarmEntry: React.FC<poolProps> = (props: poolProps) => {
     "/" +
     props.tokens.map((tok) => tok.address) +
     "/" +
-    props.type;
+    props.type +
+    "/" +
+    props.id ?? '';
 
   return (
     <div className="w-full md:w-1/3">

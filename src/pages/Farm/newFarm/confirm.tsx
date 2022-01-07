@@ -104,9 +104,7 @@ export const Confirm: React.FC = () => {
             getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
           let bytes: string
-          console.log(pool.type, "8888")
           if (pool.type === FarmType.SushiSwap) {
-            console.log('here')
             const spell = new kit.web3.eth.Contract(
               SUSHI_SPELL.abi as AbiItem[],
               getAddress(pool.spell)
@@ -125,7 +123,7 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                '3',
+                pool.id!,
               )
               .encodeABI();
           } else {

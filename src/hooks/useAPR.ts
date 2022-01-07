@@ -29,7 +29,7 @@ const enum TokenType {
   Sushi
 }
 
-export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
+export const useAPR = (lp: string, wrapper: string, type: FarmType, id?: string) => {
   const { kit, network } = useContractKit();
   const scale = toBN(2).pow(toBN(112));
   const secondsPerYear = toBN(31540000);
@@ -91,7 +91,7 @@ export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
       lp,
     ) as unknown) as IUniswapV2Pair;
 
-    if (type === FarmType.SushiSwap) {
+    if (type === FarmType.SushiSwap && id) {
 
       const wminichef = new kit.web3.eth.Contract(
           WMINICHEF_ABI.abi as AbiItem[],
@@ -105,7 +105,7 @@ export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
   
       const rewarder = new kit.web3.eth.Contract(
         COMPLEXREWARDERTIME.abi as AbiItem[],
-        (await minichef.methods.rewarder('3').call()),
+        (await minichef.methods.rewarder(id).call()),
       ) as unknown as ComplexRewarderTime;
       const lpPrice = await price(lp, TokenType.Oracle)
       const amountDeposited = toBN(await pairLP.methods.balanceOf(await wminichef.methods.chef().call()).call())
@@ -113,7 +113,7 @@ export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
       let valueDeposited = amountDeposited.mul(lpPrice).div(scale)
       const sushiPerSecond = toBN(await minichef.methods.sushiPerSecond().call());
       const totalAlloc = toBN(await minichef.methods.totalAllocPoint().call())
-      const { allocPoint } = await minichef.methods.poolInfo('3').call()
+      const { allocPoint } = await minichef.methods.poolInfo(id).call()
       const length = await minichef.methods.poolLength().call()
       const sushiReward = toBN(allocPoint).mul(sushiPerSecond).mul(secondsPerDay).mul(toBN(365)).div(totalAlloc);
       const sushi = await minichef.methods.SUSHI().call();
@@ -125,7 +125,7 @@ export const useAPR = (lp: string, wrapper: string, type: FarmType) => {
         sum += Number(info.allocPoint)
       }
       const rewardPerSecond = toBN(await rewarder.methods.rewardPerSecond().call());
-      const rewardInfo = await rewarder.methods.poolInfo('3').call()
+      const rewardInfo = await rewarder.methods.poolInfo(id).call()
       const externalRewards = toBN(rewardInfo.allocPoint).mul(rewardPerSecond).mul(secondsPerYear).div(toBN(sum));
       let apr = (celo.add(externalRewards).mul(toBN(10).pow(toBN(18))).div(valueDeposited))
       return Number(fromWei(apr)) * 100;
