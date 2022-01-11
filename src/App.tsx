@@ -38,6 +38,7 @@ const App: React.FC = () => {
           <Route exact path="/positions" component={Position}/>
           <ToastContainer />
           <Footer />
+          <Remove />
         </Container>
       </BrowserRouter>
     </main>

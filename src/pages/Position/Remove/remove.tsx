@@ -38,7 +38,7 @@ export const Remove: React.FC = () => {
       spell: spell,
       lp: lp,
       apy: apy,
-      tokens: (tokens.split(',').map((x) => getToken(x)!)),
+      tokens: (tokens?.split(',').map((x) => getToken(x)!)),
       rewards: [],
       type: getFarm(type)!,
       id: id,
