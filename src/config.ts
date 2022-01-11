@@ -3,7 +3,6 @@ import { toWei, toBN } from "web3-utils";
 import { Token } from "src/utils/token";
 import { getAddress } from "ethers/lib/utils";
 
-
 export const Bank = {
   [ChainId.Mainnet]: getAddress("0x827cCeA3D460D458393EEAfE831698d83FE47BA7"),
   [ChainId.Alfajores]: getAddress("0x000531a6B61550cfADb637a625A00236fcDD1bDB"),
