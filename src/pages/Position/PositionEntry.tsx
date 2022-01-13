@@ -136,7 +136,9 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     "/" +
     props.pool.tokens.map((tok) => tok.address) +
     "/" +
-    props.pool.type;
+    props.pool.type + 
+    "/" +
+    props.pool.id ?? "";
 
   const apy = info && apr
     ? (info.totalValue * (apr / 100) - info.debtInterest) /
