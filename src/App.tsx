@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "theme-ui";
 import { Redirect, Route, Switch, BrowserRouter } from "react-router-dom";
 import { Earn } from "src/pages/Earn/Earn";
@@ -23,6 +23,8 @@ const App: React.FC = () => {
     Modal.setAppElement("body");
   });
 
+  const [arr, setArr] = useState<any[]>([])
+
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
       <BrowserRouter>
@@ -32,12 +34,15 @@ const App: React.FC = () => {
           <Route exact path="/earn/supply/:tokenAddress" component={Supply} />
           <Route exact path="/earn/withdraw/:tokenAddress" component={Withdraw} />
           <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={NewFarm} />
-          <Route exact path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={Add} />
-          <Route exact path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={Remove} />
+          <Route exact path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens?/:type/" component={Add} />
+          <Route exact path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/" component={Remove} />
           <Route exact path="/farm" component={Farm}/>
           <Route exact path="/positions" component={Position}/>
           <ToastContainer />
           <Footer />
+          {/* <div> */}
+            {/* <Remove /> */}
+          {/* </div> */}
         </Container>
       </BrowserRouter>
     </main>
