@@ -1,6 +1,6 @@
-# dahlia-interface
+# pinnata-interface
 
-Frontend for the Dahlia protocol.
+Web application for the Pinnata protocol.
 
 ## Developing
 
@@ -13,7 +13,7 @@ yarn start
 
 ### Updating ABIs
 
-First, ensure that [fountain_of_youth](https://github.com/Dahlia-Finance/fountain_of_youth) and [homora_v2_contracts](https://github.com/Dahlia-Finance/homora_v2_contracts) are cloned in the parent directory.
+First, ensure that [fountain_of_youth](https://github.com/Pinnata/fountain_of_youth) and [homora_v2_contracts](https://github.com/Pinnata/homora_v2_contracts) are cloned in the parent directory.
 
 In _fountain_of_youth_, run:
 
