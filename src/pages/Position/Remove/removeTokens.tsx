@@ -155,7 +155,7 @@ export const RemoveTokens: React.FC = () => {
               defaultValue={50}
               style={{ width: "100%" }}
               step={0.01}
-              max={Number(100)}
+              max={Number(99)}
               onChange={(value) => setPer(value)}
             />
             <BlockText>{per}%</BlockText>

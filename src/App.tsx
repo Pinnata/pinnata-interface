@@ -32,8 +32,8 @@ const App: React.FC = () => {
           <Route exact path="/earn/supply/:tokenAddress" component={Supply} />
           <Route exact path="/earn/withdraw/:tokenAddress" component={Withdraw} />
           <Route exact path="/farm/new/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={NewFarm} />
-          <Route exact path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={Add} />
-          <Route exact path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens/:type/:id" component={Remove} />
+          <Route exact path="/positions/add/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens?/:type/:id" component={Add} />
+          <Route exact path="/positions/remove/:positionId/:collId/:collateralSize/:name/:wrapper/:spell/:lp/:apy/:tokens?/:type/:id" component={Remove} />
           <Route exact path="/farm" component={Farm}/>
           <Route exact path="/positions" component={Position}/>
           <ToastContainer />
