@@ -1,5 +1,5 @@
 import { Token } from "src/utils/token";
-import Lp from "src/images/LP.png";
+import Lp from "./../images/LP.png";
 
 interface Props {
   token: Token;

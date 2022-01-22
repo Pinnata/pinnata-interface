@@ -10,7 +10,7 @@ export const HeroSection: React.FC<Props> = ({ history}) => {
     return (
         <section className="relative">
             <div className="z-0 fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
-                {/* <img className="z-0 object-contain opacity-10" src={require('../images/dahlia-teal.png').default} width="768" height="432" alt="Hero" /> */}
+                {/* <img className="z-0 object-contain opacity-10" src={require('../images/Dahlia-teal.png').default} width="768" height="432" alt="Hero" /> */}
             </div>
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6">

@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Log from "src/images/dahlia-black.png";
+import PinnataLogo from "./../images/Dahlia-black.png";
 
 export const Logo: React.FC = () => {
   const history = useHistory();
@@ -14,7 +14,7 @@ export const Logo: React.FC = () => {
     >
       <div className="flex justify-content items-center hover:opacity-75">
         <div className="w-10 h-10 mr-2">
-          <img className="w-full" src={Log} alt="Logo" />
+          <img className="w-full" src={PinnataLogo} alt="Logo" />
         </div>
         <h1 className="logo uppercase font-bold text-4xl tracking-widest text-transparent bg-clip-text bg-gradient-to-br from-gray-700 to-gray-800">
           Pinnata
