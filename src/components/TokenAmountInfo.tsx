@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Token } from "src/utils/token";
 import { humanFriendlyNumber } from "src/utils/number"
 import { BlockText } from "src/components/BlockText"
-import Lp from "src/images/LP.png";
+import Lp from "./../images/LP.png";
 
 
 interface Props {

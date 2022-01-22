@@ -7,6 +7,7 @@ import { Header } from "src/components/Header";
 
 export const Earn = () => {
   const [tvl, refetchTVL] = useTVL();
+  console.log(tvl);
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
       <Container className="flex-grow">
