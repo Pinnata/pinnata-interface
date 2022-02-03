@@ -147,7 +147,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full md:w-1/3">
-      <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl p-2">
+      <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl p-2">
         <div className="border-b-2 p-2">
           <FarmInfo props={props.pool} />
         </div>
@@ -195,12 +195,12 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="items-center grid grid-cols-2 sm:mx-10 md:mx-6 lg:mx-6">
           <button
             onClick={() => {
               history.push(`positions/add/${urlext}`);
             }}
-            className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32 mt-4"
+            className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32 my-2"
           >
             Add &#x203A;
           </button>
@@ -209,7 +209,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
             onClick={() => {
               history.push(`positions/remove/${urlext}`);
             }}
-            className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32 my-2"
+            className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32 my-2"
           >
             Remove &#x203A;
           </button>
@@ -279,7 +279,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                 setConfirmLoading(false);
               }
             }}
-            className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+            className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32 my-2"
           >
             Close &#x203A;
           </button>
@@ -324,7 +324,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                 setConfirmLoading(false);
               }
             }}
-            className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32 my-2"
+            className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32 my-2"
           >
             Harvest &#x203A;
           </button>

@@ -352,7 +352,7 @@ export const Borrow: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className="bg-gray-100 rounded-md shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
+      <div className="bg-gray-100 rounded-3xl shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
         <p
           onClick={() => {
             setPage(addPage.Supply)

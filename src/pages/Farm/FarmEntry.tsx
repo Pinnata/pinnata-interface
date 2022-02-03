@@ -113,11 +113,6 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
           // maxLever: 3.4375 
           // APR: 14.642162170721809
 
-          console.log(Number(borrow.toString()));
-
-          console.log(maxLever * ((apr ?? 0) / 100) -
-            (maxLever - 1) * Number(borrow.toString()))
-
           return (
             maxLever * ((apr ?? 0) / 100) - (maxLever - 1) * Number(borrow.toString())
 
@@ -145,7 +140,7 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
 
   return (
     <div className="w-full md:w-1/3">
-      <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
+      <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl">
         <div className="border-b-2 p-2">
           <FarmInfo props={props} />
         </div>
@@ -212,7 +207,8 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
         <div className="flex justify-center py-6">
           <button
             onClick={() => history.push(`farm/new/${urlext}`)}
-            className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+            // className="bg-gradient-to-br from-blue-400 to-green-500 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded w-32"
+            className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded-3xl w-32"
           >
             Farm &#x203A;
           </button>

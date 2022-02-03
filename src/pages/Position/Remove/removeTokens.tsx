@@ -9,7 +9,7 @@ import { fromWei, toWei, toBN, AbiItem } from "web3-utils";
 import { getAddress } from "ethers/lib/utils";
 import { useAsyncState } from "src/hooks/useAsyncState";
 import BN from "bn.js";
-import { Slider } from "rsuite";
+import { Footer, Slider } from "rsuite";
 import UNI_PAIR from "src/abis/dahlia_contracts/dependencies/ubeswap/ubeswap@mainnet-v1/IUniswapV2Pair.json";
 import { IUniswapV2Pair } from "src/generated/IUniswapV2Pair";
 import { removePage, removePageState, removePositionState } from "./remove";
@@ -83,7 +83,7 @@ export const RemoveTokens: React.FC = () => {
   const [info] = useAsyncState(null, call);
 
   const continueButton = (
-    <Button
+    <Button className="bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75"
       onClick={() => {
         setRemove({
           existingBalance: info!,
@@ -189,15 +189,17 @@ export const RemoveTokens: React.FC = () => {
                 ))}
             </Flex>
           </Flex>
+          {/* <Flex sx={{ justifyContent: "center", mt: 6 }}> */}
           <Flex sx={{ justifyContent: "center", mt: 6 }}>
             {per === 0 ? (
-              <Button disabled>Enter a valid amount</Button>
+              <Button className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded-3xl w-32" disabled>Enter a valid amount</Button>
             ) : (
               continueButton
             )}
           </Flex>
         </Card>
       </Flex>
+      <Footer />
     </div>
   );
 };
