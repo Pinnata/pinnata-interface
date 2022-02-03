@@ -21,10 +21,15 @@ export const LandingPageHeader: React.FC<Props> = ({ history}) => {
           <a href="http://discord.gg/72VSGyx4jB" className="text-xl py-3 px-3 text-black">Discord</a>
         </div>
         <div className="my-4 md:m-0 md:flex justify-end w-full">
-          <Link to='/earn' >
+          {/* <Link to='/earn' >
             <Button className="bg-gradient-to-br from-blue-700 to-green-800 rounded-md justify-end hover:opacity-75" onClick={() => {
               history.push('/earn')
                 }}>Launch App</Button>
+          </Link> */}
+          <Link to='/earn' >
+            <button className="from-blue-700 to-green-300 text-white border-blue-700 bg-gradient-to-br hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-3xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:opacity-75" onClick={() => {
+            history.push('/earn')
+                }}>Launch App</button>
           </Link>
         </div>
       </div>

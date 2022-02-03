@@ -67,7 +67,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
   const exchangeRate = info ? Number(fromWei(info.exchangeRate)) : 1;
 
   return (
-    <div className="bg-white my-6 mx-4 rounded-lg shadow-2xl">
+    <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl">
       <div className="border-b-2 p-2">
         <TokenInfo token={token} />
       </div>
@@ -142,14 +142,16 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
       <div className="flex justify-center py-6">
         <button
           onClick={() => history.push(`earn/supply/${token.address}`)}
-          className="bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+          className="bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32"
+          // className="from-blue-700 py-2 px-4 cursor-pointer to-green-300 text-white border-blue-700 bg-gradient-to-r hover:to-blue-700 hover:from-green-300 hover:text-white active:bg-blue-700 font-bold rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         >
           Supply &#x203A;
         </button>
 
         <button
           onClick={() => history.push(`earn/withdraw/${token.address}`)}
-          className="ml-4 bg-gradient-to-br from-blue-800 to-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded w-32"
+          className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white font-bold py-2 px-4 rounded-3xl w-32"
+          // className="from-blue-700 p-2 cursor-pointer to-green-300 text-white border-blue-700 bg-gradient-to-r hover:to-blue-700 hover:from-green-300 hover:text-white active:bg-blue-700 font-bold rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         >
           Withdraw &#x203A;
         </button>

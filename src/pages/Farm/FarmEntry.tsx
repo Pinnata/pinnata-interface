@@ -107,10 +107,20 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
             collateralFactor: info.lpFactor.collateralFactor,
           });
           const borrow = fromWei(info.borrowRate[i]!);
+          console.log(borrow, maxLever, apr);
+
+          // borrow: 0.1590463012971312 
+          // maxLever: 3.4375 
+          // APR: 14.642162170721809
+
+          console.log(Number(borrow.toString()));
+
+          console.log(maxLever * ((apr ?? 0) / 100) -
+            (maxLever - 1) * Number(borrow.toString()))
 
           return (
-            maxLever * ((apr ?? 0) / 100) -
-            (maxLever - 1) * Number(borrow.toString())
+            maxLever * ((apr ?? 0) / 100) - (maxLever - 1) * Number(borrow.toString())
+
           );
         })
       )
