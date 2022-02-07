@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/Dahlia-Finance"
+          href="https://github.com/Pinnata"
           className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://twitter.com/dahliafinance"
+          href="https://twitter.com/PinnataHQ"
           className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="hover:opacity-75"
-          href="https://dahlia-finance.gitbook.io/dahlia-finance/"
+          href="https://pinnata.gitbook.io/1.0.0/"
           style={{ textDecoration: "none" }}
         >
           <BookOpen className="text-gray-900" size={32} />
