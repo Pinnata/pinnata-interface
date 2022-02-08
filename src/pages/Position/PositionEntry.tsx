@@ -22,7 +22,7 @@ import { useAsyncState } from "src/hooks/useAsyncState";
 import { humanFriendlyNumber } from "src/utils/number";
 import { CErc20Immutable } from "src/generated/CErc20Immutable";
 import CERC20_ABI from "src/abis/fountain_of_youth/CErc20Immutable.json";
-import { useAPR } from "../../hooks/useAPR"
+import { useAPR } from "../../hooks/useAPR";
 
 interface Props {
   pool: Farm;
@@ -119,31 +119,32 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
 
   const urlext =
     props.positionId +
-    "/" +
-    props.collId +
-    "/" +
-    props.collateralSize +
-    "/" +
-    props.pool.name +
-    "/" +
-    props.pool.wrapper +
-    "/" +
-    props.pool.spell +
-    "/" +
-    props.pool.lp +
-    "/" +
-    apr +
-    "/" +
-    props.pool.tokens.map((tok) => tok.address) +
-    "/" +
-    props.pool.type + 
-    "/" +
-    props.pool.id ?? "";
+      "/" +
+      props.collId +
+      "/" +
+      props.collateralSize +
+      "/" +
+      props.pool.name +
+      "/" +
+      props.pool.wrapper +
+      "/" +
+      props.pool.spell +
+      "/" +
+      props.pool.lp +
+      "/" +
+      apr +
+      "/" +
+      props.pool.tokens.map((tok) => tok.address) +
+      "/" +
+      props.pool.type +
+      "/" +
+      props.pool.id ?? "";
 
-  const apy = info && apr
-    ? (info.totalValue * (apr / 100) - info.debtInterest) /
-      (info.totalValue - info.debtValue)
-    : 0;
+  const apy =
+    info && apr
+      ? (info.totalValue * (apr / 100) - info.debtInterest) /
+        (info.totalValue - info.debtValue)
+      : 0;
 
   return (
     <div className="w-full md:w-1/3">
@@ -223,27 +224,27 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                   BANK_ABI.abi as AbiItem[],
                   getAddress(Bank[network.chainId])
                 ) as unknown as HomoraBank;
-                let bytes: string
+                let bytes: string;
                 if (props.pool.type === FarmType.SushiSwap) {
                   const spell = new kit.web3.eth.Contract(
                     SUSHI_SPELL.abi as AbiItem[],
                     getAddress(props.pool.spell)
                   ) as unknown as SushiswapSpellV1;
                   bytes = spell.methods
-                  .removeLiquidityWMiniChef(
-                    props.pool.tokens[0]!.address,
-                    props.pool.tokens[1]!.address,
-                    [
-                      MaxUint256.toString(),
-                      0,
-                      MaxUint256.toString(),
-                      MaxUint256.toString(),
-                      0,
-                      0,
-                      0,
-                    ]
-                  )
-                  .encodeABI();
+                    .removeLiquidityWMiniChef(
+                      props.pool.tokens[0]!.address,
+                      props.pool.tokens[1]!.address,
+                      [
+                        MaxUint256.toString(),
+                        0,
+                        MaxUint256.toString(),
+                        MaxUint256.toString(),
+                        0,
+                        0,
+                        0,
+                      ]
+                    )
+                    .encodeABI();
                 } else {
                   const spell = new kit.web3.eth.Contract(
                     UBE_SPELL.abi as AbiItem[],
@@ -252,17 +253,17 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                   bytes = spell.methods
                     .removeLiquidityWStakingRewards(
                       props.pool.tokens[0]!.address,
-                    props.pool.tokens[1]!.address,
-                    [
-                      MaxUint256.toString(),
-                      0,
-                      MaxUint256.toString(),
-                      MaxUint256.toString(),
-                      0,
-                      0,
-                      0,
-                    ],
-                      props.pool.wrapper,
+                      props.pool.tokens[1]!.address,
+                      [
+                        MaxUint256.toString(),
+                        0,
+                        MaxUint256.toString(),
+                        MaxUint256.toString(),
+                        0,
+                        0,
+                        0,
+                      ],
+                      props.pool.wrapper
                     )
                     .encodeABI();
                 }
@@ -289,28 +290,26 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
               const kit = await getConnectedKit();
               try {
                 setConfirmLoading(true);
-              const bank = new kit.web3.eth.Contract(
-                BANK_ABI.abi as AbiItem[],
-                getAddress(Bank[network.chainId])
-              ) as unknown as HomoraBank;
-              let bytes: string
-              if (props.pool.type === FarmType.SushiSwap) {
-                const spell = new kit.web3.eth.Contract(
-                  SUSHI_SPELL.abi as AbiItem[],
-                  getAddress(props.pool.spell)
-                ) as unknown as SushiswapSpellV1;
-                bytes = spell.methods
-                .harvestWMiniChef()
-                .encodeABI();
-              } else {
-                const spell = new kit.web3.eth.Contract(
-                  UBE_SPELL.abi as AbiItem[],
-                  getAddress(props.pool.spell)
-                ) as unknown as UbeswapMSRSpellV1;
-                bytes = spell.methods
-                  .harvestWStakingRewards(props.pool.wrapper,)
-                  .encodeABI();
-              }
+                const bank = new kit.web3.eth.Contract(
+                  BANK_ABI.abi as AbiItem[],
+                  getAddress(Bank[network.chainId])
+                ) as unknown as HomoraBank;
+                let bytes: string;
+                if (props.pool.type === FarmType.SushiSwap) {
+                  const spell = new kit.web3.eth.Contract(
+                    SUSHI_SPELL.abi as AbiItem[],
+                    getAddress(props.pool.spell)
+                  ) as unknown as SushiswapSpellV1;
+                  bytes = spell.methods.harvestWMiniChef().encodeABI();
+                } else {
+                  const spell = new kit.web3.eth.Contract(
+                    UBE_SPELL.abi as AbiItem[],
+                    getAddress(props.pool.spell)
+                  ) as unknown as UbeswapMSRSpellV1;
+                  bytes = spell.methods
+                    .harvestWStakingRewards(props.pool.wrapper)
+                    .encodeABI();
+                }
                 const tx = await bank.methods
                   .execute(props.positionId, props.pool.spell, bytes)
                   .send({
