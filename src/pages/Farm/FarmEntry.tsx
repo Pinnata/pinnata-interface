@@ -21,12 +21,7 @@ import { useAPR } from "src/hooks/useAPR";
 export const FarmEntry: React.FC<Farm> = (props: Farm) => {
   const { kit, network } = useContractKit();
   const history = useHistory();
-  const [apr] = useAPR(
-    props.lp,
-    props.wrapper,
-    props.type,
-    props.id,
-  );
+  const [apr] = useAPR(props.lp, props.wrapper, props.type, props.id);
 
   const bank = React.useMemo(
     () =>
@@ -109,13 +104,13 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
           const borrow = fromWei(info.borrowRate[i]!);
           console.log(borrow, maxLever, apr);
 
-          // borrow: 0.1590463012971312 
-          // maxLever: 3.4375 
+          // borrow: 0.1590463012971312
+          // maxLever: 3.4375
           // APR: 14.642162170721809
 
           return (
-            maxLever * ((apr ?? 0) / 100) - (maxLever - 1) * Number(borrow.toString())
-
+            maxLever * ((apr ?? 0) / 100) -
+            (maxLever - 1) * Number(borrow.toString())
           );
         })
       )
@@ -123,20 +118,20 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
 
   const urlext =
     props.name +
-    "/" +
-    props.wrapper +
-    "/" +
-    props.spell +
-    "/" +
-    props.lp +
-    "/" +
-    apr +
-    "/" +
-    props.tokens.map((tok) => tok.address) +
-    "/" +
-    props.type +
-    "/" +
-    props.id ?? '';
+      "/" +
+      props.wrapper +
+      "/" +
+      props.spell +
+      "/" +
+      props.lp +
+      "/" +
+      apr +
+      "/" +
+      props.tokens.map((tok) => tok.address) +
+      "/" +
+      props.type +
+      "/" +
+      props.id ?? "";
 
   return (
     <div className="w-full md:w-1/3">
@@ -159,7 +154,10 @@ export const FarmEntry: React.FC<Farm> = (props: Farm) => {
             <p className="text-gray-600 uppercase tracking-widest font-bold">
               Pool APR
             </p>
-            <p className="text-gray-900 font-bold text-2xl"> {apr !== null ? humanFriendlyNumber(apr) : '--'}%</p>
+            <p className="text-gray-900 font-bold text-2xl">
+              {" "}
+              {apr !== null ? humanFriendlyNumber(apr) : "--"}%
+            </p>
           </div>
         </div>
 

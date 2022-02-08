@@ -83,7 +83,8 @@ export const RemoveTokens: React.FC = () => {
   const [info] = useAsyncState(null, call);
 
   const continueButton = (
-    <Button className="bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75"
+    <Button
+      className="bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75"
       onClick={() => {
         setRemove({
           existingBalance: info!,
@@ -192,7 +193,12 @@ export const RemoveTokens: React.FC = () => {
           {/* <Flex sx={{ justifyContent: "center", mt: 6 }}> */}
           <Flex sx={{ justifyContent: "center", mt: 6 }}>
             {per === 0 ? (
-              <Button className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded-3xl w-32" disabled>Enter a valid amount</Button>
+              <Button
+                className="ml-4 bg-gradient-to-br from-blue-700 to-green-300 hover:opacity-75 text-white text-xl font-bold py-2 px-4 rounded-3xl w-32"
+                disabled
+              >
+                Enter a valid amount
+              </Button>
             ) : (
               continueButton
             )}

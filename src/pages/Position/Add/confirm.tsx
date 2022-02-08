@@ -101,7 +101,7 @@ export const Confirm: React.FC = () => {
             BANK_ABI.abi as AbiItem[],
             getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
-          let bytes: string
+          let bytes: string;
           if (pool.type === FarmType.SushiSwap) {
             const spell = new kit.web3.eth.Contract(
               SUSHI_SPELL.abi as AbiItem[],
@@ -143,7 +143,7 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                pool.wrapper,
+                pool.wrapper
               )
               .encodeABI();
           }
@@ -330,7 +330,11 @@ export const Confirm: React.FC = () => {
               Position Statistics
             </p>
             <Flex
-              sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+              sx={{
+                justifyContent: "left",
+                gap: "8px",
+                flexDirection: "column",
+              }}
             >
               <BlockText>
                 {"Est. Debt Ratio: "
@@ -363,7 +367,9 @@ export const Confirm: React.FC = () => {
                 {"Position Value: "
                   .concat(" ")
                   .concat(
-                    humanFriendlyNumber(borrow.supplyValue! + borrow.borrowValue!)
+                    humanFriendlyNumber(
+                      borrow.supplyValue! + borrow.borrowValue!
+                    )
                   )
                   .concat(" Celo")}
               </BlockText>
