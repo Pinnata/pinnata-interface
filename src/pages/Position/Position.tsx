@@ -16,6 +16,14 @@ import { Spinner } from "theme-ui";
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
 
+export type positionResult = {
+  collToken: string;
+  collId: string;
+  collateralSize: string;
+  farm: any;
+  positionId: number;
+}
+
 export const Position = () => {
   const { kit, address, network } = useContractKit();
 
@@ -30,46 +38,53 @@ export const Position = () => {
 
   const call = React.useCallback(async () => {
     try {
-      const info = [];
+      const info: positionResult[] = [];
       const nextPositionId = await bank.methods.nextPositionId().call();
+
+      const tempResult = await bank.methods.getCurrentPositionInfo().call();
+      console.log(tempResult);
+
       let batch = [];
-      for (let i = 1; i < Number(nextPositionId); i += 1) {
+      for (let i = 1; i < 5; i += 1) {
         batch.push(bank.methods.getPositionInfo(i).call());
       }
-      const results = await Promise.all(batch);
-      for (let i = 0; i < Number(nextPositionId)-1; i += 1) {
-        const positionId = i + 1;
-        const positionInfo = results[i];
-        if (
-          positionInfo &&
-          positionInfo!.owner.toLowerCase() === address!.toLowerCase()
-        ) {
-          const wrapper = new kit.web3.eth.Contract(
-            IERC20W_ABI.abi as AbiItem[],
-            positionInfo!.collToken
-          ) as unknown as IERC20Wrapper;
-          const underlying = await wrapper.methods
-            .getUnderlyingToken(positionInfo!.collId)
-            .call();
-          for (let farm of FARMS) {
-            if (
-              getAddress(underlying) === farm.lp &&
-              getAddress(positionInfo!.collToken) === farm.wrapper &&
-              positionInfo!.collateralSize !== "0"
-            ) {
-              info.push({
-                collId: positionInfo!.collId,
-                collateralSize: positionInfo!.collateralSize,
-                collToken: positionInfo!.collToken,
-                positionId: positionId,
-                farm: farm,
-              });
-              break;
+      console.log(batch.length, batch)
+      const promiseResults = await Promise.all(batch).then(async (results) => {
+        await results.forEach(async (positionInfo, index) => {
+          const positionId = index + 1;
+          console.log("positionInfo, address", positionInfo, address);
+          if (
+            positionInfo.owner
+          ) {
+            const wrapper = new kit.web3.eth.Contract(
+              IERC20W_ABI.abi as AbiItem[],
+              positionInfo!.collToken
+            ) as unknown as IERC20Wrapper;
+            // const underlying = await wrapper.methods
+            //   .getUnderlyingToken(positionInfo!.collId)
+            //   .call();
+            console.log("Farms", FARMS)
+            for (let farm of FARMS) {
+              if (
+                true
+              ) {
+                info.push({
+                  collId: positionInfo!.collId,
+                  collateralSize: positionInfo!.collateralSize,
+                  collToken: positionInfo!.collToken,
+                  positionId: positionId,
+                  farm: farm,
+                });
+                break;
+              }
             }
           }
-        }
-      }
-      return info;
+        })
+        console.log('info: ', info);
+        return info;
+      })
+      console.log('promiseResults: ', promiseResults);
+      return promiseResults;
     } catch (error) {
       console.log(error);
     }
