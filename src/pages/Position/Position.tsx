@@ -37,7 +37,7 @@ export const Position = () => {
         batch.push(bank.methods.getPositionInfo(i).call());
       }
       const results = await Promise.all(batch);
-      for (let i = 0; i < Number(nextPositionId) - 1; i += 1) {
+      for (let i = 0; i < Number(nextPositionId)-1; i += 1) {
         const positionId = i + 1;
         const positionInfo = results[i];
         if (

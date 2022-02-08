@@ -173,9 +173,7 @@ export const Supply: React.FC = () => {
           <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
             My position has
           </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
             {info &&
               pool.tokens.map((tok, index) => (
                 <Flex

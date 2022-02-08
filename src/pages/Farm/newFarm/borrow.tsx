@@ -235,11 +235,7 @@ export const Borrow: React.FC = () => {
             Number(fromWei(x)) *
             (Number(fromWei(info?.celoPrices[i]!)) / Number(fromWei(scale)))
         )
-        .reduce(
-          (sum, current) => sum + current,
-          Number(fromWei(supply.lpSupply)) *
-            (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale)))
-        )
+        .reduce((sum, current) => sum + current, Number(fromWei(supply.lpSupply)) * (Number(fromWei(info?.lpPrice)) / Number(fromWei(scale))))
     : 0;
   const lever = 1 + borrowValue / supplyValue;
 
@@ -310,7 +306,7 @@ export const Borrow: React.FC = () => {
       <div className="bg-gray-100 rounded-3xl shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto bg-white">
         <p
           onClick={() => {
-            setPage(farmPage.Supply);
+            setPage(farmPage.Supply)
           }}
           className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
         >
@@ -326,9 +322,7 @@ export const Borrow: React.FC = () => {
           <p className="text-xl font-bold tracking-tight text-gray-800">
             I'm Supplying:
           </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
             {pool.tokens.map((tok, index) => (
               <Flex
                 sx={{
@@ -377,9 +371,7 @@ export const Borrow: React.FC = () => {
           {"Leverage: ".concat(humanFriendlyNumber(lever)).concat("x")}
         </BlockText>
         <BlockText mb={2}>
-          {"Price Impact: "
-            .concat(humanFriendlyNumber(impact * 100))
-            .concat("%")}
+          {"Price Impact: ".concat(humanFriendlyNumber(impact * 100)).concat("%")}
         </BlockText>
         <BlockText mb={2}>
           {"Farming Apr: ".concat(humanFriendlyNumber(apy * 100)).concat("%")}

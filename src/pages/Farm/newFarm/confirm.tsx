@@ -33,7 +33,7 @@ import { ERC20 } from "src/generated/ERC20";
 import { humanFriendlyNumber } from "src/utils/number";
 import { useHistory } from "react-router";
 import { Button } from "src/components/Button";
-import { FarmType } from "src/config";
+import { FarmType } from "src/config"
 import { Header } from "src/components/Header";
 
 export const Confirm: React.FC = () => {
@@ -50,10 +50,9 @@ export const Confirm: React.FC = () => {
 
   const lpTok: Token = React.useMemo(() => {
     return new Token({
-      ...lpToken,
-      address: pool.lp,
-    });
-  }, [pool.lp]);
+    ...lpToken,
+    address: pool.lp,
+  })}, [pool.lp])
 
   const [tokenStates, refetchTokenStates] = useERCmulti(pool.tokens);
   const [erc, refetchERC] = useERC(lpTok.address, Bank[network.chainId]);
@@ -104,7 +103,7 @@ export const Confirm: React.FC = () => {
             BANK_ABI.abi as AbiItem[],
             getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
-          let bytes: string;
+          let bytes: string
           if (pool.type === FarmType.SushiSwap) {
             const spell = new kit.web3.eth.Contract(
               SUSHI_SPELL.abi as AbiItem[],
@@ -124,7 +123,7 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                pool.id!
+                pool.id!,
               )
               .encodeABI();
           } else {
@@ -146,7 +145,7 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                pool.wrapper
+                pool.wrapper,
               )
               .encodeABI();
           }
@@ -227,7 +226,7 @@ export const Confirm: React.FC = () => {
       <div className="bg-gray-100 rounded-3xl shadow-md p-4 m-2 md:max-w-2xl max-w-xl mx-auto">
         <p
           onClick={() => {
-            setPage(farmPage.Borrow);
+            setPage(farmPage.Borrow)
           }}
           className="flex items-center hover:opacity-75 cursor-pointer tracking-tight text-base font-bold"
         >
@@ -243,9 +242,7 @@ export const Confirm: React.FC = () => {
           <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
             I'm Supplying:
           </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
             {pool.tokens.map((tok, index) => (
               <Flex
                 sx={{
@@ -284,9 +281,7 @@ export const Confirm: React.FC = () => {
           <p className="text-xl font-bold tracking-tight text-gray-800 -mb-4">
             I'm Borrowing:
           </p>
-          <Flex
-            sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}
-          >
+          <Flex sx={{ justifyContent: "left", gap: "8px", alignItems: "center" }}>
             {pool.tokens.map((tok, index) => (
               <Flex
                 sx={{
@@ -359,9 +354,7 @@ export const Confirm: React.FC = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <Flex sx={{ justifyContent: "center", gap: "6px" }}>
-              {button[0]}
-            </Flex>
+            <Flex sx={{ justifyContent: "center", gap: "6px" }}>{button[0]}</Flex>
           )}
         </Flex>
       </div>
