@@ -62,7 +62,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
     }
   }, [bank, token.address, kit]);
 
-  const [info] = useAsyncState(null, call);
+  const [info] = useAsyncState(null, call, token.address+'earn');
 
   const exchangeRate = info ? Number(fromWei(info.exchangeRate)) : 1;
 
@@ -77,8 +77,8 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         <p className="text-gray-800 font-bold text-3xl">
           {" "}
           {info
-            ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%")
-            : "--"}
+            ? humanFriendlyWei(info.projectedAPY.mul ? info.projectedAPY.mul(toBN(100)) : (parseInt(info.projectedAPY as unknown as string, 16) * 100).toString()).concat("%")
+                        : "0.0%"}
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
               ? humanFriendlyWei(info.totalSupply)
                   .concat(" ")
                   .concat(token.symbol)
-              : "--"}
+              : "00"}
           </p>
         </div>
         <div className="m-4 text-center">
@@ -106,7 +106,7 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
               ? humanFriendlyWei(info.totalBorrows)
                   .concat(" ")
                   .concat(token.symbol)
-              : "--"}
+              : "00"}
           </p>
         </div>
       </div>
@@ -119,10 +119,16 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
           <p className="text-gray-900 font-bold text-2xl">
             {" "}
             {info
-              ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat(
-                  "%"
-                )
-              : "--"}
+              // This is not the correct solution, but a quick and dirty way to get this working
+                          // for some reason, the info.<name> which is expected to be a BN, is sometimes stored as a 
+                          // base 16 string representation of the big number. The check on info.<name>.mul checks if 
+                          // we are dealing with a BN or a string. If it is a string, we do some icky conversions, namely
+                          // convert it to an int, multiply it by 100, then convert it back to a string so that 
+                          // humanFriendlyWei can parse it correctly
+                            ? humanFriendlyWei(info.utilizationRate.mul ? info.utilizationRate.mul(toBN(100)) : (parseInt(info.utilizationRate as unknown as string, 16) * 100).toString()).concat(
+                                 "%"
+                               )
+                            : "0.0%"}
           </p>
         </div>
         <div className="m-4 text-center">
