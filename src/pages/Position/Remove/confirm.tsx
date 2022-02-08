@@ -24,7 +24,7 @@ import { removeRemoveState } from "./removeTokens";
 import { removePaybackState } from "./payback";
 import { useHistory } from "react-router-dom";
 import { Button } from "src/components/Button";
-import { FarmType } from "src/config"
+import { FarmType } from "src/config";
 import { Header } from "src/components/Header";
 
 export const Confirm: React.FC = () => {
@@ -49,13 +49,13 @@ export const Confirm: React.FC = () => {
             BANK_ABI.abi as AbiItem[],
             getAddress(Bank[network.chainId])
           ) as unknown as HomoraBank;
-            let bytes: string
-            if (pool.type === FarmType.SushiSwap) {
-              const spell = new kit.web3.eth.Contract(
-                SUSHI_SPELL.abi as AbiItem[],
-                getAddress(pool.spell)
-              ) as unknown as SushiswapSpellV1;
-              bytes = spell.methods
+          let bytes: string;
+          if (pool.type === FarmType.SushiSwap) {
+            const spell = new kit.web3.eth.Contract(
+              SUSHI_SPELL.abi as AbiItem[],
+              getAddress(pool.spell)
+            ) as unknown as SushiswapSpellV1;
+            bytes = spell.methods
               .removeLiquidityWMiniChef(
                 pool.tokens[0]!.address,
                 pool.tokens[1]!.address,
@@ -69,15 +69,15 @@ export const Confirm: React.FC = () => {
                   0,
                 ]
               )
-                .encodeABI();
-            } else {
-              const spell = new kit.web3.eth.Contract(
-                UBE_SPELL.abi as AbiItem[],
-                getAddress(pool.spell)
-              ) as unknown as UbeswapMSRSpellV1;
-              bytes = spell.methods
-                .removeLiquidityWStakingRewards(
-                  pool.tokens[0]!.address,
+              .encodeABI();
+          } else {
+            const spell = new kit.web3.eth.Contract(
+              UBE_SPELL.abi as AbiItem[],
+              getAddress(pool.spell)
+            ) as unknown as UbeswapMSRSpellV1;
+            bytes = spell.methods
+              .removeLiquidityWStakingRewards(
+                pool.tokens[0]!.address,
                 pool.tokens[1]!.address,
                 [
                   remove.removeLp!.toString(),
@@ -88,10 +88,10 @@ export const Confirm: React.FC = () => {
                   0,
                   0,
                 ],
-                  pool.wrapper,
-                )
-                .encodeABI();
-            }
+                pool.wrapper
+              )
+              .encodeABI();
+          }
           const tx = await bank.methods
             .execute(position.positionId!, pool.spell, bytes)
             .send({
@@ -219,7 +219,11 @@ export const Confirm: React.FC = () => {
               Position Statistics
             </p>
             <Flex
-              sx={{ justifyContent: "left", gap: "8px", flexDirection: "column" }}
+              sx={{
+                justifyContent: "left",
+                gap: "8px",
+                flexDirection: "column",
+              }}
             >
               <BlockText>
                 {"New Est. Debt Ratio: "
