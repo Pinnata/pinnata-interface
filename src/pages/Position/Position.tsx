@@ -15,6 +15,7 @@ import { Spinner } from "theme-ui";
 
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
+import { Dictionary } from "@reduxjs/toolkit";
 
 export type positionResult = {
   collToken: string;
@@ -35,62 +36,36 @@ export const Position = () => {
       ) as unknown as HomoraBank,
     [kit]
   );
-
+  const accountToIndices: Dictionary<number[]> = {};
   const call = React.useCallback(async () => {
     try {
       const info: positionResult[] = [];
       const nextPositionId = await bank.methods.nextPositionId().call();
-
-      const tempResult = await bank.methods.getCurrentPositionInfo().call();
-      console.log(tempResult);
-
       let batch = [];
-      for (let i = 1; i < 5; i += 1) {
-        batch.push(bank.methods.getPositionInfo(i).call());
-      }
-      console.log(batch.length, batch)
-      const promiseResults = await Promise.all(batch).then(async (results) => {
-        await results.forEach(async (positionInfo, index) => {
-          const positionId = index + 1;
-          console.log("positionInfo, address", positionInfo, address);
-          if (
-            positionInfo.owner
-          ) {
-            const wrapper = new kit.web3.eth.Contract(
-              IERC20W_ABI.abi as AbiItem[],
-              positionInfo!.collToken
-            ) as unknown as IERC20Wrapper;
-            // const underlying = await wrapper.methods
-            //   .getUnderlyingToken(positionInfo!.collId)
-            //   .call();
-            console.log("Farms", FARMS)
-            for (let farm of FARMS) {
-              if (
-                true
-              ) {
-                info.push({
-                  collId: positionInfo!.collId,
-                  collateralSize: positionInfo!.collateralSize,
-                  collToken: positionInfo!.collToken,
-                  positionId: positionId,
-                  farm: farm,
-                });
-                break;
-              }
-            }
-          }
+      let i = 1;
+      for (i; i < Number(nextPositionId); i += 1) {
+        batch = [];
+        let j = 0;
+        for (j; j < 5; j+= 1){
+          batch.push(bank.methods.getPositionInfo(i + j).call());
+        }
+        await bank.methods.getPositionInfo(i + j).call().then(async (result) => {
+          accountToIndices[result.owner] = (accountToIndices[result.owner] ?? []).concat([i])
+          
         })
-        console.log('info: ', info);
-        return info;
-      })
-      console.log('promiseResults: ', promiseResults);
-      return promiseResults;
+      }
+      console.log('accountToIndices ', accountToIndices);
+
+      console.log(batch.length, batch)
+      
+      console.log('promiseResults: ', info);
+      return info;
     } catch (error) {
       console.log(error);
     }
   }, [bank.methods, address, kit.web3.eth.Contract]);
 
-  const [info] = useAsyncState(null, call, "positions");
+  const [info] = useAsyncState(null, call);
 
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
