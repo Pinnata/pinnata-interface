@@ -49,7 +49,7 @@ export const Position = () => {
                             "0x738173e1cDf4A4c785dc63C6987a1Fd3bBfB3Aff":[9,15],
                             "0x1F7065133cE6a138edc59cC67D19A8e203194DE5":[11],
                             "0xD9AbE4890507bC7B039031f06E44BC95A94866Ee":[12,18,56]};
-      const positions = walletToPositions[tempAddress ?? ""] ?? [];
+      const positions = [470,475,480,485,490,495,500,505,510,515,520,525];
       console.log(positions);
       const info: any[] = [];
       let batch: Promise<any>[] = [];

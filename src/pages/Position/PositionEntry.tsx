@@ -55,6 +55,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
   );
 
   const call = React.useCallback(async () => {
+    console.log('hi')
     try {
       const oracle = await bank.methods.oracle().call();
       const proxyOracle = new kit.web3.eth.Contract(
@@ -67,7 +68,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         source
       ) as unknown as CoreOracle;
       const price = await coreOracle.methods.getCELOPx(props.pool.lp).call();
-      console.log('price', price);
       const totalValue =
         Number(fromWei(props.collateralSize)) *
         (Number(fromWei(price)) / Number(fromWei(scale)));
@@ -112,10 +112,15 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     kit.web3.eth.Contract,
     props.collateralSize,
     props.pool.lp,
-    props.positionId,
-    scale,
+    props.positionId
   ]);
 
+  // console.log(bank.methods,
+  //   kit.web3.eth.Contract,
+  //   props.collateralSize,
+  //   props.pool.lp,
+  //   props.positionId,
+  //   scale);
   const [info] = useAsyncState(null, call);
 
   const urlext =
