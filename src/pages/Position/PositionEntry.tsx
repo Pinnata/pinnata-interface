@@ -67,6 +67,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
         source
       ) as unknown as CoreOracle;
       const price = await coreOracle.methods.getCELOPx(props.pool.lp).call();
+      console.log('price', price);
       const totalValue =
         Number(fromWei(props.collateralSize)) *
         (Number(fromWei(price)) / Number(fromWei(scale)));
@@ -144,7 +145,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     ? (info.totalValue * (apr / 100) - info.debtInterest) /
       (info.totalValue - info.debtValue)
     : 0;
-
   return (
     <div className="w-full md:w-1/3">
       <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl p-2">

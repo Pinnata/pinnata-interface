@@ -28,6 +28,8 @@ export type positionResult = {
 export const Position = () => {
   const { kit, address, network } = useContractKit();
 
+  const tempAddress = "0xb4B2E8c6c91e8c1662Bf5aE9aD6e9649aE84b895";
+
   const bank = React.useMemo(
     () =>
       new kit.web3.eth.Contract(
@@ -36,37 +38,56 @@ export const Position = () => {
       ) as unknown as HomoraBank,
     [kit]
   );
-  const accountToIndices: Dictionary<number[]> = {};
   const call = React.useCallback(async () => {
     try {
-      const info: positionResult[] = [];
-      const nextPositionId = await bank.methods.nextPositionId().call();
-      let batch = [];
-      let i = 1;
-      for (i; i < Number(nextPositionId); i += 1) {
-        batch = [];
-        let j = 0;
-        for (j; j < 5; j+= 1){
-          batch.push(bank.methods.getPositionInfo(i + j).call());
-        }
-        await bank.methods.getPositionInfo(i + j).call().then(async (result) => {
-          accountToIndices[result.owner] = (accountToIndices[result.owner] ?? []).concat([i])
-          
-        })
-      }
-      console.log('accountToIndices ', accountToIndices);
-
-      console.log(batch.length, batch)
-      
-      console.log('promiseResults: ', info);
+      const walletToPositions: {[id: string]: number[]} = {"0xE4900911eDE976942102D273cF724674DeB70712":[1,62],
+                            "0x59A6AbC89C158ef88d5872CaB4aC3B08474883D9":[2,3,4,10,44,65],
+                            "0xB85ae9ef84542BBdead9D4cA9ee8d237b214d13a":[5],
+                            "0xE99f3CA693c9E96B01F4158E252A3041b4d74A59":[6],
+                            "0x9741c95A03F2e2033560A6d2a140D5D23DBDDdd4":[7,43,46],
+                            "0xb4B2E8c6c91e8c1662Bf5aE9aD6e9649aE84b895":[8,14,27,29,30],
+                            "0x738173e1cDf4A4c785dc63C6987a1Fd3bBfB3Aff":[9,15],
+                            "0x1F7065133cE6a138edc59cC67D19A8e203194DE5":[11],
+                            "0xD9AbE4890507bC7B039031f06E44BC95A94866Ee":[12,18,56]};
+      const positions = walletToPositions[tempAddress ?? ""] ?? [];
+      console.log(positions);
+      const info: any[] = [];
+      let batch: Promise<any>[] = [];
+      positions?.forEach((positionId) => {
+        batch.push(bank.methods.getPositionInfo(positionId).call());
+      })
+      console.log(batch);
+      await Promise.all(batch).then( async (positionInfoList) => {
+        console.log(positionInfoList)
+        positionInfoList.forEach(async (positionInfo, index) => {
+          console.log(positionInfo)
+          const wrapper = new kit.web3.eth.Contract(
+            IERC20W_ABI.abi as AbiItem[],
+            positionInfo!.collToken
+          ) as unknown as IERC20Wrapper;
+          for (let farm of FARMS) {
+            
+              info.push({
+                collId: positionInfo!.collId,
+                collateralSize: positionInfo!.collateralSize,
+                collToken: positionInfo!.collToken,
+                positionId: positions[index],
+                farm: farm,
+              });
+              break;
+            
+          }
+        }); 
+      });
       return info;
     } catch (error) {
       console.log(error);
     }
-  }, [bank.methods, address, kit.web3.eth.Contract]);
+  }, [bank.methods, tempAddress, kit.web3.eth.Contract]);
 
   const [info] = useAsyncState(null, call);
 
+  console.log(info)
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">
       <Container className="flex-grow">
