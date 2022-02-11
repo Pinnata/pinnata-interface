@@ -15,7 +15,9 @@ import { Spinner } from "theme-ui";
 
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
-import walletToPositions from "./walletsToPositions";
+import walletToPositions, {walletFriend} from "./walletsToPositions";
+
+const jsonURL = 'https://pinnata-positions-wallet-mapping.s3.us-east-2.amazonaws.com/walletToPositions.json';
 
 export type positionResult = {
   collToken: string;
@@ -40,7 +42,16 @@ export const Position = () => {
   );
   const call = React.useCallback(async () => {
     try {
-      const positions = walletToPositions[tempAddress] ?? [];
+      let positions: number[] = [];
+      await fetch(jsonURL).then(async function(res) {
+        const jsonText = await res.text();
+        const json = JSON.parse(jsonText);
+        positions = json[tempAddress];
+    },
+    function(rej) {
+        console.log("promise rejected", rej);
+        throw 'promise rejected';
+    })
       const info: any[] = [];
       let batch: Promise<any>[] = [];
       positions?.forEach((positionId) => {
@@ -48,13 +59,6 @@ export const Position = () => {
       })
       await Promise.all(batch).then( async (positionInfoList) => {
         await positionInfoList.forEach(async (positionInfo, index) => {
-          const wrapper = new kit.web3.eth.Contract(
-            IERC20W_ABI.abi as AbiItem[],
-            positionInfo!.collToken
-          ) as unknown as IERC20Wrapper;
-          // const underlying = await wrapper.methods
-          //   .getUnderlyingToken(positionInfo!.collId)
-          //   .call();
           for (let farm of FARMS) {
             if (
               getAddress(positionInfo!.collToken) === farm.wrapper && positionInfo?.collateralSize !== '0'){
