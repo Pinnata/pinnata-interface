@@ -15,7 +15,6 @@ import { Spinner } from "theme-ui";
 
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
-import walletToPositions, {walletFriend} from "./walletsToPositions";
 
 const jsonURL = 'https://pinnata-positions-wallet-mapping.s3.us-east-2.amazonaws.com/walletToPositions.json';
 
@@ -29,8 +28,6 @@ export type positionResult = {
 
 export const Position = () => {
   const { kit, address, network } = useContractKit();
-
-  const tempAddress = "0x89044A9f24E3251269603c0fb7Ff0396a2d71A89";
 
   const bank = React.useMemo(
     () =>
@@ -46,7 +43,7 @@ export const Position = () => {
       await fetch(jsonURL).then(async function(res) {
         const jsonText = await res.text();
         const json = JSON.parse(jsonText);
-        positions = json[tempAddress];
+        positions = json[address ?? ''];
     },
     function(rej) {
         console.log("promise rejected", rej);
@@ -78,7 +75,7 @@ export const Position = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [bank.methods, tempAddress, kit.web3.eth.Contract]);
+  }, [bank.methods, address, kit.web3.eth.Contract]);
 
   const [info] = useAsyncState(null, call);
 
