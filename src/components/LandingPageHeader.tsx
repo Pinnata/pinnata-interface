@@ -17,7 +17,7 @@ export const LandingPageHeader: React.FC<Props> = ({ history}) => {
         </div>
         <div>
           <a href="https://medium.com/dahlia-finance" className="text-xl py-3 px-3 text-black">Blog</a>
-          <a href="https://twitter.com/PinnataHQ" className="text-xl py-3 px-3 text-black">Twitter</a>
+          <a href="https://twitter.com/PinnataXYZ" className="text-xl py-3 px-3 text-black">Twitter</a>
           <a href="http://discord.gg/72VSGyx4jB" className="text-xl py-3 px-3 text-black">Discord</a>
         </div>
         <div className="my-4 md:m-0 md:flex justify-end w-full">
