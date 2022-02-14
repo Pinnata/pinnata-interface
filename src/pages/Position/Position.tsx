@@ -16,6 +16,16 @@ import { Spinner } from "theme-ui";
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
 
+const jsonURL = 'https://pinnata.s3.us-west-1.amazonaws.com/positions.json';
+
+export type positionResult = {
+  collToken: string;
+  collId: string;
+  collateralSize: string;
+  farm: any;
+  positionId: number;
+}
+
 export const Position = () => {
   const { kit, address, network } = useContractKit();
 
@@ -27,55 +37,47 @@ export const Position = () => {
       ) as unknown as HomoraBank,
     [kit]
   );
-
   const call = React.useCallback(async () => {
     try {
-      const info = [];
-      const nextPositionId = await bank.methods.nextPositionId().call();
-      let batch = [];
-      for (let i = 1; i < Number(nextPositionId); i += 1) {
-        batch.push(bank.methods.getPositionInfo(i).call());
-      }
-      const results = await Promise.all(batch);
-      for (let i = 0; i < Number(nextPositionId)-1; i += 1) {
-        const positionId = i + 1;
-        const positionInfo = results[i];
-        if (
-          positionInfo &&
-          positionInfo!.owner.toLowerCase() === address!.toLowerCase()
-        ) {
-          const wrapper = new kit.web3.eth.Contract(
-            IERC20W_ABI.abi as AbiItem[],
-            positionInfo!.collToken
-          ) as unknown as IERC20Wrapper;
-          const underlying = await wrapper.methods
-            .getUnderlyingToken(positionInfo!.collId)
-            .call();
+      let positions: number[] = [];
+      await fetch(jsonURL).then(async function(res) {
+        const jsonText = await res.text();
+        const json = JSON.parse(jsonText);
+        positions = json[address ?? ''];
+    },
+    function(rej) {
+        console.log("promise rejected", rej);
+        throw 'promise rejected';
+    })
+      const info: any[] = [];
+      let batch: Promise<any>[] = [];
+      positions?.forEach((positionId) => {
+        batch.push(bank.methods.getPositionInfo(positionId).call());
+      })
+      await Promise.all(batch).then( async (positionInfoList) => {
+        await positionInfoList.forEach(async (positionInfo, index) => {
           for (let farm of FARMS) {
             if (
-              getAddress(underlying) === farm.lp &&
-              getAddress(positionInfo!.collToken) === farm.wrapper &&
-              positionInfo!.collateralSize !== "0"
-            ) {
+              getAddress(positionInfo!.collToken) === farm.wrapper && positionInfo?.collateralSize !== '0'){
               info.push({
                 collId: positionInfo!.collId,
                 collateralSize: positionInfo!.collateralSize,
                 collToken: positionInfo!.collToken,
-                positionId: positionId,
+                positionId: positions[index],
                 farm: farm,
               });
               break;
             }
           }
-        }
-      }
+        }); 
+      });
       return info;
     } catch (error) {
       console.log(error);
     }
   }, [bank.methods, address, kit.web3.eth.Contract]);
 
-  const [info] = useAsyncState(null, call, "positions");
+  const [info] = useAsyncState(null, call);
 
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-green-100 w-full">

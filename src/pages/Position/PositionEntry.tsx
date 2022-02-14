@@ -111,8 +111,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     kit.web3.eth.Contract,
     props.collateralSize,
     props.pool.lp,
-    props.positionId,
-    scale,
+    props.positionId
   ]);
 
   const [info] = useAsyncState(null, call);
@@ -144,7 +143,6 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
     ? (info.totalValue * (apr / 100) - info.debtInterest) /
       (info.totalValue - info.debtValue)
     : 0;
-
   return (
     <div className="w-full md:w-1/3">
       <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl p-2">
