@@ -16,7 +16,7 @@ import { Spinner } from "theme-ui";
 import { Container } from "theme-ui";
 import { Header } from "src/components/Header";
 
-const jsonURL = 'https://pinnata-positions-wallet-mapping.s3.us-east-2.amazonaws.com/walletToPositions.json';
+const jsonURL = 'https://pinnata.s3.us-west-1.amazonaws.com/positions.json';
 
 export type positionResult = {
   collToken: string;
