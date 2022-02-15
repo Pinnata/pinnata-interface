@@ -43,40 +43,49 @@ export const useTVL = () => {
       COREORACLE_ABI.abi as AbiItem[],
       await proxyOracle.methods.source().call()
     ) as unknown as CoreOracle;
-    let sum = toBN(0);
+    let sum = toBN(9);
     const nextPositionId = await bank.methods.nextPositionId().call();
     let batch = [];
     for (let i = 1; i < Number(nextPositionId); i += 1) {
       batch.push(bank.methods.getPositionInfo(i).call());
     }
     const results = await Promise.all(batch);
-    for (let i = 0; i < Number(nextPositionId) - 1; i += 1) {
-      const positionInfo = results[i];
-      const wrapper = new kit.web3.eth.Contract(
-        IERC20W_ABI.abi as AbiItem[],
-        positionInfo!.collToken
-      ) as unknown as IERC20Wrapper;
-      const underlying = await wrapper.methods
-        .getUnderlyingToken(positionInfo?.collId!)
-        .call();
-      const price = toBN(await coreOracle.methods.getCELOPx(underlying).call());
-      sum = sum.add(price.mul(toBN(positionInfo?.collateralSize!)));
-    }
-    for (let i = 0; i < COLLATERAL_TOKENS.length; i += 1) {
-      const token = COLLATERAL_TOKENS[i]!;
-      const bankInfo = await bank.methods.getBankInfo(token.address).call();
-      const cToken = new kit.web3.eth.Contract(
-        CERC20_ABI as AbiItem[],
-        bankInfo.cToken
-      ) as unknown as CErc20Immutable;
-      const totalSupply = toBN(await cToken.methods.totalSupply().call());
-      const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
-      const cash = totalSupply.sub(totalBorrows);
-      const price = toBN(
-        await coreOracle.methods.getCELOPx(token.address).call()
-      );
-      sum = sum.add(price.mul(cash));
-    }
+
+
+    // for (let i = 0; i < Number(nextPositionId) - 1; i += 1) {
+    //   const positionInfo = results[i];
+    //   const wrapper = new kit.web3.eth.Contract(
+    //     IERC20W_ABI.abi as AbiItem[],
+    //     positionInfo!.collToken
+    //   ) as unknown as IERC20Wrapper;
+    //   const underlying = await wrapper.methods
+    //     .getUnderlyingToken(positionInfo?.collId!)
+    //     .call();
+    //   const price = toBN(await coreOracle.methods.getCELOPx(underlying).call());
+    //   sum = sum.add(price.mul(toBN(positionInfo?.collateralSize!)));
+    // }
+    // for (let i = 0; i < COLLATERAL_TOKENS.length; i += 1) {
+    //   const token = COLLATERAL_TOKENS[i]!;
+    //   const bankInfo = await bank.methods.getBankInfo(token.address).call();
+    //   const cToken = new kit.web3.eth.Contract(
+    //     CERC20_ABI as AbiItem[],
+    //     bankInfo.cToken
+    //   ) as unknown as CErc20Immutable;
+    //   const totalSupply = toBN(await cToken.methods.totalSupply().call());
+    //   const totalBorrows = toBN(await cToken.methods.totalBorrows().call());
+    //   const cash = totalSupply.sub(totalBorrows);
+    //   console.log(token.address);
+
+    //   const price = toBN(
+    //     await coreOracle.methods.getCELOPx("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC").call()
+    //   );
+    //   // sum = sum.add(price.mul(cash));
+    // }
+
+    const price = toBN(
+      await coreOracle.methods.getCELOPx("0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC").call()
+    );
+
     const usd = toBN(
       await coreOracle.methods
         .getCELOPx(
@@ -84,6 +93,7 @@ export const useTVL = () => {
         )
         .call()
     );
+
     return Number(fromWei(sum.div(usd))) / Number(fromWei(scale));
   }, [bank.methods, kit.web3.eth.Contract]);
   return useAsyncState(null, call, "cacheTVL");

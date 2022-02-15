@@ -66,9 +66,6 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
 
   const exchangeRate = info ? Number(fromWei(info.exchangeRate)) : 1;
 
-  // info && info.projectedAPY.mul
-  //           ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%")
-  //           : info ? parseInt(info.projectedAPY as unknown as string, 16) : "0.0%"}
   return (
     <div className="bg-white my-6 mx-4 rounded-3xl shadow-2xl">
       <div className="border-b-2 p-2">

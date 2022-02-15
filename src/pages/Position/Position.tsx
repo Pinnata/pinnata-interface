@@ -44,11 +44,11 @@ export const Position = () => {
         const jsonText = await res.text();
         const json = JSON.parse(jsonText);
         positions = json[address ?? ''];
-    },
-    function(rej) {
-        console.log("promise rejected", rej);
-        throw 'promise rejected';
-    })
+      },
+      function(rej) {
+          console.log("promise rejected", rej);
+          throw 'promise rejected';
+      })
       const info: any[] = [];
       let batch: Promise<any>[] = [];
       positions?.forEach((positionId) => {
