@@ -50,19 +50,19 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
       const utilRate = totalSupply.eq(toBN(0))
         ? toBN(0)
         : totalBorrows.mul(toBN(10).pow(toBN(18))).div(totalSupply);
-      return {
-        totalSupply: totalSupply,
-        totalBorrows: totalBorrows,
-        utilizationRate: utilRate,
-        projectedAPY: supplyRate,
-        exchangeRate,
-      };
+        return {
+          totalSupply: totalSupply,
+          totalBorrows: totalBorrows,
+          utilizationRate: utilRate,
+          projectedAPY: supplyRate,
+          exchangeRate,
+        }
     } catch (error) {
       console.log(error);
     }
   }, [bank, token.address, kit]);
 
-  const [info] = useAsyncState(null, call);
+  const [info] = useAsyncState(null, call, token.address+'earn');
 
   const exchangeRate = info ? Number(fromWei(info.exchangeRate)) : 1;
 
@@ -77,8 +77,9 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
         <p className="text-gray-800 font-bold text-3xl">
           {" "}
           {info
-            ? humanFriendlyWei(info.projectedAPY.mul(toBN(100))).concat("%")
-            : "--"}
+            ? humanFriendlyWei(info.projectedAPY.mul ? info.projectedAPY.mul(toBN(100)) : (parseInt(info.projectedAPY as unknown as string, 16) * 100).toString()).concat("%")
+            : "0.0%"}
+
         </p>
       </div>
 
@@ -93,7 +94,8 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
               ? humanFriendlyWei(info.totalSupply)
                   .concat(" ")
                   .concat(token.symbol)
-              : "--"}
+              : "000"}
+
           </p>
         </div>
         <div className="m-4 text-center">
@@ -106,7 +108,8 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
               ? humanFriendlyWei(info.totalBorrows)
                   .concat(" ")
                   .concat(token.symbol)
-              : "--"}
+              : "000"}
+
           </p>
         </div>
       </div>
@@ -119,10 +122,10 @@ export const EarnEntry: React.FC<Props> = ({ token }: Props) => {
           <p className="text-gray-900 font-bold text-2xl">
             {" "}
             {info
-              ? humanFriendlyWei(info.utilizationRate.mul(toBN(100))).concat(
+              ? humanFriendlyWei(info.utilizationRate.mul ? info.utilizationRate.mul(toBN(100)) : (parseInt(info.utilizationRate as unknown as string, 16) * 100).toString()).concat(
                   "%"
                 )
-              : "--"}
+              : "0.0%"}
           </p>
         </div>
         <div className="m-4 text-center">
