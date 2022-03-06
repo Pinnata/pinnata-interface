@@ -20,7 +20,7 @@ import App from "./App";
 // TODO removing all WalletConnect options until WC v1 / v2 issues are sorted
 const screensWithoutWalletConnect = { ...defaultScreens }
 
-const keysToRemove = ['Celo Wallet', 'Celo Terminal', 'CeloDance', 'WalletConnect']
+const keysToRemove = ['Celo Wallet', 'Celo Terminal', 'CeloDance', 'WalletConnect', 'Valora']
 // @ts-ignore
 keysToRemove.forEach((k) => delete screensWithoutWalletConnect[k])
 const connectModalProps = {
