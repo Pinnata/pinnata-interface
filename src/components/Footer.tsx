@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://twitter.com/PinnataHQ"
+          href="https://twitter.com/PinnataXYZ"
           className="hover:opacity-75"
           style={{ textDecoration: "none" }}
           mr={2}
