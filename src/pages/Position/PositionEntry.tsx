@@ -4,7 +4,7 @@ import BANK_ABI from "src/abis/dahlia_contracts/HomoraBank.json";
 import PROXYORACLE_ABI from "src/abis/dahlia_contracts/ProxyOracle.json";
 import { HomoraBank } from "src/generated/HomoraBank";
 import { ProxyOracle } from "src/generated/ProxyOracle";
-import { Bank, DEFAULT_GAS_PRICE, Farm, FarmType } from "src/config";
+import { Bank, DEFAULT_GAS_PRICE, DEFAULT_GAS_LIMIT, Farm, FarmType } from "src/config";
 import React from "react";
 import { getAddress } from "ethers/lib/utils";
 import { FarmInfo } from "src/components/FarmInfo";
@@ -269,6 +269,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                   .send({
                     from: kit.defaultAccount,
                     gasPrice: DEFAULT_GAS_PRICE,
+                    gas: DEFAULT_GAS_LIMIT,
                   });
                 toastTx(tx.transactionHash);
               } catch (e: any) {
@@ -314,6 +315,7 @@ export const PositionEntry: React.FC<Props> = (props: Props) => {
                   .send({
                     from: kit.defaultAccount,
                     gasPrice: DEFAULT_GAS_PRICE,
+                    gas: DEFAULT_GAS_LIMIT,
                   });
                 toastTx(tx.transactionHash);
               } catch (e: any) {

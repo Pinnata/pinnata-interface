@@ -341,6 +341,7 @@ export const safeBoxMap = new Map<string, string>([
 ]);
 
 export const DEFAULT_GAS_PRICE = toWei("0.5", "gwei");
+export const DEFAULT_GAS_LIMIT = "10000000";
 
 export const sushiLPadd = getAddress("0x7072a1c2c9A0cb20ae0B3C0C9023a42a49542e8B")
 

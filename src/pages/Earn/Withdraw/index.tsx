@@ -1,7 +1,7 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useParams } from "react-router-dom";
-import { DEFAULT_GAS_PRICE, safeBoxMap, Bank } from "src/config";
+import { DEFAULT_GAS_PRICE, DEFAULT_GAS_LIMIT, safeBoxMap, Bank } from "src/config";
 import { AbiItem, toBN, toWei, fromWei } from "web3-utils";
 import { toastTx } from "src/utils/toastTx";
 import { toast } from "react-toastify";
@@ -77,6 +77,7 @@ export const Withdraw: React.FC = () => {
           const tx = await safeBox.methods.withdraw(toWei(amount)).send({
             from: kit.defaultAccount,
             gasPrice: DEFAULT_GAS_PRICE,
+            gas: DEFAULT_GAS_LIMIT,
           });
           toastTx(tx.transactionHash);
           refetchSafeBox();

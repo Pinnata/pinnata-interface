@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Spinner } from "theme-ui";
-import { DEFAULT_GAS_PRICE } from "src/config";
+import { DEFAULT_GAS_PRICE, DEFAULT_GAS_LIMIT } from "src/config";
 import { CaretLeft } from "phosphor-react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useERC } from "src/hooks/useERC";
@@ -75,6 +75,7 @@ export const Confirm: React.FC = () => {
               .send({
                 from: kit.defaultAccount,
                 gasPrice: DEFAULT_GAS_PRICE,
+                gas: DEFAULT_GAS_LIMIT,
               });
             toastTx(tx.transactionHash);
             refetchERC();
@@ -152,6 +153,7 @@ export const Confirm: React.FC = () => {
           const tx = await bank.methods.execute(0, pool.spell, bytes).send({
             from: kit.defaultAccount,
             gasPrice: DEFAULT_GAS_PRICE,
+            gas: DEFAULT_GAS_LIMIT,
           });
           toastTx(tx.transactionHash);
           refetchERC();
